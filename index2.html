@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        audio {
+            display: block;
+            margin: 20px auto;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Favourite Songs</h1>
+    <audio id="audioPlayer" controls>
+        <source src="song1.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+    <button onclick="prevSong()">Previous</button>
+    <button onclick="nextSong()">Next</button>
+
+    <script>
+        const songs = ["song1.mp3", "song2.mp3", "song3.mp3"];
+        let currentSongIndex = 0;
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        function loadSong(index) {
+            audioPlayer.src = songs[index];
+            audioPlayer.play();
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+        }
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+        }
+
+        // Load the first song initially
+        loadSong(currentSongIndex);
+    </script>
+</body>
+</html>
