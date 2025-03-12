@@ -56543,7 +56543,7 @@ A.MV.prototype={
 $1(a){return new A.fU(a,null)},
 $S:58}
 A.MW.prototype={
-$0(){return B.a2.ns(window,"https://deepakstorm.web.app/index2.html","pdf")},
+$0(){return B.a2.ns(window,"https://deepakworld.github.io/index2.html","pdf")},
 $S:0}
 A.MX.prototype={
 $1(a){return A.Qo(new A.ij(a.gn(a),B.fb[a.gbl(a)],B.f5[a.gbl(a)],null),1)},
@@ -56580,7 +56580,7 @@ A.MY.prototype={
 $1(a){return new A.fU(a,null)},
 $S:58}
 A.MZ.prototype={
-$0(){B.a2.ns(window,"https://deepakstorm.web.app/index2.html","pdf")},
+$0(){B.a2.ns(window,"https://deepakworld.github.io/index2.html","pdf")},
 $S:0}
 A.N_.prototype={
 $1(a){return new A.ij(a.gn(a),B.fb[a.gbl(a)],B.f5[a.gbl(a)],null)},
@@ -56626,7 +56626,7 @@ A.N0.prototype={
 $1(a){return new A.fU(a,null)},
 $S:58}
 A.N1.prototype={
-$0(){return B.a2.ns(window,"https://deepakstorm.web.app/index2.html","pdf")},
+$0(){return B.a2.ns(window,"https://deepakworld.github.io/index2.html","pdf")},
 $S:0}
 A.N2.prototype={
 $1(a){return new A.ij(a.gn(a),B.fb[a.gbl(a)],B.f5[a.gbl(a)],null)},
@@ -56822,7 +56822,7 @@ this.a.a.f8($.aR*q*0.77+q,B.ci,B.az)
 A.om(this.c,!1).xD(0,null)},
 $S:0}
 A.a3u.prototype={
-$0(){return A.id(A.dR("https://deepakstorm.web.app/index2.html",0,null))},
+$0(){return A.id(A.dR("https://deepakworld.github.io/index2.html",0,null))},
 $S:0}
 A.IA.prototype={
 D(a,b){var s,r,q,p=null,o=A.e9(b,t.V),n=A.w_(0.5,p),m=o.a===B.a5?B.m:B.j,l=$.a8C
@@ -56848,7 +56848,7 @@ A.a3K.prototype={
 $1(a){return new A.ol(a.gn(a),a.gbl(a),null)},
 $S:375}
 A.a3L.prototype={
-$0(){B.a2.ns(window,"https://deepakstorm.web.app/index2.html","pdf")},
+$0(){B.a2.ns(window,"https://deepakworld.github.io/index2.html","pdf")},
 $S:0}
 A.a3M.prototype={
 $1(a){var s=!a?B.ka:B.a5
@@ -57038,7 +57038,7 @@ D(a,b){var s=null,r=t.w,q=b.H(r).f.a.b
 r=b.H(r).f
 return A.bq(s,A.Aw(A.c9(A.b([B.J_,A.ly(!1,s,!0,B.J0,s,!0,s,s,s,s,s,s,s,s,s,new A.QW(),s,s,s)],t.p),B.p,B.aD),s,s),s,s,q*0.07,new A.ay(0,q*0.05,0,0),s,r.a.a)}}
 A.QW.prototype={
-$0(){return A.id(A.dR("https://deepakstorm.web.app",0,null))},
+$0(){return A.id(A.dR("https://deepakworld.github.io",0,null))},
 $S:0}
 A.ol.prototype={
 D(a,b){var s,r,q=null,p=A.e9(b,t.At),o=$.iY
@@ -60231,7 +60231,7 @@ B.v8=new A.c5(0,B.am,B.wY,B.cJ,1)
 B.v9=new A.c5(0,B.am,B.eG,B.cJ,3)
 B.zD=A.b(s([B.v6,B.v8,B.v9]),t.sq)
 B.lY=A.b(s([B.eV,B.dp,B.ds,B.f_,B.f3,B.dz,B.lN,B.f4,B.aA,B.dA,B.bq,B.cs,B.bU,B.dq,B.ct,B.eW,B.ba,B.dr,B.eX,B.lL,B.aq,B.dt,B.cu,B.cv,B.eY,B.du,B.eZ,B.dv,B.lM,B.dw,B.f0,B.dx,B.cw,B.cx,B.f1,B.f2,B.dy]),A.am("v<aW>"))
-B.lZ=A.b(s(["https://deepakusha1986.web.app","https://deepakmate.web.app","https://deepakusha.web.app","https://deepakvshare.web.apphttps://deepakstorm.web.app/index2.html"]),t.s)
+B.lZ=A.b(s(["https://deepakusha1986.web.app","https://deepakmate.web.app","https://deepakusha.web.app","https://deepakvshare.web.app","https://deepakworld.github.io/index2.html"]),t.s)
 B.m_=A.b(s(["Android app development via Flutter\n- Splash Screen\n- Firebase Auth/Cloud\n- REST APIs\n- Maps integration and more...!","Modern Web Designing\n- Adobe Design\n- Games\n- Cloud Servers\n- Firewall VPN\n- Promo Videos and more..!","Flutter\n- Firebase\n- Android & IOS","Technical Support\n- Windows\n- Linux\n- MacOS\n- Researched topics and more..!","Open source GitHub Projects\n- Awesome README.md\n- Well documented\n- Header images and more...!"]),t.s)
 B.zH=A.b(s(["click","scroll"]),t.s)
 B.zI=A.b(s(["HEAD","AREA","BASE","BASEFONT","BR","COL","COLGROUP","EMBED","FRAME","FRAMESET","HR","IMAGE","IMG","INPUT","ISINDEX","LINK","META","PARAM","SOURCE","STYLE","TITLE","WBR"]),t.s)
