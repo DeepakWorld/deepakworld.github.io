@@ -428,12 +428,49 @@ body {
   margin: 4px 2px;
   cursor: pointer;
 }
+/* Styling for the top-left corner */
+        .left-corner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        /* Styling for the top-right corner */
+        .right-corner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
 .center-top {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     height: 100vh;
   }
+.container {
+            display: flex;
+            justify-content: space-between; /* Align elements within the container */
+            align-items: center;
+            width: 100%; /* Set the width of the container */
+        }
+
+        .container img {
+            width: 150px; /* Ensure all images are the same width */
+            height: auto; /* Keep the aspect ratio intact */
+            object-fit: contain; /* Adjust image fit within the container */
+        }
+
+        .left-corner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .right-corner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
     </style>
  
          </head>
@@ -442,21 +479,35 @@ body {
 <body>
 <div id="stars"></div>
  <div class="container">
-
+        <!-- Link with image -->
+        <a href="https://www.paypal.com/paypalme/VTXDZRNHWDFU8?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&ppid=RT000481&cnac=IN&rsta=en_GB%28en-IN%29&cust=VTXDZRNHWDFU8&unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&calc=f6012132d2b1a&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.315.0&tenant_name=PAYPAL&xt=145585%2C154413%2C104038&link_ref=paypalme_vtxdzrnhwdfu8" class="left-corner">
+            Donate with Paypal
+        </a>
+        
+        <!-- App download with image -->
+        <a href="Deepak.apk" download>
+            <img src="/Deepak.jpg" alt="MyApp">
+        </a>
+        
+        <!-- Right corner image -->
+        <img src="pay.png" alt="pay" class="right-corner">
+    </div>
+ <div class="container">
 <p class="name">Welcome to MySite</p>
-   <p class="linkp"><a href="https://deepakrummy.github.io/game/" target="_blank">Wow Games</a> <a href="https://deepakstorm.web.app/" target="_blank">Visit Deepak Profile!</a>  <a href="https://deepakrummy.github.io/" target="_blank">Kids Game!</a>  <a href="https://deepakplay.web.app/" target="_blank">Ace Donkey Game!</a></p>
-<div class="center-top"><p class="linkp"> <a href="Deepak.apk" download>
-  <img src="/Deepak.jpg" alt="MyApp" width="104" height="142"></div>
-</a> <a href="https://www.paypal.com/paypalme/VTXDZRNHWDFU8?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&ppid=RT000481&cnac=IN&rsta=en_GB%28en-IN%29&cust=VTXDZRNHWDFU8&unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&calc=f6012132d2b1a&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.315.0&tenant_name=PAYPAL&xt=145585%2C154413%2C104038&link_ref=paypalme_vtxdzrnhwdfu8" class="button">Donate with Paypal</a>
- <img src="pay.png" alt="pay" width="200" height="200"> 
+   <a href="https://deepakrummy.github.io/game/" target="_blank">Wow Games</a> <a href="https://deepakstorm.web.app/" target="_blank">Visit Deepak Profile!</a>  <a href="https://deepakrummy.github.io/" target="_blank">Kids Game!</a>  <a href="https://deepakplay.web.app/" target="_blank">Ace Donkey Game!</a></p>
+
+    </div>
+    
+</div>
+<hr>
 <audio id="audioPlayer" controls autoplay>
-        <source src="song1.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-   
-    <button onclick="prevSong()"> <h1>Previous</h1></button>
-    <button onclick="nextSong()"><h1>Next</h1></button></p>
-  
+    <source src="song1.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+<button onclick="prevSong()"> <h1>Previous</h1></button>
+<button onclick="nextSong()"><h1>Next</h1></button>
+<hr>
 <style>
 .button {
   background-color: blue;
@@ -499,8 +550,7 @@ window.onload = () => {
 }
     </script>
 
-        </div>
-
+    
 
 
        
@@ -585,6 +635,7 @@ function showSlides() {
             <div class="snow-ball"></div>
             <div class="snow-ball"></div>
         </div>
-    </div>
+</div>
+
    </body>
 </html> 
