@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+ #stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('star-background.gif') repeat; /* Replace with your glittering stars image URL */
+            background-size: cover; /* Ensure stars fill the viewport */
+            z-index: -1; /* Place stars behind all content */
+        }
+
+   /* Overall Container Styling */
+        .container {
+            width: 90%;
+            margin: auto;
+            background-color: brown;
+            border: 5px solid #04AA6D; /* Stylish border */
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Button Styling */
+        .button {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        img {
+            margin: 10px;
+        }
+
+        h2 {
+            color: white;
+        }
+    </style>
+<style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides img {
+  width: 100%;
+  height: auto; /* maintains the aspect ratio of the images */
+  display: block; /* prevents extra white space below images */
+}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  margin: auto;
+overflow: hidden; 
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+<style>
+        /* General Style */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+ 
+
+/* Style Snowballs */
+        .snow-ball-container .snow-ball {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(even) {
+            width: 16px;
+            height: 16px;
+            animation: flake-motion 15s linear infinite;
+        }
+
+        /* Position the Snowballs above the screen */
+        .snow-ball-container .snow-ball:nth-child(1) {
+            top: -50%;
+            left: 5%;
+            width: 20px;
+            height: 20px;
+            animation: snowball-animation 12s linear 2s infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(2) {
+            top: -20%;
+            left: 10%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(3) {
+            top: -50%;
+            left: 15%;
+            animation: snowball-animation 12s linear infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(4) {
+            top: -10%;
+            left: 20%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(5) {
+            top: -20%;
+            left: 25%;
+            width: 20px;
+            height: 20px;
+            animation: snowball-animation 12s linear 2s infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(6) {
+            top: -40%;
+            left: 30%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(7) {
+            top: -30%;
+            left: 35%;
+            width: 5px;
+            height: 5px;
+            animation: snowball-animation 12s linear infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(8) {
+            top: -20%;
+            left: 40%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(9) {
+            top: -50%;
+            left: 45%;
+            width: 5px;
+            height: 5px;
+            animation: snowball-animation 12s linear 2s infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(10) {
+            top: -5%;
+            left: 50%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(11) {
+            top: -20%;
+            left: 60%;
+            animation: snowball-animation 12s linear infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(12) {
+            top: -10%;
+            left: 70%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(13) {
+            top: -50%;
+            left: 80%;
+            width: 5px;
+            height: 5px;
+            animation: snowball-animation 12s linear 2s infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(14) {
+            top: -20%;
+            left: 90%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(15) {
+            top: -50%;
+            left: 95%;
+            width: 30px;
+            height: 30px;
+            animation: snowball-animation 12s linear infinite;
+        }
+
+        /* Define animations of Snowball and Snowflakes */
+        @keyframes snowball-animation {
+            0% {
+                transform: translate(0);
+                opacity: 1;
+            }
+            20% {
+                transform: translate(4px, 100px);
+                opacity: 0.8;
+            }
+            40% {
+                transform: translate(-7px, 200px);
+                opacity: 0.7;
+            }
+            60% {
+                transform: translate(10px, 400px);
+                opacity: 0.5;
+            }
+            80% {
+                transform: translate(-14px, 700px);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translate(16px, 900px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes flake-motion {
+            0% {
+                transform: translate(-2px, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: translate(-9px, 200px);
+                opacity: 0.9;
+            }
+            40% {
+                transform: translate(14px, 300px);
+                opacity: 0.7;
+            }
+            60% {
+                transform: translate(-22px, 400px);
+                opacity: 0.6;
+            }
+            80% {
+                transform: translate(30px, 600px);
+                opacity: 0.5;
+            }
+            90% {
+                transform: translate(-40px, 800px);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(52px, 1000px);
+                opacity: 0;
+            }
+        }
+ 
+div {text-align: center;}
+body {
+            background-color: brown; /* Make the background brown */
+            background: linear-gradient(135deg, #000000, #434343); /* Optional: Metallic black gradient */
+            margin: 0; /* Remove default margin */
+            border: 20px solid brown; /* Add metallic gold border */
+            box-shadow: 0 0 10px rown; /* Optional: Glowing effect for the border */
+       
+        }
+ .name {
+            color: orange; /* Sets the text color to green */
+            font-size: 2em; /* Adjusts font size */
+            font-family: Arial, sans-serif; /* Sets the font style */
+            text-align: center; /* Centers the text */
+            margin-top: 20px; /* Adds space at the top */
+        }
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 560px; /* Set max width for better responsiveness */
+    margin: 0 auto; /* Center the video */
+    overflow: hidden; /* Prevent content overflow */
+    padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc; /* Add a border around the iframe */
+    box-sizing: border-box; /* Include borders in the dimensions */
+  }
+.topic-name {
+            color: blue; /* White font color */
+            font-size: 14px; /* Size of the text */
+            font-family: Arial, sans-serif; /* Font style */
+            
+   /* Overall Container Styling */
+        .container {
+            width: 90%;
+            margin: auto;
+            background-color: brown;
+            border: 5px solid #04AA6D; /* Stylish border */
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Button Styling */
+        .button {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        img {
+            margin: 10px;
+        }
+
+        h2 {
+            color: white;
+        }
+.button {
+  background-color: blue; /* Blue background for the button */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+/* Styling for the top-left corner */
+        .left-corner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        /* Styling for the top-right corner */
+        .right-corner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+.center-top {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+  }
+ 
+        
+.container {
+            display: flex;
+            justify-content: space-between; /* Align elements within the container */
+            align-items: center;
+            width: 100%; /* Set the width of the container */
+        }
+
+        .container img {
+            width: 150px; /* Ensure all images are the same width */
+            height: auto; /* Keep the aspect ratio intact */
+            object-fit: contain; /* Adjust image fit within the container */
+        }
+
+        .left-corner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .right-corner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+.name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        a {
+            display: block; /* Ensures each link appears on a new line */
+            margin-bottom: 5px; /* Adds spacing between links */
+            color: #0078d7; /* Link color */
+            text-decoration: none; /* Removes underline from links */
+        }
+        a:hover {
+            text-decoration: underline; /* Adds underline on hover for better UX */
+        }
+.center-top {
+            position: absolute;
+            top: 10px; /* Adjust the vertical position */
+            left: 10px; /* Adjust the horizontal position */
+        }
+    </style>
+ 
+         </head>
+
+
+<body>
+<div id="stars"></div>
+ 
+        <a href="Deepak.apk" download>
+            <img src="/Deepak.jpg" alt="MyApp">
+        </a>
+        
+        
+  <div class="container">
+        <p class="name">Welcome to MySite</p>
+        <a href="https://deepakrummy.github.io/game/" target="_blank">Wow Games</a>
+        <a href="https://deepakstorm.web.app/" target="_blank">Visit Deepak Profile!</a>
+        <a href="https://deepakrummy.github.io/" target="_blank">Kids Game!</a>
+        <a href="https://deepakplay.web.app/" target="_blank">Ace Donkey Game!</a>
+<a href="https://www.paypal.com/paypalme/VTXDZRNHWDFU8?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&ppid=RT000481&cnac=IN&rsta=en_GB%28en-IN%29&cust=VTXDZRNHWDFU8&unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&calc=f6012132d2b1a&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.315.0&tenant_name=PAYPAL&xt=145585%2C154413%2C104038&link_ref=paypalme_vtxdzrnhwdfu8" target="_blank">Donate with Paypal</a>
+
+    </div>
+<h1>Pay with UPI/ UPI Scan:</h1>
+    <h1>UPI: 8867740113@kotak</h1>
+   <img src="https://deepakworld.github.io/pay.png" alt="UPI SCAN" width="100">
+    
+
+
+       
+<br>
+<p>
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="https://www.metal-hammer.de/wp-content/uploads/2015/08/04/11/Sabaton-Christin-Kersten_26.jpg" style="width:100%">
+  <div class="text">Caption Text</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="https://distortedsoundmag.com/wp-content/uploads/2017/01/SAB_Sabaton-1307-800x445.jpg" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="https://d1e00ek4ebabms.cloudfront.net/production/43f4b63f-2852-4e89-96bc-1b590b91a2c6.jpg" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
+</br>
+</p>
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/oVWEb-At8yc" title="Sabaton - Bismarck" allowfullscreen></iframe>
+</div>
+
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/i9BupglHdtM" title="Sabaton - The Last Stand" allowfullscreen></iframe>
+</div>
+
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/ZJluJrI5aLo" title="Europe - The Final Countdown" allowfullscreen></iframe>
+</div>
+</br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+</div>
+
+
+   </body>
+</html> 
