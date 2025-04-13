@@ -53,14 +53,19 @@
 <style>
 * {box-sizing: border-box;}
 body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-img {vertical-align: middle;}
+.mySlides img {
+  width: 100%;
+  height: auto; /* maintains the aspect ratio of the images */
+  display: block; /* prevents extra white space below images */
+}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  width: 100%;
+  max-width: 800px;
   position: relative;
   margin: auto;
+overflow: hidden; 
 }
 
 /* Caption text */
