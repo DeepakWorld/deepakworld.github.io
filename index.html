@@ -368,34 +368,49 @@ body {
 
         
     </style>
-  <style>
+ <style>
         .container {
-            width: 80%; /* Adjust width as needed */
+            width: 90%; /* Adjust width for mobile devices */
             margin: 0 auto; /* Centers the container */
             border: 2px solid black; /* Optional border for visual aid */
-            padding: 20px; /* Space inside the container */
-            box-sizing: border-box; /* Includes padding in the container size */
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .menu {
-            display: flex; /* Align items horizontally */
-            flex-wrap: wrap; /* Ensures items wrap within the container */
+            display: flex;
+            flex-wrap: wrap; /* Items wrap within the container */
             justify-content: center; /* Centers menu items */
-            gap: 15px; /* Adds space between menu items */
+            gap: 15px;
         }
 
         .menu-item {
-            border: 1px solid black; /* Creates a rectangle border */
-            padding: 10px 15px; /* Adds space inside each item */
-            text-decoration: none; /* Removes underline from links */
-            color: black; /* Text color */
-            background-color: #f0f0f0; /* Background for menu items */
-            transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+            border: 1px solid black;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: black;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 14px; /* Smaller font for mobile */
         }
 
         .menu-item:hover {
-            background-color: black; /* Hover background */
-            color: white; /* Hover text color */
+            background-color: black;
+            color: white;
+        }
+
+        /* Responsive Design for Mobile Devices */
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column; /* Stack items vertically */
+                gap: 10px; /* Reduce space between items */
+            }
+
+            .menu-item {
+                width: 100%; /* Full width for better readability */
+                text-align: center; /* Align text */
+                font-size: 16px; /* Adjust font size for smaller screens */
+            }
         }
     </style>
          </head>
