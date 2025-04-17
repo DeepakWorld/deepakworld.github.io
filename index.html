@@ -365,7 +365,25 @@ body {
     text-decoration: none; /* Optional: Removes underline from links */
 }
 
-
+ .menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+        }
+        .menu-item {
+            border: 2px solid black;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .menu-item:hover {
+            background-color: black;
+            color: white;
+        }
         
     </style>
  
@@ -379,15 +397,19 @@ body {
             <img src="/Deepak.jpg" alt="MyApp">
         </a>
   <div class="container">
+      Welcome to MySite:
 
-   Welcome to MySite:
-        <h><a href="Deepak.apk" download>Download App</a></h>
-        <a href="https://deepakrummy.github.io/game/" target="_blank">Wow Games</a>
-        <a href="https://deepakstorm.web.app/" target="_blank">Visit Deepak Profile!</a>
-        <a href="https://deepakrummy.github.io/" target="_blank">Kids Game!</a>
-        <a href="https://deepakplay.web.app/" target="_blank">Ace Donkey Game!</a>
-        <a href="https://www.paypal.com/paypalme/VTXDZRNHWDFU8?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&ppid=RT000481&cnac=IN&rsta=en_GB%28en-IN%29&cust=VTXDZRNHWDFU8&unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&calc=f6012132d2b1a&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.315.0&tenant_name=PAYPAL&xt=145585%2C154413%2C104038&link_ref=paypalme_vtxdzrnhwdfu8" target="_blank">Donate with Paypal!</a>        <a href="https://deepakworld.github.io/pay.html" target="_blank">Donate with UPI!</a>
+   <h><a href="Deepak.apk" download>Download App</a></h>
+<div class="menu">
+        <a href="https://deepakrummy.github.io/game/" class="menu-item">Wow Games!</a>
+        <a href="https://deepakstorm.web.app/" class="menu-item">Visit Deepak Profile!</a>
+        <a href="https://deepakstorm.web.app/" class="menu-item">Kids Game!</a>
+        <a href="https://deepakplay.web.app/" class="menu-item">Ace Donkey Game!</a>
+ <a href="https://www.paypal.com/paypalme/VTXDZRNHWDFU8?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&ppid=RT000481&cnac=IN&rsta=en_GB%28en-IN%29&cust=VTXDZRNHWDFU8&unptid=add4e82e-00d9-11f0-ae69-557dcc4c0799&calc=f6012132d2b1a&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.315.0&tenant_name=PAYPAL&xt=145585%2C154413%2C104038&link_ref=paypalme_vtxdzrnhwdfu8" class="menu-item">DonatePaypal!</a>
+        <a href="https://deepakworld.github.io/pay.html" class="menu-item">DonateUPI!</a>
+        
     </div>
+ </div>
  <div class="center-top">
         <p class="linkp">
 <audio id="audioPlayer" controls autoplay>
