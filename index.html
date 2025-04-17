@@ -370,46 +370,46 @@ body {
     </style>
  <style>
         .container {
-            width: 90%; /* Adjust width for mobile devices */
-            margin: 0 auto; /* Centers the container */
-            border: 2px solid black; /* Optional border for visual aid */
-            padding: 20px;
+            width: 100%; /* Full width for flexibility */
+            margin: 0 auto;
+            text-align: center; /* Center-aligns menu for all devices */
+            padding: 20px 0;
             box-sizing: border-box;
         }
 
         .menu {
             display: flex;
-            flex-wrap: wrap; /* Items wrap within the container */
-            justify-content: center; /* Centers menu items */
-            gap: 15px;
+            flex-wrap: wrap; /* Ensures items wrap if screen width is small */
+            justify-content: center; /* Centers menu items horizontally */
+            gap: 15px; /* Space between menu items */
         }
 
         .menu-item {
-            border: 1px solid black;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: black;
-            background-color: #f0f0f0;
-            transition: background-color 0.3s, color 0.3s;
-            font-size: 14px; /* Smaller font for mobile */
+            border: 2px solid black; /* Oval border */
+            border-radius: 50px; /* Makes the border rounded */
+            padding: 10px 20px; /* Adjust padding for a nice oval shape */
+            text-decoration: none; /* Removes underline */
+            color: black; /* Text color */
+            background-color: #f0f0f0; /* Light background color */
+            transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+            font-size: 16px; /* Font size for better readability */
         }
 
         .menu-item:hover {
-            background-color: black;
-            color: white;
+            background-color: black; /* Dark background on hover */
+            color: white; /* Text color on hover */
         }
 
-        /* Responsive Design for Mobile Devices */
+        /* Responsive Design for Small Devices */
         @media (max-width: 768px) {
             .menu {
-                flex-direction: column; /* Stack items vertically */
-                gap: 10px; /* Reduce space between items */
+                flex-wrap: wrap; /* Ensures items wrap for smaller screens */
+                gap: 10px; /* Smaller gap between items */
             }
-
+            
             .menu-item {
-                width: 100%; /* Full width for better readability */
-                text-align: center; /* Align text */
-                font-size: 16px; /* Adjust font size for smaller screens */
+                padding: 8px 15px; /* Adjust padding for better fit */
+                font-size: 14px; /* Slightly smaller font size */
             }
         }
     </style>
@@ -424,7 +424,7 @@ body {
         </a>
  <div class="container">
         <div class="menu">
-           <a href="Deepak.apk" class="menu-item">Download App</a>
+            <a href="Deepak.apk" class="menu-item">Download App</a>
             <a href="https://deepakrummy.web.app/" class="menu-item">Rummy</a>
             <a href="https://deepakrummy.github.io/game/" class="menu-item">WowGames</a>
             <a href="https://deepakstorm.web.app/" class="menu-item">MyProfile</a>
