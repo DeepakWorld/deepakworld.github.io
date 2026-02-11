@@ -554,6 +554,10 @@ function showSlides() {
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
+
+
+
+ 
 <div id="chatToggle" onclick="toggleChat()">💬 Chat</div>
 
 <div class="chatbot" id="chatbot">
@@ -570,93 +574,35 @@ function showSlides() {
 
 <style>
   #chatToggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #0078d7;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 50px;
-    cursor: pointer;
-    z-index: 9999;
-    font-family: sans-serif;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: fixed; bottom: 20px; right: 20px;
+    background: #0078d7; color: #fff;
+    padding: 12px 20px; border-radius: 50px;
+    cursor: pointer; z-index: 9999;
+    font-family: sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
   .chatbot {
-    position: fixed;
-    bottom: 85px;
-    right: 20px;
-    width: 320px;
-    height: 400px;
-    border-radius: 12px;
-    background: #fff;
+    position: fixed; bottom: 85px; right: 20px;
+    width: 320px; height: 400px;
+    border-radius: 12px; background: #fff;
     box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-    display: none; 
-    flex-direction: column;
-    z-index: 9999;
-    font-family: sans-serif;
-    overflow: hidden;
+    display: none; flex-direction: column;
+    z-index: 9999; font-family: sans-serif; overflow: hidden;
   }
-  .chat-header {
-    background: #0078d7;
-    color: #fff;
-    padding: 15px;
-    font-weight: bold;
-  }
+  .chat-header { background: #0078d7; color: #fff; padding: 15px; font-weight: bold; }
   .chat-body {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: #f9f9f9;
+    flex: 1; padding: 15px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 10px; background: #f9f9f9;
   }
-  .chat-message {
-    padding: 10px 14px;
-    border-radius: 18px;
-    font-size: 14px;
-    line-height: 1.4;
-    max-width: 85%;
-    word-wrap: break-word;
-  }
-  .chat-message.user {
-    background: #0078d7;
-    color: #fff;
-    align-self: flex-end;
-    border-bottom-right-radius: 2px;
-  }
-  .chat-message.bot {
-    background: #e9e9eb;
-    color: #000;
-    align-self: flex-start;
-    border-bottom-left-radius: 2px;
-  }
-  .chat-footer {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #eee;
-  }
-  .chat-footer input {
-    flex: 1;
-    border: 1px solid #ddd;
-    padding: 8px 12px;
-    border-radius: 20px;
-    outline: none;
-  }
-  .chat-footer button {
-    border: none;
-    background: transparent;
-    color: #0078d7;
-    font-weight: bold;
-    margin-left: 8px;
-    cursor: pointer;
-  }
+  .chat-message { padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; max-width: 85%; word-wrap: break-word; }
+  .chat-message.user { background: #0078d7; color: #fff; align-self: flex-end; border-bottom-right-radius: 2px; }
+  .chat-message.bot { background: #e9e9eb; color: #000; align-self: flex-start; border-bottom-left-radius: 2px; }
+  .chat-footer { display: flex; padding: 10px; border-top: 1px solid #eee; }
+  .chat-footer input { flex: 1; border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; outline: none; }
+  .chat-footer button { border: none; background: transparent; color: #0078d7; font-weight: bold; margin-left: 8px; cursor: pointer; }
 </style>
 
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-  // Initialize EmailJS
   (function(){
     emailjs.init("1YiLFdNefY_myVwqA");
   })();
@@ -665,7 +611,6 @@ function showSlides() {
   let customerEmail = "";
   let customerPhone = "";
 
-  // 1. Auto-Popup Logic
   window.onload = function() {
     setTimeout(() => {
       if (document.getElementById('chatbot').style.display !== 'flex') {
@@ -697,8 +642,6 @@ function showSlides() {
 
     setTimeout(() => {
       let reply = "";
-
-      // Regex to extract info
       const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
       const phoneRegex = /(\+?\d{1,4}[\s-])?(\(?\d{3}\)?[\s-]?)?\d{3}[\s-]?\d{4}/g;
 
@@ -711,20 +654,25 @@ function showSlides() {
       if (!askedContact) {
         reply = "I'd love to help! Please share your email or phone number so our support team can follow up with you.";
         askedContact = true;
+        appendMessage(reply, 'bot');
       } else if (customerEmail || customerPhone) {
-        reply = "Thank you! I've passed your details to our team. You can also reach us at deepak.thangasamy@gmail.com.";
-        
         // Send via EmailJS
         emailjs.send("service_4ylpqce", "template_w0rq5ms", {
+          from_name: "Contact Us",
           user_email: customerEmail || "Not provided",
           user_phone: customerPhone || "Not provided",
           message: message
+        }).then(function(response) {
+          console.log("SENT TO EMAILJS!", response.status, response.text);
+          appendMessage("✅ Thank you! I've passed your details to our team. You can also reach us at deepak.thangasamy@gmail.com.", 'bot');
+        }, function(error) {
+          console.log("EMAILJS ERROR:", error);
+          appendMessage("⚠️ Error: " + error.text, 'bot');
         });
       } else {
-        reply = "Could you please provide a valid email address or phone number so we can assist you better?";
+        reply = "Please provide a valid email or phone number so we can reach you.";
+        appendMessage(reply, 'bot');
       }
-
-      appendMessage(reply, 'bot');
     }, 600);
   }
 
