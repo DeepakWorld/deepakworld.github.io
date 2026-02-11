@@ -675,7 +675,7 @@ function showSlides() {
       let reply = "";
 
       if (!askedContact) {
-        reply = "Please share your phone number and email so we can contact you.";
+        reply = "Please share your Messages, phone number and email so we can contact you.";
         askedContact = true;
       } else {
         // Detect email
@@ -720,7 +720,12 @@ function showSlides() {
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 </script>
-
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("service_4ylpqce"); // Replace with your actual User ID from EmailJS dashboard
+  })();
+</script>
 
 </div>
         <div class="snow-ball-container">
