@@ -549,7 +549,7 @@ function showSlides() {
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
- <!-- Chat Toggle Button -->
+<!-- Chat Toggle Button -->
 <div id="chatToggle" onclick="toggleChat()">💬 Chat</div>
 
 <!-- Customer Support Bot -->
@@ -564,7 +564,6 @@ function showSlides() {
     <button onclick="sendMessage()">Send</button>
   </div>
 </div>
-
 <style>
   #chatToggle {
     position: fixed;
@@ -645,7 +644,13 @@ function showSlides() {
   }
 </style>
 
+
+
 <script>
+  let askedContact = false;
+  let customerEmail = "";
+  let customerPhone = "";
+
   function toggleChat() {
     const chat = document.getElementById('chatbot');
     const toggle = document.getElementById('chatToggle');
@@ -666,16 +671,42 @@ function showSlides() {
     appendMessage(message, 'user');
     input.value = '';
 
-    // Auto reply logic
     setTimeout(() => {
-      let reply = "Thanks for reaching out! We'll get back to you soon.";
-      if (message.toLowerCase().includes("hello")) {
-        reply = "Hello! How can I assist you today?";
-      } else if (message.toLowerCase().includes("price")) {
-        reply = "Our pricing details are available on the Pricing page.";
-      } else if (message.toLowerCase().includes("help")) {
-        reply = "Sure! Please describe your issue and we'll guide you.";
+      let reply = "";
+
+      if (!askedContact) {
+        reply = "Please share your phone number and email so we can contact you.";
+        askedContact = true;
+      } else {
+        // Detect email
+        if (message.includes("@")) {
+          customerEmail = message;
+        }
+        // Detect phone number (basic 10-digit check)
+        if (/\d{10}/.test(message)) {
+          customerPhone = message;
+        }
+
+        if (customerEmail || customerPhone) {
+          reply = "Thanks! We've saved your contact details. You can also reach us at:\nEmail: deepak.thangasamy@gmail.com\nPhone: 886774011";
+
+          // Send details to your Gmail via EmailJS
+          emailjs.send("service_4ylpqce", "template_w0rq5ms", {
+            user_email: customerEmail,
+            user_phone: customerPhone,
+            message: "Customer shared contact details via support bot."
+          }).then(function(response) {
+            appendMessage("✅ Your details have been sent to our support team.", 'bot');
+            console.log("SUCCESS!", response.status, response.text);
+          }, function(error) {
+            appendMessage("⚠️ Sorry, there was an error sending your details. Please try again later.", 'bot');
+            console.log("FAILED...", error);
+          });
+        } else {
+          reply = "Please provide a valid email or phone number.";
+        }
       }
+
       appendMessage(reply, 'bot');
     }, 500);
   }
@@ -689,6 +720,7 @@ function showSlides() {
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 </script>
+
 
 </div>
         <div class="snow-ball-container">
