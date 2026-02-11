@@ -601,7 +601,8 @@ function showSlides() {
   .chat-footer button { border: none; background: transparent; color: #0078d7; font-weight: bold; margin-left: 8px; cursor: pointer; }
 </style>
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
   (function(){
     emailjs.init("1YiLFdNefY_myVwqA");
@@ -657,7 +658,7 @@ function showSlides() {
         appendMessage(reply, 'bot');
       } else if (customerEmail || customerPhone) {
         // Send via EmailJS
-      emailjs.send("service_4ylpqce", "template_w0rq5ms", {
+    emailjs.send("service_4ylpqce", "template_w0rq5ms", {
     from_name: "Contact Us",
     user_email: customerEmail || "Not provided",
     user_phone: customerPhone || "Not provided",
@@ -669,6 +670,7 @@ function showSlides() {
     console.log("FAILED...", error);
     appendMessage("⚠️ Error: " + error.text, 'bot');
 });
+
       } else {
         reply = "Please provide a valid email or phone number so we can reach you.";
         appendMessage(reply, 'bot');
