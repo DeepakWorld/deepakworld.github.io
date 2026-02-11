@@ -554,21 +554,20 @@ function showSlides() {
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
-<!-- Chat Toggle Button -->
 <div id="chatToggle" onclick="toggleChat()">💬 Chat</div>
 
-<!-- Customer Support Bot -->
 <div class="chatbot" id="chatbot">
   <div class="chat-header">
-    Support Bot
+    Vizion AI Support
     <span style="float:right; cursor:pointer;" onclick="toggleChat()">✖</span>
   </div>
   <div class="chat-body" id="chatBody"></div>
   <div class="chat-footer">
-    <input type="text" id="userInput" placeholder="Type a message...">
+    <input type="text" id="userInput" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendMessage()">
     <button onclick="sendMessage()">Send</button>
   </div>
 </div>
+
 <style>
   #chatToggle {
     position: fixed;
@@ -576,85 +575,105 @@ function showSlides() {
     right: 20px;
     background: #0078d7;
     color: #fff;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border-radius: 50px;
     cursor: pointer;
     z-index: 9999;
+    font-family: sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
   .chatbot {
     position: fixed;
-    bottom: 70px;
+    bottom: 85px;
     right: 20px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    width: 320px;
+    height: 400px;
+    border-radius: 12px;
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    display: none; /* hidden by default */
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    display: none; 
     flex-direction: column;
     z-index: 9999;
+    font-family: sans-serif;
+    overflow: hidden;
   }
   .chat-header {
     background: #0078d7;
     color: #fff;
-    padding: 10px;
-    border-radius: 8px 8px 0 0;
-    text-align: center;
+    padding: 15px;
+    font-weight: bold;
   }
   .chat-body {
     flex: 1;
-    padding: 10px;
+    padding: 15px;
     overflow-y: auto;
-    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f9f9f9;
   }
   .chat-message {
-    margin: 5px 0;
-    padding: 8px 12px;
-    border-radius: 15px;
-    display: inline-block;
-    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 85%;
     word-wrap: break-word;
   }
   .chat-message.user {
     background: #0078d7;
     color: #fff;
-    text-align: right;
-    float: right;
-    clear: both;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
   }
   .chat-message.bot {
-    background: #e5e5e5;
+    background: #e9e9eb;
     color: #000;
-    text-align: left;
-    float: left;
-    clear: both;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
   }
   .chat-footer {
     display: flex;
-    border-top: 1px solid #ccc;
+    padding: 10px;
+    border-top: 1px solid #eee;
   }
   .chat-footer input {
     flex: 1;
-    border: none;
-    padding: 10px;
-    border-radius: 0 0 0 8px;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 20px;
+    outline: none;
   }
   .chat-footer button {
     border: none;
-    background: #0078d7;
-    color: #fff;
-    padding: 10px;
-    border-radius: 0 0 8px 0;
+    background: transparent;
+    color: #0078d7;
+    font-weight: bold;
+    margin-left: 8px;
     cursor: pointer;
   }
 </style>
 
-
-
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
+  // Initialize EmailJS
+  (function(){
+    emailjs.init("1YiLFdNefY_myVwqA");
+  })();
+
   let askedContact = false;
   let customerEmail = "";
   let customerPhone = "";
+
+  // 1. Auto-Popup Logic
+  window.onload = function() {
+    setTimeout(() => {
+      if (document.getElementById('chatbot').style.display !== 'flex') {
+        toggleChat();
+        appendMessage("👋 Welcome to Vizion AI! How can we help you today?", 'bot');
+      }
+    }, 2000); 
+  };
 
   function toggleChat() {
     const chat = document.getElementById('chatbot');
@@ -668,30 +687,46 @@ function showSlides() {
     }
   }
 
-  .chat-body {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  max-height: 250px;
-  display: flex;       /* Add this */
-  flex-direction: column; /* Add this */
-}
+  function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    if (!message) return;
 
-.chat-message.user {
-  background: #0078d7;
-  color: #fff;
-  align-self: flex-end; /* Use this instead of float */
-  margin-left: 20%;
-  border-radius: 15px 15px 0 15px;
-}
+    appendMessage(message, 'user');
+    input.value = '';
 
-.chat-message.bot {
-  background: #e5e5e5;
-  color: #000;
-  align-self: flex-start; /* Use this instead of float */
-  margin-right: 20%;
-  border-radius: 15px 15px 15px 0;
-}
+    setTimeout(() => {
+      let reply = "";
+
+      // Regex to extract info
+      const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+      const phoneRegex = /(\+?\d{1,4}[\s-])?(\(?\d{3}\)?[\s-]?)?\d{3}[\s-]?\d{4}/g;
+
+      const foundEmail = message.match(emailRegex);
+      const foundPhone = message.match(phoneRegex);
+
+      if (foundEmail) customerEmail = foundEmail[0];
+      if (foundPhone) customerPhone = foundPhone[0];
+
+      if (!askedContact) {
+        reply = "I'd love to help! Please share your email or phone number so our support team can follow up with you.";
+        askedContact = true;
+      } else if (customerEmail || customerPhone) {
+        reply = "Thank you! I've passed your details to our team. You can also reach us at deepak.thangasamy@gmail.com.";
+        
+        // Send via EmailJS
+        emailjs.send("service_4ylpqce", "template_w0rq5ms", {
+          user_email: customerEmail || "Not provided",
+          user_phone: customerPhone || "Not provided",
+          message: message
+        });
+      } else {
+        reply = "Could you please provide a valid email address or phone number so we can assist you better?";
+      }
+
+      appendMessage(reply, 'bot');
+    }, 600);
+  }
 
   function appendMessage(text, sender) {
     const chatBody = document.getElementById('chatBody');
@@ -701,12 +736,6 @@ function showSlides() {
     chatBody.appendChild(msgDiv);
     chatBody.scrollTop = chatBody.scrollHeight;
   }
-</script>
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("1YiLFdNefY_myVwqA"); // Replace with your actual User ID from EmailJS dashboard
-  })();
 </script>
 
 </div>
