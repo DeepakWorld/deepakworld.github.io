@@ -603,9 +603,32 @@ function showSlides() {
     overflow-y: auto;
     max-height: 250px;
   }
-  .chat-message { margin: 5px 0; }
-  .chat-message.user { text-align: right; }
-  .chat-footer { display: flex; border-top: 1px solid #ccc; }
+  .chat-message {
+    margin: 5px 0;
+    padding: 8px 12px;
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+  .chat-message.user {
+    background: #0078d7;
+    color: #fff;
+    text-align: right;
+    float: right;
+    clear: both;
+  }
+  .chat-message.bot {
+    background: #e5e5e5;
+    color: #000;
+    text-align: left;
+    float: left;
+    clear: both;
+  }
+  .chat-footer {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
   .chat-footer input {
     flex: 1;
     border: none;
