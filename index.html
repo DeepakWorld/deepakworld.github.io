@@ -668,53 +668,30 @@ function showSlides() {
     }
   }
 
-  function sendMessage() {
-    const input = document.getElementById('userInput');
-    const message = input.value.trim();
-    if (!message) return;
+  .chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 250px;
+  display: flex;       /* Add this */
+  flex-direction: column; /* Add this */
+}
 
-    appendMessage(message, 'user');
-    input.value = '';
+.chat-message.user {
+  background: #0078d7;
+  color: #fff;
+  align-self: flex-end; /* Use this instead of float */
+  margin-left: 20%;
+  border-radius: 15px 15px 0 15px;
+}
 
-    setTimeout(() => {
-      let reply = "";
-
-      if (!askedContact) {
-        reply = "Please share your Messages, phone number and email so we can contact you.";
-        askedContact = true;
-      } else {
-        // Detect email
-        if (message.includes("@")) {
-          customerEmail = message;
-        }
-        // Detect phone number (basic 10-digit check)
-        if (/\d{10}/.test(message)) {
-          customerPhone = message;
-        }
-
-        if (customerEmail || customerPhone) {
-          reply = "Thanks! We've saved your contact details. You can also reach us at:\nEmail: deepak.thangasamy@gmail.com\nPhone: 886774011";
-
-          // Send details to your Gmail via EmailJS
-          emailjs.send("service_4ylpqce", "template_w0rq5ms", {
-            user_email: customerEmail,
-            user_phone: customerPhone,
-            message: "Customer shared contact details via support bot."
-          }).then(function(response) {
-            appendMessage("✅ Your details have been sent to our support team.", 'bot');
-            console.log("SUCCESS!", response.status, response.text);
-          }, function(error) {
-            appendMessage("⚠️ Sorry, there was an error sending your details. Please try again later.", 'bot');
-            console.log("FAILED...", error);
-          });
-        } else {
-          reply = "Please provide a valid email or phone number.";
-        }
-      }
-
-      appendMessage(reply, 'bot');
-    }, 500);
-  }
+.chat-message.bot {
+  background: #e5e5e5;
+  color: #000;
+  align-self: flex-start; /* Use this instead of float */
+  margin-right: 20%;
+  border-radius: 15px 15px 15px 0;
+}
 
   function appendMessage(text, sender) {
     const chatBody = document.getElementById('chatBody');
