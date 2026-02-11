@@ -549,6 +549,124 @@ function showSlides() {
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
+ <!-- Chat Toggle Button -->
+<div id="chatToggle" onclick="toggleChat()">💬 Chat</div>
+
+<!-- Customer Support Bot -->
+<div class="chatbot" id="chatbot">
+  <div class="chat-header">
+    Support Bot
+    <span style="float:right; cursor:pointer;" onclick="toggleChat()">✖</span>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-footer">
+    <input type="text" id="userInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<style>
+  #chatToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0078d7;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+  .chatbot {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none; /* hidden by default */
+    flex-direction: column;
+    z-index: 9999;
+  }
+  .chat-header {
+    background: #0078d7;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+  }
+  .chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 250px;
+  }
+  .chat-message { margin: 5px 0; }
+  .chat-message.user { text-align: right; }
+  .chat-footer { display: flex; border-top: 1px solid #ccc; }
+  .chat-footer input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 0 0 0 8px;
+  }
+  .chat-footer button {
+    border: none;
+    background: #0078d7;
+    color: #fff;
+    padding: 10px;
+    border-radius: 0 0 8px 0;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById('chatbot');
+    const toggle = document.getElementById('chatToggle');
+    if (chat.style.display === 'none' || chat.style.display === '') {
+      chat.style.display = 'flex';
+      toggle.style.display = 'none';
+    } else {
+      chat.style.display = 'none';
+      toggle.style.display = 'block';
+    }
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    appendMessage(message, 'user');
+    input.value = '';
+
+    // Auto reply logic
+    setTimeout(() => {
+      let reply = "Thanks for reaching out! We'll get back to you soon.";
+      if (message.toLowerCase().includes("hello")) {
+        reply = "Hello! How can I assist you today?";
+      } else if (message.toLowerCase().includes("price")) {
+        reply = "Our pricing details are available on the Pricing page.";
+      } else if (message.toLowerCase().includes("help")) {
+        reply = "Sure! Please describe your issue and we'll guide you.";
+      }
+      appendMessage(reply, 'bot');
+    }, 500);
+  }
+
+  function appendMessage(text, sender) {
+    const chatBody = document.getElementById('chatBody');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-message ' + sender;
+    msgDiv.textContent = text;
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+</script>
+
 </div>
         <div class="snow-ball-container">
             <div class="snow-ball"></div>
