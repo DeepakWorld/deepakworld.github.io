@@ -657,18 +657,18 @@ function showSlides() {
         appendMessage(reply, 'bot');
       } else if (customerEmail || customerPhone) {
         // Send via EmailJS
-        emailjs.send("service_4ylpqce", "template_w0rq5ms", {
-          from_name: "Contact Us",
-          user_email: customerEmail || "Not provided",
-          user_phone: customerPhone || "Not provided",
-          message: message
-        }).then(function(response) {
-          console.log("SENT TO EMAILJS!", response.status, response.text);
-          appendMessage("✅ Thank you! I've passed your details to our team. You can also reach us at deepak.thangasamy@gmail.com.", 'bot');
-        }, function(error) {
-          console.log("EMAILJS ERROR:", error);
-          appendMessage("⚠️ Error: " + error.text, 'bot');
-        });
+      emailjs.send("service_4ylpqce", "template_w0rq5ms", {
+    from_name: "Contact Us",
+    user_email: customerEmail || "Not provided",
+    user_phone: customerPhone || "Not provided",
+    message: message
+}).then(function(response) {
+    console.log("SUCCESS!", response.status, response.text);
+    appendMessage("✅ Your details have been sent!", 'bot');
+}, function(error) {
+    console.log("FAILED...", error);
+    appendMessage("⚠️ Error: " + error.text, 'bot');
+});
       } else {
         reply = "Please provide a valid email or phone number so we can reach you.";
         appendMessage(reply, 'bot');
