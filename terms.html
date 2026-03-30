@@ -58,7 +58,7 @@
         }
         .highlight {
             font-weight: bold;
-            color: #c0392b; /* Reddish color to draw attention to charges */
+            color: #c0392b; 
         }
         .footer-action {
             margin-top: 35px;
@@ -132,7 +132,9 @@
     function checkAgreement() {
         var isChecked = document.getElementById('agree').checked;
         if(isChecked) {
-            alert('Thank you! Your confirmation has been recorded.');
+            alert('Thank you! Redirecting you to Deepak World...');
+            // Redirects to your requested site
+            window.location.href = "https://deepakworld.github.io/";
         } else {
             alert('Please check the box to accept the terms before proceeding.');
         }
