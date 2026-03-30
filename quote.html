@@ -10,6 +10,7 @@
             --secondary-color: #3498db;
             --bg-light: #f4f7f6;
             --text-dark: #333;
+            --accent-orange: #e67e22;
         }
 
         body {
@@ -87,6 +88,11 @@
             white-space: nowrap;
         }
 
+        .intl-fee {
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
         .terms {
             background: #fff8e1;
             padding: 20px;
@@ -138,7 +144,8 @@
         <div style="text-align: right; font-size: 14px;">
             <p><strong>Quotation/Rate Card</strong></p>
             <p>Year: 2026</p>
-            <p>Status: Non-GST Entity</p>
+            <p>Status: <span style="color: var(--secondary-color);">Domestic & International</span></p>
+            <p>GST: Non-GST Entity</p>
         </div>
     </header>
 
@@ -175,7 +182,35 @@
         </tbody>
     </table>
 
-    <h2>2. IT Support & Infrastructure</h2>
+    <h2>2. International Payment & Conversion Charges</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Charge Category</th>
+                <th>Rate / Fee</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Currency Conversion</strong></td>
+                <td class="intl-fee">+ 2% to 3.5%</td>
+                <td>Applied on the total invoice amount for USD/EUR/GBP to INR conversion.</td>
+            </tr>
+            <tr>
+                <td><strong>Skydo Service Fee</strong></td>
+                <td class="intl-fee">Flat ₹2,000 - ₹3,000*</td>
+                <td>International inward remittance & processing charges (Per Transaction).</td>
+            </tr>
+            <tr>
+                <td><strong>Intermediary Bank Fee</strong></td>
+                <td class="intl-fee">As per Actuals</td>
+                <td>If applicable by the remitting or intermediary bank.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. IT Support & Infrastructure</h2>
     <table>
         <thead>
             <tr>
@@ -196,42 +231,9 @@
                 <td>Included in AMC</td>
             </tr>
             <tr>
-                <td>LAN/WAN Configuration</td>
-                <td class="price-col">₹3,000 – ₹10,000</td>
-                <td>Project-specific</td>
-            </tr>
-            <tr>
                 <td>OS Troubleshooting & Repair</td>
                 <td class="price-col">₹500 – ₹1,500</td>
                 <td class="price-col">₹2,500/month (per PC)</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>3. Service Classification (SAC Codes)</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Service Type</th>
-                <th>SAC Code</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Web & App Development</td>
-                <td>998313</td>
-                <td>IT design and development services</td>
-            </tr>
-            <tr>
-                <td>IT Support & Troubleshooting</td>
-                <td>998315</td>
-                <td>Hosting and infrastructure management</td>
-            </tr>
-            <tr>
-                <td>Maintenance & Repair</td>
-                <td>998733</td>
-                <td>Hardware and OS troubleshooting</td>
             </tr>
         </tbody>
     </table>
@@ -240,9 +242,10 @@
         <strong>Terms & Conditions:</strong>
         <ul>
             <li><strong>Payment:</strong> 50% Advance, 30% after First Milestone, 20% on Handover.</li>
-            <li><strong>Timeline:</strong> Work will commence within 3 days of advance payment.</li>
+            <li><strong>International Payments:</strong> All international wire transfers or Skydo payments must include the additional conversion and service fees as mentioned in Section 2.</li>
+            <li><strong>Currency:</strong> Quotations are provided in INR; however, payments can be accepted in USD/EUR based on the exchange rate at the time of invoicing.</li>
             <li><strong>GST:</strong> 0% - No GST is applicable (Deepak IT & Web Services is a Non-GST entity).</li>
-            <li><strong>Support:</strong> Includes 30 days of free post-deployment bug support.</li>
+            <li><strong>Timeline:</strong> Work will commence within 3 days of advance payment.</li>
         </ul>
     </div>
 
