@@ -32,7 +32,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* Header & Intro */
         header {
             background: var(--primary-color);
             color: white;
@@ -54,7 +53,6 @@
             text-align: center;
         }
 
-        /* Services Grid */
         .content-section {
             padding: 30px;
         }
@@ -90,7 +88,6 @@
             margin-right: 10px;
         }
 
-        /* Contact Section */
         .contact-box {
             background: #f1f8ff;
             padding: 20px;
@@ -108,7 +105,6 @@
             margin: 10px;
         }
 
-        /* Terms & Conditions Styling */
         .terms-container {
             background: #fffaf0;
             border: 1px solid #ffeeba;
@@ -140,7 +136,6 @@
             font-style: italic;
         }
 
-        /* Action Button */
         .action-area {
             text-align: center;
             padding: 40px 30px;
@@ -150,6 +145,13 @@
         .checkbox-container {
             margin-bottom: 20px;
             font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .checkbox-container input {
+            transform: scale(1.3);
+            margin-right: 10px;
+            cursor: pointer;
         }
 
         .btn-confirm {
@@ -161,12 +163,14 @@
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .btn-confirm:hover {
             background: #219150;
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         @media (max-width: 600px) {
@@ -248,18 +252,23 @@
 
     <div class="action-area">
         <div class="checkbox-container">
-            <input type="checkbox" id="agree-check">
-            <label for="agree-check"> I accept the Terms and Conditions of <strong>Deepak IT & Web Services</strong></label>
+            <label>
+                <input type="checkbox" id="agree-check"> 
+                I accept the Terms and Conditions of <strong>Deepak IT & Web Services</strong>
+            </label>
         </div>
-        <button class="btn-confirm" onclick="validate()">Accept & Confirm Service</button>
+        <button class="btn-confirm" onclick="validateAndRedirect()">Accept & Confirm Service</button>
     </div>
 </div>
 
 <script>
-    function validate() {
+    function validateAndRedirect() {
         const checkbox = document.getElementById('agree-check');
         if (checkbox.checked) {
-            alert('Terms Accepted! Thank you for choosing Deepak IT & Web Services. We will contact you shortly.');
+            // First alert the user
+            alert('Terms Accepted! Redirecting to our homepage...');
+            // Redirect to your GitHub page
+            window.location.href = "https://deepakworld.github.io/";
         } else {
             alert('Please check the box to accept the terms before proceeding.');
         }
