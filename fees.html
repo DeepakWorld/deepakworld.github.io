@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Fees | Deepak IT & Web Services</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #27ae60; /* Green for Success/Growth */
+            --light-bg: #f8f9fa;
+            --text-main: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .page-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .msme-tag {
+            background: #f39c12;
+            color: #000;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .fee-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .fee-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .fee-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .fee-card h3 { color: var(--primary-color); }
+        .price { font-size: 1.8rem; font-weight: bold; color: var(--accent-color); margin: 15px 0; }
+
+        .terms-box {
+            background: #fffaf0;
+            border: 1px solid #ffeeba;
+            padding: 30px;
+            margin: 0 30px 30px;
+            border-radius: 8px;
+        }
+
+        .action-area {
+            text-align: center;
+            padding: 30px;
+            background: var(--light-bg);
+        }
+
+        .btn-pay {
+            background: var(--accent-color);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .checkbox-container { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header>
+        <h1>Deepak IT & Web Services</h1>
+        <div class="msme-tag">Registered MSME | NIC 62011</div>
+        <p>Professional Industrial Training & Internship</p>
+    </header>
+
+    <div class="fee-container">
+        <div class="fee-card">
+            <h3>3-Month Fast Track</h3>
+            <p>IT Support & Web Basics</p>
+            <div class="price">₹15,000</div>
+            <ul style="text-align: left; font-size: 0.9rem;">
+                <li>PC Hardware Troubleshooting</li>
+                <li>OS & Networking Setup</li>
+                <li>Training Certificate</li>
+            </ul>
+        </div>
+
+        <div class="fee-card" style="border-width: 2px; border-color: var(--accent-color);">
+            <h3>6-Month Professional</h3>
+            <p>Full-Stack & System Admin</p>
+            <div class="price">₹30,000</div>
+            <ul style="text-align: left; font-size: 0.9rem;">
+                <li>Web & App Development</li>
+                <li>Live Client Projects</li>
+                <li>Internship Experience Letter</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="terms-box">
+        <h4>Training Terms & Conditions:</h4>
+        <ul style="font-size: 0.9rem;">
+            <li><strong>Registration:</strong> ₹2,000 required to block your seat.</li>
+            <li><strong>Refund Policy:</strong> Fees once paid are non-refundable after the first 48 hours of training.</li>
+            <li><strong>Certification:</strong> Certificates issued only after successful project completion.</li>
+            <li><strong>Hybrid Model:</strong> Includes both Home-Office practicals and Online sessions.</li>
+        </ul>
+    </div>
+
+    <div class="action-area">
+        <div class="checkbox-container">
+            <label>
+                <input type="checkbox" id="agree"> I accept the Fees & Terms of <strong>Deepak IT & Web Services</strong>
+            </label>
+        </div>
+        <button class="btn-pay" onclick="verify()">Accept & Chat for Admission</button>
+    </div>
+</div>
+
+<script>
+    function verify() {
+        if(document.getElementById('agree').checked) {
+            alert('Redirecting to WhatsApp for Enrollment details...');
+            window.location.href = "https://wa.me/918867740113?text=I%20accept%20the%20fees%20and%20terms.%20I%20want%20to%20enroll.";
+        } else {
+            alert('Please accept the terms to proceed.');
+        }
+    }
+</script>
+
+</body>
+</html>

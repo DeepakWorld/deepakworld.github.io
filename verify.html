@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Verification | Deepak IT & Web Services</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --light: #f4f7f6;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .verify-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        .logo { color: var(--primary); font-weight: bold; font-size: 1.5rem; margin-bottom: 5px; }
+        .sub-text { color: #666; font-size: 0.9rem; margin-bottom: 30px; }
+        
+        input {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover { background: #1a252f; }
+
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none; /* Hidden by default */
+        }
+        .valid { background: #e8f6ed; border: 1px solid var(--success); color: #1e5631; }
+        .invalid { background: #fdeaea; border: 1px solid var(--error); color: #8a2a2a; }
+        
+        .student-info { text-align: left; margin-top: 15px; font-size: 0.95rem; }
+        .student-info div { margin-bottom: 8px; border-bottom: 1px dashed #ccc; padding-bottom: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="verify-card">
+    <div class="logo">Deepak IT & Web Services</div>
+    <div class="sub-text">Credential Verification Portal (MSME NIC 62011)</div>
+    
+    <h3>Enter Certificate ID</h3>
+    <input type="text" id="certID" placeholder="Ex: DIT-2026-001">
+    <br>
+    <button onclick="verifyCertificate()">Verify Credential</button>
+
+    <div id="result">
+        </div>
+
+    <p style="margin-top: 40px; font-size: 0.8rem; color: #999;">
+        For manual verification, contact: deepak.thangasamy@gmail.com
+    </p>
+</div>
+
+<script>
+    // --- THIS IS YOUR STUDENT DATABASE ---
+    // You can add more students to this list as you train them.
+    const studentData = {
+        "DIT-2026-001": {
+            name: "John Doe",
+            course: "6-Month Professional IT Internship",
+            completion: "March 2026",
+            status: "Certified",
+            specialization: "Web Dev & Hardware Troubleshooting"
+        },
+        "DIT-2026-002": {
+            name: "Jane Smith",
+            course: "3-Month IT Support Fast-Track",
+            completion: "April 2026",
+            status: "Certified",
+            specialization: "Networking & OS Deployment"
+        }
+    };
+
+    function verifyCertificate() {
+        const id = document.getElementById('certID').value.toUpperCase().trim();
+        const resultDiv = document.getElementById('result');
+        
+        if (studentData[id]) {
+            const student = studentData[id];
+            resultDiv.style.display = "block";
+            resultDiv.className = "valid";
+            resultDiv.innerHTML = `
+                <strong style="color: var(--success);">✅ VERIFIED CREDENTIAL</strong>
+                <div class="student-info">
+                    <div><strong>Name:</strong> ${student.name}</div>
+                    <div><strong>Course:</strong> ${student.course}</div>
+                    <div><strong>Completion Date:</strong> ${student.completion}</div>
+                    <div><strong>Specialization:</strong> ${student.specialization}</div>
+                    <div><strong>Status:</strong> ${student.status}</div>
+                </div>
+            `;
+        } else {
+            resultDiv.style.display = "block";
+            resultDiv.className = "invalid";
+            resultDiv.innerHTML = `
+                <strong>❌ RECORD NOT FOUND</strong>
+                <p style="font-size: 0.85rem;">The Certificate ID entered is not valid or has not been issued yet.</p>
+            `;
+        }
+    }
+</script>
+
+</body>
+</html>
