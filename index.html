@@ -447,6 +447,75 @@ body {
             height: auto;
         }
     </style>
+
+ <style>
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        /* Positioning to Left Middle */
+        left: 20px; 
+        top: 50%;
+        transform: translateY(-50%);
+        
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: pulse-green 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+        /* Keep the vertical centering while scaling */
+        transform: translateY(-50%) scale(1.1);
+        background-color: #128c7e;
+    }
+
+    /* Tooltip text - Adjusted to show on the RIGHT now */
+    .whatsapp-float .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        left: 125%; /* Move to right of button */
+        top: 15px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+    }
+
+    .whatsapp-float:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @keyframes pulse-green {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Mobile adjustment */
+    @media (max-width: 600px) {
+        .whatsapp-float {
+            left: 10px;
+            width: 50px;
+            height: 50px;
+        }
+        .whatsapp-float img { width: 30px !important; margin-top: 10px !important; }
+        .whatsapp-float .tooltiptext { display: none; } /* Hide tooltip on mobile to save space */
+    }
+</style>
 </head>
 
 
@@ -809,14 +878,16 @@ function showSlides() {
 </div>
 
 </div>
+ <a href="https://wa.me/918867740113?text=Hi%20Deepak,%20I%20am%20interested%20in%20your%20IT%20training%20and%20services." 
+   class="whatsapp-float" 
+   target="_blank">
+    <span class="tooltiptext">Chat with Deepak</span>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:35px; margin-top:12px;">
+</a>
 <a href='https://ko-fi.com/deepak66544' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://ko-fi.com/img/githubbutton_sm.svg' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 </a>
- <a href="https://wa.me/918867740113?text=Hi%20Deepak,%20I%20am%20interested%20in%20your%20IT%20training." 
-   style="position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:30px; box-shadow: 2px 2px 3px #999; z-index:100;" 
-   target="_blank">
-   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:35px; margin-top:12px;">
-</a>
+
  <footer style="background: #2c3e50; color: white; padding: 20px; text-align: center; font-size: 0.8rem;">
     <p>Deepak IT & WebServices | Proprietorship Firm</p>
     <p>MSME Registration: UDYAM-KR-03-0674838 | NIC Code: 62011</p>
