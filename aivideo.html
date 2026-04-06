@@ -517,35 +517,6 @@ body {
         .whatsapp-float .tooltiptext { display: none; } /* Hide tooltip on mobile to save space */
     }
 </style>
-<style>
-  /* The Gallery Grid */
-  .video-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust 200px to make boxes smaller/larger */
-    gap: 15px;
-    padding: 20px;
-  }
-
-  /* The Square Container */
-  .video-container {
-    position: relative;
-    width: 100%;
-    padding-top: 100%; /* Creates the Square (1:1 Aspect Ratio) */
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-
-  /* Making the iframe fill the square */
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-</style>
 </head>
 
 
@@ -1353,33 +1324,7 @@ window.onload = () => {
   </div>
 
 
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
 
-<script>
-let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
-</script>
 
 
 
