@@ -1,0 +1,1047 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+ #stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('star-background.gif') repeat; /* Replace with your glittering stars image URL */
+            background-size: cover; /* Ensure stars fill the viewport */
+            z-index: -1; /* Place stars behind all content */
+        }
+
+   /* Overall Container Styling */
+        .container {
+            width: 90%;
+            margin: auto;
+            background-color: brown;
+            border: 5px solid #04AA6D; /* Stylish border */
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Button Styling */
+        .button {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        img {
+            margin: 10px;
+        }
+
+        h2 {
+            color: white;
+        }
+    </style>
+<style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides img {
+  width: 100%;
+  height: auto; /* maintains the aspect ratio of the images */
+  display: block; /* prevents extra white space below images */
+}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  margin: auto;
+overflow: hidden; 
+}
+
+/* Caption text */
+.text {
+  color: #FFFFFF;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+
+
+ 
+<style>
+        /* General Style */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+ 
+
+/* Style Snowballs */
+        .snow-ball-container .snow-ball {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(even) {
+            width: 16px;
+            height: 16px;
+            animation: flake-motion 15s linear infinite;
+        }
+
+        /* Position the Snowballs above the screen */
+        .snow-ball-container .snow-ball:nth-child(1) {
+            top: -50%;
+            left: 5%;
+            width: 20px;
+            height: 20px;
+            animation: snowball-animation 12s linear 2s infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(2) {
+            top: -20%;
+            left: 10%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(3) {
+            top: -50%;
+            left: 15%;
+            animation: snowball-animation 12s linear infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(4) {
+            top: -10%;
+            left: 20%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(5) {
+            top: -20%;
+            left: 25%;
+            width: 20px;
+            height: 20px;
+            animation: snowball-animation 12s linear 2s infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(6) {
+            top: -40%;
+            left: 30%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(7) {
+            top: -30%;
+            left: 35%;
+            width: 5px;
+            height: 5px;
+            animation: snowball-animation 12s linear infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(8) {
+            top: -20%;
+            left: 40%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(9) {
+            top: -50%;
+            left: 45%;
+            width: 5px;
+            height: 5px;
+            animation: snowball-animation 12s linear 2s infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(10) {
+            top: -5%;
+            left: 50%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(11) {
+            top: -20%;
+            left: 60%;
+            animation: snowball-animation 12s linear infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(12) {
+            top: -10%;
+            left: 70%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(13) {
+            top: -50%;
+            left: 80%;
+            width: 5px;
+            height: 5px;
+            animation: snowball-animation 12s linear 2s infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(14) {
+            top: -20%;
+            left: 90%;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(15) {
+            top: -50%;
+            left: 95%;
+            width: 30px;
+            height: 30px;
+            animation: snowball-animation 12s linear infinite;
+        }
+
+        /* Define animations of Snowball and Snowflakes */
+        @keyframes snowball-animation {
+            0% {
+                transform: translate(0);
+                opacity: 1;
+            }
+            20% {
+                transform: translate(4px, 100px);
+                opacity: 0.8;
+            }
+            40% {
+                transform: translate(-7px, 200px);
+                opacity: 0.7;
+            }
+            60% {
+                transform: translate(10px, 400px);
+                opacity: 0.5;
+            }
+            80% {
+                transform: translate(-14px, 700px);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translate(16px, 900px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes flake-motion {
+            0% {
+                transform: translate(-2px, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: translate(-9px, 200px);
+                opacity: 0.9;
+            }
+            40% {
+                transform: translate(14px, 300px);
+                opacity: 0.7;
+            }
+            60% {
+                transform: translate(-22px, 400px);
+                opacity: 0.6;
+            }
+            80% {
+                transform: translate(30px, 600px);
+                opacity: 0.5;
+            }
+            90% {
+                transform: translate(-40px, 800px);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(52px, 1000px);
+                opacity: 0;
+            }
+        }
+ 
+div {text-align: center;}
+body {
+            background-color: brown; /* Make the background brown */
+            background: linear-gradient(135deg, #000000, #434343); /* Optional: Metallic black gradient */
+            margin: 0; /* Remove default margin */
+            border: 20px solid brown; /* Add metallic gold border */
+            box-shadow: 0 0 10px rown; /* Optional: Glowing effect for the border */
+       
+        }
+ .name {
+            color: orange; /* Sets the text color to green */
+            font-size: 2em; /* Adjusts font size */
+            font-family: Arial, sans-serif; /* Sets the font style */
+            text-align: center; /* Centers the text */
+            margin-top: 20px; /* Adds space at the top */
+        }
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 560px; /* Set max width for better responsiveness */
+    margin: 0 auto; /* Center the video */
+    overflow: hidden; /* Prevent content overflow */
+    padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc; /* Add a border around the iframe */
+    box-sizing: border-box; /* Include borders in the dimensions */
+  }
+.topic-name {
+            color: blue; /* White font color */
+            font-size: 14px; /* Size of the text */
+            font-family: Arial, sans-serif; /* Font style */
+            
+   /* Overall Container Styling */
+        .container {
+            width: 90%;
+            margin: auto;
+            background-color: brown;
+            border: 5px solid #04AA6D; /* Stylish border */
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+      
+
+        img {
+            margin: 10px;
+        }
+
+        h2 {
+            color: white;
+        }
+
+
+.container a {
+    color: #FFFFFF; /* Makes the font color white */
+    text-decoration: none; /* Optional: Removes underline from links */
+}
+
+
+        
+    </style>
+ <style>
+        .container {
+            width: 100%; /* Full width for flexibility */
+            margin: 0 auto;
+            text-align: center; /* Center-aligns menu for all devices */
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap; /* Ensures items wrap if screen width is small */
+            justify-content: center; /* Centers menu items horizontally */
+            gap: 15px; /* Space between menu items */
+        }
+
+        .menu-item {
+            border: 2px solid black; /* Oval border */
+            border-radius: 50px; /* Makes the border rounded */
+            padding: 10px 20px; /* Adjust padding for a nice oval shape */
+            text-decoration: none; /* Removes underline */
+            color: black; /* Text color */
+            background-color: #f0f0f0; /* Light background color */
+            transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+            font-size: 16px; /* Font size for better readability */
+        }
+
+        .menu-item:hover {
+            background-color: black; /* Dark background on hover */
+            color: white; /* Text color on hover */
+        }
+
+        /* Responsive Design for Small Devices */
+        @media (max-width: 768px) {
+            .menu {
+                flex-wrap: wrap; /* Ensures items wrap for smaller screens */
+                gap: 10px; /* Smaller gap between items */
+            }
+            
+            .menu-item {
+                padding: 8px 15px; /* Adjust padding for better fit */
+                font-size: 14px; /* Slightly smaller font size */
+            }
+        }
+    </style>
+
+
+  <style>
+        #visitor-counter-container {
+            display: inline-block;
+            padding: 15px;
+            background: #222;        /* Dark background */
+            border: 2px solid #444;  /* Subtle border */
+            border-radius: 8px;      /* Rounded corners */
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            margin: 20px auto;
+            display: block;          /* Added to help with centering */
+            width: fit-content;      /* Keeps the box tight to the content */
+        }
+
+        #visitor-counter-container p {
+            margin: 0 0 10px 0;
+            color: #00ff00;          /* Retro Green */
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #visitor-counter-container img {
+            filter: drop-shadow(0 0 2px #fff);
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+
+ <style>
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        /* Positioning to Left Middle */
+        left: 20px; 
+        top: 50%;
+        transform: translateY(-50%);
+        
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: pulse-green 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+        /* Keep the vertical centering while scaling */
+        transform: translateY(-50%) scale(1.1);
+        background-color: #128c7e;
+    }
+
+    /* Tooltip text - Adjusted to show on the RIGHT now */
+    .whatsapp-float .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        left: 125%; /* Move to right of button */
+        top: 15px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+    }
+
+    .whatsapp-float:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @keyframes pulse-green {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Mobile adjustment */
+    @media (max-width: 600px) {
+        .whatsapp-float {
+            left: 10px;
+            width: 50px;
+            height: 50px;
+        }
+        .whatsapp-float img { width: 30px !important; margin-top: 10px !important; }
+        .whatsapp-float .tooltiptext { display: none; } /* Hide tooltip on mobile to save space */
+    }
+</style>
+
+
+<style>
+  /* The Gallery Grid */
+  .video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust 200px to make boxes smaller/larger */
+    gap: 15px;
+    padding: 20px;
+  }
+
+  /* The Square Container */
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Creates the Square (1:1 Aspect Ratio) */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Making the iframe fill the square */
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+</head>
+
+
+
+<body>
+<div id="stars"></div>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative; z-index: 100;">
+    
+    <div style="flex: 1; text-align: left;">
+        <a href="Deepak.apk" download>
+             <img src="Deepak.jpg" 
+                  alt="Deepak IT Official App Icon" 
+                  width="60" 
+                  style="border-radius: 5px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        </a>
+    </div>
+
+    <div class="name" style="flex: 2; text-align: center; margin: 0;">
+        Deepak IT & Web Services
+    </div>
+
+    <div style="flex: 1; text-align: right;">
+        <img src="DeepakChopra.jpg" 
+             alt="Deepak - Owner of Deepak IT & Web Services in Bengaluru" 
+             width="60" 
+             height="80" 
+             style="border-radius: 4px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>
+
+
+ <div class="container">
+  <div style="display: inline-flex; align-items: center; background: #e8f6ed; border: 1px solid #27ae60; padding: 5px 15px; border-radius: 50px; font-family: 'Segoe UI', Arial, sans-serif; margin: 10px 0;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#27ae60" style="margin-right: 8px;">
+        <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm-2 14.5l-3.5-3.5 1.41-1.41L10 13.67l6.09-6.09 1.41 1.41L10 16.5z"/>
+    </svg>
+    <span style="color: #1e5631; font-size: 0.85rem; font-weight: bold; letter-spacing: 0.5px;">
+        GOVT. REGISTED MSME | UDYAM-KR-03-0674838
+    </span>
+</div>
+        <div class="menu">
+         <a href="about.html" class="menu-item" target="_blank">About Us</a>
+         <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
+         <a href="quote.html" class="menu-item" target="_blank">Services</a>
+         <a href="rate.pdf" class="menu-item" target="_blank">2026 Technical Proposal & Rate Card</a>
+         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIgWlJFUiP6D6CfR-_VPCgnZ8mmfS3_4gxo7MCy2F3xoX6xA/viewform?usp=dialog" class="menu-item" target="_blank">Students Registeration Form</a>
+             <a href="certificate.html" class="menu-item" target="_blank">Certificate</a>
+          <a href="courses.html" class="menu-item" target="_blank">Courses</a>
+          <a href="fees.html" class="menu-item" target="_blank">Fees</a>
+          <a href="verify.html" class="menu-item" target="_blank">HR-Verify</a>
+         <a href="law.html" class="menu-item" target="_blank">Legal</a>
+          <a href="contact.html" class="menu-item" target="_blank">Contact Us</a>
+         <a href="Deepak.apk" class="menu-item">Download App</a>
+         <a href="ArtAI.apk" class="menu-item">Art-AI</a>
+         <a href="SmartAi.apk" class="menu-item">Smart-AI</a>
+         <a href="youtube.apk" class="menu-item">Youtube</a>
+         <a href="Freinds1.apk" class="menu-item">friends Location</a>
+         <a href="bustrack.apk" class="menu-item">SchoolBus</a>
+         <a href="code.html" class="menu-item">Source Code Purchase</a>
+         <a href="https://perchance.org/deepak-projects" class="menu-item">AI-Site</a>
+         <a href="https://3dstudio-delta.vercel.app/" class="menu-item">3D Creator</a>
+          <a href="https://3dgallerys.vercel.app/" class="menu-item">3D Downloads</a>
+         <a href="https://casino-indol-omega.vercel.app/" class="menu-item">Arcade</a>
+         <a href="Chat.apk" class="menu-item">ChatGpt</a>
+         <a href="Directory.apk" class="menu-item">Caller-ID</a>
+            <a href="Rummy.apk" class="menu-item">Rummy</a>
+           <a href="https://gamefans.web.app/" class="menu-item">ArmyGame</a>
+            <a href="https://deepakrummy.github.io/game/" class="menu-item">WowGames</a>
+            <a href="https://deepakstorm.web.app/" class="menu-item">MyProfile</a>
+            <a href="https://deepakrummy.github.io/" class="menu-item">KidsGame</a>
+            <a href="https://grummy.web.app/" class="menu-item">Ace13-2P</a>
+          
+          
+            <a href="https://www.paypal.com/paypalme/VTXDZRNHWDFU8" class="menu-item">DonatePaypal</a>
+            <a href="https://deepakworld.github.io/pay.html" class="menu-item">DonateUPI</a>
+        </div>
+    </div>
+ <div class="center-top">
+        <p class="linkp">
+<audio id="audioPlayer" controls autoplay>
+    <source src="song1.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+<button onclick="prevSong()"> <h1>Previous</h1></button>
+<button onclick="nextSong()"><h1>Next</h1></button>
+</p>
+    </div>
+<style>
+
+</style>
+
+
+
+    <script>
+        const songs = ["song1.mp3", "song2.mp3", "song3.mp3", "song4.mp3", "song5.mp3", "song6.mp3", "song7.mp3", "song8.mp3", "song9.mp3", "song10.mp3", "song11.mp3", "song12.mp3", "song13.mp3", "song14.mp3", "song15.mp3", "song16.mp3", "song17.mp3", "song18.mp3", "song19.mp3", "song20.mp3", "song21.mp3", "song22.mp3", "song23.mp3", "song24.mp3", "song25.mp3", "song26.mp3", "song27.mp3", "song28.mp3", "song29.mp3", "song30.mp3", "song31.mp3", "song32.mp3", "song33.mp3", "song34.mp3", "song35.mp3", "song36.mp3", "song37.mp3", "song38.mp3", "song39.mp3", "song40.mp3", "song41.mp3", "song42.mp3", "song43.mp3", "song44.mp3", "song45.mp3", "song46.mp3", "song47.mp3", "song48.mp3", "song49.mp3", "song50.mp3", "song51.mp3", "song52.mp3", "song53.mp3", "song54.mp3", "song55.mp3", "song56.mp3", "song57.mp3", "song58.mp3", "song59.mp3", "song60.mp3", "song61.mp3", "song62.mp3", "song63.mp3", "song64.mp3", "song65.mp3", "song66.mp3", "song67.mp3", "song68.mp3", "song69.mp3", "song70.mp3", "song71.mp3", "song72.mp3", "song73.mp3", "song74.mp3", "song75.mp3", "song76.mp3", "song77.mp3", "song78.mp3", "song79.mp3", "song80.mp3", "song81.mp3", "song82.mp3", "song83.mp3", "song84.mp3", "song85.mp3", "song86.mp3", "song87.mp3", "song88.mp3", "song89.mp3", "song90.mp3", "song91.mp3", "song92.mp3", "song93.mp3", "song94.mp3", "song95.mp3", "song96.mp3", "song97.mp3", "song98.mp3", "song99.mp3", "song100.mp3", "song101.mp3", "song102.mp3", "song103.mp3", "song104.mp3", "song105.mp3", "song106.mp3", "song107.mp3", "song108.mp3", "song109.mp3", "song110.mp3", "song111.mp3", "song112.mp3", "song113.mp3", "song114.mp3", "song115.mp3", "song116.mp3", "song117.mp3", "song118.mp3", "song119.mp3", "song120.mp3", "song121.mp3", "song122.mp3", "song123.mp3", "song124.mp3", "song125.mp3", "song126.mp3", "song127.mp3", "song128.mp3", "song129.mp3", "song130.mp3", "song131.mp3", "song132.mp3", "song133.mp3", "song134.mp3", "song135.mp3", "song136.mp3", "song137.mp3", "song138.mp3", "song139.mp3", "song140.mp3", "song141.mp3", "song142.mp3", "song143.mp3", "song144.mp3", "song145.mp3", "song146.mp3", "song147.mp3", "song148.mp3", "song149.mp3", "song150.mp3", "song151.mp3", "song152.mp3", "song153.mp3", "song154.mp3", "song155.mp3", "song156.mp3", "song157.mp3", "song158.mp3"];
+        let currentSongIndex = 0;
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        function loadSong(index) {
+            audioPlayer.src = songs[index];
+            audioPlayer.play();
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+        }
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+        }
+
+window.onload = () => {
+        loadSong(currentSongIndex);
+}
+    </script>
+
+    
+
+     <div class="video-gallery">
+
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/YLj97OC65LI?list=PLUEz9gLuZQaW0P2ugLdA-DkeBFQFEUY3z" title="Ancient Gods, Futuristic Worlds | Epic Egyptian Sci-Fi Art Journey" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/i7dKvdHHNhs?list=PLUEz9gLuZQaW0P2ugLdA-DkeBFQFEUY3z" title="The Floating Palaces of Heaven | A Journey Through Celestial Realms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/7EEdyUulraQ?list=PLUEz9gLuZQaW0P2ugLdA-DkeBFQFEUY3z" title="Epic Fantasy Worlds | Journey Through Floating Cathedrals and Mythical Realms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/Vm-sLDgDTl4?list=PLUEz9gLuZQaW0P2ugLdA-DkeBFQFEUY3z" title="The Rise of Neo | Egypt A Futuristic Civilization Reborn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+  <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/LKe0kzQLtgs?list=PLUEz9gLuZQaW0P2ugLdA-DkeBFQFEUY3z" title="Explore Ancient Wonders | Ultra Realistic Egyptian Fantasy Worlds" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
+ <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/RF3guiJ6s9M?list=PLUEz9gLuZQaW0P2ugLdA-DkeBFQFEUY3z" title="Majestic Warriors Golden Palaces | A Journey Through Fantasy Worlds" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+ <div class="video-container">
+  <iframe width="853" height="480" src="https://www.youtube.com/embed/XGyGh1OJ3yk" title="CYBERPUNK FUTURISM: Neon Cities, Space Colonies &amp; The Purple Planet | Sci-Fi AI Art Vision | 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/Lbb6-PjYr-M" title="Outlines of Tomorrow: AI generated cities and landscapes in 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/LxIjG50GVf8?list=RDLxIjG50GVf8" title="Futuristic Sci Fi City" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/ebn_nm3gKQM" title="A Sky Civilization Above the Clouds" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/V328AMkg5XQ" title="Future City 2125: 100 Years From Now | Sci-fi AI Short Film (4K)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/Nj82ExYxJPE" title="A Peaceful Green Future City 🌿 1 Hour Cinematic Ambient Music | Could This Be Life in 2070?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="711" height="480" src="https://www.youtube.com/embed/eWz8cioFmnQ?list=RDeWz8cioFmnQ" title="Dark Western Metal Egyptian Apocalypse  | War Pyramids of Death" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+  <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/JjhZMpYTgZk?list=RDJjhZMpYTgZk" title="STAR CITY • Planetary Mega Metropolis • AI Sci-Fi World" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/ygi1vIZqGJc" title="The future of the world and the universe with AI #26" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+ <div class="video-container">
+  <iframe width="853" height="480" src="https://www.youtube.com/embed/fdNg6s_LGjo" title="The Future of Humanity In 3100: Robots, Space Exploration, and Futuristic Designs | 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/x6xiQvctSUk" title="Future City 2222: Visions of the Near Future | Sci-fi AI Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/JTSc5cOthZw" title="The Golden Warrior Awakens | Powerful AI Fantasy Art by Celestia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/WEpkziYHFlA" title="This may be the most perfect expression of AI art at present." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/cCEzwWB5xVU" title="Humanity’s Next Home Looks Like THIS (Sci-Fi Becomes Real)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/xs7vlOrBm8Q" title="Future City 2125: 100 Years From Now | Sci-Fi AI Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/5HZ74PQXkac" title="Is This What Earth Looks Like in 3000? (Golden Utopia) 🤯" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+  <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/ACdxsbGVeNE" title="Golden Future • 1 Hour Luxury Sci-Fi Ambient | 10 Golden Cyberpunk Future Cities" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
+ <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/HdHHQ7Uaipo" title="Beyond the Pyramids | Secrets of an Ancient Futuristic Empire" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/xRp-iitz_ag?list=RDxRp-iitz_ag" title="Future Sci Fi City | AI Short Film part5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/aA06mw6ZE-Q" title="Future City 2109 — A Cinematic Tour of Tomorrow (4K)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/5jyGhAbudgw" title="Echoes of Distant Worlds ⎜ Deep Space Ambient Music &amp; Sci-Fi Cinematic Soundscapes ⎜ 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/xe-gPlFjINw" title="Life in 2100+ : Eco Megacities, Skyships &amp; Everyday Robots | Cinematic Sci-Fi  (4K)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/5HZ74PQXkac" title="Is This What Earth Looks Like in 3000? (Golden Utopia) 🤯" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+  <iframe width="853" height="480" src="https://www.youtube.com/embed/cCEzwWB5xVU" title="Humanity’s Next Home Looks Like THIS (Sci-Fi Becomes Real)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/cINnrlFwQUA" title="1 Hour of Futuristic Utopia Cityscapes (4K) | Relaxing Sci-Fi Scenery + Ambient Music" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+  <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/jUOIYAhCpsE?list=RDjUOIYAhCpsE" title="Intergalactic Spaceport X • AI World Building • [techno]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/cINnrlFwQUA" title="1 Hour of Futuristic Utopia Cityscapes (4K) | Relaxing Sci-Fi Scenery + Ambient Music" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+ <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/EqorbdYXjpU" title="Mystery Of Distant Planets⎜Deep Space Ambient Music &amp; Sci-Fi Soundscapes⎜4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/CnQbWgAi-sg?list=RDEMDRPKKWrPhq81_cNcnCbdmg" title="Snow Planets Driftspace — Deep Dark Space Ambient Music &amp; Cinematic Sci-Fi Landscapes | 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+ <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/wo7YaIc3Y5E?list=RDEMDRPKKWrPhq81_cNcnCbdmg" title="Worlds Beyond the Known Sky — Dark Space Ambient Music &amp; Sci-Fi Cinematic Landscapes | 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/05iiH_iduwo?list=RDEMDRPKKWrPhq81_cNcnCbdmg" title="Ultra Luxury Future (Year 2700) — 1 Hour Cinematic Sci-Fi City Tour | 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/P0i7X5suE5g" title="Future City 2220: What If These Brands Still Existed? | Sci-fi AI Short Film (4K)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/g5Duigv367U" title="Futuristic City | Cinematic Sci Fi Vision (Episode 7)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/rHRqd2RfdBw" title="Future City 2050 in 4K | Smart Utopia, AI Transport, Luxury Domes &amp; Neon Roads" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+  <div class="video-container">
+<iframe width="847" height="480" src="https://www.youtube.com/embed/mCrXxGT9cWc" title="Futuristic City  | Cinematic Sci Fi Vision (Episode 6)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/XEST5qmbMtA" title="This Is What Cities Look Like in 2050… (Hovercar Night Drive)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/SYqlLhq2nFM" title="This Is How Humans Will Live in 2500… And It’s Unreal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/w2n4bS_8fdM" title="The Future City of 2100 – A Beautiful Utopian World (4K Relaxing)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/BsBQ0bI_dc8" title="SKYHARBOR 2126 :100 Years From Now | Relaxing Futuristic Flight Above the Clouds (4K)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/oWwMi1OXEig" title="Retro-Future Legends | Steampunk Machines That Changed the World" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/RtrlerxHW3I?list=RDRtrlerxHW3I" title="Heaven’s Eternal Kingdom 🌤️ Golden Palace of Angels | Cinematic Fantasy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/gpzIYX2Guxo?list=RDgpzIYX2Guxo" title="The Ocean City of 2500 Humanity’s Underwater City of Tomorrow Most Beautiful Future | 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/JjhZMpYTgZk?list=RDMM" title="STAR CITY • Planetary Mega Metropolis • AI Sci-Fi World" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+  <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/QI7KdyFw9XM" title="Android Souls – A Cinematic AI Sci Fi Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
+ <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/lmaAfIPygNA" title="I Spent 24 Hours in 2080 and It Broke Me 😨 | Future City Simulation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+ <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/Hr-cBfTbti4" title="1 Hour Sci-Fi Ambient Music: Journey Through a Golden Luxury City | Futuristic Urban Landscape | 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/9VSZ_kGjxR8?list=RD9VSZ_kGjxR8" title="Futuristic Luxury: Smart Cities with Cutting-Edge Innovation | 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/c7lZE0aO3bQ" title="2126 Sky City Dreams ☁️ Lo-Fi Sci-Fi Music for Sleep, Focus &amp; Peace (4K)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+<div class="video-container">
+<iframe width="847" height="480" src="https://www.youtube.com/embed/MNtBB5NXAT8?list=RDMNtBB5NXAT8" title="Future Worlds — 500 Years Vision" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/-dMHlVi37Yw?list=RD-dMHlVi37Yw" title="2800 Vision: A Utopian Future Where Humanity Thrives Sci-fi AI Short Film (4K)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/8kIAsJsdyc4" title="The Golden Freakshow: NYC’s Macabre Steampunk Circus (AI Film)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/uOyvzuUhxeo" title="FUTURISTIC UTOPIA 2150 (4K) | Relaxing Sci-Fi Cityscape, Sky Bridges &amp; Hovercraft Atmosphere" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+  <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/KwL9HKPAFTM?list=RDKwL9HKPAFTM" title="When Heaven Meets Earth: A Journey Through Forgotten Empires" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+ <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/bESnInyqhMU?list=RDwzQ7cY6MNiU" title="AI Short Film space universe sci-fi 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/BHohQSFLUKE?list=RDMM" title="AI Short Film scifi movies universe sci-fi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/8Crk6eItITU?list=RDMM" title="Future City 3500: The Paradise of Tomorrow | Sci-fi AI Short Film (4K)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/EG2UiIRABa0?list=RDMM" title="AI Short Film space universe sci-fi 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/J0wgjCSqQ6w?list=RDMM" title="AI Short Film space universe sci-fi 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/D01SkibR3Cw?list=RDMM" title="AI Short Film scifi movies universe sci-fi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/HKWnfYx2Jk8?list=RDMM" title="Space Explorers. Winter Planet." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/-jm_idfnS90?list=RDMM" title="AI Short Film scifi movies universe sci-fi 【4K version】" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+  <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/o1-MfDYGv08?list=RDo1-MfDYGv08" title="Future City AI Sci Fi Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/i7dKvdHHNhs?list=RDi7dKvdHHNhs" title="The Floating Palaces of Heaven | A Journey Through Celestial Realms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+ 
+<div id="chatToggle" onclick="toggleChat()">💬 Chat</div>
+
+<div class="chatbot" id="chatbot">
+  <div class="chat-header">
+    Vizion AI Support
+    <span style="float:right; cursor:pointer;" onclick="toggleChat()">✖</span>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-footer">
+    <input type="text" id="userInput" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendMessage()">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<style>
+  #chatToggle {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #0078d7; color: #fff;
+    padding: 12px 20px; border-radius: 50px;
+    cursor: pointer; z-index: 9999;
+    font-family: sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .chatbot {
+    position: fixed; bottom: 85px; right: 20px;
+    width: 320px; height: 400px;
+    border-radius: 12px; background: #fff;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    display: none; flex-direction: column;
+    z-index: 9999; font-family: sans-serif; overflow: hidden;
+  }
+  .chat-header { background: #0078d7; color: #fff; padding: 15px; font-weight: bold; }
+  .chat-body {
+    flex: 1; padding: 15px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 10px; background: #f9f9f9;
+  }
+  .chat-message { padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; max-width: 85%; word-wrap: break-word; }
+  .chat-message.user { background: #0078d7; color: #fff; align-self: flex-end; border-bottom-right-radius: 2px; }
+  .chat-message.bot { background: #e9e9eb; color: #000; align-self: flex-start; border-bottom-left-radius: 2px; }
+  .chat-footer { display: flex; padding: 10px; border-top: 1px solid #eee; }
+  .chat-footer input { flex: 1; border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; outline: none; }
+  .chat-footer button { border: none; background: transparent; color: #0078d7; font-weight: bold; margin-left: 8px; cursor: pointer; }
+</style>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  (function(){
+    emailjs.init("1YiLFdNefY_myVwqA");
+  })();
+
+  let askedContact = false;
+  let customerEmail = "";
+  let customerPhone = "";
+
+  window.onload = function() {
+    setTimeout(() => {
+      if (document.getElementById('chatbot').style.display !== 'flex') {
+        toggleChat();
+        appendMessage("👋 Welcome to Vizion AI! How can we help you today?", 'bot');
+      }
+    }, 2000); 
+  };
+
+  function toggleChat() {
+    const chat = document.getElementById('chatbot');
+    const toggle = document.getElementById('chatToggle');
+    if (chat.style.display === 'none' || chat.style.display === '') {
+      chat.style.display = 'flex';
+      toggle.style.display = 'none';
+    } else {
+      chat.style.display = 'none';
+      toggle.style.display = 'block';
+    }
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    appendMessage(message, 'user');
+    input.value = '';
+
+    setTimeout(() => {
+      let reply = "";
+      const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+      const phoneRegex = /(\+?\d{1,4}[\s-])?(\(?\d{3}\)?[\s-]?)?\d{3}[\s-]?\d{4}/g;
+
+      const foundEmail = message.match(emailRegex);
+      const foundPhone = message.match(phoneRegex);
+
+      if (foundEmail) customerEmail = foundEmail[0];
+      if (foundPhone) customerPhone = foundPhone[0];
+
+      if (!askedContact) {
+        reply = "I'd love to help! Please share your email or phone number so our support team can follow up with you.";
+        askedContact = true;
+        appendMessage(reply, 'bot');
+      } else if (customerEmail || customerPhone) {
+        // Send via EmailJS
+    emailjs.send("service_4ylpqce", "template_w0rq5ms", {
+    from_name: "Contact Us",
+    user_email: customerEmail || "Not provided",
+    user_phone: customerPhone || "Not provided",
+    message: message
+}).then(function(response) {
+    console.log("SUCCESS!", response.status, response.text);
+    appendMessage("✅ Your details have been sent!", 'bot');
+}, function(error) {
+    console.log("FAILED...", error);
+    appendMessage("⚠️ Error: " + error.text, 'bot');
+});
+
+      } else {
+        reply = "Please provide a valid email or phone number so we can reach you.";
+        appendMessage(reply, 'bot');
+      }
+    }, 600);
+  }
+
+  function appendMessage(text, sender) {
+    const chatBody = document.getElementById('chatBody');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-message ' + sender;
+    msgDiv.textContent = text;
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+</script>
+
+
+</div>
+        <div class="snow-ball-container">
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+            <div class="snow-ball"></div>
+        </div>
+</div>
+<div style="text-align: center; margin-top: 20px;">
+    <p>Total Visitors</p>
+    <img src="https://count.getloli.com/get/@deepakworld.github.io?theme=asoul" alt="deepakworld counter" />
+</div>
+ <!-- Map Location -->
+<div class="map-container" style="text-align:center; margin:20px 0;">
+  <h2 style="color:white;">Find Us Here</h2>
+<!-- Map Location -->
+<div style="text-align:center; margin:20px 0;">
+  <h2 style="color:white;">Our Location - Bommanahalli, Bengaluru</h2>
+  <div style="position:relative; width:100%; max-width:800px; margin:auto; padding-top:56.25%;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d497714.4013708113!2d77.61756159999999!3d12.9466368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1773753253784!5m2!1sen!2sin"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+</div>
+ <a href="https://wa.me/918867740113?text=Hi%20Deepak,%20I%20am%20interested%20in%20your%20IT%20training%20and%20services." 
+   class="whatsapp-float" 
+   target="_blank">
+    <span class="tooltiptext">Chat with Deepak</span>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:35px; margin-top:12px;">
+</a>
+<a href='https://ko-fi.com/deepak66544' target='_blank'>
+  <img height='36' style='border:0px;height:36px;' src='https://ko-fi.com/img/githubbutton_sm.svg' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+</a>
+
+ <footer style="background: #2c3e50; color: white; padding: 20px; text-align: center; font-size: 0.8rem;">
+    <p>Deepak IT & WebServices | Proprietorship Firm</p>
+    <p>MSME Registration: UDYAM-KR-03-0674838 | NIC Code: 62011 (Software Development) </p>
+    <p>&copy; 2026 All Rights Reserved.</p>
+</footer>
+   </body>
+</html> 
