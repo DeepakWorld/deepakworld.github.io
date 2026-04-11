@@ -1,513 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate For Children Games</title>
+    <style>
+        /* Base Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(135deg, #000000, #434343);
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 15px solid brown;
+        }
 
-<style>
- #stars {
-            position: absolute;
+        /* Star Background Effect */
+        #stars {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('star-background.gif') repeat; /* Replace with your glittering stars image URL */
-            background-size: cover; /* Ensure stars fill the viewport */
-            z-index: -1; /* Place stars behind all content */
+            background: url('star-background.gif') repeat;
+            background-size: cover;
+            z-index: -1;
+            opacity: 0.5;
         }
 
-   /* Overall Container Styling */
-        .container {
-            width: 90%;
-            margin: auto;
-            background-color: brown;
-            border: 5px solid #04AA6D; /* Stylish border */
-            border-radius: 15px; /* Rounded corners */
-            padding: 20px;
+        /* Main Container */
+        .main-wrapper {
+            width: 95%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(165, 42, 42, 0.9); /* Brown with transparency */
+            border: 5px solid #04AA6D;
+            border-radius: 15px;
+            padding: 30px;
             text-align: center;
-            color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        /* Button Styling */
-        .button {
-            background-color: #04AA6D;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-
-        img {
-            margin: 10px;
-        }
-
-        h2 {
-            color: white;
-        }
-    </style>
-<style>
-* {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides img {
-  width: 100%;
-  height: auto; /* maintains the aspect ratio of the images */
-  display: block; /* prevents extra white space below images */
-}
-
-/* Slideshow container */
-.slideshow-container {
-  width: 100%;
-  max-width: 800px;
-  position: relative;
-  margin: auto;
-overflow: hidden; 
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
-</style>
-<style>
-        /* General Style */
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
- 
-
-/* Style Snowballs */
-        .snow-ball-container .snow-ball {
-            position: absolute;
-            border-radius: 50%;
-            background: white;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(even) {
-            width: 16px;
-            height: 16px;
-            animation: flake-motion 15s linear infinite;
-        }
-
-        /* Position the Snowballs above the screen */
-        .snow-ball-container .snow-ball:nth-child(1) {
-            top: -50%;
-            left: 5%;
-            width: 20px;
-            height: 20px;
-            animation: snowball-animation 12s linear 2s infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(2) {
-            top: -20%;
-            left: 10%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(3) {
-            top: -50%;
-            left: 15%;
-            animation: snowball-animation 12s linear infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(4) {
-            top: -10%;
-            left: 20%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(5) {
-            top: -20%;
-            left: 25%;
-            width: 20px;
-            height: 20px;
-            animation: snowball-animation 12s linear 2s infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(6) {
-            top: -40%;
-            left: 30%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(7) {
-            top: -30%;
-            left: 35%;
-            width: 5px;
-            height: 5px;
-            animation: snowball-animation 12s linear infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(8) {
-            top: -20%;
-            left: 40%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(9) {
-            top: -50%;
-            left: 45%;
-            width: 5px;
-            height: 5px;
-            animation: snowball-animation 12s linear 2s infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(10) {
-            top: -5%;
-            left: 50%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(11) {
-            top: -20%;
-            left: 60%;
-            animation: snowball-animation 12s linear infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(12) {
-            top: -10%;
-            left: 70%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(13) {
-            top: -50%;
-            left: 80%;
-            width: 5px;
-            height: 5px;
-            animation: snowball-animation 12s linear 2s infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(14) {
-            top: -20%;
-            left: 90%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(15) {
-            top: -50%;
-            left: 95%;
-            width: 30px;
-            height: 30px;
-            animation: snowball-animation 12s linear infinite;
-        }
-
-        /* Define animations of Snowball and Snowflakes */
-        @keyframes snowball-animation {
-            0% {
-                transform: translate(0);
-                opacity: 1;
-            }
-            20% {
-                transform: translate(4px, 100px);
-                opacity: 0.8;
-            }
-            40% {
-                transform: translate(-7px, 200px);
-                opacity: 0.7;
-            }
-            60% {
-                transform: translate(10px, 400px);
-                opacity: 0.5;
-            }
-            80% {
-                transform: translate(-14px, 700px);
-                opacity: 0.2;
-            }
-            100% {
-                transform: translate(16px, 900px);
-                opacity: 0;
-            }
-        }
-
-        @keyframes flake-motion {
-            0% {
-                transform: translate(-2px, 0);
-                opacity: 1;
-            }
-            20% {
-                transform: translate(-9px, 200px);
-                opacity: 0.9;
-            }
-            40% {
-                transform: translate(14px, 300px);
-                opacity: 0.7;
-            }
-            60% {
-                transform: translate(-22px, 400px);
-                opacity: 0.6;
-            }
-            80% {
-                transform: translate(30px, 600px);
-                opacity: 0.5;
-            }
-            90% {
-                transform: translate(-40px, 800px);
-                opacity: 0.3;
-            }
-            100% {
-                transform: translate(52px, 1000px);
-                opacity: 0;
-            }
-        }
- 
-div {text-align: center;}
-body {
-            background-color: brown; /* Make the background brown */
-            background: linear-gradient(135deg, #000000, #434343); /* Optional: Metallic black gradient */
-            margin: 0; /* Remove default margin */
-            border: 20px solid brown; /* Add metallic gold border */
-            box-shadow: 0 0 10px rown; /* Optional: Glowing effect for the border */
-       
-        }
- .name {
-            color: orange; /* Sets the text color to green */
-            font-size: 2em; /* Adjusts font size */
-            font-family: Arial, sans-serif; /* Sets the font style */
-            text-align: center; /* Centers the text */
-            margin-top: 20px; /* Adds space at the top */
-        }
-
-.video-container {
-    position: relative;
-    width: 100%;
-    max-width: 560px; /* Set max width for better responsiveness */
-    margin: 0 auto; /* Center the video */
-    overflow: hidden; /* Prevent content overflow */
-    padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
-  }
-
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ccc; /* Add a border around the iframe */
-    box-sizing: border-box; /* Include borders in the dimensions */
-  }
-.topic-name {
-            color: blue; /* White font color */
-            font-size: 14px; /* Size of the text */
-            font-family: Arial, sans-serif; /* Font style */
-            
-   /* Overall Container Styling */
-        .container {
-            width: 90%;
-            margin: auto;
-            background-color: brown;
-            border: 5px solid #04AA6D; /* Stylish border */
-            border-radius: 15px; /* Rounded corners */
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-
-        /* Button Styling */
-        .button {
-            background-color: #04AA6D;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-
-        img {
-            margin: 10px;
-        }
-
-        h2 {
-            color: white;
-        }
-.button {
-  background-color: blue; /* Blue background for the button */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-/* Styling for the top-left corner */
-        .left-corner {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-
-        /* Styling for the top-right corner */
-        .right-corner {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-.center-top {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-  }
- 
-        
-.container {
-            display: flex;
-            justify-content: space-between; /* Align elements within the container */
-            align-items: center;
-            width: 100%; /* Set the width of the container */
-        }
-
-        .container img {
-            width: 150px; /* Ensure all images are the same width */
-            height: auto; /* Keep the aspect ratio intact */
-            object-fit: contain; /* Adjust image fit within the container */
-        }
-
-        .left-corner {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-
-        .right-corner {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-.name {
-            font-size: 20px;
+        .name {
+            color: orange;
+            font-size: 2.2em;
             font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        /* Link Styling */
+        .game-links a {
+            display: block;
+            margin: 10px auto;
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .game-links a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        /* UPI/Payment Buttons */
+        .btn-payment {
+            display: inline-block;
+            padding: 12px 24px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 8px;
+            transition: transform 0.2s;
+        }
+
+        .btn-payment:hover {
+            transform: scale(1.05);
+        }
+
+        /* Specific Colors */
+        .gpay { background: #4285F4; }
+        .bhim { background: #e37222; }
+        .airtel { background: #e11900; }
+        .payu { background: #61ba26; }
+        .paypal { background: #003087; }
+
+        /* QR Section */
+        .qr-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed rgba(255,255,255,0.3);
+        }
+
+        .qr-section h2 {
+            font-size: 20px;
             margin-bottom: 10px;
         }
-        a {
-            display: block; /* Ensures each link appears on a new line */
-            margin-bottom: 5px; /* Adds spacing between links */
-            color: #0078d7; /* Link color */
-            text-decoration: none; /* Removes underline from links */
-        }
-        a:hover {
-            text-decoration: underline; /* Adds underline on hover for better UX */
-        }
-.center-top {
-            position: absolute;
-            top: 10px; /* Adjust the vertical position */
-            left: 10px; /* Adjust the horizontal position */
+
+        .qr-section img {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 15px;
+            max-width: 100%;
+            height: auto;
         }
 
-        h2 {
-            color: white;
-            font-size: 24px;
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            .name { font-size: 1.5em; }
+            .btn-payment { display: block; margin: 10px 0; }
         }
     </style>
- 
-         </head>
-
-
+</head>
 <body>
+
 <div id="stars"></div>
 
-<div class="container">
-  <p class="name">Donate For Children Games</p>
-  <a href="Deepak.apk" download>Download App</a>
-  <a href="https://deepakrummy.github.io/game/" target="_blank">Wow Games</a>
-  <a href="https://deepakstorm.web.app/" target="_blank">Visit Deepak Profile!</a>
-  <a href="https://deepakrummy.github.io/" target="_blank">Kids Game!</a>
-  <a href="https://deepakplay.web.app/" target="_blank">Ace Donkey Game!</a>
-  <a href="https://www.paypal.com/paypalme/VTXDZRNHWDFU8?v=1" target="_blank">Donate with Paypal</a>
+<div class="main-wrapper">
+    <p class="name">Donate For Children Games</p>
 
-  <!-- ✅ New Donate via UPI Button -->
-<!-- Google Pay -->
-<a href="tez://upi/pay?pa=pos.5361206@indus&pn=Deepak IT & Web Services &cu=INR" 
-   style="display:inline-block;padding:12px 24px;background:#4285F4;color:#fff;text-decoration:none;border-radius:5px;font-weight:bold;margin:5px;">
-   Pay via Google Pay
-</a>
+    <div class="game-links">
+        <a href="Deepak.apk" download style="font-weight:bold; color: #04AA6D;">📥 Download App</a>
+        <a href="https://deepakrummy.github.io/game/" target="_blank">Wow Games</a>
+        <a href="https://deepakstorm.web.app/" target="_blank">Visit Deepak Profile!</a>
+        <a href="https://deepakrummy.github.io/" target="_blank">Kids Game!</a>
+        <a href="https://deepakplay.web.app/" target="_blank">Ace Donkey Game!</a>
+    </div>
 
-<!-- BHIM -->
-<a href="upi://pay?pa=pos.5361206@indus&pn=Deepak IT & Web Services &cu=INR" 
-   style="display:inline-block;padding:12px 24px;background:#e37222;color:#fff;text-decoration:none;border-radius:5px;font-weight:bold;margin:5px;">
-   Pay via BHIM
-</a>
+    <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.2);">
 
-<!-- Airtel Thanks -->
-<a href="airtel://pay?pa=pos.5361206@indus&pn=Deepak IT & Web Services &cu=INR" 
-   style="display:inline-block;padding:12px 24px;background:#e11900;color:#fff;text-decoration:none;border-radius:5px;font-weight:bold;margin:5px;">
-   Pay via Airtel
-</a>
+    <div class="payment-buttons">
+        <a href="https://www.paypal.com/paypalme/VTXDZRNHWDFU8?v=1" target="_blank" class="btn-payment paypal">Donate with Paypal</a>
+        
+        <a href="tez://upi/pay?pa=pos.5361206@indus&pn=Deepak IT & Web Services&cu=INR" class="btn-payment gpay">Google Pay</a>
+        
+        <a href="upi://pay?pa=pos.5361206@indus&pn=Deepak IT & Web Services&cu=INR" class="btn-payment bhim">BHIM</a>
+        
+        <a href="airtel://pay?pa=pos.5361206@indus&pn=Deepak IT & Web Services&cu=INR" class="btn-payment airtel">Airtel Pay</a>
+        
+        <a href="https://u.payu.in/PAYUMN/xrM7ux6b4MXj" target="_blank" class="btn-payment payu">Proceed to Pay via PayU</a>
+    </div>
 
-<a href="https://u.payu.in/PAYUMN/xrM7ux6b4MXj" 
-       target="_blank" 
-       style="display: inline-block; padding: 15px 30px; background-color: #61ba26; color: #ffffff; text-decoration: none; font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0,0,0,0.1); transition: 0.3s;">
-       Proceed to Pay via PayU
-    </a>
-
+    <div class="qr-section">
+        <h2>Pay with UPI Scan:</h2>
+        <p style="color: #ffd700;">UPI ID: pos.5361206@indus</p>
+        <img src="https://deepakworld.github.io/pay.png" alt="UPI SCAN" width="250">
+    </div>
 </div>
 
-    
-
-
-<div class="center-top">
-  <div class="linkp"> <!-- Changed <p> to <div> for better HTML structure -->
-    <h2>Pay with UPI/ UPI Scan:</h2>
-    <h2>UPI: pos.5361206@indus</h2>
-    <!-- Increase the width or remove it entirely for full size -->
-    <img src="https://deepakworld.github.io/pay.png" alt="UPI SCAN" width="300">
-  </div>
-</div>
-
-
-<!-- rest of your slideshow and videos remain unchanged -->
 </body>
-</html> 
+</html>
