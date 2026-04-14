@@ -15,11 +15,12 @@
         .btn-payment { display: inline-block; padding: 12px 24px; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 8px; transition: transform 0.2s; cursor: pointer; border: none; }
         .btn-payment:hover { transform: scale(1.05); }
         
-        /* New PhonePe Style */
+        /* Payment Button Colors */
         .phonepe { background: #5f259f; } 
         .gpay { background: #4285F4; }
         .payu { background: #61ba26; }
         .paypal { background: #003087; }
+        .wise { background: #00b9ff; } /* Wise Brand Color */
         
         .qr-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed rgba(255,255,255,0.3); }
         .qr-section img { background: white; padding: 10px; border-radius: 10px; margin-top: 15px; max-width: 100%; height: auto; }
@@ -44,14 +45,17 @@
 
     <div class="payment-buttons">
         <!-- New PhonePe Gateway Button -->
-        <button id="phonepe-button" class="btn-payment phonepe">Pay via PhonePe (Gateway)</button>
+        <button id="phonepe-button" class="btn-payment phonepe">Pay via PhonePe</button>
+
+        <!-- Wise Payment Button -->
+        <a href="REPLACE_WITH_YOUR_WISE_PAYMENT_LINK" target="_blank" class="btn-payment wise">Donate with Wise</a>
 
         <a href="https://paypal.me/deepakwebservices" target="_blank" class="btn-payment paypal">Donate with Paypal</a>
 
         <!-- Your existing UPI Links -->
         <a href="upi://pay?pa=paytmqr2810050501011h0dl8v0w0fn@paytm&pn=Deepak%20IT&am=6&cu=INR" class="btn-payment gpay">Pay ₹6 via UPI</a>
         
-        <a href="https://u.payu.in/PAYUMN/xIInC5Z9IcMJ" target="_blank" class="btn-payment payu">Proceed to Pay via PayU</a>
+        <a href="https://u.payu.in/PAYUMN/xIInC5Z9IcMJ" target="_blank" class="btn-payment payu">Pay via PayU</a>
     </div>
 
     <div class="qr-section">
@@ -68,12 +72,11 @@
         btn.disabled = true;
 
         try {
-            // REPLACE THIS URL with your actual Vercel Deployment URL
             const response = await fetch('https://vercel.app', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    amount: 10, // Amount in Rupees
+                    amount: 10, 
                     customerId: 'USER_' + Math.floor(Math.random() * 1000) 
                 })
             });
@@ -83,13 +86,13 @@
                 window.location.href = data.url; 
             } else {
                 alert("Gateway error. Use UPI scan instead.");
-                btn.innerText = "Pay via PhonePe (Gateway)";
+                btn.innerText = "Pay via PhonePe";
                 btn.disabled = false;
             }
         } catch (error) {
             console.error("Error:", error);
             alert("Could not connect to payment server.");
-            btn.innerText = "Pay via PhonePe (Gateway)";
+            btn.innerText = "Pay via PhonePe";
             btn.disabled = false;
         }
     };
