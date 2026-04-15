@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Search - Deepak IT & WebServices</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; }
+        .search-container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 90%; }
+        h2 { color: #1a73e8; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+        button { width: 100%; padding: 12px; background-color: #1a73e8; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        button:hover { background-color: #1557b0; }
+        .payment-box { margin-top: 20px; padding: 15px; border: 1px dashed #bbb; border-radius: 8px; background: #fafafa; }
+        .error { color: #d93025; font-size: 14px; margin-top: 10px; display: none; }
+        .links { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .btn-pay { text-decoration: none; padding: 8px; border-radius: 4px; color: white; font-size: 14px; }
+        .paypal { background: #0070ba; }
+        .wise { background: #00b9ff; }
+    </style>
+</head>
+<body>
+
+<div class="search-container">
+    <h2>Download Invoice</h2>
+    <p>Enter your Order Number to proceed</p>
+    
+    <input type="text" id="orderNumber" placeholder="e.g., DIWS-Order-001">
+    <p id="errorMessage" class="error">Please enter a valid Order Number.</p>
+    
+    <div class="payment-box">
+        <strong>1. Complete Payment</strong>
+        <div class="links">
+            <form>
+                <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdgy0Sufa6OlhH" async> </script>
+            </form>
+            <a href="https://www.paypal.com/ncp/payment/8F76ZTRBSJC3W" target="_blank" class="btn-pay paypal">Pay with PayPal</a>
+            <a href="https://wise.com/pay/business/deepakt604?utm_source=open_link" target="_blank" class="btn-pay wise">Pay with Wise</a>
+        </div>
+    </div>
+
+    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+    
+    <strong>2. Get Invoice</strong>
+    <button onclick="redirectToInvoice()" style="margin-top: 10px;">View/Download PDF</button>
+</div>
+
+<script>
+    function redirectToInvoice() {
+        const orderInput = document.getElementById('orderNumber').value.trim();
+        const error = document.getElementById('errorMessage');
+
+        // Check if input starts with the correct prefix
+        if (orderInput.toUpperCase().startsWith("DIWS-ORDER-")) {
+            // Extract the number part (e.g., 001)
+            const numberPart = orderInput.split('-').pop();
+            
+            // Construct the invoice filename
+            const invoiceName = `DIWS-Invoice-${numberPart}.pdf`;
+            
+            // Redirect to the customer folder path
+            const filePath = `customer/${invoiceName}`;
+            
+            // Redirect the browser to the file
+            window.location.href = filePath;
+        } else {
+            error.style.display = 'block';
+            error.innerText = "Invalid format. Use: DIWS-Order-XXX";
+        }
+    }
+</script>
+
+</body>
+</html>
