@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate For Children Games</title>
-    <!-- Razorpay Script -->
-    <script src="https://razorpay.com"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Verdana', sans-serif; background: linear-gradient(135deg, #000000, #434343); background-attachment: fixed; color: white; min-height: 100vh; display: flex; flex-direction: column; align-items: center; border: 15px solid brown; }
@@ -13,20 +11,20 @@
         .main-wrapper { width: 95%; max-width: 800px; margin: 20px auto; background-color: rgba(165, 42, 42, 0.9); border: 5px solid #04AA6D; border-radius: 15px; padding: 30px; text-align: center; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
         .name { color: orange; font-size: 2.2em; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px #000; }
         .game-links a { display: block; margin: 10px auto; color: #00d4ff; text-decoration: none; font-size: 18px; transition: 0.3s; }
-        .btn-payment { display: inline-block; padding: 12px 24px; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 8px; transition: transform 0.2s; cursor: pointer; border: none; font-size: 14px; }
+        
+        .btn-payment { display: inline-block; padding: 12px 24px; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 8px; transition: transform 0.2s; cursor: pointer; border: none; font-size: 14px; text-align: center; min-width: 180px; vertical-align: middle; }
         .btn-payment:hover { transform: scale(1.05); }
         
-        /* Payment Button Colors */
-        .phonepe { background: #5f259f; } 
+        /* Razorpay form alignment */
+        .rzp-form-container { margin: 15px 0; display: inline-block; vertical-align: middle; }
+        
+        .paypal { background: #003087; }
         .gpay { background: #4285F4; }
         .payu { background: #61ba26; }
-        .paypal { background: #003087; }
-        .wise { background: #00b9ff; }
-        .razorpay { background: #3395FF; } /* Razorpay Brand Color */
         
         .qr-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed rgba(255,255,255,0.3); }
         .qr-section img { background: white; padding: 10px; border-radius: 10px; margin-top: 15px; max-width: 100%; height: auto; }
-        @media (max-width: 600px) { .name { font-size: 1.5em; } .btn-payment { display: block; margin: 10px 0; } }
+        @media (max-width: 600px) { .name { font-size: 1.5em; } .btn-payment, .rzp-form-container { display: block; width: 100%; margin: 10px 0; } }
     </style>
 </head>
 <body>
@@ -46,10 +44,13 @@
     <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.2);">
 
     <div class="payment-buttons">
-        <!-- Razorpay Button -->
-        <button id="rzp-button" class="btn-payment razorpay">Donate with Razorpay</button>
-
-        <button id="phonepe-button" class="btn-payment phonepe">Pay via PhonePe</button>
+        
+        <!-- Official Razorpay Payment Button -->
+        <div class="rzp-form-container">
+            <form>
+                <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdgy0Sufa6OlhH" async> </script>
+            </form>
+        </div>
 
         <a href="https://paypal.me" target="_blank" class="btn-payment paypal">Paypal</a>
 
@@ -64,48 +65,6 @@
         <img src="https://github.io" alt="UPI SCAN" width="250">
     </div>
 </div>
-
-<script>
-    // Razorpay Integration
-    document.getElementById('rzp-button').onclick = function(e){
-        var options = {
-            "key": "rzp_live_Sdgd0OEPBKmFH9", // Your Live Key ID
-            "amount": "1000", // Amount in paise (1000 = ₹10)
-            "currency": "INR",
-            "name": "Deepak World",
-            "description": "Donation for Children Games",
-            "image": "https://github.io",
-            "handler": function (response){
-                alert("Payment Successful! ID: " + response.razorpay_payment_id);
-            },
-            "prefill": {
-                "name": "",
-                "email": "",
-                "contact": ""
-            },
-            "theme": {
-                "color": "#3395FF"
-            }
-        };
-        var rzp1 = new Razorpay(options);
-        rzp1.open();
-        e.preventDefault();
-    }
-
-    // PhonePe Logic (as previously provided)
-    const handlePhonePePayment = async () => {
-        const btn = document.getElementById('phonepe-button');
-        btn.innerText = "Processing...";
-        btn.disabled = true;
-        // ... rest of your phonepe logic
-        setTimeout(() => { 
-            alert("Please use Razorpay or UPI Scan for now."); 
-            btn.innerText = "Pay via PhonePe";
-            btn.disabled = false;
-        }, 1000);
-    };
-    document.getElementById('phonepe-button').addEventListener('click', handlePhonePePayment);
-</script>
 
 </body>
 </html>
