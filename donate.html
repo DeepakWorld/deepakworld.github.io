@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worldwide Donation - Deepak World</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Verdana', sans-serif; 
+            background: linear-gradient(135deg, #000000, #1a1a1a); 
+            background-attachment: fixed; 
+            color: white; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 20px;
+        }
+        
+        /* Star Background Effect */
+        #stars { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: url('star-background.gif') repeat; 
+            z-index: -1; opacity: 0.3; 
+        }
+
+        .container { 
+            width: 100%; 
+            max-width: 900px; 
+            background: rgba(46, 51, 51, 0.95); 
+            border: 4px solid #9fe870; /* Wise Lime Green */
+            border-radius: 20px; 
+            padding: 30px; 
+            text-align: center; 
+            box-shadow: 0 0 30px rgba(159, 232, 112, 0.2);
+        }
+
+        h1 { color: #9fe870; margin-bottom: 10px; font-size: 2em; }
+        p.subtitle { color: #ccc; margin-bottom: 30px; font-style: italic; }
+
+        /* Grid for donation links */
+        .donation-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 15px; 
+            margin-top: 20px;
+        }
+
+        .wise-link { 
+            background: #3d4444; 
+            color: #9fe870; 
+            text-decoration: none; 
+            padding: 15px; 
+            border-radius: 12px; 
+            font-weight: bold; 
+            font-size: 14px; 
+            border: 1px solid rgba(159, 232, 112, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wise-link:hover { 
+            background: #9fe870; 
+            color: #2e3333; 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(159, 232, 112, 0.4);
+        }
+
+        .main-business {
+            grid-column: 1 / -1;
+            background: #9fe870;
+            color: #2e3333;
+            font-size: 18px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        footer { margin-top: 40px; color: #777; font-size: 12px; }
+        .back-home { margin-top: 20px; color: #00d4ff; text-decoration: none; display: inline-block; }
+    </style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div class="container">
+    <h1>🌍 Worldwide Donation</h1>
+    <p class="subtitle">Support Children's Games from anywhere in the world via Wise</p>
+
+    <div class="donation-grid">
+        <!-- Main Business Link -->
+        <a href="https://wise.com/pay/business/deepakt604?utm_source=open_link" target="_blank" class="wise-link main-business">💼 Primary Business Donation</a>
+
+        <!-- Individual Links -->
+        <a href="https://wise.com/pay/r/S0e4yZh8sOrJ1g4" target="_blank" class="wise-link">India</a>
+        <a href="https://wise.com/pay/r/3UjjJQE5hEYi3fg" target="_blank" class="wise-link">Australia</a>
+        <a href="https://wise.com/pay/r/j0e4GfhOuIK_Rwg" target="_blank" class="wise-link">Canada</a>
+        <a href="https://wise.com/pay/r/gzOwPvjRjG39F6M" target="_blank" class="wise-link">Swiss Franc</a>
+        <a href="https://wise.com/pay/r/ON-URHjkRncxlwo" target="_blank" class="wise-link">Chinese Yuan</a>
+        <a href="https://wise.com/pay/r/ULAKIQCdW0iLB-M" target="_blank" class="wise-link">Czech Koruna</a>
+        <a href="https://wise.com/pay/r/0aZW3GfTNksHYh8" target="_blank" class="wise-link">Danish Krone</a>
+        <a href="https://wise.com/pay/r/yH-pHNQVtItT1Ig" target="_blank" class="wise-link">Euro</a>
+        <a href="https://wise.com/pay/r/HDY-BduN5CzGD-E" target="_blank" class="wise-link">Pound Sterling</a>
+        <a href="https://wise.com/pay/r/vYdw3GpoNy6CmrI" target="_blank" class="wise-link">Hong Kong Dollar</a>
+        <a href="https://wise.com/pay/r/80QdRwtagn7Rd6M" target="_blank" class="wise-link">Hungarian Forint</a>
+        <a href="https://wise.com/pay/r/ACV_Lf3TYNEyIAM" target="_blank" class="wise-link">New Israeli Sheqel</a>
+        <a href="https://wise.com/pay/r/Sz2KKGPbxew4L54" target="_blank" class="wise-link">Japanese Yen</a>
+        <a href="https://wise.com/pay/r/Q-lyhszUxyAhCOo" target="_blank" class="wise-link">Norwegian Krone</a>
+        <a href="https://wise.com/pay/r/giXE_SSG_uPpHfg" target="_blank" class="wise-link">New Zealand Dollar</a>
+        <a href="https://wise.com/pay/r/zpGjPiUwlAXzDCg" target="_blank" class="wise-link">Polish Zloty</a>
+        <a href="https://wise.com/pay/r/dwOwLw43Rzec-7U" target="_blank" class="wise-link">Swedish Krona</a>
+        <a href="https://wise.com/pay/r/CqDWiaeqRIE-yV8" target="_blank" class="wise-link">Singapore Dollar </a>
+        <a href="https://wise.com/pay/r/Cofz4vaSRKs_ceI" target="_blank" class="wise-link">Turkish Lira</a>
+        <a href="https://wise.com/pay/r/3DTLwtaI6oPgWfA" target="_blank" class="wise-link">Ugandan Shilling</a>
+        <a href="https://wise.com/pay/r/gKqUZMA-v0DrtAs" target="_blank" class="wise-link">South African Rand</a>
+        <a href="https://wise.com/pay/r/l4skVJ5TwkO2BYI" target="_blank" class="wise-link">US Dollar</a>
+        <a href="https://wise.com/pay/r/ucvimKi-tqPSrrI" target="_blank" class="wise-link">Emirati Dirham</a>
+  <a href="https://wise.com/pay/r/uq_rU6_s4d1HOCU" target="_blank" class="wise-link">Indonesian Rupiah</a>
+  <a href="https://wise.com/pay/r/wy5WQTiew_JGGGE" target="_blank" class="wise-link">Kenyan Shilling</a>
+  <a href="https://wise.com/pay/r/GvcVMCCmDfqbtnQ" target="_blank" class="wise-link">Nigerian Naira</a>
+  <a href="https://wise.com/pay/r/6UvfGlaHjw-QV70" target="_blank" class="wise-link">Ukrainian Hryvnia</a>
+    </div>
+
+    <a href="index.html" class="back-home">← Return to Deepak World</a>
+
+    <footer>
+        &copy; 2026 Deepak World. Secure international payments via Wise.
+    </footer>
+</div>
+
+</body>
+</html>
