@@ -3,86 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Portal - Deepak IT & WebServices</title>
+    <title>Customer Portal - Deepak IT & WebServices</title>
     
     <script src="https://www.paypal.com/sdk/js?client-id=BAAd2Up9nyUwr7Hoyt2Yy2OOH48OVtxf1Jem4jd1Zzxc7ek5OqitpKpE74505hYY57YAr2Oc1niZLikV84&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
 
     <style>
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8f9fa; display: flex; justify-content: center; padding: 40px 20px; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 480px; width: 100%; text-align: center; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 500px; width: 100%; text-align: center; }
         .logo { font-weight: bold; color: #1a73e8; font-size: 24px; margin-bottom: 10px; display: block; }
         input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
         .step { background: #f0f4f8; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: left; border: 1px solid #e1e8ed; }
         .step-title { font-weight: bold; color: #1a73e8; display: block; margin-bottom: 15px; border-bottom: 1px solid #d1d9e0; padding-bottom: 5px; }
         
-        /* Payment Button Grid */
-        .payment-grid { display: flex; flex-direction: column; gap: 15px; align-items: center; }
-        .pay-option { width: 100%; text-align: center; margin-bottom: 10px; }
+        /* Payment Grid */
+        .payment-grid { display: flex; flex-direction: column; gap: 20px; align-items: center; }
+        .pay-option { width: 100%; text-align: center; }
         .pay-label { font-size: 13px; color: #555; margin-bottom: 8px; display: block; font-weight: 600; }
 
         .btn-download { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; }
-        .btn-other { text-decoration: none; display: inline-block; padding: 8px 15px; border-radius: 5px; color: white; font-size: 14px; margin: 5px; font-weight: bold; }
-        .paypal-link { background: #0070ba; }
-        .wise { background: #00b9ff; }
-        #error { color: #d93025; font-size: 14px; display: none; margin-bottom: 10px; }
+        .btn-wise { text-decoration: none; display: block; padding: 10px; border-radius: 6px; color: white; background: #00b9ff; font-weight: bold; font-size: 14px; }
         
-        hr { border: 0; border-top: 1px dashed #ccc; margin: 15px 0; }
+        #error { color: #d93025; font-size: 14px; display: none; margin-bottom: 10px; }
+        .note { font-size: 11px; color: #666; margin-top: 8px; font-style: italic; line-height: 1.4; }
+        hr { border: 0; border-top: 1px dashed #ccc; width: 100%; margin: 10px 0; }
     </style>
 </head>
 <body>
 
 <div class="card">
     <span class="logo">Deepak IT & WebServices</span>
-    <p>Enter your Order ID to pay or download your copy.</p>
+    <p>Enter your Order ID to pay or download your file.</p>
 
     <input type="text" id="orderID" placeholder="Order No (e.g., DIWS-Order-001)">
-    <p id="error">Invalid Order Number. Please use format: DIWS-Order-XXX</p>
+    <p id="error">Invalid Order Number. Format: DIWS-Order-XXX</p>
 
     <div class="step">
-        <span class="step-title">Step 1: Choose Payment Option</span>
+        <span class="step-title">Step 1: Choose Payment Method</span>
         
         <div class="payment-grid">
             <div class="pay-option">
-                <span class="pay-label">Standard IT Support</span>
+                <span class="pay-label">IT Support Fee (India)</span>
                 <form>
                     <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdgy0Sufa6OlhH" async> </script>
                 </form>
             </div>
 
             <div class="pay-option">
-                <span class="pay-label">Custom Project / Software Asset</span>
+                <span class="pay-label">Custom Project / Software Assets</span>
                 <form>
                     <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdp2o5UrIZRtdp" async> </script>
                 </form>
             </div>
 
-            <hr style="width: 100%;">
+            <hr>
 
             <div class="pay-option">
-                <span class="pay-label">Buy Rummy Script (International)</span>
+                <span class="pay-label">Buy Rummy Script (International PayPal)</span>
                 <div id="paypal-container-PCF25NCBB3X2G"></div>
                 <script>
                   paypal.HostedButtons({
                     hostedButtonId: "PCF25NCBB3X2G",
                   }).render("#paypal-container-PCF25NCBB3X2G")
                 </script>
+                <p class="note">✅ Auto-redirects to download after payment.</p>
             </div>
 
-            <div style="margin-top: 10px; width: 100%; text-align: center;">
-                <span class="pay-label">Other International Options</span>
-                <a href="https://www.paypal.com/ncp/payment/8F76ZTRBSJC3W" target="_blank" class="btn-other paypal-link">PayPal Link</a>
-                <a href="https://wise.com/pay/business/deepakt604?utm_source=open_link" target="_blank" class="btn-other wise">Wise</a>
+            <hr>
+
+            <div class="pay-option">
+                <span class="pay-label">Direct Bank Transfer (Wise)</span>
+                <a href="https://wise.com/pay/r/Qre3T5BVA1FyqSg" target="_blank" class="btn-wise">Pay via Wise</a>
+                <p class="note">⚠️ Wise does not redirect. After paying, please return here and use Step 2 to download.</p>
             </div>
         </div>
-        
-        <small style="display:block; margin-top:15px; color:#666; font-style: italic;">
-            * Razorpay sends an automated PDF invoice to your email instantly after payment.
-        </small>
     </div>
 
     <div class="step">
-        <span class="step-title">Step 2: Download Manual Copy</span>
-        <button class="btn-download" onclick="checkAndDownload()">View/Print PDF</button>
+        <span class="step-title">Step 2: Get Your File / Invoice</span>
+        <button class="btn-download" onclick="checkAndDownload()">View / Print PDF</button>
     </div>
 </div>
 
@@ -90,17 +88,14 @@
     function checkAndDownload() {
         const input = document.getElementById('orderID').value.trim();
         const error = document.getElementById('error');
-
-        // Regex to check if format is DIWS-Order-XXX (Case Insensitive)
         const pattern = /^DIWS-Order-\d{3}$/i;
 
         if (pattern.test(input)) {
             error.style.display = 'none';
-            // Convert DIWS-Order-001 to DIWS-Invoice-001.pdf
+            // Logic: DIWS-Order-001 -> customer/DIWS-Invoice-001.pdf
             const invoiceNum = input.toUpperCase().replace('ORDER', 'Invoice');
             const fileUrl = `customer/${invoiceNum}.pdf`;
             
-            // Redirect to the PDF file
             window.location.href = fileUrl;
         } else {
             error.style.display = 'block';
