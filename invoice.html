@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Portal - Deepak IT & WebServices</title>
+    
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAd2Up9nyUwr7Hoyt2Yy2OOH48OVtxf1Jem4jd1Zzxc7ek5OqitpKpE74505hYY57YAr2Oc1niZLikV84&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
     <style>
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8f9fa; display: flex; justify-content: center; padding: 40px 20px; }
         .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 480px; width: 100%; text-align: center; }
@@ -14,14 +17,16 @@
         
         /* Payment Button Grid */
         .payment-grid { display: flex; flex-direction: column; gap: 15px; align-items: center; }
-        .pay-option { width: 100%; text-align: center; }
-        .pay-label { font-size: 13px; color: #555; margin-bottom: 5px; display: block; font-weight: 600; }
+        .pay-option { width: 100%; text-align: center; margin-bottom: 10px; }
+        .pay-label { font-size: 13px; color: #555; margin-bottom: 8px; display: block; font-weight: 600; }
 
         .btn-download { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; }
         .btn-other { text-decoration: none; display: inline-block; padding: 8px 15px; border-radius: 5px; color: white; font-size: 14px; margin: 5px; font-weight: bold; }
-        .paypal { background: #0070ba; }
+        .paypal-link { background: #0070ba; }
         .wise { background: #00b9ff; }
         #error { color: #d93025; font-size: 14px; display: none; margin-bottom: 10px; }
+        
+        hr { border: 0; border-top: 1px dashed #ccc; margin: 15px 0; }
     </style>
 </head>
 <body>
@@ -51,12 +56,25 @@
                 </form>
             </div>
 
-            <div style="margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px; width: 100%;">
-                <span class="pay-label">International Clients</span>
-                <a href="https://www.paypal.com/ncp/payment/8F76ZTRBSJC3W" target="_blank" class="btn-other paypal">PayPal</a>
+            <hr style="width: 100%;">
+
+            <div class="pay-option">
+                <span class="pay-label">Buy Rummy Script (International)</span>
+                <div id="paypal-container-PCF25NCBB3X2G"></div>
+                <script>
+                  paypal.HostedButtons({
+                    hostedButtonId: "PCF25NCBB3X2G",
+                  }).render("#paypal-container-PCF25NCBB3X2G")
+                </script>
+            </div>
+
+            <div style="margin-top: 10px; width: 100%; text-align: center;">
+                <span class="pay-label">Other International Options</span>
+                <a href="https://www.paypal.com/ncp/payment/8F76ZTRBSJC3W" target="_blank" class="btn-other paypal-link">PayPal Link</a>
                 <a href="https://wise.com/pay/business/deepakt604?utm_source=open_link" target="_blank" class="btn-other wise">Wise</a>
             </div>
         </div>
+        
         <small style="display:block; margin-top:15px; color:#666; font-style: italic;">
             * Razorpay sends an automated PDF invoice to your email instantly after payment.
         </small>
