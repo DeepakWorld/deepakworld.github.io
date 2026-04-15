@@ -8,14 +8,27 @@
     <script src="https://www.paypal.com/sdk/js?client-id=BAAd2Up9nyUwr7Hoyt2Yy2OOH48OVtxf1Jem4jd1Zzxc7ek5OqitpKpE74505hYY57YAr2Oc1niZLikV84&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
 
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8f9fa; display: flex; justify-content: center; padding: 40px 20px; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 500px; width: 100%; text-align: center; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Stars Background Effect */
+        #stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); overflow: hidden; }
+        
+        .main-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+        
+        .name { color: #fff; font-size: 1.5rem; font-weight: bold; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+        .game-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .game-links a { background: rgba(255, 255, 255, 0.1); color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.3); font-size: 14px; transition: 0.3s; }
+        .game-links a:hover { background: #1a73e8; border-color: #1a73e8; }
+
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 500px; width: 100%; text-align: center; }
         .logo { font-weight: bold; color: #1a73e8; font-size: 24px; margin-bottom: 10px; display: block; }
+        
         input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
+        
         .step { background: #f0f4f8; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: left; border: 1px solid #e1e8ed; }
         .step-title { font-weight: bold; color: #1a73e8; display: block; margin-bottom: 15px; border-bottom: 1px solid #d1d9e0; padding-bottom: 5px; }
         
-        /* Payment Grid */
         .payment-grid { display: flex; flex-direction: column; gap: 20px; align-items: center; }
         .pay-option { width: 100%; text-align: center; }
         .pay-label { font-size: 13px; color: #555; margin-bottom: 8px; display: block; font-weight: 600; }
@@ -26,75 +39,97 @@
         #error { color: #d93025; font-size: 14px; display: none; margin-bottom: 10px; }
         .note { font-size: 11px; color: #666; margin-top: 8px; font-style: italic; line-height: 1.4; }
         hr { border: 0; border-top: 1px dashed #ccc; width: 100%; margin: 10px 0; }
+
+        .menu-item { color: #ecf0f1; text-decoration: none; font-size: 0.8rem; transition: 0.2s; }
+        .menu-item:hover { color: orange; text-decoration: underline; }
     </style>
 </head>
 <body>
+
 <div id="stars"></div>
 
 <div class="main-wrapper">
     <p class="name">Buy / Donate For Children Games Development</p>
 
-  <div class="game-links">
-         <a href="https://deepakworld.github.io" target="_blank">Home Page!</a>
-        <a href="Deepak.apk" download style="font-weight:bold; color: #04AA6D;">📥 Download App</a>
+    <div class="game-links">
+        <a href="https://deepakworld.github.io" target="_blank">Home Page!</a>
+        <a href="Deepak.apk" download style="font-weight:bold; color: #04AA6D; border-color: #04AA6D;">📥 Download App</a>
         <a href="https://deepakrummy.github.io/games/index.html" target="_blank">Wow Games</a>
         <a href="https://gamefans.web.app" target="_blank">Play Unlimited Free Games!</a>
         <a href="https://perchance.org/deepak-projects" target="_blank">AI Site!</a>
     </div>
 
-<div class="card">
-    <span class="logo">Deepak IT & WebServices</span>
-    <p>Enter your Order ID to pay or download your file.</p>
+    <div class="card">
+        <span class="logo">Deepak IT & WebServices</span>
+        <p>Enter your Order ID to pay or download your file.</p>
 
-    <input type="text" id="orderID" placeholder="Order No (e.g., DIWS-Order-001)">
-    <p id="error">Invalid Order Number. Format: DIWS-Order-XXX</p>
+        <input type="text" id="orderID" placeholder="Order No (e.g., DIWS-Order-001)">
+        <p id="error">Invalid Order Number. Format: DIWS-Order-XXX</p>
 
-    <div class="step">
-        <span class="step-title">Step 1: Choose Payment Method</span>
-        
-        <div class="payment-grid">
-            <div class="pay-option">
-                <span class="pay-label">IT Support Fee (India)</span>
-                <form>
-                    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdgy0Sufa6OlhH" async> </script>
-                </form>
-            </div>
+        <div class="step">
+            <span class="step-title">Step 1: Choose Payment Method</span>
+            <div class="payment-grid">
+                <div class="pay-option">
+                    <span class="pay-label">IT Support Fee (India)</span>
+                    <form>
+                        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdgy0Sufa6OlhH" async> </script>
+                    </form>
+                </div>
 
-            <div class="pay-option">
-                <span class="pay-label">Custom Project / Software Assets</span>
-                <form>
-                    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdp2o5UrIZRtdp" async> </script>
-                </form>
-            </div>
+                <div class="pay-option">
+                    <span class="pay-label">Custom Project / Software Assets</span>
+                    <form>
+                        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdp2o5UrIZRtdp" async> </script>
+                    </form>
+                </div>
 
-            <hr>
+                <hr>
 
-            <div class="pay-option">
-                <span class="pay-label">Buy Rummy Rules PDF Only (International PayPal)</span>
-                <div id="paypal-container-PCF25NCBB3X2G"></div>
-                <script>
-                  paypal.HostedButtons({
-                    hostedButtonId: "PCF25NCBB3X2G",
-                  }).render("#paypal-container-PCF25NCBB3X2G")
-                </script>
-                <p class="note">✅ Auto-redirects to download after payment.</p>
-            </div>
+                <div class="pay-option">
+                    <span class="pay-label">Buy Rummy Rules PDF (International PayPal)</span>
+                    <div id="paypal-container-PCF25NCBB3X2G"></div>
+                    <script>
+                      paypal.HostedButtons({
+                        hostedButtonId: "PCF25NCBB3X2G",
+                      }).render("#paypal-container-PCF25NCBB3X2G")
+                    </script>
+                    <p class="note">✅ Auto-redirects to download after payment.</p>
+                </div>
 
-            <hr>
+                <hr>
 
-            <div class="pay-option">
-                <span class="pay-label">Direct Bank Transfer (Wise)</span>
-                <a href="https://wise.com/pay/r/Qre3T5BVA1FyqSg" target="_blank" class="btn-wise">Pay via Wise</a>
-                <p class="note">⚠️ Wise does not redirect. After paying, please return here and use Step 2 to download.</p>
+                <div class="pay-option">
+                    <span class="pay-label">Direct Bank Transfer (Wise)</span>
+                    <a href="https://wise.com/pay/r/Qre3T5BVA1FyqSg" target="_blank" class="btn-wise">Pay via Wise</a>
+                    <p class="note">⚠️ Wise does not redirect. After paying, please return here and use Step 2 to download.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="step">
-        <span class="step-title">Step 2: Get Your File / Invoice</span>
-        <button class="btn-download" onclick="checkAndDownload()">View / Print PDF</button>
+        <div class="step">
+            <span class="step-title">Step 2: Get Your File / Invoice</span>
+            <button class="btn-download" onclick="checkAndDownload()">View / Print PDF</button>
+        </div>
     </div>
 </div>
+
+<footer style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid #5f259f; font-family: 'Verdana', sans-serif;">
+    <div style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
+        <p style="font-weight: bold; font-size: 1rem; color: orange; margin-bottom: 5px;">Deepak IT & WebServices | Proprietorship Firm</p>
+        <p>MSME Registration: <strong>UDYAM-KR-03-0674838</strong> | NIC Code: 62011 (Software Development)</p>
+        
+        <div style="margin: 15px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+            <a href="privacy-policy.html" class="menu-item" target="_blank">Privacy Policy</a>
+            <a href="refund-policy.html" class="menu-item" target="_blank">Refund Policy</a>
+            <a href="shipping-return.html" class="menu-item" target="_blank">Shipping and Return Policy</a>
+            <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
+        </div>
+
+        <p style="color: #bdc3c7; font-size: 0.75rem; margin-top: 10px;">
+            &copy; 2026 All Rights Reserved. | Support: deepakdesignservice@gmail.com
+        </p>
+    </div>
+</footer>
 
 <script>
     function checkAndDownload() {
@@ -107,35 +142,12 @@
             // Logic: DIWS-Order-001 -> customer/DIWS-Invoice-001.pdf
             const invoiceNum = input.toUpperCase().replace('ORDER', 'Invoice');
             const fileUrl = `customer/${invoiceNum}.pdf`;
-            
             window.location.href = fileUrl;
         } else {
             error.style.display = 'block';
         }
     }
 </script>
-
-</div>
-
-<footer style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid #5f259f; font-family: 'Verdana', sans-serif;">
-    <div style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
-        <p style="font-weight: bold; font-size: 1rem; color: orange; margin-bottom: 5px;">Deepak IT & WebServices | Proprietorship Firm</p>
-        <p>MSME Registration: <strong>UDYAM-KR-03-0674838</strong> | NIC Code: 62011 (Software Development)</p>
-        
-        <!-- Policy Links Section -->
-        <div style="margin: 15px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
-            <a href="privacy-policy.html" class="menu-item" target="_blank">Privacy Policy</a>
-<a href="refund-policy.html" class="menu-item" target="_blank">Refund Policy</a>
-<a href="shipping-return.html" class="menu-item" target="_blank">Shipping and Return Policy</a>
-
-         <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
-        </div>
-
-        <p style="color: #bdc3c7; font-size: 0.75rem; margin-top: 10px;">
-            &copy; 2026 All Rights Reserved. | Support: deepakdesignservice@gmail.com
-        </p>
-    </div>
-</footer>
 
 </body>
 </html>
