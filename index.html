@@ -931,8 +931,15 @@ function showSlides() {
     <span class="tooltiptext">Chat with Deepak</span>
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:35px; margin-top:12px;">
 </a>
-<iframe id='kofiframe' src='https://ko-fi.com/deepakwebservices/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='deepakwebservices'></iframe>
-
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('deepakwebservices', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#00b9fe',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
 
 <footer style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid #5f259f; font-family: 'Verdana', sans-serif;">
     <div style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
