@@ -10,10 +10,13 @@
             line-height: 1.6;
             color: #333;
             background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+        }
+        .main-content {
             display: flex;
             justify-content: center;
             padding: 40px 20px;
-            margin: 0;
         }
         .container {
             max-width: 800px;
@@ -47,19 +50,11 @@
             font-size: 1.2rem;
             margin-top: 25px;
         }
-        p, ul {
-            margin-bottom: 15px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        .highlight {
-            font-weight: bold;
-            color: #c0392b; 
-        }
+        p, ul { margin-bottom: 15px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .highlight { font-weight: bold; color: #c0392b; }
+        
         .footer-action {
             margin-top: 35px;
             padding: 25px;
@@ -68,11 +63,7 @@
             border: 1px dashed #cbd5e0;
             text-align: center;
         }
-        .checkbox-wrapper {
-            margin-bottom: 20px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
+        .checkbox-wrapper { margin-bottom: 20px; font-size: 1rem; cursor: pointer; }
         button {
             background-color: #27ae60;
             color: white;
@@ -84,57 +75,54 @@
             font-weight: bold;
             transition: background 0.3s ease;
         }
-        button:hover {
-            background-color: #219150;
-        }
+        button:hover { background-color: #219150; }
+
+        /* Footer Menu Styling */
+        .menu-item { color: #00d4ff; text-decoration: none; font-weight: bold; }
+        .menu-item:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <div class="company-name">Deepak IT & Web Services</div>
-        <h1>Service Terms & Conditions</h1>
-    </div>
-
-    <p>By engaging our services, you (the <strong>"Customer"</strong>) agree to the following terms and conditions:</p>
-
-    <h2>1. One-Time Setup Policy</h2>
-    <p>Our services are provided as a <strong>one-time setup</strong>. We are committed to excellence and will work diligently until the initial setup meets your specific requirements and reaches final customer satisfaction.</p>
-
-    <h2>2. Final Approval & Acceptance</h2>
-    <p>Upon completion of the setup, the Customer is required to review and provide formal confirmation or acceptance.</p>
-    <ul>
-        <li><strong>Approval:</strong> Once the Customer confirms satisfaction, the project is officially considered "Closed."</li>
-        <li><strong>Observation Period:</strong> Any minor adjustments required within a 48-hour window related to the initial setup will be handled at no extra cost.</li>
-    </ul>
-
-    <h2>3. Future Support & Re-engagement</h2>
-    <p>Any requests, issues, or modifications requested <strong>after</strong> the final approval and initial setup is complete will be treated as a new service request.</p>
-    <ul>
-        <li><span class="highlight">Service Charges:</span> Standard hourly or flat-fee rates will be applicable to any troubleshooting, updates, or "second-time" issues.</li>
-        <li><strong>Scope:</strong> This includes issues caused by user error, third-party updates, or changes in customer requirements after the initial hand-off.</li>
-    </ul>
-
-    <h2>4. Mandatory Confirmation</h2>
-    <p>No work will commence until the Customer has explicitly accepted these terms. Proceeding with the service request constitutes a binding agreement to these conditions.</p>
-
-    <div class="footer-action">
-        <div class="checkbox-wrapper">
-            <input type="checkbox" id="agree"> 
-            <label for="agree">I accept the terms of <strong>Deepak IT & Web Services</strong></label>
+<div class="main-content">
+    <div class="container">
+        <div class="header">
+            <div class="company-name">Deepak IT & Web Services</div>
+            <h1>Service Terms & Conditions</h1>
         </div>
-        <button onclick="checkAgreement()">Confirm & Proceed</button>
+
+        <p>By engaging our services, you (the <strong>"Customer"</strong>) agree to the following terms and conditions:</p>
+
+        <h2>1. One-Time Setup Policy</h2>
+        <p>Our services are provided as a <strong>one-time setup</strong>. We are committed to excellence and will work diligently until the initial setup meets your requirements.</p>
+
+        <h2>2. Final Approval & Acceptance</h2>
+        <p>Upon completion, formal confirmation is required. Project is considered "Closed" once satisfaction is confirmed. Minor adjustments within 48 hours are included.</p>
+
+        <h2>3. Future Support & Re-engagement</h2>
+        <p>Any requests requested <strong>after</strong> final approval will be treated as a new service request with applicable <span class="highlight">Service Charges</span>.</p>
+
+        <h2>4. Digital Products & Refund Limitation</h2>
+        <p>As we deal in intangible digital goods (Apps/Games), once the setup is delivered or download is accessed, the one-time service fee is non-refundable unless technical failure is proven.</p>
+
+        <div class="footer-action">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="agree"> 
+                <label for="agree">I accept the terms of <strong>Deepak IT & Web Services</strong></label>
+            </div>
+            <button onclick="checkAgreement()">Confirm & Proceed</button>
+        </div>
     </div>
 </div>
+
+
 
 <script>
     function checkAgreement() {
         var isChecked = document.getElementById('agree').checked;
         if(isChecked) {
             alert('Thank you! Redirecting you to Deepak World...');
-            // Redirects to your requested site
-            window.location.href = "https://deepakworld.github.io/";
+            window.location.href = "https://deepakworld.web.app";
         } else {
             alert('Please check the box to accept the terms before proceeding.');
         }
