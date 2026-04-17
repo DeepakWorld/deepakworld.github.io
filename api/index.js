@@ -5,7 +5,7 @@ const app = express();
 
 // 1. CORS Setup - Add both your frontend domains
 app.use(cors({ 
-    origin: ['https://deepakworld.github.io', 'https://web.app'],
+    origin: ['https://deepakworld.github.io', 'https://deepakworld.web.app'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
