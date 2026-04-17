@@ -114,24 +114,8 @@
     </div>
 </div>
 
-<footer style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid #5f259f; font-family: 'Verdana', sans-serif;">
-    <div style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
-        <p style="font-weight: bold; font-size: 1rem; color: orange; margin-bottom: 5px;">Deepak IT & WebServices | Proprietorship Firm</p>
-        <p>MSME Registration: <strong>UDYAM-KR-03-0674838</strong> | NIC Code: 62011 (Software Development)</p>
-        
-        <div style="margin: 15px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
-            <a href="privacy-policy.html" class="menu-item" target="_blank">Privacy Policy</a>
-            <a href="refund-policy.html" class="menu-item" target="_blank">Refund Policy</a>
-            <a href="shipping-return.html" class="menu-item" target="_blank">Shipping and Return Policy</a>
-            <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
-        </div>
 
-        <p style="color: #bdc3c7; font-size: 0.75rem; margin-top: 10px;">
-            &copy; 2026 All Rights Reserved. | Support: deepakdesignservice@gmail.com
-        </p>
-    </div>
-</footer>
-<!-- 1. Ensure the PhonePe SDK is loaded -->
+<!-- 1. CORRECT PhonePe SDK -->
 <script src="https://phonepe.com"></script>
 
 <script>
@@ -143,7 +127,7 @@ async function payWithPhonePe() {
     }
 
     try {
-        // FIXED: Using your full project URL and specific route
+        // 2. CORRECT Vercel URL with full path
         const response = await fetch('https://vercel.app', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -161,7 +145,7 @@ async function payWithPhonePe() {
                     tokenUrl: data.tokenUrl,
                     callback: (res) => {
                         if (res === 'CONCLUDED') {
-                            // FIXED: Redirect to your real file
+                            // 3. CORRECT Redirect to your file
                             window.location.href = "https://github.io";
                         } else if (res === 'USER_CANCEL') {
                             alert("Payment cancelled.");
@@ -170,6 +154,7 @@ async function payWithPhonePe() {
                     type: "IFRAME"
                 });
             } else {
+                // Fallback to direct redirect if SDK fails
                 window.location.href = data.tokenUrl;
             }
         } else {
@@ -181,27 +166,40 @@ async function payWithPhonePe() {
     }
 }
 
+function checkAndDownload() {
+    const input = document.getElementById('orderID').value.trim();
+    const error = document.getElementById('error');
+    const pattern = /^DIWS-Order-\d{3}$/i;
+
+    if (pattern.test(input)) {
+        error.style.display = 'none';
+        const invoiceNum = input.toUpperCase().replace('ORDER', 'Invoice');
+        const fileUrl = `customer/${invoiceNum}.pdf`;
+        window.location.href = fileUrl;
+    } else {
+        error.style.display = 'block';
+    }
+}
 </script>
 
 
-<script>
-    function checkAndDownload() {
-        const input = document.getElementById('orderID').value.trim();
-        const error = document.getElementById('error');
-        const pattern = /^DIWS-Order-\d{3}$/i;
 
-        if (pattern.test(input)) {
-            error.style.display = 'none';
-            // Logic: DIWS-Order-001 -> customer/DIWS-Invoice-001.pdf
-            const invoiceNum = input.toUpperCase().replace('ORDER', 'Invoice');
-            const fileUrl = `customer/${invoiceNum}.pdf`;
-            window.location.href = fileUrl;
-        } else {
-            error.style.display = 'block';
-        }
-    }
+    <footer style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid #5f259f; font-family: 'Verdana', sans-serif;">
+    <div style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
+        <p style="font-weight: bold; font-size: 1rem; color: orange; margin-bottom: 5px;">Deepak IT & WebServices | Proprietorship Firm</p>
+        <p>MSME Registration: <strong>UDYAM-KR-03-0674838</strong> | NIC Code: 62011 (Software Development)</p>
+        
+        <div style="margin: 15px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+            <a href="privacy-policy.html" class="menu-item" target="_blank">Privacy Policy</a>
+            <a href="refund-policy.html" class="menu-item" target="_blank">Refund Policy</a>
+            <a href="shipping-return.html" class="menu-item" target="_blank">Shipping and Return Policy</a>
+            <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
+        </div>
 
-
-    </script>
+        <p style="color: #bdc3c7; font-size: 0.75rem; margin-top: 10px;">
+            &copy; 2026 All Rights Reserved. | Support: deepakdesignservice@gmail.com
+        </p>
+    </div>
+</footer>
 </body>
 </html>
