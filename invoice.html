@@ -126,15 +126,17 @@ async function payWithPhonePe() {
     }
 
     try {
-        // FIXED: Using your specific project URL instead of generic 'vercel.app'
-        const response = await fetch('https://phonepe-kohl.vercel.app', { 
+        // FIXED: Added the full /api path
+        const response = await fetch('https://phonepe-kohl.vercel.app/api/initiate-phonepe-payment', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 orderId: orderID,
-                amount: 1 
+                amount: 1  // This will be multiplied by 100 in your server code (100 Paise = 1 INR)
             })
         });
+
+        // Rest of your logic...
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
