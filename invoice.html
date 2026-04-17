@@ -143,48 +143,44 @@ async function payWithPhonePe() {
     }
 
     try {
-        // 2. Point to your Vercel URL
-       const response = await fetch('https://vercel.app', {
-{
+        // FIXED: Using your full project URL and specific route
+        const response = await fetch('https://vercel.app', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 orderId: orderID,
-                amount: 1 // Change this to your desired amount in Rupees
+                amount: 1 
             })
         });
 
         const data = await response.json();
 
-        // 3. The backend sends 'tokenUrl', let's use it
         if (data.success && data.tokenUrl) {
-            
             if (window.PhonePeCheckout && window.PhonePeCheckout.transact) {
                 window.PhonePeCheckout.transact({
                     tokenUrl: data.tokenUrl,
-                    callback: (response) => {
-                        if (response === 'CONCLUDED') {
+                    callback: (res) => {
+                        if (res === 'CONCLUDED') {
+                            // FIXED: Redirect to your real file
                             window.location.href = "https://github.io";
-                        } else if (response === 'USER_CANCEL') {
+                        } else if (res === 'USER_CANCEL') {
                             alert("Payment cancelled.");
                         }
                     },
                     type: "IFRAME"
                 });
             } else {
-                // Fallback: If IFrame fails, redirect the whole page
-               window.location.href = "https://github.io";
-
+                window.location.href = data.tokenUrl;
             }
-            
         } else {
-            alert("Error: " + (data.message || "Payment initiation failed. Check Vercel logs."));
+            alert("Error: " + (data.message || "Payment initiation failed."));
         }
     } catch (error) {
         console.error("Network Error:", error);
-        alert("Server is not responding. Check if Vercel is awake.");
+        alert("Server is not responding. Check your Vercel logs.");
     }
 }
+
 </script>
 
 
