@@ -116,19 +116,20 @@
 
 
 <!-- 1. CORRECT PhonePe SDK -->
+<!-- For Production -->
 <script src="https://phonepe.com"></script>
 
 <script>
 async function payWithPhonePe() {
-    const orderID = document.getElementById('orderID').value.trim();
+    const orderID = document.getElementById('orderID').value?.trim();
     if (!orderID) {
         alert("Please enter your Order ID first.");
         return;
     }
 
     try {
-        // 2. CORRECT Vercel URL with full path
-       const response = await fetch('https://vercel.app', { 
+        // USE YOUR SPECIFIC DEPLOYMENT URL
+        const response = await fetch('https://vercel.app', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
@@ -137,15 +138,17 @@ async function payWithPhonePe() {
             })
         });
 
+        if (!response.ok) throw new Error("Server returned " + response.status);
+
         const data = await response.json();
 
         if (data.success && data.tokenUrl) {
-            if (window.PhonePeCheckout && window.PhonePeCheckout.transact) {
+            // PhonePe SDK check
+            if (window.PhonePeCheckout && typeof window.PhonePeCheckout.transact === 'function') {
                 window.PhonePeCheckout.transact({
                     tokenUrl: data.tokenUrl,
                     callback: (res) => {
                         if (res === 'CONCLUDED') {
-                            // 3. CORRECT Redirect to your file
                             window.location.href = "https://deepakworld.github.io/";
                         } else if (res === 'USER_CANCEL') {
                             alert("Payment cancelled.");
@@ -154,7 +157,7 @@ async function payWithPhonePe() {
                     type: "IFRAME"
                 });
             } else {
-                // Fallback to direct redirect if SDK fails
+                // Fallback: Open payment page directly if SDK hasn't loaded
                 window.location.href = data.tokenUrl;
             }
         } else {
@@ -162,10 +165,12 @@ async function payWithPhonePe() {
         }
     } catch (error) {
         console.error("Network Error:", error);
-        alert("Server is not responding. Check your Vercel logs.");
+        alert("Cannot connect to server. Ensure your Vercel project is running.");
     }
 }
+</script>
 
+<script>
 function checkAndDownload() {
     const input = document.getElementById('orderID').value.trim();
     const error = document.getElementById('error');
