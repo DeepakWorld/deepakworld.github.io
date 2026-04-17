@@ -128,7 +128,7 @@ async function payWithPhonePe() {
 
     try {
         // 2. CORRECT Vercel URL with full path
-        const response = await fetch('https://vercel.app', {
+        const response = await fetch('https://phonepe-kohl.vercel.app/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
@@ -146,7 +146,7 @@ async function payWithPhonePe() {
                     callback: (res) => {
                         if (res === 'CONCLUDED') {
                             // 3. CORRECT Redirect to your file
-                            window.location.href = "https://github.io";
+                            window.location.href = "https://deepakworld.github.io/";
                         } else if (res === 'USER_CANCEL') {
                             alert("Payment cancelled.");
                         }
