@@ -128,7 +128,7 @@ async function payWithPhonePe() {
 
     try {
         // 2. CORRECT Vercel URL with full path
-        const response = await fetch('https://phonepe-kohl.vercel.app/', {
+       const response = await fetch('https://vercel.app', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
