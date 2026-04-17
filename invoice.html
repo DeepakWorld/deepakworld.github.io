@@ -88,7 +88,14 @@
 
                 <hr>
 
-               
+      <div class="pay-option">
+    <span class="pay-label">Pay via PhonePe (UPI/Cards)</span>
+    <button onclick="payWithPhonePe()" style="background: #5f259f; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <img src="https://www.phonepe.com/webstatic/8141/static/m-608b49.svg" alt="PhonePe" style="height: 20px; filter: brightness(0) invert(1);"> 
+        Pay with PhonePe
+    </button>
+</div>
+
 
                 <hr>
 
@@ -124,7 +131,31 @@
         </p>
     </div>
 </footer>
+<script>
+async function payWithPhonePe() {
+    const orderID = document.getElementById('orderID').value.trim();
+    if (!orderID) {
+        alert("Please enter your Order ID first.");
+        return;
+    }
 
+    const response = await fetch('/initiate-phonepe-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            orderId: orderID,
+            amount: 100 // Amount in Rupees
+        })
+    });
+
+    const data = await response.json();
+    if (data.success && data.url) {
+        window.location.href = data.url; // Redirect to PhonePe payment page
+    } else {
+        alert("Payment initialization failed.");
+    }
+}
+</script>
 <script>
     function checkAndDownload() {
         const input = document.getElementById('orderID').value.trim();
@@ -141,7 +172,8 @@
             error.style.display = 'block';
         }
     }
-</script>
 
+
+    </script>
 </body>
 </html>
