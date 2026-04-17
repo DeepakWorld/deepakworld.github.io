@@ -3,8 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+// 1. CORS Setup - Add both your frontend domains
 app.use(cors({ 
-    origin: 'https://github.io',
+    origin: ['https://deepakworld.github.io', 'https://web.app'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -16,7 +17,7 @@ const credentials = {
     client_version: 1
 };
 
-// 1. FIXED: Correct OAuth URL
+// 2. FIXED: Correct Production OAuth Endpoint
 async function getAuthToken() {
     const data = new URLSearchParams({
         ...credentials,
@@ -34,14 +35,14 @@ app.post('/api/initiate-phonepe-payment', async (req, res) => {
         const token = await getAuthToken();
         
         const payPayload = {
-            merchantId: credentials.client_id, // Usually the same as client_id
+            merchantId: credentials.client_id, // Production Merchant ID
             merchantOrderId: "ORD-" + Date.now(),
             amount: Math.floor(req.body.amount * 100), 
-            redirectUrl: "https://github.io/customer/DIWS-Invoice-001.pdf",
+            redirectUrl: "https://deepakworld.github.io/customer/DIWS-Invoice-001.pdf",
             mode: "PAY_PAGE"
         };
 
-        // 2. FIXED: Correct Production Payment URL
+        // 3. FIXED: Correct Production Payment Endpoint
         const response = await axios.post('https://phonepe.com', payPayload, {
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -49,9 +50,11 @@ app.post('/api/initiate-phonepe-payment', async (req, res) => {
             }
         });
 
-        // 3. FIXED: Proper data path for the redirect URL
+        // 4. FIXED: Correct response parsing for production
         const redirectUrl = response.data.data?.instrumentResponse?.redirectInfo?.url || response.data.data?.redirectUrl;
         
+        if (!redirectUrl) throw new Error("PhonePe did not return a redirect URL");
+
         res.json({ success: true, tokenUrl: redirectUrl });
 
     } catch (err) {
