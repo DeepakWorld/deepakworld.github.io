@@ -144,7 +144,8 @@ async function payWithPhonePe() {
 
     try {
         // 2. Point to your Vercel URL
-        const response = await fetch('https://vercel.app', {
+       const response = await fetch('https://vercel.app', {
+{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
@@ -172,7 +173,8 @@ async function payWithPhonePe() {
                 });
             } else {
                 // Fallback: If IFrame fails, redirect the whole page
-                window.location.href = data.tokenUrl;
+               window.location.href = "https://github.io";
+
             }
             
         } else {
