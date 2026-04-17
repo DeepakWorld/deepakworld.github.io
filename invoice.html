@@ -142,56 +142,48 @@ async function payWithPhonePe() {
         return;
     }
 
-    // Optional: Add a loading state to your button here
     try {
-        const response = await fetch('https://phonepe-kohl.vercel.app/initiate-phonepe-payment', {
+        const response = await fetch('https://vercel.app', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 orderId: orderID,
-                amount: 1 // Set your amount here (e.g., 1 for ₹1)
+                amount: 1 // Example: ₹1
             })
         });
 
         const data = await response.json();
 
-        if (data.success && window.PhonePeCheckout) {
-            // 2. Invoke the PhonePe IFrame
-            window.PhonePeCheckout.transact({
-                tokenUrl: data.tokenUrl,
-                callback: (response) => {
-                    if (response === 'CONCLUDED') {
-                        // Logic after successful payment
-                        alert("Transaction Concluded! Redirecting to your file...");
-                        window.location.href = "https://github.io";
-                    } else if (response === 'USER_CANCEL') {
-                        alert("Payment was cancelled by the user.");
-                    }
-                },
-                type: "IFRAME"
-            });
+        // Check if the backend returned success and a URL
+        if (data.success && data.tokenUrl) {
+            
+            // Invoke the PhonePe SDK
+            if (window.PhonePeCheckout && window.PhonePeCheckout.transact) {
+                window.PhonePeCheckout.transact({
+                    tokenUrl: data.tokenUrl,
+                    callback: (response) => {
+                        if (response === 'CONCLUDED') {
+                            window.location.href = "https://github.io";
+                        } else if (response === 'USER_CANCEL') {
+                            alert("Payment cancelled.");
+                        }
+                    },
+                    type: "IFRAME"
+                });
+            } else {
+                // FALLBACK: If SDK fails, redirect directly
+                window.location.href = data.tokenUrl;
+            }
+            
         } else {
-            console.error("Payment initiation failed:", data);
-            alert("Error: " + (data.message || "Could not initiate payment. Check console for details."));
+            alert("Error: " + (data.message || "Invalid response from server"));
         }
     } catch (error) {
-        console.error("Network Error:", error);
-        alert("Server connection failed. Make sure your Vercel backend is awake.");
+        console.error("Frontend Error:", error);
+        alert("Could not connect to payment server.");
     }
 }
 
-function checkAndDownload() {
-    const orderID = document.getElementById('orderID').value.trim();
-    const errorMsg = document.getElementById('error');
-    
-    if (orderID.startsWith("DIWS-Order-")) {
-        errorMsg.style.display = "none";
-        // Directly view the PDF
-        window.open("https://github.io", "_blank");
-    } else {
-        errorMsg.style.display = "block";
-    }
-}
 </script>
 
 <script>
