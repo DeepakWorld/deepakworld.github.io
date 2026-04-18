@@ -129,6 +129,27 @@
             table { display: block; overflow-x: auto; }
         }
     </style>
+
+    <style>
+        @media (max-width: 600px) {
+            header { flex-direction: column; text-align: center; }
+            table { display: block; overflow-x: auto; }
+        }
+
+        /* PASTE THE UPDATED CODE HERE */
+        @media print {
+            .no-print-btn, .menu { display: none !important; } 
+            body { padding: 0; background: white; }
+            .container { 
+                box-shadow: none; 
+                border: none; 
+                width: 100%; 
+                max-width: 100%; 
+                padding: 0; 
+                margin: 0;
+            }
+        }
+    </style>
     <style>
 .menu {
     background: var(--primary-color);
@@ -167,7 +188,7 @@
          <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
          <a href="quote.html" class="menu-item" target="_blank">Services</a>
          <a href="rate.pdf" class="menu-item" target="_blank">2026 Technical Proposal & Rate Card</a>
-         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIgWlJFUiP6D6CfR-_VPCgnZ8mmfS3_4gxo7MCy2F3xoX6xA/viewform?usp=sharing&ouid=103483411452167717281" class="menu-item" target="_blank">Students Registeration Form</a>
+         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIgWlJFUiP6D6CfR-_VPCgnZ8mmfS3_4gxo7MCy2F3xoX6xA/viewform?usp=sharing&ouid=103483411452167717281" class="menu-item" target="_blank">Students Registration Form</a>
              <a href="certificate.html" class="menu-item" target="_blank">Certificate</a>
           <a href="courses.html" class="menu-item" target="_blank">Courses</a>
           <a href="fees.html" class="menu-item" target="_blank">Fees</a>
