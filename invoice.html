@@ -141,27 +141,26 @@ async function payWithPhonePe() {
         return;
     }
 
-    // Show a loader or disable button here to prevent double-clicks
     try {
         const response = await fetch('https://phonepe-kohl.vercel.app/api/initiate-phonepe-payment', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 orderId: orderID,
-                amount: 1 // Sending 1 INR
+                amount: 1 // INR → backend converts to paise
             })
         });
 
         const data = await response.json();
+        console.log("Backend Response:", data);
 
-        // PhonePe V2 returns 'redirectUrl' (not tokenUrl)
-        const paymentUrl = data.redirectUrl || data.tokenUrl;
+        const paymentUrl = data.redirectUrl;
 
-        if (data.success && paymentUrl) {
-            // Check if PhonePe SDK is loaded for the IFRAME experience
+        if (paymentUrl) {
+            // If SDK is available, use IFRAME checkout
             if (window.PhonePeCheckout && typeof window.PhonePeCheckout.transact === 'function') {
                 window.PhonePeCheckout.transact({
-                    tokenUrl: paymentUrl, // Use the URL returned from your backend
+                    tokenUrl: paymentUrl,
                     callback: function(res) {
                         if (res === 'CONCLUDED') {
                             window.location.href = "https://deepakworld.github.io/success.html";
@@ -173,7 +172,7 @@ async function payWithPhonePe() {
                     }
                 });
             } else {
-                // FALLBACK: Direct redirect if SDK isn't loaded or you prefer full-page redirect
+                // Fallback: full-page redirect
                 window.location.href = paymentUrl;
             }
         } else {
@@ -184,7 +183,6 @@ async function payWithPhonePe() {
         alert("Check your internet or backend status.");
     }
 }
-
 </script>
 
 <script>
