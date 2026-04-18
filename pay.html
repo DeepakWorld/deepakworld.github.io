@@ -20,11 +20,16 @@
         
         .paypal { background: #003087; }
         .gpay { background: #4285F4; }
-        .payu { background: #61ba26; }
+        .payu { background: #61ba26; color: white; } /* PayU Green */
         .wise { background: #9fe870; color: #2e3333; }
 
         .qr-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed rgba(255,255,255,0.3); }
         .qr-section img { background: white; padding: 10px; border-radius: 10px; margin-top: 15px; max-width: 100%; height: auto; }
+        
+        /* Footer link styles */
+        .menu-item { color: #ecf0f1; text-decoration: none; margin: 0 10px; }
+        .menu-item:hover { color: orange; }
+
         @media (max-width: 600px) { .name { font-size: 1.5em; } .btn-payment, .rzp-form-container { display: block; width: 100%; margin: 10px 0; } }
     </style>
 </head>
@@ -35,10 +40,8 @@
 <div class="main-wrapper">
     <p class="name">Donate For Children Games Development</p>
 
-
-
     <div class="game-links">
-         <a href="https://deepakworld.github.io" target="_blank">Home Page!</a>
+        <a href="https://deepakworld.github.io" target="_blank">Home Page!</a>
         <a href="Deepak.apk" download style="font-weight:bold; color: #04AA6D;">📥 Download App</a>
         <a href="https://deepakrummy.github.io/games/index.html" target="_blank">Wow Games</a>
         <a href="https://gamefans.web.app" target="_blank">Play Unlimited Free Games!</a>
@@ -49,24 +52,21 @@
 
     <div class="payment-buttons">
         
-        <!-- Official Razorpay Payment Button -->
         <div class="rzp-form-container">
             <form>
                 <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdgy0Sufa6OlhH" async> </script>
             </form>
         </div>
-   <!-- Small Size Version -->
-<a href="https://wise.com/pay/business/deepakt604?utm_source=open_link" 
-   target="_blank" 
-   class="btn-payment wise" 
-   style="padding: 8px 16px; font-size: 14px; min-width: 150px;">
-   💼 Wise Donation
-</a>
 
+        <a href="href='https://u.payu.in/SIuR7eb4oorU" target="_blank" class="btn-payment payu">
+            💳 PayU India
+        </a>
+
+        <a href="https://wise.com/pay/business/deepakt604?utm_source=open_link" target="_blank" class="btn-payment wise" style="padding: 8px 16px; font-size: 14px; min-width: 150px;">
+           💼 Wise Donation
+        </a>
 
         <a href="https://www.paypal.com/ncp/payment/8F76ZTRBSJC3W" target="_blank" class="btn-payment paypal">Paypal</a>
-
-
 
     </div>
 
