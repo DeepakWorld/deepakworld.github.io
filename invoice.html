@@ -67,8 +67,8 @@
         <span class="logo">Deepak IT & WebServices</span>
         <p>Enter your Order ID to pay or download your file.</p>
 
-        <input type="text" id="orderID" placeholder="Order No (e.g., DIWS-Order-001)">
-        <p id="error">Invalid Order Number. Format: DIWS-Order-XXX</p>
+        <input type="text" id="orderID" placeholder="Order No (e.g., DIWSOrder001)">
+        <p id="error">Invalid Order Number. Format: DIWSOrderXXX</p>
 
         <div class="step">
             <span class="step-title">Step 1: Choose Payment Method</span>
@@ -196,7 +196,7 @@ async function payWithPhonePe() {
 function checkAndDownload() {
     const input = document.getElementById('orderID').value.trim();
     const error = document.getElementById('error');
-    const pattern = /^DIWS-Order-\d{3}$/i;
+    const pattern = /^DIWSOrder\d{3}$/i;
 
     if (pattern.test(input)) {
         error.style.display = 'none';
