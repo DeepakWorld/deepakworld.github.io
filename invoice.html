@@ -194,17 +194,21 @@ async function payWithPhonePe() {
 
 <script>
 function checkAndDownload() {
-    const input = document.getElementById('orderID').value.trim();
-    const error = document.getElementById('error');
-    const pattern = /^DIWS/Order/2026\d{3}$/i;
+    const orderInput = document.getElementById('orderID').value.trim();
+    const errorMsg = document.getElementById('error');
 
-    if (pattern.test(input)) {
-        error.style.display = 'none';
-        const invoiceNum = input.toUpperCase().replace('ORDER', 'Invoice');
-        const fileUrl = `customer/${invoiceNum}.pdf`;
-        window.location.href = fileUrl;
+    // Simple validation: check if it starts with your format
+    if (orderInput.startsWith("DIWS/Order/2026/")) {
+        errorMsg.style.display = "none";
+        
+        // Convert DIWS/Order/2026/001 to DIWS/Inv/2026/001.pdf
+        const invoicePath = orderInput.replace("Order", "Inv") + ".pdf";
+        
+        // Redirect to the file
+        window.location.href = invoicePath;
     } else {
-        error.style.display = 'block';
+        // Show error if format is wrong
+        errorMsg.style.display = "block";
     }
 }
 </script>
