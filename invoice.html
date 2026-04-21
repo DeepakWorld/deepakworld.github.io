@@ -154,7 +154,7 @@ async function payWithPhonePe() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 orderId: orderID,
-                amount: 1 // INR → backend converts to paise
+                amount: 100000 // INR → backend converts to paise
             })
         });
 
