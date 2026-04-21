@@ -197,20 +197,27 @@ function checkAndDownload() {
     const orderInput = document.getElementById('orderID').value.trim();
     const errorMsg = document.getElementById('error');
 
-    // Simple validation: check if it starts with your format
-    if (orderInput.startsWith("DIWS/Order/2026/")) {
+    // Check if input matches the expected format
+    if (orderInput.toUpperCase().startsWith("DIWS/ORDER/2026/")) {
         errorMsg.style.display = "none";
         
-        // Convert DIWS/Order/2026/001 to DIWS/Inv/2026/001.pdf
-        const invoicePath = orderInput.replace("Order", "Inv") + ".pdf";
+        // 1. Convert slashes (/) to hyphens (-)
+        // 2. Change "ORDER" to "INV"
+        // 3. Make sure it is Uppercase to match your GitHub filename
+        let fileName = orderInput.replace(/\//g, "-").replace("-Order-", "-INV-").toUpperCase();
+        
+        // 4. Construct the correct URL path based on your GitHub repository
+        const finalUrl = "https://github.io" + fileName + ".pdf";
         
         // Redirect to the file
-        window.location.href = invoicePath;
+        window.location.href = finalUrl;
     } else {
         // Show error if format is wrong
         errorMsg.style.display = "block";
     }
 }
+
+
 </script>
 
 
