@@ -209,7 +209,7 @@ function checkAndDownload() {
         let fileName = upperInput.replace(/\//g, "-").replace("-ORDER-", "-INV-");
         
         // 3. FIX: Removed the broken 'customer' variable and added the correct folder path
-        const finalUrl = "https://deepakworld.github.io/" + fileName + ".pdf";
+        const finalUrl = "https://deepakworld.github.io/customer/" + fileName + ".pdf";
         
         // 4. Open the PDF
         window.open(finalUrl, '_blank');
