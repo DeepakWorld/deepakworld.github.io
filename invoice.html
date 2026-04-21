@@ -197,25 +197,28 @@ function checkAndDownload() {
     const orderInput = document.getElementById('orderID').value.trim();
     const errorMsg = document.getElementById('error');
 
-    // Check if input matches the expected format
-    if (orderInput.toUpperCase().startsWith("DIWS/ORDER/2026/")) {
+    // 1. Force to Uppercase to match your file: DIWS-INV-2026-001.pdf
+    const upperInput = orderInput.toUpperCase();
+
+    // Check if input starts with DIWS/ORDER/2026/
+    if (upperInput.startsWith("DIWS/ORDER/2026/")) {
         errorMsg.style.display = "none";
         
-        // 1. Convert slashes (/) to hyphens (-)
-        // 2. Change "ORDER" to "INV"
-        // 3. Make sure it is Uppercase to match your GitHub filename
-        let fileName = orderInput.replace(/\//g, "-").replace("-Order-", "-INV-").toUpperCase();
+        // 2. Convert slashes to hyphens and change ORDER to INV
+        // This turns "DIWS/ORDER/2026/001" into "DIWS-INV-2026-001"
+        let fileName = upperInput.replace(/\//g, "-").replace("-ORDER-", "-INV-");
         
-        // 4. Construct the correct URL path based on your GitHub repository
-        const finalUrl = "https://deepakworld.github.io" + customer + ".pdf";
+        // 3. FIX: Removed the broken 'customer' variable and added the correct folder path
+        const finalUrl = "https://deepakworld.github.io" + fileName + ".pdf";
         
-        // Redirect to the file
-        window.location.href = finalUrl;
+        // 4. Open the PDF
+        window.open(finalUrl, '_blank');
     } else {
         // Show error if format is wrong
         errorMsg.style.display = "block";
     }
 }
+
 
 
 </script>
