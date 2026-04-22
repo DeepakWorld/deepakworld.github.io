@@ -41,8 +41,8 @@
     <p class="name">Donate For Children Games Development</p>
 
     <div class="game-links">
-        <a href="https://deepakworld.github.io" target="_blank">Home Page!</a>
-        <a href="Deepak.apk" download style="font-weight:bold; color: #04AA6D;">📥 Download App</a>
+        <a href="https://deepakworld.web.app" target="_blank">Home Page!</a>
+        <a href="https://deepakworld.github.io/Deepak.apk" download style="font-weight:bold; color: #04AA6D;">📥 Download App</a>
         <a href="https://deepakrummy.github.io/games/index.html" target="_blank">Wow Games</a>
         <a href="https://gamefans.web.app" target="_blank">Play Unlimited Free Games!</a>
         <a href="https://perchance.org/deepak-home" target="_blank">AI Site!</a>
@@ -53,7 +53,7 @@
     <div class="payment-buttons">
         
            <div class="pay-option">
-                    <span class="pay-label">IT Support Fee (India)</span>
+                    <span class="pay-label">Game Dev Support Fee (India)</span>
                     <form>
                         <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdgy0Sufa6OlhH" async> </script>
                     </form>
@@ -78,12 +78,27 @@
         Donate Via PayU.in 
     </a> 
 </div>      
+ <hr>
+
+
+<div class="pay-option" style="max-width: 350px; margin: 20px auto; text-align: center;">
+   
+    <button onclick="payWithPhonePe()" style="background: #5f259f; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; transition: 0.3s;">
+        <img src="https://www.phonepe.com/webstatic/8141/static/m-608b49.svg" alt="PhonePe" style="height: 24px;"> 
+        Donate via PhonePe
+    </button>
+    
+</div>
+
+
+
+
         <hr>
         <a href="https://wise.com/pay/business/deepakt604?utm_source=open_link" target="_blank" class="btn-payment wise" style="padding: 8px 16px; font-size: 14px; min-width: 150px;">
            💼 Wise Donation
         </a>
         <hr>
-        <a href="https://www.paypal.com/ncp/payment/8F76ZTRBSJC3W" target="_blank" class="btn-payment paypal">Paypal</a>
+        <a href="https://www.paypal.com/ncp/payment/8F76ZTRBSJC3W" target="_blank" class="btn-payment paypal">Paypal Donation</a>
 
     </div>
 
@@ -93,6 +108,56 @@
         <img src="pay.png" alt="UPI SCAN" width="250">
     </div>
 </div>
+<script src="https://mercury.phonepe.com/web/bundle/checkout.js"></script>
+<script>
+async function payWithPhonePe() {
+    // Generate a random ID automatically for the donation session
+    const donationID = "DONATE_" + Date.now() + "_" + Math.floor(Math.random() * 1000);
+    
+    // Set your donation amount here (100000 = ₹1000 typically, depending on your backend logic)
+    const donationAmount = 1000; 
+
+    try {
+        const response = await fetch('https://phonepe-kohl.vercel.app/api/initiate-phonepe-payment', { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                orderId: donationID,
+                amount: donationAmount
+            })
+        });
+
+        const data = await response.json();
+        const paymentUrl = data.redirectUrl;
+
+        if (paymentUrl) {
+            if (window.PhonePeCheckout && typeof window.PhonePeCheckout.transact === 'function') {
+                window.PhonePeCheckout.transact({
+                    tokenUrl: paymentUrl,
+                    callback: function(res) {
+                        if (res === 'CONCLUDED') {
+                            // Instant download after success
+                            window.location.href = "https://deepakworld.github.io/digital/chess.pdf";
+                        } else if (res === 'USER_CANCEL') {
+                            alert("Payment was cancelled.");
+                        } else {
+                            alert("Payment status: " + res);
+                        }
+                    }
+                });
+            } else {
+                // Full page redirect if SDK is not ready
+                window.location.href = paymentUrl;
+            }
+        } else {
+            alert("Error: " + (data.message || "Could not initiate payment."));
+        }
+    } catch (error) {
+        console.error("Network Error:", error);
+        alert("Unable to connect to the payment server.");
+    }
+}
+</script>
 
 <footer style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid #5f259f; font-family: 'Verdana', sans-serif; width: 100%;">
     <div style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
