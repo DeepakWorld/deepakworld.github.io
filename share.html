@@ -12,13 +12,38 @@
     <meta property="og:url" content="https://deepakworld.github.io/share">
     <meta property="og:type" content="website">
 
-    <!-- Optional: For Twitter -->
+    <!-- Social Card Styling -->
     <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Centers image horizontally */
+            align-items: center;     /* Centers image vertically */
+            min-height: 100vh;       /* Makes body full screen height */
+            background-color: #000;  /* Optional: black background for a clean look */
+        }
+
+        img {
+            max-width: 100%;         /* Makes sure it doesn't overflow the screen */
+            height: auto;            /* Keeps the original aspect ratio (prevents stretching) */
+            display: block;
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            max-width: 800px;        /* Limits size on very large desktop screens */
+        }
+    </style>
 </head>
 <body>
-  <a href="https://deepakworld.github.io/saved" target="_blank">
-    <img src="https://deepakworld.github.io/images/saved-preview.png" alt="Click Me">
-  </a>
-</body>
 
+    <a href="https://deepakworld.github.io/saved" target="_blank">
+        <img src="https://deepakworld.github.io/images/saved-preview.png" alt="Click Me">
+    </a>
+
+</body>
 </html>
