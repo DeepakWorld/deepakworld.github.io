@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Portal - Deepak IT & WebServices</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        #stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); overflow: hidden; }
+        
+        .main-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+        
+        .name { color: #fff; font-size: 1.5rem; font-weight: bold; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+        .game-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .game-links a { background: rgba(255, 255, 255, 0.1); color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.3); font-size: 14px; transition: 0.3s; }
+        .game-links a:hover { background: #1a73e8; border-color: #1a73e8; }
+
+        .intro-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 900px; width: 100%; text-align: center; margin-bottom: 30px; }
+        .logo-text { font-weight: bold; color: #1a73e8; font-size: 28px; margin-bottom: 10px; display: block; }
+        .warning-note { font-size: 14px; color: #d93025; font-weight: bold; }
+
+        /* --- STICKY 3x5 GRID SYSTEM --- */
+        .payment-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
+            gap: 20px; 
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .pay-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            min-height: 180px; /* Ensures all rows look even */
+        }
+        
+        .pay-card:hover { transform: translateY(-5px); }
+        .pay-card .icon { font-size: 40px; margin-bottom: 10px; }
+        .pay-card .label { font-size: 14px; font-weight: 700; color: #333; margin-bottom: 15px; min-height: 40px; display: flex; align-items: center; justify-content: center; }
+
+        .footer { text-align: center; padding: 30px; color: #fff; font-size: 14px; }
+
+        /* Tablet/Mobile Adjustments */
+        @media (max-width: 800px) { .payment-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .payment-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div id="stars"></div>
+
+<div class="main-wrapper">
+    <p class="name">Digital Store: Choose a Script & Pay Securely</p>
+
+    <div class="game-links">
+        <a href="https://deepakworld.web.app" target="_blank">Home</a>
+        <a href="https://deepakworld.github.io" target="_blank">PhonePe Gateway</a>
+        <a href="https://niceurl.web.app" target="_blank">Short-Url</a>
+        <a href="Deepak.apk" download style="color: #04AA6D; border-color: #04AA6D;">📥 Get App</a>
+        <a href="https://mchess.web.app" target="_blank">Chess</a>
+        <a href="pay.html" target="_blank">Donate</a>
+        <a href="contact.html" target="_blank">Contact</a>
+    </div>
+
+    <div class="intro-card">
+        <span class="logo-text">Deepak IT & Web Services</span>
+        <p class="warning-note">Note: Contact us before paying to ensure correct script delivery and support.</p>
+    </div>
+
+    <div class="payment-grid">
+        <div class="pay-card">
+            <div class="icon">🎡</div> <div class="label">Spin Wheel Game Script</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmuPMx11z4C0lc" async></script></form>
+        </div>
+        <div class="pay-card">
+            <div class="icon">🔗</div> <div class="label">Tiny/Short Url Script</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmukF3tLhLWup5" async></script></form>
+        </div>
+        <div class="pay-card">
+            <div class="icon">🛒</div> <div class="label">Digital Store Script</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmuUX3IlDSRxez" async></script></form>
+        </div>
+
+        <div class="pay-card">
+            <div class="icon">🃏</div> <div class="label">Rummy PHP Backend Partial</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Smuukr1sSbfswB" async></script></form>
+        </div>
+        <div class="pay-card">
+            <div class="icon">💼</div> <div class="label">PHP Invoice Gen Script</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmtZNQbE7YARUi" async></script></form>
+        </div>
+        <div class="pay-card">
+            <div class="icon">📄</div> <div class="label">Portfolio Website Script</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmtLJyFeIBHEUu" async></script></form>
+        </div>
+
+        <div class="pay-card">
+            <div class="icon">♟️</div> <div class="label">Chess Game Script</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmtTxEoQd36VlP" async></script></form>
+        </div>
+        <div class="pay-card">
+            <div class="icon">♠️</div> <div class="label">Rummy Flutter Partial</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmurYeJscPtHIE" async></script></form>
+        </div>
+        <div class="pay-card">
+            <div class="icon">🃏</div> <div class="label">Ace Flutter Partial Script</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmupNNsJIbEJJT" async></script></form>
+        </div>
+
+        <div class="pay-card">
+            <div class="icon">🎬</div> <div class="label">Video Services</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmtBI7B7HI3d4V" async></script></form>
+        </div>
+        <div class="pay-card">
+            <div class="icon">📱</div> <div class="label">Social Ads Services</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmuL9iFJz1OmsV" async></script></form>
+        </div>
+        <div class="pay-card">
+            <div class="icon">🛠️</div> <div class="label">IT Support Services</div>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SmtQ5EXsRgtirN" async></script></form>
+        </div>
+
+  
+    </div>
+</div>
+
+<div class="footer">
+    <p>Deepak IT & WebServices | UDYAM-KR-03-0674838</p>
+    <p>&copy; 2026 All Rights Reserved</p>
+</div>
+
+</body>
+</html>
