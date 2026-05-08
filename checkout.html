@@ -4,236 +4,192 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Portal - Deepak IT & WebServices</title>
-    
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAd2Up9nyUwr7Hoyt2Yy2OOH48OVtxf1Jem4jd1Zzxc7ek5OqitpKpE74505hYY57YAr2Oc1niZLikV84&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
-
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --accent: #ff9f43;
+            --success: #28a745;
+            --glass: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        body { 
+            font-family: 'Poppins', 'Segoe UI', sans-serif; 
+            background-color: #090A0F; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            color: #f8f9fa;
+        }
         
-        /* Stars Background Effect */
-        #stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); overflow: hidden; }
+        /* Animated Stars Background */
+        #stars { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; 
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); 
+        }
         
         .main-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
         
-        .name { color: #fff; font-size: 1.5rem; font-weight: bold; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .name-header { 
+            font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 25px; 
+            background: linear-gradient(to right, #00d2ff, #91eae4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
 
-        .game-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
-        .game-links a { background: rgba(255, 255, 255, 0.1); color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.3); font-size: 14px; transition: 0.3s; }
-        .game-links a:hover { background: #1a73e8; border-color: #1a73e8; }
+        /* Navigation Pills */
+        .game-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 40px; }
+        .game-links a { 
+            background: var(--glass); color: #fff; padding: 10px 20px; text-decoration: none; 
+            border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); font-size: 13px; 
+            transition: all 0.3s ease; backdrop-filter: blur(5px);
+        }
+        .game-links a:hover { background: var(--primary); transform: translateY(-3px); border-color: var(--primary); }
 
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 500px; width: 100%; text-align: center; }
-        .logo { font-weight: bold; color: #1a73e8; font-size: 24px; margin-bottom: 10px; display: block; }
+        /* Main Glass Card */
+        .card { 
+            background: var(--card-bg); padding: 40px; border-radius: 24px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); max-width: 600px; width: 100%; 
+            text-align: center; color: #333; border: 1px solid rgba(255,255,255,0.3);
+        }
         
-        input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
+        .logo-brand { font-weight: 900; color: #1a73e8; font-size: 28px; margin-bottom: 5px; display: block; }
+        .note-box { 
+            background: #fff3cd; color: #856404; padding: 12px; border-radius: 10px; 
+            font-size: 12px; font-weight: 600; margin-bottom: 25px; border-left: 5px solid var(--accent);
+        }
         
-        .step { background: #f0f4f8; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: left; border: 1px solid #e1e8ed; }
-        .step-title { font-weight: bold; color: #1a73e8; display: block; margin-bottom: 15px; border-bottom: 1px solid #d1d9e0; padding-bottom: 5px; }
+        input[type="text"] { 
+            width: 100%; padding: 15px; margin: 15px 0; border: 2px solid #eee; 
+            border-radius: 12px; font-size: 16px; box-sizing: border-box; transition: 0.3s;
+            text-align: center; font-weight: bold;
+        }
+        input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 10px rgba(0,210,255,0.2); }
         
-        .payment-grid { display: flex; flex-direction: column; gap: 20px; align-items: center; }
-        .pay-option { width: 100%; text-align: center; }
-        .pay-label { font-size: 13px; color: #555; margin-bottom: 8px; display: block; font-weight: 600; }
+        .step-container { 
+            background: #f8faff; padding: 25px; border-radius: 18px; 
+            margin-bottom: 25px; text-align: center; border: 1px solid #e1e8ed; 
+        }
+        .step-title { font-weight: 800; color: #333; font-size: 16px; margin-bottom: 20px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Stylish Buttons */
+        .btn-payu { 
+            display: block; width: 100%; background: linear-gradient(135deg, #1065b7, #0a4a8a); 
+            color: white; padding: 15px; text-decoration: none; border-radius: 12px; 
+            font-weight: bold; margin: 10px 0; transition: 0.3s;
+        }
+        .btn-wise { 
+            display: block; width: 100%; background: #00b9ff; color: white; 
+            padding: 15px; text-decoration: none; border-radius: 12px; font-weight: bold; transition: 0.3s;
+        }
+        .btn-download { 
+            width: 100%; padding: 16px; background: var(--success); color: white; 
+            border: none; border-radius: 12px; font-size: 16px; cursor: pointer; 
+            font-weight: 800; box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3); transition: 0.3s;
+        }
+        .btn-download:hover, .btn-payu:hover, .btn-wise:hover { filter: brightness(1.1); transform: scale(1.02); }
 
-        .btn-download { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; }
-        .btn-wise { text-decoration: none; display: block; padding: 10px; border-radius: 6px; color: white; background: #00b9ff; font-weight: bold; font-size: 14px; }
+        /* QR Section */
+        .qr-card { margin: 20px 0; padding: 15px; border: 2px dashed #cbd5e0; border-radius: 15px; }
+        .upi-id { background: #eee; padding: 5px 10px; border-radius: 5px; font-family: monospace; font-weight: bold; }
         
-        #error { color: #d93025; font-size: 14px; display: none; margin-bottom: 10px; }
-        .note { font-size: 11px; color: #666; margin-top: 8px; font-style: italic; line-height: 1.4; }
-        hr { border: 0; border-top: 1px dashed #ccc; width: 100%; margin: 10px 0; }
+        #error { color: #d93025; font-size: 13px; display: none; font-weight: bold; margin-bottom: 10px; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
 
-        .menu-item { color: #ecf0f1; text-decoration: none; font-size: 0.8rem; transition: 0.2s; }
-        .menu-item:hover { color: orange; text-decoration: underline; }
+        .menu-item { color: #bdc3c7; text-decoration: none; font-size: 0.8rem; transition: 0.2s; }
+        .menu-item:hover { color: var(--primary); }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div id="stars"></div>
 
 <div class="main-wrapper">
-    <p class="name">Pay for Digital Product & Download Invoice Copy with your Order Number </p>
+    <header class="name-header">Payment & Invoice Portal</header>
 
-    <div class="game-links">
-        <a href="https://deepakworld.github.io" target="_blank">Home Page!</a>
-      <a href="https://deepakworld.web.app" target="_blank">Alternate Payment Method WebSite</a>
-  
-        <a href="https://mchess.web.app" class="menu-item" target="_blank">Play Chess!</a>
-<a href="https://niceurl.web.app" class="menu-item" target="_blank">Short-Tiny Url</a>
-   <a href="Deepak.apk" download style="font-weight:bold; color: #04AA6D; border-color: #04AA6D;">📥 Download App</a>
-        <a href="https://deepakrummy.github.io/games/index.html" target="_blank">Wow Games</a>
-        <a href="https://gamefans.web.app" target="_blank">Play Unlimited Free Games!</a>
-        <a href="https://perchance.org/deepak-home" target="_blank">AI Site!</a>
-        <a href="pay.html" target="_blank">Donate Us</a>
-        <a href="contact.html" target="_blank">Contact Us</a>
+    <nav class="game-links">
+        <a href="https://deepakworld.github.io">Home</a>
+        <a href="https://deepakworld.github.io/store.html">Digital Store</a>
+        <a href="https://deepakworld.web.app" target="_blank">Payu.in Payment</a>
 
-
-
-    </div>
+        <a href="https://niceurl.web.app">TinyUrl</a>
+        <a href="Deepak.apk" style="color: #00ff88; border-color: #00ff88;">📥 App</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
     <div class="card">
-        <span class="logo">Deepak IT & WebServices</span>
-        <span class="logo">Note:- Before Payment Contact Us to Choose Payment method to avoid Downloading Project or Design or Games Script etc</span>
+        <span class="logo-brand">Deepak IT</span>
+        <div class="note-box">
+            ⚠️ Contact us before payment to ensure the correct script version for your project.
+        </div>
 
+        <p style="font-weight:600; color:#666;">Enter Order Number</p>
+        <input type="text" id="orderID" placeholder="DIWS/ORDER/2026/XXX">
+        <p id="error">Invalid Format! Use: DIWS/ORDER/2026/001</p>
 
-        <p>Enter your Order ID to pay or download your file.</p>
-
-        <input type="text" id="orderID" placeholder="Order No (e.g., DIWS/Order/2026/001)">
-        <p id="error">Invalid Order Number. Format: DIWS/Order/2026/XXX</p>
-
-        <div class="step">
-            <span class="step-title">Step 1: Choose Payment Method</span>
-            <div class="payment-grid">
-           
-
-                <div class="pay-option">
-                    <span class="pay-label">Custom Project / Software Assets</span>
-                    <form>
-                        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdp2o5UrIZRtdp" async> </script>
-                    </form>
-                </div>
-
-                <hr>
-
-      <div class="pay-option">
-    <span class="pay-label" style="display: block; margin-bottom: 8px; font-family: sans-serif;">Pay via PhonePe (UPI/Cards)</span>
-    <button onclick="payWithPhonePe()" style="background: #5f259f; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
-        <!-- Removed filter:brightness(0) invert(1) so the logo looks official -->
-        <img src="https://www.phonepe.com/webstatic/8141/static/m-608b49.svg" alt="PhonePe" style="height: 24px;"> 
-        Pay with PhonePe
-    </button>
-</div>
-<hr>
- <div class="qr-section">
-        <h2>Call Us Before Pay with UPI Scan:</h2>
-
-        <p style="color: #ffd700;">UPI ID: pos.5361206@indus</p>
-        <img src="pay.png" alt="UPI SCAN" width="250">
-    </div>
-</div>
-                <hr>
-
-
-
-
-                <div class="pay-option">
-                    <span class="pay-label">Direct Bank Transfer (Wise)</span>
-                    <a href="https://wise.com/pay/r/fkAhBidZWNNNLto" target="_blank" class="btn-wise">Pay via Wise</a>
-                    <p class="note">⚠️ Wise does not redirect. After paying, please return here and use Step 2 to download.</p>
-                </div>
+        <div class="step-container">
+            <span class="step-title">1. Secure Checkout</span>
+            
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 12px; color: #888; margin-bottom: 8px;">For Custom Projects & Software Assets</p>
+                <form>
+                    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sdp2o5UrIZRtdp" async> </script>
+                </form>
             </div>
+
+            <a href="https://u.payu.in/SIuR7eb4oorU" class="btn-payu">Buy Chess Rules via PayU</a>
+
+            <div class="qr-card">
+                <p style="margin:0 0 10px 0; font-size: 14px; font-weight: bold;">UPI Fast Scan</p>
+                <img src="pay.png" alt="UPI SCAN" width="180" style="border-radius: 10px;">
+                <p style="font-size: 11px; margin-top: 10px;">UPI ID: <span class="upi-id">pos.5361206@indus</span></p>
+            </div>
+
+            <a href="https://wise.com/pay/r/fkAhBidZWNNNLto" class="btn-wise">International Transfer (Wise)</a>
         </div>
 
-<hr>
-        
-        <div class="step">
-            <span class="step-title">Step 2: Get Your File / Invoice</span>
-            <button class="btn-download" onclick="checkAndDownload()">View / Print PDF</button>
+        <div class="step-container" style="background: #e9f7ef; border-color: #c3e6cb;">
+            <span class="step-title" style="color: #155724;">2. Instant Fulfillment</span>
+            <button class="btn-download" onclick="checkAndDownload()">VIEW & PRINT PDF INVOICE</button>
         </div>
     </div>
 </div>
 
-
-<script src="https://mercury.phonepe.com/web/bundle/checkout.js"></script>
-
-<script>
-async function payWithPhonePe() {
-    const orderID = document.getElementById('orderID')?.value?.trim();
-    if (!orderID) {
-        alert("Please enter your Order ID first.");
-        return;
-    }
-
-    try {
-        const response = await fetch('https://phonepe-kohl.vercel.app/api/initiate-phonepe-payment', { 
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                orderId: orderID,
-                amount: 100000 // INR → backend converts to paise
-            })
-        });
-
-        const data = await response.json();
-        console.log("Backend Response:", data);
-
-        const paymentUrl = data.redirectUrl;
-
-        if (paymentUrl) {
-            // If SDK is available, use IFRAME checkout
-            if (window.PhonePeCheckout && typeof window.PhonePeCheckout.transact === 'function') {
-                window.PhonePeCheckout.transact({
-                    tokenUrl: paymentUrl,
-                    callback: function(res) {
-                        if (res === 'CONCLUDED') {
-                            window.location.href = "https://deepakworld.github.io/digital/chess.pdf";
-                        } else if (res === 'USER_CANCEL') {
-                            alert("Payment was cancelled.");
-                        } else if (res === 'FAILED') {
-                            alert("Payment failed. Please try again.");
-                        }
-                    }
-                });
-            } else {
-                // Fallback: full-page redirect
-                window.location.href = paymentUrl;
-            }
-        } else {
-            alert("Error: " + (data.message || "Could not initiate payment."));
-        }
-    } catch (error) {
-        console.error("Network Error:", error);
-        alert("Check your internet or backend status.");
-    }
-}
-</script>
+<footer style="background: #0f172a; color: white; padding: 40px 20px; text-align: center; border-top: 4px solid var(--primary);">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <p style="font-weight: 800; color: var(--primary); margin-bottom: 5px;">Deepak IT & WebServices</p>
+        <p style="font-size: 12px; color: #94a3b8;">MSME: UDYAM-KR-03-0674838 | Bengaluru, India</p>
+        
+        <div style="margin: 20px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            <a href="privacy-policy.html" class="menu-item">Privacy</a>
+            <a href="refund-policy.html" class="menu-item">Refunds</a>
+            <a href="terms.html" class="menu-item">Terms</a>
+        </div>
+        <p style="color: #475569; font-size: 11px;">&copy; 2026 All Rights Reserved | diws2026@outlook.com</p>
+    </div>
+</footer>
 
 <script>
 function checkAndDownload() {
     const orderInput = document.getElementById('orderID').value.trim();
     const errorMsg = document.getElementById('error');
-
-    // 1. Force to Uppercase to match your file: DIWS-INV-2026-001.pdf
     const upperInput = orderInput.toUpperCase();
 
-    // Check if input starts with DIWS/ORDER/2026/
     if (upperInput.startsWith("DIWS/ORDER/2026/")) {
         errorMsg.style.display = "none";
-        
-        // 2. Convert slashes to hyphens and change ORDER to INV
-        // This turns "DIWS/ORDER/2026/001" into "DIWS-INV-2026-001"
         let fileName = upperInput.replace(/\//g, "-").replace("-ORDER-", "-INV-");
-        
-        // 3. FIX: Removed the broken 'customer' variable and added the correct folder path
         const finalUrl = "https://deepakworld.github.io/customer/" + fileName + ".pdf";
-        
-        // 4. Open the PDF
         window.open(finalUrl, '_blank');
     } else {
-        // Show error if format is wrong
         errorMsg.style.display = "block";
     }
 }
-
-
-
 </script>
 
-
-
-    <footer style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid #5f259f; font-family: 'Verdana', sans-serif;">
-    <div style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
-        <p style="font-weight: bold; font-size: 1rem; color: orange; margin-bottom: 5px;">Deepak IT & WebServices | Proprietorship Firm</p>
-        <p>MSME Registration: <strong>UDYAM-KR-03-0674838</strong> | NIC Code: 62011 (Software Development)</p>
-        
-        <div style="margin: 15px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
-            <a href="privacy-policy.html" class="menu-item" target="_blank">Privacy Policy</a>
-            <a href="refund-policy.html" class="menu-item" target="_blank">Refund Policy</a>
-            <a href="shipping-return.html" class="menu-item" target="_blank">Shipping and Return Policy</a>
-            <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
-        </div>
-
-        <p style="color: #bdc3c7; font-size: 0.75rem; margin-top: 10px;">
-            &copy; 2026 All Rights Reserved. | Support: diws2026@outlook.com
-        </p>
-    </div>
-</footer>
 </body>
 </html>
