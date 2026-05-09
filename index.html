@@ -519,6 +519,21 @@ body {
         .whatsapp-float .tooltiptext { display: none; } /* Hide tooltip on mobile to save space */
     }
 </style>
+  <style>
+  .pill-button {
+    background-color: #008CBA;
+    color: white;
+    font-size: 18px;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 50px;   /* pill shape */
+    cursor: pointer;
+  }
+
+  .pill-button:hover {
+    background-color: #005f73;
+  }
+</style>
 </head>
 
 
@@ -591,8 +606,8 @@ body {
   Your browser does not support the audio element.
 </audio>
 <h2 style="color: white;">Play Songs</h2>
-<button onclick="prevSong()"> <h1>Prev</h1></button>
-<button onclick="nextSong()"><h1>Next</h1></button>
+<button class="pill-button" onclick="prevSong()">Prev</button>
+<button class="pill-button" onclick="nextSong()">Next</button>
 </p>
     </div>
 <style>
