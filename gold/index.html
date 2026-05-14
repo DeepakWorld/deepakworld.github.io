@@ -171,26 +171,29 @@
     <img src="gold/d57.png" alt="d57">
     <img src="gold/d58.png" alt="d58">
   </div>
-<!-- Lightbox container -->
-  <div id="lightbox">
-    <img src="" alt="Expanded view">
-  </div>
+<div id="lightbox">
+  <span id="close">&times;</span>
+  <img src="" alt="Expanded view">
+  <p id="caption"></p>
+</div>
 
-  <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = lightbox.querySelector('img');
-    const galleryImgs = document.querySelectorAll('.gallery img');
+<script>
+  const caption = document.getElementById('caption');
+  const closeBtn = document.getElementById('close');
 
-    galleryImgs.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-      });
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+      caption.textContent = img.alt;
     });
+  });
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
-  </script>
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+</script>
 </body>
 </html>
+
+  
