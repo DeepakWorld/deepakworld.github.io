@@ -2,198 +2,323 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gold Image Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Gallery | Deepak IT & Web Services</title>
   <style>
+    :root {
+      --primary-blue: #004085;
+      --accent-gold: #ffd700;
+      --dark-bg: #1a1a1a;
+      --text-light: #f8f9fa;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      background-color: #f4f7f6;
+      color: #333;
     }
-    h1 {
+
+    /* Header Styles */
+    header {
+      background-color: var(--primary-blue);
+      color: white;
+      padding: 2rem 1rem;
       text-align: center;
-      margin-bottom: 30px;
-      color: gold;
+      border-bottom: 5px solid var(--accent-gold);
     }
-    .gallery {
+
+    .enterprise-info h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .enterprise-info p {
+      margin: 8px 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .verification-badges {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .contact-info {
+      margin-top: 15px;
+      font-size: 1rem;
+    }
+
+    .contact-info a {
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Gallery Grid */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
     }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border: 3px solid gold;
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
       border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
       cursor: pointer;
-      transition: transform 0.2s;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
     }
-    /* Lightbox styles */
-    #lightbox {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
+
+    .ad-caption {
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--primary-blue);
+    }
+
+    /* Modal styles */
+    .modal {
       display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
     }
-    #lightbox img {
+    .modal-content {
+      margin: auto;
+      display: block;
       max-width: 90%;
       max-height: 90%;
-      border: 4px solid gold;
+      border: 4px solid var(--accent-gold);
       border-radius: 10px;
+    }
+    .close {
+      position: absolute;
+      top: 20px; right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Deepak’s Gold Gallery</h1>
-  <div class="gallery">
-    <!-- Sequential images -->
-    <!-- 002–085 -->
-    <img src="gold/002.png" alt="002">
-    <img src="gold/003.png" alt="003">
-    <img src="gold/004.png" alt="004">
-    <img src="gold/005.png" alt="005">
-    <img src="gold/006.png" alt="006">
-    <img src="gold/007.png" alt="007">
-    <img src="gold/008.png" alt="008">
-    <img src="gold/009.png" alt="009">
-    <img src="gold/010.png" alt="010">
-    <img src="gold/011.png" alt="011">
-    <img src="gold/012.png" alt="012">
-    <img src="gold/013.png" alt="013">
-    <img src="gold/014.png" alt="014">
-    <img src="gold/015.png" alt="015">
-    <img src="gold/016.png" alt="016">
-    <img src="gold/017.png" alt="017">
-    <img src="gold/018.png" alt="018">
-    <img src="gold/019.png" alt="019">
-    <img src="gold/020.png" alt="020">
-    <img src="gold/021.png" alt="021">
-    <img src="gold/022.png" alt="022">
-    <img src="gold/023.png" alt="023">
-    <img src="gold/024.png" alt="024">
-    <img src="gold/025.png" alt="025">
-    <img src="gold/026.png" alt="026">
-    <img src="gold/027.png" alt="027">
-    <img src="gold/028.png" alt="028">
-    <img src="gold/029.png" alt="029">
-    <img src="gold/030.png" alt="030">
-    <img src="gold/031.png" alt="031">
-    <img src="gold/032.png" alt="032">
-    <img src="gold/033.png" alt="033">
-    <img src="gold/034.png" alt="034">
-    <img src="gold/035.png" alt="035">
-    <img src="gold/036.png" alt="036">
-    <img src="gold/037.png" alt="037">
-    <img src="gold/038.png" alt="038">
-    <img src="gold/039.png" alt="039">
-    <img src="gold/040.png" alt="040">
-    <img src="gold/041.png" alt="041">
-    <img src="gold/042.png" alt="042">
-    <img src="gold/043.png" alt="043">
-    <img src="gold/044.png" alt="044">
-    <img src="gold/045.png" alt="045">
-    <img src="gold/046.png" alt="046">
-    <img src="gold/047.png" alt="047">
-    <img src="gold/048.png" alt="048">
-    <img src="gold/049.png" alt="049">
-    <img src="gold/050.png" alt="050">
-    <img src="gold/051.png" alt="051">
-    <img src="gold/052.png" alt="052">
-    <img src="gold/053.png" alt="053">
-    <img src="gold/054.png" alt="054">
-    <img src="gold/055.png" alt="055">
-    <img src="gold/056.png" alt="056">
-    <img src="gold/057.png" alt="057">
-    <img src="gold/058.png" alt="058">
-    <img src="gold/059.png" alt="059">
-    <img src="gold/060.png" alt="060">
-    <img src="gold/061.png" alt="061">
-    <img src="gold/062.png" alt="062">
-    <img src="gold/063.png" alt="063">
-    <img src="gold/064.png" alt="064">
-    <img src="gold/065.png" alt="065">
-    <img src="gold/066.png" alt="066">
-    <img src="gold/067.png" alt="067">
-    <img src="gold/068.png" alt="068">
-    <img src="gold/069.png" alt="069">
-    <img src="gold/070.png" alt="070">
-    <img src="gold/071.png" alt="071">
-    <img src="gold/072.png" alt="072">
-    <img src="gold/073.png" alt="073">
-    <img src="gold/074.png" alt="074">
-    <img src="gold/075.png" alt="075">
-    <img src="gold/076.png" alt="076">
-    <img src="gold/077.png" alt="077">
-    <img src="gold/078.png" alt="078">
-    <img src="gold/079.png" alt="079">
-    <img src="gold/080.png" alt="080">
-    <img src="gold/081.png" alt="081">
-    <img src="gold/082.png" alt="082">
-    <img src="gold/083.png" alt="083">
-    <img src="gold/084.png" alt="084">
-    <img src="gold/085.png" alt="085">
-    <!-- d-series images -->
-    <img src="gold/d25.png" alt="d25">
-    <img src="gold/d26.png" alt="d26">
-    <img src="gold/d28.png" alt="d28">
-    <img src="gold/d29.png" alt="d29">
-    <img src="gold/d32.png" alt="d32">
-    <img src="gold/d33.png" alt="d33">
-    <img src="gold/d34.png" alt="d34">
-    <img src="gold/d35.png" alt="d35">
-    <img src="gold/d37.png" alt="d37">
-    <img src="gold/d39.png" alt="d39">
-    <img src="gold/d40.png" alt="d40">
-    <img src="gold/d41.png" alt="d41">
-    <img src="gold/d42.png" alt="d42">
-    <img src="gold/d43.png" alt="d43">
-    <img src="gold/d44.png" alt="d44">
-    <img src="gold/d45.png" alt="d45">
-    <img src="gold/d46.png" alt="d46">
-    <img src="gold/d47.png" alt="d47">
-    <img src="gold/d48.png" alt="d48">
-    <img src="gold/d49.png" alt="d49">
-    <img src="gold/d50.png" alt="d50">
-    <img src="gold/d51.png" alt="d51">
-    <img src="gold/d52.png" alt="d52">
-    <img src="gold/d53.png" alt="d53">
-    <img src="gold/d54.png" alt="d54">
-    <img src="gold/d55.png" alt="d55">
-    <img src="gold/d56.png" alt="d56">
-    <img src="gold/d57.png" alt="d57">
-    <img src="gold/d58.png" alt="d58">
+
+<header>
+  <div class="enterprise-info">
+    <h1>Deepak IT & Web Services</h1>
+    <p>Verified Enterprise | Ministry of MSME, Govt. of India</p>
+
+    <div class="verification-badges">
+      UDYAM: KR-03-0674838 | GSTIN: 29BISPD3613D1ZD | PAN: BISPD3613D <br>
+      LUT ARN: AD2904260184333 | LUT Validity: FY 2026-27 (Valid until 31/03/2027)
+    </div>
+
+    <div class="contact-info">
+      🌐 <a href="https://deepakworld.github.io" target="_blank">deepakworld.github.io</a> | 
+      <a href="https://deepakworld.web.app" target="_blank">deepakworld.web.app</a><br>
+      📧 <a href="mailto:diws2026@outlook.com">diws2026@outlook.com</a> | 
+      📱 <a href="tel:+918867740113">+91-8867740113</a>
+    </div>
   </div>
-<div id="lightbox">
-  <span id="close">&times;</span>
-  <img src="" alt="Expanded view">
-  <p id="caption"></p>
+</header>
+
+<div class="container">
+  <h2 style="text-align:center; margin-bottom:30px;">Deepak’s Gold Gallery</h2>
+
+<div class="gallery-grid">
+  <!-- Sequential images 002–085 -->
+  <div class="gallery-item">
+    <img src="gold/002.png" alt="002" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 002</div>
+  </div>
+  <div class="gallery-item">
+    <img src="gold/003.png" alt="003" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 003</div>
+  </div>
+  <div class="gallery-item">
+    <img src="gold/004.png" alt="004" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 004</div>
+  </div>
+  <div class="gallery-item">
+    <img src="gold/005.png" alt="005" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 005</div>
+  </div>
+  <div class="gallery-item">
+    <img src="gold/006.png" alt="006" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 006</div>
+  </div>
+  <div class="gallery-item">
+    <img src="gold/007.png" alt="007" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 007</div>
+  </div>
+  <div class="gallery-item">
+    <img src="gold/008.png" alt="008" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 008</div>
+  </div>
+  <div class="gallery-item">
+    <img src="gold/009.png" alt="009" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 009</div>
+  </div>
+  <div class="gallery-item">
+    <img src="gold/010.png" alt="010" onclick="openModal(this.src)">
+    <div class="ad-caption">Gold 010</div>
+  </div>
+  <!-- Continue sequentially -->
+  <div class="gallery-item"><img src="gold/011.png" alt="011" onclick="openModal(this.src)"><div class="ad-caption">Gold 011</div></div>
+  <div class="gallery-item"><img src="gold/012.png" alt="012" onclick="openModal(this.src)"><div class="ad-caption">Gold 012</div></div>
+  <div class="gallery-item"><img src="gold/013.png" alt="013" onclick="openModal(this.src)"><div class="ad-caption">Gold 013</div></div>
+  <div class="gallery-item"><img src="gold/014.png" alt="014" onclick="openModal(this.src)"><div class="ad-caption">Gold 014</div></div>
+  <div class="gallery-item"><img src="gold/015.png" alt="015" onclick="openModal(this.src)"><div class="ad-caption">Gold 015</div></div>
+  <div class="gallery-item"><img src="gold/016.png" alt="016" onclick="openModal(this.src)"><div class="ad-caption">Gold 016</div></div>
+  <div class="gallery-item"><img src="gold/017.png" alt="017" onclick="openModal(this.src)"><div class="ad-caption">Gold 017</div></div>
+  <div class="gallery-item"><img src="gold/018.png" alt="018" onclick="openModal(this.src)"><div class="ad-caption">Gold 018</div></div>
+  <div class="gallery-item"><img src="gold/019.png" alt="019" onclick="openModal(this.src)"><div class="ad-caption">Gold 019</div></div>
+  <div class="gallery-item"><img src="gold/020.png" alt="020" onclick="openModal(this.src)"><div class="ad-caption">Gold 020</div></div>
+  <div class="gallery-item"><img src="gold/020.png" alt="020" onclick="openModal(this.src)"><div class="ad-caption">Gold 020</div></div>
+<div class="gallery-item"><img src="gold/021.png" alt="021" onclick="openModal(this.src)"><div class="ad-caption">Gold 021</div></div>
+<div class="gallery-item"><img src="gold/022.png" alt="022" onclick="openModal(this.src)"><div class="ad-caption">Gold 022</div></div>
+<div class="gallery-item"><img src="gold/023.png" alt="023" onclick="openModal(this.src)"><div class="ad-caption">Gold 023</div></div>
+<div class="gallery-item"><img src="gold/024.png" alt="024" onclick="openModal(this.src)"><div class="ad-caption">Gold 024</div></div>
+<div class="gallery-item"><img src="gold/025.png" alt="025" onclick="openModal(this.src)"><div class="ad-caption">Gold 025</div></div>
+<div class="gallery-item"><img src="gold/026.png" alt="026" onclick="openModal(this.src)"><div class="ad-caption">Gold 026</div></div>
+<div class="gallery-item"><img src="gold/027.png" alt="027" onclick="openModal(this.src)"><div class="ad-caption">Gold 027</div></div>
+<div class="gallery-item"><img src="gold/028.png" alt="028" onclick="openModal(this.src)"><div class="ad-caption">Gold 028</div></div>
+<div class="gallery-item"><img src="gold/029.png" alt="029" onclick="openModal(this.src)"><div class="ad-caption">Gold 029</div></div>
+<div class="gallery-item"><img src="gold/030.png" alt="030" onclick="openModal(this.src)"><div class="ad-caption">Gold 030</div></div>
+<div class="gallery-item"><img src="gold/031.png" alt="031" onclick="openModal(this.src)"><div class="ad-caption">Gold 031</div></div>
+<div class="gallery-item"><img src="gold/032.png" alt="032" onclick="openModal(this.src)"><div class="ad-caption">Gold 032</div></div>
+<div class="gallery-item"><img src="gold/033.png" alt="033" onclick="openModal(this.src)"><div class="ad-caption">Gold 033</div></div>
+<div class="gallery-item"><img src="gold/034.png" alt="034" onclick="openModal(this.src)"><div class="ad-caption">Gold 034</div></div>
+<div class="gallery-item"><img src="gold/035.png" alt="035" onclick="openModal(this.src)"><div class="ad-caption">Gold 035</div></div>
+<div class="gallery-item"><img src="gold/036.png" alt="036" onclick="openModal(this.src)"><div class="ad-caption">Gold 036</div></div>
+<div class="gallery-item"><img src="gold/037.png" alt="037" onclick="openModal(this.src)"><div class="ad-caption">Gold 037</div></div>
+<div class="gallery-item"><img src="gold/038.png" alt="038" onclick="openModal(this.src)"><div class="ad-caption">Gold 038</div></div>
+<div class="gallery-item"><img src="gold/039.png" alt="039" onclick="openModal(this.src)"><div class="ad-caption">Gold 039</div></div>
+<div class="gallery-item"><img src="gold/040.png" alt="040" onclick="openModal(this.src)"><div class="ad-caption">Gold 040</div></div>
+<div class="gallery-item"><img src="gold/041.png" alt="041" onclick="openModal(this.src)"><div class="ad-caption">Gold 041</div></div>
+<div class="gallery-item"><img src="gold/042.png" alt="042" onclick="openModal(this.src)"><div class="ad-caption">Gold 042</div></div>
+<div class="gallery-item"><img src="gold/043.png" alt="043" onclick="openModal(this.src)"><div class="ad-caption">Gold 043</div></div>
+<div class="gallery-item"><img src="gold/044.png" alt="044" onclick="openModal(this.src)"><div class="ad-caption">Gold 044</div></div>
+<div class="gallery-item"><img src="gold/045.png" alt="045" onclick="openModal(this.src)"><div class="ad-caption">Gold 045</div></div>
+<div class="gallery-item"><img src="gold/046.png" alt="046" onclick="openModal(this.src)"><div class="ad-caption">Gold 046</div></div>
+<div class="gallery-item"><img src="gold/047.png" alt="047" onclick="openModal(this.src)"><div class="ad-caption">Gold 047</div></div>
+<div class="gallery-item"><img src="gold/048.png" alt="048" onclick="openModal(this.src)"><div class="ad-caption">Gold 048</div></div>
+<div class="gallery-item"><img src="gold/049.png" alt="049" onclick="openModal(this.src)"><div class="ad-caption">Gold 049</div></div>
+<div class="gallery-item"><img src="gold/050.png" alt="050" onclick="openModal(this.src)"><div class="ad-caption">Gold 050</div></div>
+<div class="gallery-item"><img src="gold/051.png" alt="051" onclick="openModal(this.src)"><div class="ad-caption">Gold 051</div></div>
+<div class="gallery-item"><img src="gold/052.png" alt="052" onclick="openModal(this.src)"><div class="ad-caption">Gold 052</div></div>
+<div class="gallery-item"><img src="gold/053.png" alt="053" onclick="openModal(this.src)"><div class="ad-caption">Gold 053</div></div>
+<div class="gallery-item"><img src="gold/054.png" alt="054" onclick="openModal(this.src)"><div class="ad-caption">Gold 054</div></div>
+<div class="gallery-item"><img src="gold/055.png" alt="055" onclick="openModal(this.src)"><div class="ad-caption">Gold 055</div></div>
+<div class="gallery-item"><img src="gold/056.png" alt="056" onclick="openModal(this.src)"><div class="ad-caption">Gold 056</div></div>
+<div class="gallery-item"><img src="gold/057.png" alt="057" onclick="openModal(this.src)"><div class="ad-caption">Gold 057</div></div>
+<div class="gallery-item"><img src="gold/058.png" alt="058" onclick="openModal(this.src)"><div class="ad-caption">Gold 058</div></div>
+<div class="gallery-item"><img src="gold/059.png" alt="059" onclick="openModal(this.src)"><div class="ad-caption">Gold 059</div></div>
+<div class="gallery-item"><img src="gold/060.png" alt="060" onclick="openModal(this.src)"><div class="ad-caption">Gold 060</div></div>
+<div class="gallery-item"><img src="gold/061.png" alt="061" onclick="openModal(this.src)"><div class="ad-caption">Gold 061</div></div>
+<div class="gallery-item"><img src="gold/062.png" alt="062" onclick="openModal(this.src)"><div class="ad-caption">Gold 062</div></div>
+<div class="gallery-item"><img src="gold/063.png" alt="063" onclick="openModal(this.src)"><div class="ad-caption">Gold 063</div></div>
+<div class="gallery-item"><img src="gold/064.png" alt="064" onclick="openModal(this.src)"><div class="ad-caption">Gold 064</div></div>
+<div class="gallery-item"><img src="gold/065.png" alt="065" onclick="openModal(this.src)"><div class="ad-caption">Gold 065</div></div>
+<div class="gallery-item"><img src="gold/066.png" alt="066" onclick="openModal(this.src)"><div class="ad-caption">Gold 066</div></div>
+<div class="gallery-item"><img src="gold/067.png" alt="067" onclick="openModal(this.src)"><div class="ad-caption">Gold 067</div></div>
+<div class="gallery-item"><img src="gold/068.png" alt="068" onclick="openModal(this.src)"><div class="ad-caption">Gold 068</div></div>
+<div class="gallery-item"><img src="gold/069.png" alt="069" onclick="openModal(this.src)"><div class="ad-caption">Gold 069</div></div>
+<div class="gallery-item"><img src="gold/070.png" alt="070" onclick="openModal(this.src)"><div class="ad-caption">Gold 070</div></div>
+<div class="gallery-item"><img src="gold/071.png" alt="071" onclick="openModal(this.src)"><div class="ad-caption">Gold 071</div></div>
+<div class="gallery-item"><img src="gold/072.png" alt="072" onclick="openModal(this.src)"><div class="ad-caption">Gold 072</div></div>
+<div class="gallery-item"><img src="gold/073.png" alt="073" onclick="openModal(this.src)"><div class="ad-caption">Gold 073</div></div>
+<div class="gallery-item"><img src="gold/074.png" alt="074" onclick="openModal(this.src)"><div class="ad-caption">Gold 074</div></div>
+<div class="gallery-item"><img src="gold/075.png" alt="075" onclick="openModal(this.src)"><div class="ad-caption">Gold 075</div></div>
+<div class="gallery-item"><img src="gold/076.png" alt="076" onclick="openModal(this.src)"><div class="ad-caption">Gold 076</div></div>
+<div class="gallery-item"><img src="gold/077.png" alt="077" onclick="openModal(this.src)"><div class="ad-caption">Gold 077</div></div>
+<div class="gallery-item"><img src="gold/078.png" alt="078" onclick="openModal(this.src)"><div class="ad-caption">Gold 078</div></div>
+<div class="gallery-item"><img src="gold/079.png" alt="079" onclick="openModal(this.src)"><div class="ad-caption">Gold 079</div></div>
+<div class="gallery-item"><img src="gold/080.png" alt="080" onclick="openModal(this.src)"><div class="ad-caption">Gold 080</div></div>
+<div class="gallery-item"><img src="gold/081.png" alt="081" onclick="openModal(this.src)"><div class="ad-caption">Gold 081</div></div>
+<div class="gallery-item"><img src="gold/082.png" alt="082" onclick="openModal(this.src)"><div class="ad-caption">Gold 082</div></div>
+<div class="gallery-item"><img src="gold/083.png" alt="083" onclick="openModal(this.src)"><div class="ad-caption">Gold 083</div></div>
+<div class="gallery-item"><img src="gold/084.png" alt="084" onclick="openModal(this.src)"><div class="ad-caption">Gold 084</div></div>
+<div class="gallery-item"><img src="gold/085.png" alt="085" onclick="openModal(this.src)"><div class="ad-caption">Gold 085</div></div>
+<div class="gallery-item"><img src="gold/d25.png" alt="d25" onclick="openModal(this.src)"><div class="ad-caption">Gold d25</div></div>
+<div class="gallery-item"><img src="gold/d26.png" alt="d26" onclick="openModal(this.src)"><div class="ad-caption">Gold d26</div></div>
+<div class="gallery-item"><img src="gold/d28.png" alt="d28" onclick="openModal(this.src)"><div class="ad-caption">Gold d28</div></div>
+<div class="gallery-item"><img src="gold/d29.png" alt="d29" onclick="openModal(this.src)"><div class="ad-caption">Gold d29</div></div>
+<div class="gallery-item"><img src="gold/d32.png" alt="d32" onclick="openModal(this.src)"><div class="ad-caption">Gold d32</div></div>
+<div class="gallery-item"><img src="gold/d33.png" alt="d33" onclick="openModal(this.src)"><div class="ad-caption">Gold d33</div></div>
+<div class="gallery-item"><img src="gold/d34.png" alt="d34" onclick="openModal(this.src)"><div class="ad-caption">Gold d34</div></div>
+<div class="gallery-item"><img src="gold/d35.png" alt="d35" onclick="openModal(this.src)"><div class="ad-caption">Gold d35</div></div>
+<div class="gallery-item"><img src="gold/d37.png" alt="d37" onclick="openModal(this.src)"><div class="ad-caption">Gold d37</div></div>
+<div class="gallery-item"><img src="gold/d39.png" alt="d39" onclick="openModal(this.src)"><div class="ad-caption">Gold d39</div></div>
+<div class="gallery-item"><img src="gold/d40.png" alt="d40" onclick="openModal(this.src)"><div class="ad-caption">Gold d40</div></div>
+<div class="gallery-item"><img src="gold/d41.png" alt="d41" onclick="openModal(this.src)"><div class="ad-caption">Gold d41</div></div>
+<div class="gallery-item"><img src="gold/d42.png" alt="d42" onclick="openModal(this.src)"><div class="ad-caption">Gold d42</div></div>
+<div class="gallery-item"><img src="gold/d43.png" alt="d43" onclick="openModal(this.src)"><div class="ad-caption">Gold d43</div></div>
+<div class="gallery-item"><img src="gold/d44.png" alt="d44" onclick="openModal(this.src)"><div class="ad-caption">Gold d44</div></div>
+<div class="gallery-item"><img src="gold/d45.png" alt="d45" onclick="openModal(this.src)"><div class="ad-caption">Gold d45</div></div>
+<div class="gallery-item"><img src="gold/d46.png" alt="d46" onclick="openModal(this.src)"><div class="ad-caption">Gold d46</div></div>
+<div class="gallery-item"><img src="gold/d47.png" alt="d47" onclick="openModal(this.src)"><div class="ad-caption">Gold d47</div></div>
+<div class="gallery-item"><img src="gold/d48.png" alt="d48" onclick="openModal(this.src)"><div class="ad-caption">Gold d48</div></div>
+<div class="gallery-item"><img src="gold/d49.png" alt="d49" onclick="openModal(this.src)"><div class="ad-caption">Gold d49</div></div>
+<div class="gallery-item"><img src="gold/d50.png" alt="d50" onclick="openModal(this.src)"><div class="ad-caption">Gold d50</div></div>
+<div class="gallery-item"><img src="gold/d51.png" alt="d51" onclick="openModal(this.src)"><div class="ad-caption">Gold d51</div></div>
+<div class="gallery-item"><img src="gold/d52.png" alt="d52" onclick="openModal(this.src)"><div class="ad-caption">Gold d52</div></div>
+<div class="gallery-item"><img src="gold/d53.png" alt="d53" onclick="openModal(this.src)"><div class="ad-caption">Gold d53</div></div>
+<div class="gallery-item"><img src="gold/d54.png" alt="d54" onclick="openModal(this.src)"><div class="ad-caption">Gold d54</div></div>
+<div class="gallery-item"><img src="gold/d55.png" alt="d55" onclick="openModal(this.src)"><div class="ad-caption">Gold d55</div></div>
+<div class="gallery-item"><img src="gold/d56.png" alt="d56" onclick="openModal(this.src)"><div class="ad-caption">Gold d56</div></div>
+<div class="gallery-item"><img src="gold/d57.png" alt="d57" onclick="openModal(this.src)"><div class="ad-caption">Gold d57</div></div>
+<div class="gallery-item"><img src="gold/d58.png" alt="d58" onclick="openModal(this.src)"><div class="ad-caption">Gold d58</div></div>
+
+
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="imgModal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
 </div>
 
 <script>
-  const caption = document.getElementById('caption');
-  const closeBtn = document.getElementById('close');
-
-  galleryImgs.forEach(img => {
-    img.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
-      lightboxImg.src = img.src;
-      caption.textContent = img.alt;
-    });
-  });
-
-  closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-  });
+function openModal(src) {
+  document.getElementById("imgModal").style.display = "block";
+  document.getElementById("modalImage").src = src;
+}
+function closeModal() {
+  document.getElementById("imgModal").style.display = "none";
+}
 </script>
+
 </body>
 </html>
-
-  
