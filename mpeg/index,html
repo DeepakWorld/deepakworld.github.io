@@ -1,1 +1,98 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Image & Video Resizer</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #canvas { border: 1px solid #ccc; margin-top: 10px; display: block; }
+    .section { margin: 30px 0; }
+    .control { margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <h1>Web-Based Image & Video Resizer</h1>
+
+  <!-- IMAGE SECTION -->
+  <div class="section">
+    <h2>Image Compression</h2>
+    <input type="file" id="uploadImage" accept="image/*"><br><br>
+    Quality: <input type="range" id="quality" min="0.1" max="1" step="0.1" value="0.8">
+    <span id="qualityVal">0.8</span><br>
+    <canvas id="canvas"></canvas><br>
+    <button onclick="downloadImage()">Download Compressed Image</button>
+  </div>
+
+  <!-- VIDEO SECTION -->
+  <div class="section">
+    <h2>Video Compression (MP4/AVI)</h2>
+    <input type="file" id="uploadVideo" accept="video/*"><br><br>
+    <button onclick="compressVideo()">Compress Video</button><br><br>
+    <video id="videoPreview" controls width="480"></video>
+  </div>
+
+  <!-- FFmpeg.js -->
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.2/dist/ffmpeg.min.js"></script>
+
+  <script>
+    // IMAGE COMPRESSION
+    const uploadImage = document.getElementById("uploadImage");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const qualitySlider = document.getElementById("quality");
+    const qualityVal = document.getElementById("qualityVal");
+    let img = new Image();
+
+    uploadImage.addEventListener("change", function() {
+      const file = this.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        img.onload = function() {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    qualitySlider.addEventListener("input", function() {
+      qualityVal.textContent = this.value;
+    });
+
+    function downloadImage() {
+      const link = document.createElement("a");
+      link.download = "compressed.jpg";
+      link.href = canvas.toDataURL("image/jpeg", parseFloat(qualitySlider.value));
+      link.click();
+    }
+
+    // VIDEO COMPRESSION
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    const ffmpeg = createFFmpeg({ log: true });
+    const videoPreview = document.getElementById("videoPreview");
+
+    async function compressVideo() {
+      await ffmpeg.load();
+      const file = document.getElementById("uploadVideo").files[0];
+      if (!file) return alert("Please upload a video first!");
+
+      ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(file));
+
+      // Compress with CRF 28 (lower = better quality, larger size)
+      await ffmpeg.run('-i', 'input.mp4', '-vcodec', 'libx264', '-crf', '28', 'output.mp4');
+
+      const data = ffmpeg.FS('readFile', 'output.mp4');
+      const videoURL = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
+      videoPreview.src = videoURL;
+
+      // Optional: auto-download
+      const link = document.createElement("a");
+      link.download = "compressed.mp4";
+      link.href = videoURL;
+      link.click();
+    }
+  </script>
+</body>
+</html>
