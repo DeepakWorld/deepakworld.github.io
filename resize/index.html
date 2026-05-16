@@ -25,6 +25,11 @@
     <span id="heightVal">300</span> px
   </div>
 
+  <!-- Lock Aspect Ratio -->
+  <div class="control">
+    <label><input type="checkbox" id="lockRatio"> Lock Aspect Ratio</label>
+  </div>
+
   <!-- Canvas preview -->
   <canvas id="canvas"></canvas><br>
   <button onclick="downloadImage()">Download Resized Image</button>
@@ -37,7 +42,9 @@
     const heightSlider = document.getElementById("height");
     const widthVal = document.getElementById("widthVal");
     const heightVal = document.getElementById("heightVal");
+    const lockRatio = document.getElementById("lockRatio");
     let img = new Image();
+    let aspectRatio = 1;
 
     // Load uploaded image
     upload.addEventListener("change", function() {
@@ -46,6 +53,7 @@
         const reader = new FileReader();
         reader.onload = function(e) {
           img.onload = function() {
+            aspectRatio = img.width / img.height;
             canvas.width = img.width;
             canvas.height = img.height;
             ctx.drawImage(img, 0, 0);
@@ -62,8 +70,15 @@
 
     // Resize dynamically with sliders
     function resizeCanvas() {
-      const w = parseInt(widthSlider.value);
-      const h = parseInt(heightSlider.value);
+      let w = parseInt(widthSlider.value);
+      let h = parseInt(heightSlider.value);
+
+      if (lockRatio.checked) {
+        // Adjust height automatically based on aspect ratio
+        h = Math.round(w / aspectRatio);
+        heightSlider.value = h;
+      }
+
       canvas.width = w;
       canvas.height = h;
       ctx.drawImage(img, 0, 0, w, h);
@@ -72,7 +87,16 @@
     }
 
     widthSlider.addEventListener("input", resizeCanvas);
-    heightSlider.addEventListener("input", resizeCanvas);
+    heightSlider.addEventListener("input", function() {
+      if (lockRatio.checked) {
+        let h = parseInt(this.value);
+        let w = Math.round(h * aspectRatio);
+        widthSlider.value = w;
+        resizeCanvas();
+      } else {
+        resizeCanvas();
+      }
+    });
 
     // Download resized image
     function downloadImage() {
