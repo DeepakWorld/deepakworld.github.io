@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Image Resizer</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #canvas { border: 1px solid #ccc; margin-top: 10px; display: block; }
+    .control { margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <h2>Upload & Resize Image</h2>
 
+  <!-- Upload -->
+  <input type="file" id="upload" accept="image/*"><br><br>
+
+  <!-- Sliders -->
+  <div class="control">
+    Width: <input type="range" id="width" min="50" max="1000" value="400">
+    <span id="widthVal">400</span> px
+  </div>
+
+  <div class="control">
+    Height: <input type="range" id="height" min="50" max="1000" value="300">
+    <span id="heightVal">300</span> px
+  </div>
+
+  <!-- Canvas preview -->
+  <canvas id="canvas"></canvas><br>
+  <button onclick="downloadImage()">Download Resized Image</button>
+
+  <script>
+    const upload = document.getElementById("upload");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const widthSlider = document.getElementById("width");
+    const heightSlider = document.getElementById("height");
+    const widthVal = document.getElementById("widthVal");
+    const heightVal = document.getElementById("heightVal");
+    let img = new Image();
+
+    // Load uploaded image
+    upload.addEventListener("change", function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          img.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            widthSlider.value = img.width;
+            heightSlider.value = img.height;
+            widthVal.textContent = img.width;
+            heightVal.textContent = img.height;
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Resize dynamically with sliders
+    function resizeCanvas() {
+      const w = parseInt(widthSlider.value);
+      const h = parseInt(heightSlider.value);
+      canvas.width = w;
+      canvas.height = h;
+      ctx.drawImage(img, 0, 0, w, h);
+      widthVal.textContent = w;
+      heightVal.textContent = h;
+    }
+
+    widthSlider.addEventListener("input", resizeCanvas);
+    heightSlider.addEventListener("input", resizeCanvas);
+
+    // Download resized image
+    function downloadImage() {
+      const link = document.createElement("a");
+      link.download = "resized.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+  </script>
+</body>
+</html>
