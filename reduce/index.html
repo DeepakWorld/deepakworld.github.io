@@ -1,1 +1,67 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Image Resizer</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #canvas { border: 1px solid #ccc; margin-top: 10px; display: block; }
+    .control { margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <h2>Upload & Resize Image</h2>
+
+  <!-- Upload -->
+  <input type="file" id="upload" accept="image/*"><br><br>
+
+  <!-- Sliders -->
+  <div class="control">
+    Width: <input type="range" id="width" min="50" max="1000" value="400">
+    <span id="widthVal">400</span> px
+  </div>
+
+  <div class="control">
+    Height: <input type="range" id="height" min="50" max="1000" value="300">
+    <span id="heightVal">300</span> px
+  </div>
+
+  <!-- Lock Aspect Ratio -->
+  <div class="control">
+    <label><input type="checkbox" id="lockRatio"> Lock Aspect Ratio</label>
+  </div>
+
+<input type="file" id="upload" accept="image/*">
+<canvas id="canvas"></canvas>
+<button onclick="downloadImage()">Download Reduced Image</button>
+
+<script>
+  const upload = document.getElementById("upload");
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  let img = new Image();
+
+  upload.addEventListener("change", function() {
+    const file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  function downloadImage() {
+    // Reduce quality to 0.6 (60%)
+    const link = document.createElement("a");
+    link.download = "reduced.jpg";
+    link.href = canvas.toDataURL("image/jpeg", 0.6);
+    link.click();
+  }
+</script>
+</body>
+</html>
