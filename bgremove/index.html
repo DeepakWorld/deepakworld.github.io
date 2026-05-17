@@ -172,14 +172,14 @@ async function removeBackgroundAI() {
     }
 
     // Download
-    function downloadImage() {
-      const format = document.getElementById("format").value;
-      const mime = format === "jpeg" ? "image/jpeg" : "image/png";
-      const link = document.createElement("a");
-      link.download = "edited." + format;
-      link.href = canvas.toDataURL(mime);
-      link.click();
-    }
+ function downloadImage() {
+  const format = document.getElementById("format").value;
+  const mime = format === "jpeg" ? "image/jpeg" : "image/png";
+  const link = document.createElement("a");
+  link.download = "edited." + format;
+  link.href = canvas.toDataURL(mime);
+  link.click();
+}
 
     // Convert to video (WebM)
     function convertToVideo() {
