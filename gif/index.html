@@ -1,1 +1,61 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GIF to JPG/PNG Converter</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    canvas { border: 1px solid #ccc; margin-top: 10px; }
+    #output { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>GIF to JPG/PNG Converter</h2>
+  <input type="file" id="upload" accept="image/gif">
+  <canvas id="myCanvas" width="500" height="400"></canvas>
+  <br>
+  <select id="format">
+    <option value="png">PNG</option>
+    <option value="jpeg">JPG</option>
+  </select>
+  <button onclick="convertGif()">Convert & Download</button>
+
+  <div id="output"></div>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    let img = new Image();
+
+    // Load GIF
+    document.getElementById("upload").addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = evt => {
+        img = new Image();
+        img.onload = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Convert GIF to JPG/PNG
+    function convertGif() {
+      const format = document.getElementById("format").value;
+      const mime = format === "jpeg" ? "image/jpeg" : "image/png";
+      const link = document.createElement("a");
+      link.download = "converted." + format;
+      link.href = canvas.toDataURL(mime);
+      link.click();
+
+      document.getElementById("output").innerHTML =
+        `<h3>Converted Image:</h3><img src="${canvas.toDataURL(mime)}">`;
+    }
+  </script>
+</body>
+</html>
