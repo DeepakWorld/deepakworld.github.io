@@ -1,1 +1,184 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Image Editor</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    canvas { border: 1px solid #ccc; margin-top: 10px; }
+    #output { margin-top: 20px; }
+    .controls { margin-top: 15px; }
+    .controls button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <h2>Advanced Image Editor</h2>
+  <input type="file" id="upload" accept="image/*">
+  <canvas id="myCanvas" width="500" height="400"></canvas>
+  <div class="controls">
+    <!-- Corrections -->
+    <button onclick="applySharpen()">Fix Blur</button>
+    <button onclick="removeBlackSpots()">Remove Black Spots</button>
+    <button onclick="fixStretch()">Fix Stretch</button>
+
+    <!-- Effects -->
+    <button onclick="applyEffect('grayscale')">Grayscale</button>
+    <button onclick="applyEffect('sepia')">Sepia</button>
+    <button onclick="applyEffect('invert')">Invert</button>
+
+    <!-- Color Adjustments -->
+    <button onclick="adjustColor(20,0)">Increase Brightness</button>
+    <button onclick="adjustColor(-20,0)">Decrease Brightness</button>
+    <button onclick="adjustColor(0,20)">Increase Contrast</button>
+    <button onclick="adjustColor(0,-20)">Decrease Contrast</button>
+
+    <!-- Animation -->
+    <button onclick="animateImage()">Animate</button>
+
+    <!-- Background -->
+    <button onclick="removeBackground()">Remove BG</button>
+    <button onclick="replaceBackground()">Replace BG</button>
+
+    <!-- Export -->
+    <select id="format">
+      <option value="png">PNG</option>
+      <option value="jpeg">JPG</option>
+    </select>
+    <button onclick="downloadImage()">Download</button>
+    <button onclick="convertToVideo()">Export Video</button>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    let img = new Image();
+
+    // Upload
+    document.getElementById("upload").addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = evt => {
+        img = new Image();
+        img.onload = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Blur correction
+    function applySharpen() {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imageData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        d[i] = Math.min(255, d[i] * 1.1);
+        d[i+1] = Math.min(255, d[i+1] * 1.1);
+        d[i+2] = Math.min(255, d[i+2] * 1.1);
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    // Black spot removal
+    function removeBlackSpots() {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imageData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        if (d[i] < 20 && d[i+1] < 20 && d[i+2] < 20) {
+          d[i] = 255; d[i+1] = 255; d[i+2] = 255;
+        }
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    // Stretch fix (redraw with aspect ratio)
+    function fixStretch() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const ratio = Math.min(canvas.width / img.width, canvas.height / img.height);
+      const w = img.width * ratio;
+      const h = img.height * ratio;
+      ctx.drawImage(img, (canvas.width-w)/2, (canvas.height-h)/2, w, h);
+    }
+
+    // Effects
+    function applyEffect(type) {
+      canvas.style.filter = type;
+    }
+
+    // Color adjustments
+    function adjustColor(brightness, contrast) {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imageData.data;
+      const factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+      for (let i = 0; i < d.length; i += 4) {
+        d[i] = factor * (d[i] - 128) + 128 + brightness;
+        d[i+1] = factor * (d[i+1] - 128) + 128 + brightness;
+        d[i+2] = factor * (d[i+2] - 128) + 128 + brightness;
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    // Animation
+    function animateImage() {
+      let angle = 0;
+      function rotate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.translate(canvas.width/2, canvas.height/2);
+        ctx.rotate(angle * Math.PI/180);
+        ctx.drawImage(img, -img.width/4, -img.height/4, img.width/2, img.height/2);
+        ctx.restore();
+        angle += 2;
+        requestAnimationFrame(rotate);
+      }
+      rotate();
+    }
+
+    // Background remover (simple white fill)
+    function removeBackground() {
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Background replacer (example: blue)
+    function replaceBackground() {
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "lightblue";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Download
+    function downloadImage() {
+      const format = document.getElementById("format").value;
+      const mime = format === "jpeg" ? "image/jpeg" : "image/png";
+      const link = document.createElement("a");
+      link.download = "edited." + format;
+      link.href = canvas.toDataURL(mime);
+      link.click();
+    }
+
+    // Convert to video (WebM)
+    function convertToVideo() {
+      const stream = canvas.captureStream(30);
+      const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+      const chunks = [];
+      recorder.ondataavailable = e => chunks.push(e.data);
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: "video/webm" });
+        const link = document.createElement("a");
+        link.download = "animation.webm";
+        link.href = URL.createObjectURL(blob);
+        link.click();
+      };
+      recorder.start();
+      setTimeout(() => recorder.stop(), 3000); // record 3s
+    }
+  </script>
+</body>
+</html>
