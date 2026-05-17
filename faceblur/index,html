@@ -1,1 +1,103 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Face Correction Tool</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    canvas { border: 1px solid #ccc; margin-top: 10px; cursor: crosshair; }
+    #output { margin-top: 20px; }
+  </style>
+  <!-- Load TensorFlow + face-api.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+</head>
+<body>
+  <h2>Click a Face to Correct</h2>
+  <input type="file" id="upload" accept="image/*">
+  <canvas id="myCanvas" width="600" height="400"></canvas>
+  <br>
+  <select id="format">
+    <option value="png">PNG</option>
+    <option value="jpeg">JPG</option>
+  </select>
+  <button onclick="downloadImage()">Download Corrected Photo</button>
+  <div id="output"></div>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    let img = new Image();
+    let detections = [];
+
+    // Load models
+    Promise.all([
+      faceapi.nets.tinyFaceDetector.loadFromUri("https://cdn.jsdelivr.net/npm/face-api.js/weights"),
+    ]).then(() => console.log("Face API models loaded"));
+
+    // Upload image
+    document.getElementById("upload").addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = evt => {
+        img = new Image();
+        img.onload = async () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          // Detect faces
+          detections = await faceapi.detectAllFaces(canvas, new faceapi.TinyFaceDetectorOptions());
+          // Draw boxes
+          detections.forEach(det => {
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(det.box.x, det.box.y, det.box.width, det.box.height);
+          });
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Click to correct a face
+    canvas.addEventListener("click", e => {
+      const clickX = e.offsetX, clickY = e.offsetY;
+      detections.forEach(det => {
+        if (clickX > det.box.x && clickX < det.box.x + det.box.width &&
+            clickY > det.box.y && clickY < det.box.y + det.box.height) {
+          correctFace(det.box);
+        }
+      });
+    });
+
+    // Correction function
+    function correctFace(box) {
+      const imageData = ctx.getImageData(box.x, box.y, box.width, box.height);
+      const d = imageData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        // Sharpen (reduce blur)
+        d[i] = Math.min(255, d[i] * 1.1);
+        d[i+1] = Math.min(255, d[i+1] * 1.1);
+        d[i+2] = Math.min(255, d[i+2] * 1.1);
+        // Black spot removal
+        if (d[i] < 20 && d[i+1] < 20 && d[i+2] < 20) {
+          d[i] = 255; d[i+1] = 255; d[i+2] = 255;
+        }
+      }
+      ctx.putImageData(imageData, box.x, box.y);
+      document.getElementById("output").innerText = "Corrected selected face!";
+    }
+
+    // Download corrected photo
+    function downloadImage() {
+      const format = document.getElementById("format").value;
+      const mime = format === "jpeg" ? "image/jpeg" : "image/png";
+      const link = document.createElement("a");
+      link.download = "corrected." + format;
+      link.href = canvas.toDataURL(mime);
+      link.click();
+    }
+  </script>
+</body>
+</html>
