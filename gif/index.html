@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,17 +43,21 @@
       reader.readAsDataURL(file);
     });
 
-    // Convert GIF to JPG/PNG
+    // Convert GIF to JPG/PNG and download
     function convertGif() {
       const format = document.getElementById("format").value;
       const mime = format === "jpeg" ? "image/jpeg" : "image/png";
+      const dataURL = canvas.toDataURL(mime);
+
+      // Create download link
       const link = document.createElement("a");
       link.download = "converted." + format;
-      link.href = canvas.toDataURL(mime);
+      link.href = dataURL;
       link.click();
 
+      // Show preview
       document.getElementById("output").innerHTML =
-        `<h3>Converted Image:</h3><img src="${canvas.toDataURL(mime)}">`;
+        `<h3>Converted Image:</h3><img src="${dataURL}">`;
     }
   </script>
 </body>
