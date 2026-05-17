@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,9 @@
     .controls { margin-top: 15px; }
     .controls button { margin: 5px; }
   </style>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix"></script>
+
 </head>
 <body>
   <h2>Advanced Image Editor</h2>
@@ -71,7 +73,22 @@
       };
       reader.readAsDataURL(file);
     });
+async function removeBackgroundAI() {
+  const net = await bodyPix.load();
+  const segmentation = await net.segmentPerson(canvas);
 
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const d = imageData.data;
+
+  for (let i = 0; i < d.length; i += 4) {
+    const n = i / 4;
+    if (segmentation.data[n] === 0) {
+      // Non-person pixels → transparent
+      d[i+3] = 0;
+    }
+  }
+  ctx.putImageData(imageData, 0, 0);
+}
     // Blur correction
     function applySharpen() {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -180,5 +197,7 @@
       setTimeout(() => recorder.stop(), 3000); // record 3s
     }
   </script>
+
+
 </body>
 </html>
