@@ -5,13 +5,19 @@
   <title>Advanced Image Editor</title>
   <style>
     body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; padding: 20px; }
-    canvas { border: 1px solid #ccc; margin-top: 10px; background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; } /* Checkerboard for transparency */
+    canvas { border: 1px solid #ccc; margin-top: 10px;
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+                        linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, #ccc 75%),
+                        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
     #output { margin-top: 20px; }
     .controls { margin-top: 15px; max-width: 800px; margin-left: auto; margin-right: auto; }
     .controls button, .controls select { margin: 5px; padding: 8px 12px; cursor: pointer; }
     .status { color: #555; font-weight: bold; margin-top: 10px; }
   </style>
-  <!-- TensorFlow.js and BodyPix Loading -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix"></script>
 </head>
@@ -25,30 +31,19 @@
   <div id="status" class="status">Upload an image containing a person to begin.</div>
 
   <div class="controls">
-    <!-- Corrections -->
     <button onclick="applySharpen()">Fix Blur</button>
     <button onclick="removeBlackSpots()">Remove Black Spots</button>
     <button onclick="fixStretch()">Fix Stretch</button>
-
-    <!-- Effects -->
     <button onclick="applyEffect('grayscale')">Grayscale</button>
     <button onclick="applyEffect('sepia')">Sepia</button>
     <button onclick="applyEffect('invert')">Invert</button>
-
-    <!-- Color Adjustments -->
     <button onclick="adjustColor(20,0)">Increase Brightness</button>
     <button onclick="adjustColor(-20,0)">Decrease Brightness</button>
     <button onclick="adjustColor(0,20)">Increase Contrast</button>
     <button onclick="adjustColor(0,-20)">Decrease Contrast</button>
-
-    <!-- Animation -->
     <button onclick="animateImage()">Animate</button>
-
-    <!-- Background Functions -->
     <button onclick="removeBackgroundAI()">Remove BG (AI)</button>
     <button onclick="replaceBackground('lightblue')">Replace BG (Blue)</button>
-
-    <!-- Export -->
     <select id="format">
       <option value="png">PNG</option>
       <option value="jpeg">JPG</option>
@@ -66,7 +61,6 @@
     let img = new Image();
     let bodyPixNet = null;
 
-    // Preload BodyPix Model so clicking the button is instant
     async function loadModel() {
       statusText.innerText = "Loading AI Model... Please wait.";
       bodyPixNet = await bodyPix.load();
@@ -74,14 +68,12 @@
     }
     loadModel();
 
-    // Upload Handler
     document.getElementById("upload").addEventListener("change", e => {
       const file = e.target.files[0];
       if (!file) return;
       const reader = new FileReader();
       reader.onload = evt => {
         img = new Image();
-        // Fix for CORS issues with TensorFlow
         img.crossOrigin = "anonymous"; 
         img.onload = () => {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -93,7 +85,6 @@
       reader.readAsDataURL(file);
     });
 
-    // Precise AI Background Removal
     async function removeBackgroundAI() {
       if (!bodyPixNet) {
         statusText.innerText = "Model is still loading, try again in a moment.";
@@ -101,40 +92,36 @@
       }
       statusText.innerText = "Processing image background...";
 
-      // Segment person
       const segmentation = await bodyPixNet.segmentPerson(canvas, {
-        internalResolution: 'medium',
-        segmentationThreshold: 0.7
+        internalResolution: 'high',
+        segmentationThreshold: 0.7,
+        smoothSegmentation: true
       });
 
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const d = imageData.data;
+      const mask = bodyPix.toMask(
+        segmentation,
+        {r:0, g:0, b:0, a:0},   // background transparent
+        {r:255, g:255, b:255, a:255}, // person opaque
+        true // smoothing
+      );
 
-      for (let i = 0; i < d.length; i += 4) {
-        const n = i / 4;
-        // If BodyPix flags it as 0, it means it is background -> make it transparent
-        if (segmentation.data[n] === 0) {
-          d[i + 3] = 0; // Alpha layer to 0
-        }
-      }
-      ctx.putImageData(imageData, 0, 0);
+      ctx.putImageData(mask, 0, 0);
+      ctx.globalCompositeOperation = "source-in";
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = "source-over";
+
       statusText.innerText = "Background removed!";
     }
 
-    // Replace Background with Solid Color (Requires transparent background first)
     function replaceBackground(color) {
-      // Save current composition state
       ctx.save();
-      // Draw behind existing pixels
       ctx.globalCompositeOperation = "destination-over";
       ctx.fillStyle = color;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      // Restore state
       ctx.restore();
       statusText.innerText = `Background replaced with ${color}.`;
     }
 
-    // Blur correction
     function applySharpen() {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const d = imageData.data;
@@ -146,7 +133,6 @@
       ctx.putImageData(imageData, 0, 0);
     }
 
-    // Black spot removal
     function removeBlackSpots() {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const d = imageData.data;
@@ -158,7 +144,6 @@
       ctx.putImageData(imageData, 0, 0);
     }
 
-    // Stretch fix
     function fixStretch() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const ratio = Math.min(canvas.width / img.width, canvas.height / img.height);
@@ -167,12 +152,10 @@
       ctx.drawImage(img, (canvas.width-w)/2, (canvas.height-h)/2, w, h);
     }
 
-    // Effects
     function applyEffect(type) {
       canvas.style.filter = type;
     }
 
-    // Color adjustments
     function adjustColor(brightness, contrast) {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const d = imageData.data;
@@ -185,7 +168,6 @@
       ctx.putImageData(imageData, 0, 0);
     }
 
-    // Animation
     function animateImage() {
       let angle = 0;
       function rotate() {
@@ -201,7 +183,6 @@
       rotate();
     }
 
-    // Download
     function downloadImage() {
       const format = document.getElementById("format").value;
       const mime = format === "jpeg" ? "image/jpeg" : "image/png";
@@ -211,12 +192,22 @@
       link.click();
     }
 
-    // Convert to video
-    function convertToVideo() {
+     function convertToVideo() {
+      // Capture the canvas stream at 30 frames per second
       const stream = canvas.captureStream(30);
+
+      // Create a MediaRecorder for WebM format
       const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
       const chunks = [];
-      recorder.ondataavailable = e => chunks.push(e.data);
+
+      // Collect recorded data
+      recorder.ondataavailable = e => {
+        if (e.data.size > 0) {
+          chunks.push(e.data);
+        }
+      };
+
+      // When recording stops, save the video
       recorder.onstop = () => {
         const blob = new Blob(chunks, { type: "video/webm" });
         const link = document.createElement("a");
@@ -224,8 +215,14 @@
         link.href = URL.createObjectURL(blob);
         link.click();
       };
+
+      // Start recording
       recorder.start();
-      setTimeout(() => recorder.stop(), 3000);
+
+      // Stop after 3 seconds (adjust as needed)
+      setTimeout(() => {
+        recorder.stop();
+      }, 3000);
     }
   </script>
 </body>
