@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Background Remover</title>
+  <title>AI Background Remover + Replace</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 800px;
+      max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
       text-align: center;
@@ -68,16 +68,16 @@
       background-color: #218838;
     }
   </style>
-  <!-- Imgly Background Removal -->
   <script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/dist/bundle.js"></script>
 </head>
 <body>
 
 <div class="container">
-  <h2>AI Background Remover</h2>
-  <p>Select an image to remove its background completely inside your browser.</p>
+  <h2>AI Background Remover + Replace</h2>
+  <p>Upload an image to remove its background, then optionally upload a new background to replace it.</p>
   
   <input type="file" id="imageInput" accept="image/*">
+  <input type="file" id="bgInput" accept="image/*" class="hidden">
   <div id="status"></div>
 
   <div class="preview-box">
@@ -96,6 +96,7 @@
 
 <script>
   const imageInput = document.getElementById('imageInput');
+  const bgInput = document.getElementById('bgInput');
   const status = document.getElementById('status');
   const originalPreview = document.getElementById('originalPreview');
   const resultImage = document.getElementById('resultImage');
@@ -105,43 +106,72 @@
   const resultWrapper = document.getElementById('resultWrapper');
 
   let processedImageUrl = null;
+  let cutoutBlob = null;
 
   imageInput.addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Show original preview
     const originalUrl = URL.createObjectURL(file);
     originalPreview.src = originalUrl;
     originalWrapper.classList.remove('hidden');
 
-    // Reset UI
     resultWrapper.classList.add('hidden');
     downloadBtn.classList.add('hidden');
     status.textContent = "Loading AI Model & Processing...";
 
     try {
-      // Load file into an HTMLImageElement
       const img = new Image();
-      img.crossOrigin = "anonymous"; 
+      img.crossOrigin = "anonymous";
       img.src = originalUrl;
-      await img.decode(); // wait until image is ready
+      await img.decode();
 
-      // Run background removal
-      const blob = await imglyRemoveBackground(img);
+      cutoutBlob = await imglyRemoveBackground(img);
 
-      // Convert blob → URL
-      processedImageUrl = URL.createObjectURL(blob);
+      processedImageUrl = URL.createObjectURL(cutoutBlob);
       resultImage.src = processedImageUrl;
 
-      // Update UI
       status.textContent = "Background removed successfully!";
       resultWrapper.classList.remove('hidden');
       downloadBtn.classList.remove('hidden');
+      bgInput.classList.remove('hidden'); // show background upload option
     } catch (error) {
       console.error(error);
       status.textContent = "Error removing background. Please try another image.";
     }
+  });
+
+  // Replace background
+  bgInput.addEventListener('change', async (e) => {
+    const bgFile = e.target.files[0];
+    if (!bgFile || !cutoutBlob) return;
+
+    status.textContent = "Compositing with new background...";
+
+    const bgUrl = URL.createObjectURL(bgFile);
+    const bgImg = new Image();
+    bgImg.src = bgUrl;
+    await bgImg.decode();
+
+    const cutoutUrl = URL.createObjectURL(cutoutBlob);
+    const cutoutImg = new Image();
+    cutoutImg.src = cutoutUrl;
+    await cutoutImg.decode();
+
+    // Composite on canvas
+    const canvas = document.createElement('canvas');
+    canvas.width = bgImg.width;
+    canvas.height = bgImg.height;
+    const ctx = canvas.getContext('2d');
+
+    ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(cutoutImg, 0, 0, canvas.width, canvas.height);
+
+    processedImageUrl = canvas.toDataURL('image/png');
+    resultImage.src = processedImageUrl;
+
+    status.textContent = "New background applied!";
+    downloadBtn.classList.remove('hidden');
   });
 
   // Download button
@@ -149,7 +179,7 @@
     if (!processedImageUrl) return;
     const link = document.createElement('a');
     link.href = processedImageUrl;
-    link.download = 'bg_removed_' + Date.now() + '.png';
+    link.download = 'bg_replaced_' + Date.now() + '.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
