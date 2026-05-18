@@ -1,1 +1,258 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Image Editor</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; padding: 20px; }
+    canvas { border: 1px solid #ccc; margin-top: 10px;
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+                        linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, #ccc 75%),
+                        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+    #output { margin-top: 20px; }
+    .controls { margin-top: 15px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .controls button, .controls select { margin: 5px; padding: 8px 12px; cursor: pointer; }
+    .status { color: #555; font-weight: bold; margin-top: 10px; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix"></script>
+</head>
+<body>
+
+  <h2>Advanced Image Editor</h2>
+  <input type="file" id="upload" accept="image/*">
+  <div>
+    <canvas id="myCanvas" width="500" height="400"></canvas>
+  </div>
+  <div id="status" class="status">Upload an image containing a person to begin.</div>
+
+  <div class="controls">
+    <button onclick="applySharpen()">Fix Blur</button>
+    <button onclick="removeBlackSpots()">Remove Black Spots</button>
+    <button onclick="fixStretch()">Fix Stretch</button>
+    <button onclick="applyEffect('grayscale')">Grayscale</button>
+    <button onclick="applyEffect('sepia')">Sepia</button>
+    <button onclick="applyEffect('invert')">Invert</button>
+    <button onclick="adjustColor(20,0)">Increase Brightness</button>
+    <button onclick="adjustColor(-20,0)">Decrease Brightness</button>
+    <button onclick="adjustColor(0,20)">Increase Contrast</button>
+    <button onclick="adjustColor(0,-20)">Decrease Contrast</button>
+    <button onclick="animateImage()">Animate</button>
+    <button onclick="removeBackgroundAI()">Remove BG (AI)</button>
+    <button onclick="replaceBackground('lightblue')">Replace BG (Blue)</button>
+    <select id="format">
+      <option value="png">PNG</option>
+      <option value="jpeg">JPG</option>
+    </select>
+    <button onclick="downloadImage()">Download</button>
+    <br>
+    <!-- Resolution Selector -->
+    <label for="resolution">Video Resolution:</label>
+    <select id="resolution">
+      <option value="original">Original</option>
+      <option value="720p">HD (1280x720)</option>
+      <option value="1080p">Full HD (1920x1080)</option>
+    </select>
+    <button onclick="convertToVideo()">Export Video</button>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    const statusText = document.getElementById("status");
+    let img = new Image();
+    let bodyPixNet = null;
+
+    async function loadModel() {
+      statusText.innerText = "Loading AI Model... Please wait.";
+      bodyPixNet = await bodyPix.load();
+      statusText.innerText = "AI Model Ready.";
+    }
+    loadModel();
+
+    document.getElementById("upload").addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = evt => {
+        img = new Image();
+        img.crossOrigin = "anonymous"; 
+        img.onload = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          statusText.innerText = "Image loaded successfully.";
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    async function removeBackgroundAI() {
+      if (!bodyPixNet) {
+        statusText.innerText = "Model is still loading, try again in a moment.";
+        return;
+      }
+      statusText.innerText = "Processing image background...";
+
+      const segmentation = await bodyPixNet.segmentPerson(canvas, {
+        internalResolution: 'high',
+        segmentationThreshold: 0.7,
+        smoothSegmentation: true
+      });
+
+      const mask = bodyPix.toMask(
+        segmentation,
+        {r:0, g:0, b:0, a:0},   // background transparent
+        {r:255, g:255, b:255, a:255}, // person opaque
+        true // smoothing
+      );
+
+      ctx.putImageData(mask, 0, 0);
+      ctx.globalCompositeOperation = "source-in";
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = "source-over";
+
+      statusText.innerText = "Background removed!";
+    }
+
+    function replaceBackground(color) {
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = color;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
+      statusText.innerText = `Background replaced with ${color}.`;
+    }
+
+    function applySharpen() {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imageData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        d[i] = Math.min(255, d[i] * 1.1);
+        d[i+1] = Math.min(255, d[i+1] * 1.1);
+        d[i+2] = Math.min(255, d[i+2] * 1.1);
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    function removeBlackSpots() {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imageData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        if (d[i] < 20 && d[i+1] < 20 && d[i+2] < 20) {
+          d[i] = 255; d[i+1] = 255; d[i+2] = 255;
+        }
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    function fixStretch() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const ratio = Math.min(canvas.width / img.width, canvas.height / img.height);
+      const w = img.width * ratio;
+      const h = img.height * ratio;
+      ctx.drawImage(img, (canvas.width-w)/2, (canvas.height-h)/2, w, h);
+    }
+
+    function applyEffect(type) {
+      canvas.style.filter = type;
+    }
+
+    function adjustColor(brightness, contrast) {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imageData.data;
+      const factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+      for (let i = 0; i < d.length; i += 4) {
+        d[i] = factor * (d[i] - 128) + 128 + brightness;
+        d[i+1] = factor * (d[i+1] - 128) + 128 + brightness;
+        d[i+2] = factor * (d[i+2] - 128) + 128 + brightness;
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    function animateImage() {
+      let angle = 0;
+      function rotate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.translate(canvas.width/2, canvas.height/2);
+        ctx.rotate(angle * Math.PI/180);
+        ctx.drawImage(img, -img.width/4, -img.height/4, img.width/2, img.height/2);
+        ctx.restore();
+        angle += 2;
+        requestAnimationFrame(rotate);
+      }
+      rotate();
+    }
+
+      function downloadImage() {
+      const format = document.getElementById("format").value;
+      const mime = format === "jpeg" ? "image/jpeg" : "image/png";
+      const link = document.createElement("a");
+      link.download = "edited." + format;
+      link.href = canvas.toDataURL(mime);
+      link.click();
+    }
+
+    function convertToVideo() {
+      // Get selected resolution
+      const res = document.getElementById("resolution").value;
+      let targetWidth = canvas.width;
+      let targetHeight = canvas.height;
+
+      if (res === "720p") {
+        targetWidth = 1280;
+        targetHeight = 720;
+      } else if (res === "1080p") {
+        targetWidth = 1920;
+        targetHeight = 1080;
+      }
+
+      // Create offscreen canvas for scaling
+      const offCanvas = document.createElement("canvas");
+      offCanvas.width = targetWidth;
+      offCanvas.height = targetHeight;
+      const offCtx = offCanvas.getContext("2d");
+
+      // Scale proportionally to avoid blur/stretch
+      const ratio = Math.min(targetWidth / canvas.width, targetHeight / canvas.height);
+      const w = canvas.width * ratio;
+      const h = canvas.height * ratio;
+      offCtx.drawImage(canvas, (targetWidth - w) / 2, (targetHeight - h) / 2, w, h);
+
+      // Capture stream
+      const stream = offCanvas.captureStream(30);
+
+      // Recorder with bitrate control
+      const recorder = new MediaRecorder(stream, {
+        mimeType: "video/webm;codecs=vp9",
+        videoBitsPerSecond: 2_000_000
+      });
+
+      const chunks = [];
+      recorder.ondataavailable = e => {
+        if (e.data.size > 0) chunks.push(e.data);
+      };
+
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: "video/webm" });
+        const link = document.createElement("a");
+        link.download = `animation_${res}.webm`;
+        link.href = URL.createObjectURL(blob);
+        link.click();
+      };
+
+      recorder.start();
+      setTimeout(() => recorder.stop(), 3000); // 3s recording
+    }
+  </script>
+</body>
+</html>
+
