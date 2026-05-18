@@ -122,10 +122,12 @@
         status.textContent = "Loading AI Model & Processing... (This can take a few seconds on the first run)";
 
         try {
+            // Convert File → ImageBitmap (required by imglyRemoveBackground)
+            const imageBitmap = await createImageBitmap(file);
+
             // Run background removal
-            // imglyRemoveBackground is brought in via the CDN script bundle
-            const blob = await imglyRemoveBackground(file);
-            
+            const blob = await imglyRemoveBackground(imageBitmap);
+
             // Create URL out of the processed transparent blob
             processedImageUrl = URL.createObjectURL(blob);
             resultImage.src = processedImageUrl;
@@ -151,6 +153,7 @@
         document.body.removeChild(link);
     });
 </script>
+
 
 </body>
 </html>
