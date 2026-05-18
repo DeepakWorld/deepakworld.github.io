@@ -4,20 +4,26 @@
   <meta charset="UTF-8">
   <title>Advanced Image Editor</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; }
-    canvas { border: 1px solid #ccc; margin-top: 10px; }
+    body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; padding: 20px; }
+    canvas { border: 1px solid #ccc; margin-top: 10px; background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; } /* Checkerboard for transparency */
     #output { margin-top: 20px; }
-    .controls { margin-top: 15px; }
-    .controls button { margin: 5px; }
+    .controls { margin-top: 15px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .controls button, .controls select { margin: 5px; padding: 8px 12px; cursor: pointer; }
+    .status { color: #555; font-weight: bold; margin-top: 10px; }
   </style>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix"></script>
-
+  <!-- TensorFlow.js and BodyPix Loading -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix"></script>
 </head>
 <body>
+
   <h2>Advanced Image Editor</h2>
   <input type="file" id="upload" accept="image/*">
-  <canvas id="myCanvas" width="500" height="400"></canvas>
+  <div>
+    <canvas id="myCanvas" width="500" height="400"></canvas>
+  </div>
+  <div id="status" class="status">Upload an image containing a person to begin.</div>
+
   <div class="controls">
     <!-- Corrections -->
     <button onclick="applySharpen()">Fix Blur</button>
@@ -38,10 +44,9 @@
     <!-- Animation -->
     <button onclick="animateImage()">Animate</button>
 
-    <!-- Background -->
-    <button onclick="removeBackground()">Remove BG</button>
-    <button onclick="replaceBackground()">Replace BG</button>
-<button onclick="removeBackgroundAI()">Remove BG</button>
+    <!-- Background Functions -->
+    <button onclick="removeBackgroundAI()">Remove BG (AI)</button>
+    <button onclick="replaceBackground('lightblue')">Replace BG (Blue)</button>
 
     <!-- Export -->
     <select id="format">
@@ -57,39 +62,77 @@
   <script>
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
+    const statusText = document.getElementById("status");
     let img = new Image();
+    let bodyPixNet = null;
 
-    // Upload
+    // Preload BodyPix Model so clicking the button is instant
+    async function loadModel() {
+      statusText.innerText = "Loading AI Model... Please wait.";
+      bodyPixNet = await bodyPix.load();
+      statusText.innerText = "AI Model Ready.";
+    }
+    loadModel();
+
+    // Upload Handler
     document.getElementById("upload").addEventListener("change", e => {
       const file = e.target.files[0];
       if (!file) return;
       const reader = new FileReader();
       reader.onload = evt => {
         img = new Image();
+        // Fix for CORS issues with TensorFlow
+        img.crossOrigin = "anonymous"; 
         img.onload = () => {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          statusText.innerText = "Image loaded successfully.";
         };
         img.src = evt.target.result;
       };
       reader.readAsDataURL(file);
     });
-async function removeBackgroundAI() {
-  const net = await bodyPix.load();
-  const segmentation = await net.segmentPerson(canvas);
 
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const d = imageData.data;
+    // Precise AI Background Removal
+    async function removeBackgroundAI() {
+      if (!bodyPixNet) {
+        statusText.innerText = "Model is still loading, try again in a moment.";
+        return;
+      }
+      statusText.innerText = "Processing image background...";
 
-  for (let i = 0; i < d.length; i += 4) {
-    const n = i / 4;
-    if (segmentation.data[n] === 0) {
-      // Non-person pixels → transparent
-      d[i+3] = 0;
+      // Segment person
+      const segmentation = await bodyPixNet.segmentPerson(canvas, {
+        internalResolution: 'medium',
+        segmentationThreshold: 0.7
+      });
+
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imageData.data;
+
+      for (let i = 0; i < d.length; i += 4) {
+        const n = i / 4;
+        // If BodyPix flags it as 0, it means it is background -> make it transparent
+        if (segmentation.data[n] === 0) {
+          d[i + 3] = 0; // Alpha layer to 0
+        }
+      }
+      ctx.putImageData(imageData, 0, 0);
+      statusText.innerText = "Background removed!";
     }
-  }
-  ctx.putImageData(imageData, 0, 0);
-}
+
+    // Replace Background with Solid Color (Requires transparent background first)
+    function replaceBackground(color) {
+      // Save current composition state
+      ctx.save();
+      // Draw behind existing pixels
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = color;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Restore state
+      ctx.restore();
+      statusText.innerText = `Background replaced with ${color}.`;
+    }
 
     // Blur correction
     function applySharpen() {
@@ -115,7 +158,7 @@ async function removeBackgroundAI() {
       ctx.putImageData(imageData, 0, 0);
     }
 
-    // Stretch fix (redraw with aspect ratio)
+    // Stretch fix
     function fixStretch() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const ratio = Math.min(canvas.width / img.width, canvas.height / img.height);
@@ -158,31 +201,17 @@ async function removeBackgroundAI() {
       rotate();
     }
 
-    // Background remover (simple white fill)
-    function removeBackground() {
-      ctx.globalCompositeOperation = "destination-over";
-      ctx.fillStyle = "white";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
-    // Background replacer (example: blue)
-    function replaceBackground() {
-      ctx.globalCompositeOperation = "destination-over";
-      ctx.fillStyle = "lightblue";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
     // Download
- function downloadImage() {
-  const format = document.getElementById("format").value;
-  const mime = format === "jpeg" ? "image/jpeg" : "image/png";
-  const link = document.createElement("a");
-  link.download = "edited." + format;
-  link.href = canvas.toDataURL(mime);
-  link.click();
-}
+    function downloadImage() {
+      const format = document.getElementById("format").value;
+      const mime = format === "jpeg" ? "image/jpeg" : "image/png";
+      const link = document.createElement("a");
+      link.download = "edited." + format;
+      link.href = canvas.toDataURL(mime);
+      link.click();
+    }
 
-    // Convert to video (WebM)
+    // Convert to video
     function convertToVideo() {
       const stream = canvas.captureStream(30);
       const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
@@ -196,10 +225,8 @@ async function removeBackgroundAI() {
         link.click();
       };
       recorder.start();
-      setTimeout(() => recorder.stop(), 3000); // record 3s
+      setTimeout(() => recorder.stop(), 3000);
     }
   </script>
-
-
 </body>
 </html>
