@@ -1,1 +1,156 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Background Remover</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        .preview-box {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        .img-container {
+            flex: 1;
+            min-width: 250px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-image: linear-gradient(45deg, #efefef 25%, transparent 25%), 
+                              linear-gradient(-45deg, #efefef 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #efefef 75%), 
+                              linear-gradient(-45deg, transparent 75%, #efefef 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        #status {
+            font-weight: bold;
+            color: #0066cc;
+            margin: 15px 0;
+        }
+        .hidden {
+            display: none;
+        }
+        #downloadBtn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        #downloadBtn:hover {
+            background-color: #218838;
+        }
+    </style>
+    <!-- Import the local-wasm version of Imgly Background Removal -->
+    <script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/dist/bundle.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>AI Background Remover</h2>
+    <p>Select an image to remove its background completely inside your browser.</p>
+    
+    <input type="file" id="imageInput" accept="image/*">
+    <div id="status"></div>
+
+    <div class="preview-box">
+        <div class="img-container hidden" id="originalWrapper">
+            <h3>Original</h3>
+            <img id="originalPreview" src="" alt="Original Image">
+        </div>
+        <div class="img-container hidden" id="resultWrapper">
+            <h3>Result</h3>
+            <img id="resultImage" src="" alt="Background Removed">
+            <br>
+            <button id="downloadBtn" class="hidden">Download PNG</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const imageInput = document.getElementById('imageInput');
+    const status = document.getElementById('status');
+    const originalPreview = document.getElementById('originalPreview');
+    const resultImage = document.getElementById('resultImage');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    const originalWrapper = document.getElementById('originalWrapper');
+    const resultWrapper = document.getElementById('resultWrapper');
+
+    let processedImageUrl = null;
+
+    imageInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        // Display original preview
+        const originalUrl = URL.createObjectURL(file);
+        originalPreview.src = originalUrl;
+        originalWrapper.classList.remove('hidden');
+        
+        // Reset states
+        resultWrapper.classList.add('hidden');
+        downloadBtn.classList.add('hidden');
+        status.textContent = "Loading AI Model & Processing... (This can take a few seconds on the first run)";
+
+        try {
+            // Run background removal
+            // imglyRemoveBackground is brought in via the CDN script bundle
+            const blob = await imglyRemoveBackground(file);
+            
+            // Create URL out of the processed transparent blob
+            processedImageUrl = URL.createObjectURL(blob);
+            resultImage.src = processedImageUrl;
+            
+            // Show result elements
+            status.textContent = "Background removed successfully!";
+            resultWrapper.classList.remove('hidden');
+            downloadBtn.classList.remove('hidden');
+        } catch (error) {
+            console.error(error);
+            status.textContent = "Error removing background. Please try another image.";
+        }
+    });
+
+    // Handle Download button action
+    downloadBtn.addEventListener('click', () => {
+        if (!processedImageUrl) return;
+        const link = document.createElement('a');
+        link.href = processedImageUrl;
+        link.download = 'bg_removed_' + Date.now() + '.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+</script>
+
+</body>
+</html>
