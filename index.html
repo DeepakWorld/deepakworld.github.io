@@ -51,7 +51,138 @@
             color: white;
         }
     </style>
-    
+     <style>
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        /* Positioning to Left Middle */
+        left: 20px; 
+        top: 50%;
+        transform: translateY(-50%);
+        
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: pulse-green 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+        /* Keep the vertical centering while scaling */
+        transform: translateY(-50%) scale(1.1);
+        background-color: #128c7e;
+    }
+
+    /* Tooltip text - Adjusted to show on the RIGHT now */
+    .whatsapp-float .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        left: 125%; /* Move to right of button */
+        top: 15px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+    }
+
+    .whatsapp-float:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @keyframes pulse-green {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Mobile adjustment */
+    @media (max-width: 600px) {
+        .whatsapp-float {
+            left: 10px;
+            width: 50px;
+            height: 50px;
+        }
+        .whatsapp-float img { width: 30px !important; margin-top: 10px !important; }
+        .whatsapp-float .tooltiptext { display: none; } /* Hide tooltip on mobile to save space */
+    }
+</style>
+
+</style>
+.emblem-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;       /* spacing above/below */
+  background: radial-gradient(circle at center, #000 60%, #111);
+}
+
+.emblem-container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  perspective: 1000px; /* enables 3D rotation */
+}
+
+.lion {
+  position: absolute;
+  top: 50%;
+  width: 200px;
+  transform: translateY(-50%);
+  animation: spinLion 20s infinite linear; /* slow continuous rotation */
+}
+
+.lion.left {
+  left: 0;
+  transform-origin: right center;
+}
+
+.lion.right {
+  right: 0;
+  transform-origin: left center;
+  animation-delay: 10s; /* staggered start for mirrored effect */
+}
+
+@keyframes spinLion {
+  from { transform: translateY(-50%) rotateY(0deg); }
+  to   { transform: translateY(-50%) rotateY(360deg); }
+}
+
+.center-emblem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 250px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);
+  animation: pulse 6s infinite;
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+</style>
     <!-- 1st Carousel (Team Slider) Styling -->
     <style>
         .about-title {
@@ -280,75 +411,6 @@
           background: #04AA6D;
         }
     </style>
-     <style>
-    .whatsapp-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        /* Positioning to Left Middle */
-        left: 20px; 
-        top: 50%;
-        transform: translateY(-50%);
-        
-        background-color: #25d366;
-        color: #FFF;
-        border-radius: 50px;
-        text-align: center;
-        font-size: 30px;
-        box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
-        z-index: 1000;
-        transition: all 0.3s ease;
-        animation: pulse-green 2s infinite;
-    }
-
-    .whatsapp-float:hover {
-        /* Keep the vertical centering while scaling */
-        transform: translateY(-50%) scale(1.1);
-        background-color: #128c7e;
-    }
-
-    /* Tooltip text - Adjusted to show on the RIGHT now */
-    .whatsapp-float .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        left: 125%; /* Move to right of button */
-        top: 15px;
-        opacity: 0;
-        transition: opacity 0.3s;
-        font-size: 14px;
-        font-family: Arial, sans-serif;
-    }
-
-    .whatsapp-float:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    @keyframes pulse-green {
-        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-
-    /* Mobile adjustment */
-    @media (max-width: 600px) {
-        .whatsapp-float {
-            left: 10px;
-            width: 50px;
-            height: 50px;
-        }
-        .whatsapp-float img { width: 30px !important; margin-top: 10px !important; }
-        .whatsapp-float .tooltiptext { display: none; } /* Hide tooltip on mobile to save space */
-    }
-</style>
-
 <style>
   #chatToggle {
     position: fixed; bottom: 20px; right: 20px;
@@ -794,6 +856,51 @@
 </div>
 
 
+<!-- Place this section below your slider -->
+<section class="cups-section">
+  <h2>Royal Trophy Showcase</h2>
+  <div class="cups-container">
+    <img src="gold_cup.png" alt="Gold Cup" class="cup gold">
+    <img src="diamond_cup.png" alt="Diamond Cup" class="cup diamond">
+  </div>
+</section>
+
+<style>
+.cups-section {
+  text-align: center;
+  padding: 40px;
+  background: #000; /* dark backdrop for shine */
+  color: gold;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.cups-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  align-items: center;
+}
+
+.cup {
+  width: 180px;
+  height: auto;
+  animation: rotateCup 10s linear infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes rotateCup {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+/* Optional glow effect */
+.cup.gold {
+  filter: drop-shadow(0 0 15px gold);
+}
+.cup.diamond {
+  filter: drop-shadow(0 0 15px #00ffff);
+}
+</style>
 
 
 
@@ -1214,14 +1321,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 </div>
-<a href="https://wa.me/918867740113?text=Hi%20Deepak,%20I%20am%20interested%20in%20your%20IT%20training%20and%20services." 
+ <a href="https://wa.me/918867740113?text=Hi%20Deepak,%20I%20am%20interested%20in%20your%20IT%20training%20and%20services." 
    class="whatsapp-float" 
    target="_blank">
     <span class="tooltiptext">Chat with Deepak</span>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-         style="width:60px; height:60px; margin-top:12px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:35px; margin-top:12px;">
 </a>
-
 
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 <script>
