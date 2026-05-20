@@ -698,6 +698,7 @@
 
 <!-- MUSIC CONTROLS CONTAINER -->
 <div class="center-top" style="margin: 30px auto; text-align: center;">
+
     <audio id="audioPlayer" autoplay hidden>
       <source src="song1.mp3" type="audio/mp3">
       Your browser does not support the audio element.
@@ -707,29 +708,26 @@
     <button class="music-btn" onclick="nextSong()">Next</button>
 </div>
 
-<!-- 1st CAROUSEL: TEAM CARDS SLIDER SECTION -->
-<h1 class="about-title">OUR TEAM</h1>
-
 <div class="carousel-container">
     <button class="nav-arrow left">‹</button>
     <div class="carousel-track">
       <div class="card" data-index="0">
-        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=3687&auto=format&fit=crop" alt="Emily Kim">
+        <img src="https://deepakworld.github.io/lut/a.png" alt="Worldwide">
       </div>
       <div class="card" data-index="1">
-        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=3870&auto=format&fit=crop" alt="Michael Steward">
+        <img src="https://deepakworld.github.io/lut/b.png" alt="Canada">
       </div>
       <div class="card" data-index="2">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&auto=format&fit=crop&q=60" alt="Emma Rodriguez">
+        <img src="https://deepakworld.github.io/lut/c.png" alt="UAE">
       </div>
       <div class="card" data-index="3">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&auto=format&fit=crop&q=60" alt="Julia Gimmel">
+        <img src="https://deepakworld.github.io/lut/f.png" alt="USA">
       </div>
       <div class="card" data-index="4">
-        <img src="https://images.unsplash.com/photo-1655249481446-25d575f1c054?w=900&auto=format&fit=crop&q=60" alt="Lisa Anderson">
+        <img src="https://deepakworld.github.io/lut/d.png" alt="UK">
       </div>
       <div class="card" data-index="5">
-        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=3687&auto=format&fit=crop" alt="James Wilson">
+        <img src="https://deepakworld.github.io/lut/j.png" alt="British">
       </div>
     </div>
     <button class="nav-arrow right">›</button>
@@ -749,32 +747,31 @@
     <div class="dot" data-index="5"></div>
 </div>
 
-
 <!-- NEW 3D AUTOMATIC CAROUSEL SLIDER SECTION -->
 <div class="carousel-container" id="carouselWrapper">
   <div class="carousel-3d" id="imageCarousel">
     
     <!-- Slide 1 -->
     <div class="item">
-      <img src="https://yt3.ggpht.com/MxA2sjTQc_PQCPboRRlwmGttcu2EOcriv1kugN_bo4itcnrUYQpubIbfaz1pQEzcLQ0-7Z70HXjqG_4=s640-rw-nd-v1" alt="Slide 1">
+      <img src="https://deepakworld.github.io/pose/1ab.png" alt="Slide 1">
       <div class="text">Caption Text 1</div>
     </div>
 
     <!-- Slide 2 -->
     <div class="item">
-      <img src="https://yt3.ggpht.com/42Sk-mYndLAxnoG2D9_NhiUqvLDqM03c9Sy-ubW5ABYzIbjVFP1KSS7FXMsuwj-h9Yy9Nkwi_TFgTw=s640-rw-nd-v1" alt="Slide 2">
+      <img src="https://deepakworld.github.io/pose/2ab.png" alt="Slide 2">
       <div class="text">Caption Text 2</div>
     </div>
 
     <!-- Slide 3 -->
     <div class="item">
-      <img src="https://yt3.ggpht.com/xlza2gg8iafBZdpQhNRUUFYzijdfuB04tYQdwrerJ9EA63wr5n_H-u3SVMiUn__XsAGsuduOQDU1eQ=s640-rw-nd-v1" alt="Slide 3">
+      <img src="https://deepakworld.github.io/pose/3ab.png" alt="Slide 3">
       <div class="text">Caption Text 3</div>
     </div>
 
     <!-- Slide 4 -->
     <div class="item">
-      <img src="https://yt3.ggpht.com/493I_ZSZUsDJjEEnDQ8M2oyktEq9abJB3KA9AdDMcHxsARp9-ZMh-jcHKFYVv1XnzI0an1jY9bBChrk=s640-rw-nd-v1" alt="Slide 4">
+      <img src="https://deepakworld.github.io/pose/4ab.png" alt="Slide 4">
       <div class="text">Caption Text 4</div>
     </div>
 
@@ -786,18 +783,20 @@
   </div>
 </div>
 
-<!-- ZOOM VIEW OVERLAY (Add this right below your slider code) -->
+<!-- ZOOM VIEW OVERLAY -->
 <div id="carouselLightbox" class="lightbox-overlay">
   <span class="lightbox-close">&times;</span>
   <img id="lightboxImg" src="" alt="Zoomed View">
 </div>
-
 
 <!-- Place this section below your slider -->
 <section class="cups-section">
   <h2>Royal Trophy Showcase</h2>
   <div class="cups-container">
     <img src="gold_cup.png" alt="Gold Cup" class="cup gold">
+
+    <img src="logo.png" alt="DIWS" class="Diws">
+
     <img src="diamond_cup.png" alt="Diamond Cup" class="cup diamond">
   </div>
 </section>
@@ -895,12 +894,12 @@
 
     // 1st Carousel Logic: Team Cards
     const teamMembers = [
-      { name: "Emily Kim", role: "Founder" },
-      { name: "Michael Steward", role: "Creative Director" },
-      { name: "Emma Rodriguez", role: "Lead Developer" },
-      { name: "Julia Gimmel", role: "UX Designer" },
-      { name: "Lisa Anderson", role: "Marketing Manager" },
-      { name: "James Wilson", role: "Product Manager" }
+      { name: "Deepak", role: "Founder" },
+      { name: "Deepak", role: "Creative Director" },
+      { name: "Deepak", role: "Lead Developer" },
+      { name: "Deepak", role: "UX Designer" },
+      { name: "Deepak", role: "Marketing Manager" },
+      { name: "Deepak", role: "Product Manager" }
     ];
 
     const cards = document.querySelectorAll(".card");
