@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8">
-  <meta name="description" content="Deepak Thangasamy - Developer & Creator">
-  <meta name="keywords" content="Deepak, Deepak Thangasamy, Developer, Portfolio, Contact">
-  <meta name="author" content="Deepak Thangasamy">
-   <title>Deepak</title>
-<style>
- #stars {
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="Deepak Thangasamy - Developer & Creator">
+    <meta name="keywords" content="Deepak, Deepak Thangasamy, Developer, Portfolio, Contact">
+    <meta name="author" content="Deepak Thangasamy">
+    <title>Deepak</title>
+    <style>
+        #stars {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('star-background.gif') repeat; /* Replace with your glittering stars image URL */
-            background-size: cover; /* Ensure stars fill the viewport */
-            z-index: -1; /* Place stars behind all content */
+            background: url('star-background.gif') repeat; 
+            background-size: cover; 
+            z-index: -1; 
         }
 
-   /* Overall Container Styling */
         .container {
             width: 90%;
             margin: auto;
             background-color: brown;
-            border: 5px solid #04AA6D; /* Stylish border */
-            border-radius: 15px; /* Rounded corners */
+            border: 5px solid #04AA6D; 
+            border-radius: 15px; 
             padding: 20px;
             text-align: center;
             color: white;
         }
 
-        /* Button Styling */
         .button {
             background-color: #04AA6D;
             border: none;
@@ -53,686 +51,235 @@
             color: white;
         }
     </style>
-<style>
-* {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides img {
-  width: 100%;
-  height: auto; /* maintains the aspect ratio of the images */
-  display: block; /* prevents extra white space below images */
-}
-
-/* Slideshow container */
-.slideshow-container {
-  width: 100%;
-  max-width: 800px;
-  position: relative;
-  margin: auto;
-overflow: hidden; 
-}
-
-/* Caption text */
-.text {
-  color: #FFFFFF;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
-</style>
-
-
- 
-<style>
-        /* General Style */
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
- 
-
-/* Style Snowballs */
-        .snow-ball-container .snow-ball {
-            position: absolute;
-            border-radius: 50%;
-            background: white;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(even) {
-            width: 16px;
-            height: 16px;
-            animation: flake-motion 15s linear infinite;
-        }
-
-        /* Position the Snowballs above the screen */
-        .snow-ball-container .snow-ball:nth-child(1) {
-            top: -50%;
-            left: 5%;
-            width: 20px;
-            height: 20px;
-            animation: snowball-animation 12s linear 2s infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(2) {
-            top: -20%;
-            left: 10%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(3) {
-            top: -50%;
-            left: 15%;
-            animation: snowball-animation 12s linear infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(4) {
-            top: -10%;
-            left: 20%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(5) {
-            top: -20%;
-            left: 25%;
-            width: 20px;
-            height: 20px;
-            animation: snowball-animation 12s linear 2s infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(6) {
-            top: -40%;
-            left: 30%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(7) {
-            top: -30%;
-            left: 35%;
-            width: 5px;
-            height: 5px;
-            animation: snowball-animation 12s linear infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(8) {
-            top: -20%;
-            left: 40%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(9) {
-            top: -50%;
-            left: 45%;
-            width: 5px;
-            height: 5px;
-            animation: snowball-animation 12s linear 2s infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(10) {
-            top: -5%;
-            left: 50%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(11) {
-            top: -20%;
-            left: 60%;
-            animation: snowball-animation 12s linear infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(12) {
-            top: -10%;
-            left: 70%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(13) {
-            top: -50%;
-            left: 80%;
-            width: 5px;
-            height: 5px;
-            animation: snowball-animation 12s linear 2s infinite;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(14) {
-            top: -20%;
-            left: 90%;
-        }
-
-        .snow-ball-container .snow-ball:nth-child(15) {
-            top: -50%;
-            left: 95%;
-            width: 30px;
-            height: 30px;
-            animation: snowball-animation 12s linear infinite;
-        }
-
-        /* Define animations of Snowball and Snowflakes */
-        @keyframes snowball-animation {
-            0% {
-                transform: translate(0);
-                opacity: 1;
-            }
-            20% {
-                transform: translate(4px, 100px);
-                opacity: 0.8;
-            }
-            40% {
-                transform: translate(-7px, 200px);
-                opacity: 0.7;
-            }
-            60% {
-                transform: translate(10px, 400px);
-                opacity: 0.5;
-            }
-            80% {
-                transform: translate(-14px, 700px);
-                opacity: 0.2;
-            }
-            100% {
-                transform: translate(16px, 900px);
-                opacity: 0;
-            }
-        }
-
-        @keyframes flake-motion {
-            0% {
-                transform: translate(-2px, 0);
-                opacity: 1;
-            }
-            20% {
-                transform: translate(-9px, 200px);
-                opacity: 0.9;
-            }
-            40% {
-                transform: translate(14px, 300px);
-                opacity: 0.7;
-            }
-            60% {
-                transform: translate(-22px, 400px);
-                opacity: 0.6;
-            }
-            80% {
-                transform: translate(30px, 600px);
-                opacity: 0.5;
-            }
-            90% {
-                transform: translate(-40px, 800px);
-                opacity: 0.3;
-            }
-            100% {
-                transform: translate(52px, 1000px);
-                opacity: 0;
-            }
-        }
- 
-div {text-align: center;}
-body {
-            background-color: brown; /* Make the background brown */
-            background: linear-gradient(135deg, #000000, #434343); /* Optional: Metallic black gradient */
-            margin: 0; /* Remove default margin */
-            border: 20px solid brown; /* Add metallic gold border */
-            box-shadow: 0 0 10px rown; /* Optional: Glowing effect for the border */
-       
-        }
- .name {
-            color: orange; /* Sets the text color to green */
-            font-size: 2em; /* Adjusts font size */
-            font-family: Arial, sans-serif; /* Sets the font style */
-            text-align: center; /* Centers the text */
-            margin-top: 20px; /* Adds space at the top */
-        }
-
-
- /* Video Gallery */
-    .video-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      padding: 20px;
-    }
-    .video-container {
-      position: relative;
-      width: 100%;
-      padding-top: 100%;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .video-container iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
-
-
-
-        
-    </style>
- <style>
-        .container {
-            width: 100%; /* Full width for flexibility */
-            margin: 0 auto;
-            text-align: center; /* Center-aligns menu for all devices */
-            padding: 20px 0;
-            box-sizing: border-box;
-        }
-
-        .menu {
-            display: flex;
-            flex-wrap: wrap; /* Ensures items wrap if screen width is small */
-            justify-content: center; /* Centers menu items horizontally */
-            gap: 15px; /* Space between menu items */
-        }
-
-        .menu-item {
-            border: 2px solid black; /* Oval border */
-            border-radius: 50px; /* Makes the border rounded */
-            padding: 10px 20px; /* Adjust padding for a nice oval shape */
-            text-decoration: none; /* Removes underline */
-            color: black; /* Text color */
-            background-color: #f0f0f0; /* Light background color */
-            transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
-            font-size: 16px; /* Font size for better readability */
-        }
-
-        .menu-item:hover {
-            background-color: black; /* Dark background on hover */
-            color: white; /* Text color on hover */
-        }
-
-        /* Responsive Design for Small Devices */
-        @media (max-width: 768px) {
-            .menu {
-                flex-wrap: wrap; /* Ensures items wrap for smaller screens */
-                gap: 10px; /* Smaller gap between items */
-            }
-            
-            .menu-item {
-                padding: 8px 15px; /* Adjust padding for better fit */
-                font-size: 14px; /* Slightly smaller font size */
-            }
-        }
-    </style>
-
-
-  <style>
-        #visitor-counter-container {
-            display: inline-block;
-            padding: 15px;
-            background: #222;        /* Dark background */
-            border: 2px solid #444;  /* Subtle border */
-            border-radius: 8px;      /* Rounded corners */
-            text-align: center;
-            font-family: 'Courier New', Courier, monospace;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            margin: 20px auto;
-            display: block;          /* Added to help with centering */
-            width: fit-content;      /* Keeps the box tight to the content */
-        }
-
-        #visitor-counter-container p {
-            margin: 0 0 10px 0;
-            color: #00ff00;          /* Retro Green */
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        #visitor-counter-container img {
-            filter: drop-shadow(0 0 2px #fff);
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-
- <style>
-    .whatsapp-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        /* Positioning to Left Middle */
-        left: 20px; 
-        top: 50%;
-        transform: translateY(-50%);
-        
-        background-color: #25d366;
-        color: #FFF;
-        border-radius: 50px;
-        text-align: center;
-        font-size: 30px;
-        box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
-        z-index: 1000;
-        transition: all 0.3s ease;
-        animation: pulse-green 2s infinite;
-    }
-
-    .whatsapp-float:hover {
-        /* Keep the vertical centering while scaling */
-        transform: translateY(-50%) scale(1.1);
-        background-color: #128c7e;
-    }
-
-    /* Tooltip text - Adjusted to show on the RIGHT now */
-    .whatsapp-float .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        left: 125%; /* Move to right of button */
-        top: 15px;
-        opacity: 0;
-        transition: opacity 0.3s;
-        font-size: 14px;
-        font-family: Arial, sans-serif;
-    }
-
-    .whatsapp-float:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    @keyframes pulse-green {
-        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-
-    /* Mobile adjustment */
-    @media (max-width: 600px) {
-        .whatsapp-float {
-            left: 10px;
-            width: 50px;
-            height: 50px;
-        }
-        .whatsapp-float img { width: 30px !important; margin-top: 10px !important; }
-        .whatsapp-float .tooltiptext { display: none; } /* Hide tooltip on mobile to save space */
-    }
-</style>
-  <style>
-  .pill-button {
-    background-color: #008CBA;
-    color: white;
-    font-size: 18px;
-    padding: 15px 50px;
-    border: none;
-    border-radius: 50px;   /* pill shape */
-    cursor: pointer;
-  }
-
-  .pill-button:hover {
-    background-color: #005f73;
-  }
-</style>
-</head>
-
-
-
-<body>
-<div id="stars"></div>
-<div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative; z-index: 100;">
     
-    <div style="flex: 1; text-align: left;">
-        <a href="Deepak.apk" download>
-             <img src="diws.jpg" 
-                  alt="Deepak IT Official App Icon" 
-                  width="60" 
-                  style="border-radius: 5px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
-        </a>
-    </div>
-
-    <div class="name" style="flex: 2; text-align: center; margin: 0;">
-        Deepak IT & Web Services
-    </div>
-
-    <div style="flex: 1; text-align: right;">
-        <img src="Deepak.jpg" 
-             alt="Deepak - Owner of Deepak IT & Web Services in Bengaluru" 
-             width="60" 
-             height="80" 
-             style="border-radius: 4px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
-    </div>
-
-</div>
-
-<div style="clear: both;"></div>
-
-
- <div class="container">
-  <div style="display: inline-flex; align-items: center; background: #e8f6ed; border: 1px solid #27ae60; padding: 5px 15px; border-radius: 50px; font-family: 'Segoe UI', Arial, sans-serif; margin: 10px 0;">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="#27ae60" style="margin-right: 8px;">
-        <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm-2 14.5l-3.5-3.5 1.41-1.41L10 13.67l6.09-6.09 1.41 1.41L10 16.5z"/>
-    </svg>
-    <span style="color: #1e5631; font-size: 0.85rem; font-weight: bold; letter-spacing: 0.5px;">
-        GOVT. REGISTED MSME | UDYAM-KR-03-0674838 | GSTIN No : 29BISPD3613D1ZD
-    </span>
-  
-        
- 
-</div>
-        <div class="menu">
-         <a href="about.html" class="menu-item" target="_blank">About Us</a>
-<a href="contact.html" class="menu-item" target="_blank">Contact Us</a>
-<a href="privacy-policy.html" class="menu-item" target="_blank">Privacy Policy</a>
-          <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
-         <a href="checkout.html" class="menu-item" target="_blank">Pay & Download Invoice </a>
-<a href="refund-policy.html" class="menu-item" target="_blank">Refund & Cancellation policy</a>
-<a href="shipping-return.html" class="menu-item" target="_blank">Shipping & Return Policy</a>
- <a href="quote.html" class="menu-item" target="_blank">Services</a>
-           <a href="store.html" class="menu-item" target="_blank">Digital Store</a>
-
-           <a href="portfolio.html" class="menu-item" target="_blank">Portfolio</a>
-   <a href="flow.html" class="menu-item" target="_blank">Project & Payment Flow</a>       
-        
-        
-         
-
-                 </div>
-    </div>
- <div class="center-top">
-        <p class="linkp">
-<audio id="audioPlayer" autoplay hidden>
-  <source src="song1.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
-<h2 style="color: white;">Play Songs</h2>
-<button class="pill-button" onclick="prevSong()">Prev</button>
-<button class="pill-button" onclick="nextSong()">Next</button>
-</p>
-    </div>
-<style>
-
-</style>
-
-
-
-    <script>
-        const songs = ["song1.mp3", "song2.mp3", "song3.mp3", "song4.mp3", "song5.mp3", "song6.mp3", "song7.mp3", "song8.mp3", "song9.mp3", "song10.mp3", "song11.mp3", "song12.mp3", "song13.mp3", "song14.mp3", "song15.mp3", "song16.mp3", "song17.mp3", "song18.mp3", "song19.mp3", "song20.mp3", "song21.mp3", "song22.mp3", "song23.mp3", "song24.mp3", "song25.mp3", "song26.mp3", "song27.mp3", "song28.mp3", "song29.mp3", "song30.mp3", "song31.mp3", "song32.mp3", "song33.mp3", "song34.mp3", "song35.mp3", "song36.mp3", "song37.mp3", "song38.mp3", "song39.mp3", "song40.mp3", "song41.mp3", "song42.mp3", "song43.mp3", "song44.mp3", "song45.mp3", "song46.mp3", "song47.mp3", "song48.mp3", "song49.mp3", "song50.mp3", "song51.mp3", "song52.mp3", "song53.mp3", "song54.mp3", "song55.mp3", "song56.mp3", "song57.mp3", "song58.mp3", "song59.mp3", "song60.mp3", "song61.mp3", "song62.mp3", "song63.mp3", "song64.mp3", "song65.mp3", "song66.mp3", "song67.mp3", "song68.mp3", "song69.mp3", "song70.mp3", "song71.mp3", "song72.mp3", "song73.mp3", "song74.mp3", "song75.mp3", "song76.mp3", "song77.mp3", "song78.mp3", "song79.mp3", "song80.mp3", "song81.mp3", "song82.mp3", "song83.mp3", "song84.mp3", "song85.mp3", "song86.mp3", "song87.mp3", "song88.mp3", "song89.mp3", "song90.mp3", "song91.mp3", "song92.mp3", "song93.mp3", "song94.mp3", "song95.mp3", "song96.mp3", "song97.mp3", "song98.mp3", "song99.mp3", "song100.mp3", "song101.mp3", "song102.mp3", "song103.mp3", "song104.mp3", "song105.mp3", "song106.mp3", "song107.mp3", "song108.mp3", "song109.mp3", "song110.mp3", "song111.mp3", "song112.mp3", "song113.mp3", "song114.mp3", "song115.mp3", "song116.mp3", "song117.mp3", "song118.mp3", "song119.mp3", "song120.mp3", "song121.mp3", "song122.mp3", "song123.mp3", "song124.mp3", "song125.mp3", "song126.mp3", "song127.mp3", "song128.mp3", "song129.mp3", "song130.mp3", "song131.mp3", "song132.mp3", "song133.mp3", "song134.mp3", "song135.mp3", "song136.mp3", "song137.mp3", "song138.mp3", "song139.mp3", "song140.mp3", "song141.mp3", "song142.mp3", "song143.mp3", "song144.mp3", "song145.mp3", "song146.mp3", "song147.mp3", "song148.mp3", "song149.mp3", "song150.mp3", "song151.mp3", "song152.mp3", "song153.mp3", "song154.mp3", "song155.mp3", "song156.mp3", "song157.mp3", "song158.mp3"];
-        let currentSongIndex = 0;
-        const audioPlayer = document.getElementById('audioPlayer');
-
-        function loadSong(index) {
-            audioPlayer.src = songs[index];
-            audioPlayer.play();
+    <!-- 1st Carousel (Team Slider) Styling -->
+    <style>
+        .about-title {
+          font-size: 4.5rem;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: -0.02em;
+          text-align: center;
+          margin-top: 40px;
+          margin-bottom: -40px;
+          pointer-events: none;
+          white-space: nowrap;
+          font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+          background: linear-gradient(
+            to bottom,
+            rgba(4, 170, 109, 0.6) 30%,
+            rgba(255, 255, 255, 0) 90%
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
         }
 
-        function nextSong() {
-            currentSongIndex = (currentSongIndex + 1) % songs.length;
-            loadSong(currentSongIndex);
+        .carousel-container {
+          width: 100%;
+          max-width: 1200px;
+          height: 450px;
+          position: relative;
+          perspective: 1000px;
+          margin: 40px auto 10px auto;
+          z-index: 10;
         }
 
-        function prevSong() {
-            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-            loadSong(currentSongIndex);
+        .carousel-track {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          transform-style: preserve-3d;
+          transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-window.onload = () => {
-        loadSong(currentSongIndex);
-}
-    </script>
+        .card {
+          position: absolute;
+          width: 280px;
+          height: 380px;
+          background: white;
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          cursor: pointer;
+          border: 4px solid #fff;
+        }
 
-    
+        .card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
 
+        .card.center {
+          z-index: 10;
+          transform: scale(1.1) translateZ(0);
+          border-color: #04AA6D;
+        }
 
-       
-<br>
-<p>
-<div class="slideshow-container">
+        .card.center img {
+          filter: none;
+        }
 
-<div class="mySlides fade">
-  <div class="numbertext">1 / 4</div>
-  <img src="https://yt3.ggpht.com/MxA2sjTQc_PQCPboRRlwmGttcu2EOcriv1kugN_bo4itcnrUYQpubIbfaz1pQEzcLQ0-7Z70HXjqG_4=s640-rw-nd-v1" style="width:100%">
-  <div class="text">Caption Text</div>
-</div>
-<div class="mySlides fade">
-  <div class="numbertext">1 / 4</div>
-  <img src="https://yt3.ggpht.com/42Sk-mYndLAxnoG2D9_NhiUqvLDqM03c9Sy-ubW5ABYzIbjVFP1KSS7FXMsuwj-h9Yy9Nkwi_TFgTw=s640-rw-nd-v1" style="width:100%">
-  <div class="text">Caption Text</div>
-</div>
- <div class="mySlides fade">
-  <div class="numbertext">1 / 4</div>
-  <img src="https://yt3.ggpht.com/xlza2gg8iafBZdpQhNRUUFYzijdfuB04tYQdwrerJ9EA63wr5n_H-u3SVMiUn__XsAGsuduOQDU1eQ=s640-rw-nd-v1" style="width:100%">
-  <div class="text">Caption Text</div>
-</div>
- <div class="mySlides fade">
-  <div class="numbertext">1 / 4</div>
-  <img src="https://yt3.ggpht.com/493I_ZSZUsDJjEEnDQ8M2oyktEq9abJB3KA9AdDMcHxsARp9-ZMh-jcHKFYVv1XnzI0an1jY9bBChrk=s640-rw-nd-v1" style="width:100%">
-  <div class="text">Caption Text</div>
-</div>
+        .card.left-2 {
+          z-index: 1;
+          transform: translateX(-400px) scale(0.8) translateZ(-300px);
+          opacity: 0.5;
+        }
 
-</br>
-</p>
+        .card.left-2 img {
+          filter: grayscale(100%);
+        }
 
-<!-- Video Gallery -->
-<div class="video-gallery">
+        .card.left-1 {
+          z-index: 5;
+          transform: translateX(-200px) scale(0.9) translateZ(-100px);
+          opacity: 0.8;
+        }
 
- <div class="video-container">
-<iframe width="853" height="480" src="https://www.youtube.com/embed/_QQ3yDk1v6U" title="time" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- </div>
+        .card.left-1 img {
+          filter: grayscale(100%);
+        }
 
-    <div class="video-container">
-<iframe width="315" height="576" src="https://www.youtube.com/embed/HNBxrDOa7Dc" title="short video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+        .card.right-1 {
+          z-index: 5;
+          transform: translateX(200px) scale(0.9) translateZ(-100px);
+          opacity: 0.8;
+        }
 
-    <div class="video-container">
-<iframe width="780" height="480" src="https://www.youtube.com/embed/KcdFTWcFR3A" title="avp" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+        .card.right-1 img {
+          filter: grayscale(100%);
+        }
 
-  
-   <div class="video-container">
-<iframe width="720" height="480" src="https://www.youtube.com/embed/wpq5VkjVH5E" title="park compressed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- </div>
+        .card.right-2 {
+          z-index: 1;
+          transform: translateX(400px) scale(0.8) translateZ(-300px);
+          opacity: 0.5;
+        }
 
-    <div class="video-container">
-<iframe width="854" height="476" src="https://www.youtube.com/embed/7GXb5lk404s" title="apple compressed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+        .card.right-2 img {
+          filter: grayscale(100%);
+        }
 
-    <div class="video-container">
-<iframe width="865" height="476" src="https://www.youtube.com/embed/6NUBRVCM97g" title="wwe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  <div class="video-container">
-<iframe width="853" height="480" src="https://www.youtube.com/embed/nhTansHScNM" title="D Stage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- </div>
+        .card.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
 
-  <div class="video-container">
-<iframe width="853" height="480" src="https://www.youtube.com/embed/ENPf7VNaIHA" title="print" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- </div>
+        .member-info {
+          text-align: center;
+          margin-top: 10px;
+          min-height: 110px;
+        }
 
-  <div class="video-container">
-<iframe width="853" height="480" src="https://www.youtube.com/embed/lmtrHOdrVDw" title="Deepak Adv Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- </div>
+        .member-name {
+          color: #04AA6D;
+          font-size: 2.3rem;
+          font-weight: 700;
+          margin-bottom: 5px;
+          position: relative;
+          display: inline-block;
+          transition: opacity 0.3s ease;
+          font-family: system-ui, -apple-system, sans-serif;
+        }
 
+        .member-name::before,
+        .member-name::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          width: 80px;
+          height: 2px;
+          background: #04AA6D;
+        }
 
-</br>
+        .member-name::before { left: -100px; }
+        .member-name::after { right: -100px; }
 
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
+        .member-role {
+          color: #bdbdbd;
+          font-size: 1.3rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          padding: 8px 0;
+          margin-top: 5px;
+          transition: opacity 0.3s ease;
+          font-family: system-ui, -apple-system, sans-serif;
+        }
 
-<script>
-let slideIndex = 0;
-showSlides();
+        .dots {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin: 20px 0 60px 0;
+        }
 
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
-</script>
+        .dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: rgba(4, 170, 109, 0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
 
+        .dot.active {
+          background: #04AA6D;
+          transform: scale(1.3);
+        }
 
+        .nav-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(17, 24, 39, 0.8);
+          color: white;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          z-index: 20;
+          transition: all 0.3s ease;
+          font-size: 1.8rem;
+          border: 2px solid #04AA6D;
+          outline: none;
+          padding-bottom: 4px;
+        }
 
- 
-<div id="chatToggle" onclick="toggleChat()">💬 Chat</div>
+        .nav-arrow:hover {
+          background: #04AA6D;
+          transform: translateY(-50%) scale(1.1);
+        }
 
-<div class="chatbot" id="chatbot">
-  <div class="chat-header">
-    Vizion AI Support
-    <span style="float:right; cursor:pointer;" onclick="toggleChat()">✖</span>
-  </div>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="chat-footer">
-    <input type="text" id="userInput" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendMessage()">
-    <button onclick="sendMessage()">Send</button>
-  </div>
-</div>
+        .nav-arrow.left { left: 20px; padding-right: 3px; }
+        .nav-arrow.right { right: 20px; padding-left: 3px; }
 
+        .music-btn {
+          padding: 10px 25px;
+          background: #111827;
+          color: #fff;
+          border: 2px solid #04AA6D;
+          border-radius: 50px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: transform 0.2s, background 0.2s;
+          font-size: 0.9rem;
+          margin: 4px 5px;
+        }
+        .music-btn:hover {
+          transform: scale(1.05);
+          background: #04AA6D;
+        }
+    </style>
 <style>
   #chatToggle {
     position: fixed; bottom: 20px; right: 20px;
@@ -761,10 +308,628 @@ function showSlides() {
   .chat-footer input { flex: 1; border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; outline: none; }
   .chat-footer button { border: none; background: transparent; color: #0078d7; font-weight: bold; margin-left: 8px; cursor: pointer; }
 </style>
+ <!-- ZOOM FUNCTION STYLING (Add this into your existing <style> tag) -->
+<style>
+    .item img {
+      cursor: zoom-in; /* Changes mouse pointer to a magnifying glass over images */
+    }
+
+    /* Fullscreen dark background backdrop */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      z-index: 9999; /* Higher than everything else on your page */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    /* Active state to fade the zoom view in smoothly */
+    .lightbox-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    /* The actual big zoomed image */
+    .lightbox-overlay img {
+      max-width: 85%;
+      max-height: 85%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transform: scale(0.95);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .lightbox-overlay.active img {
+      transform: scale(1);
+    }
+
+    /* Close 'X' Button top right */
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 300;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover {
+      color: #04AA6D; /* Matches your Green slider button accents */
+    }
+</style>
+
+
+<!-- New 3D Carousel Slider Styling -->
+ <!-- New 3D Carousel Slider Styling -->
+    <style>
+        .carousel-container {
+          font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          margin: 40px auto 140px auto; /* Increased bottom margin to make space for control buttons */
+          width: 300px;
+          height: 200px;
+          position: relative;
+          perspective: 1000px;
+          z-index: 10;
+        }
+        .carousel-3d {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          transform-style: preserve-3d;
+          transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .item {
+          position: absolute;
+          width: 280px;
+          height: 180px;
+          left: 10px;
+          top: 10px;
+          background: #fff;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 4px solid #fff;
+          opacity: 0.95;
+          transition: opacity 0.3s;
+        }
+        .item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .item .text {
+          position: absolute;
+          bottom: 10px;
+          left: 5%;
+          width: 90%;
+          background: rgba(0, 0, 0, 0.7);
+          color: #fff;
+          padding: 6px 8px;
+          border-radius: 6px;
+          font-size: 0.8rem;
+          font-weight: 500;
+          text-align: center;
+        }
+        .carousel-controls {
+          position: absolute;
+          bottom: -80px;
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+        }
+        .carousel-controls button {
+          padding: 10px 25px;
+          background: #111827;
+          color: #fff;
+          border: 2px solid #04AA6D;
+          border-radius: 50px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: transform 0.2s, background 0.2s;
+          font-size: 0.9rem;
+        }
+        .carousel-controls button:hover {
+          transform: scale(1.05);
+          background: #04AA6D;
+        }
+    </style>
+
+    <style>
+        /* General Style Layout Framework */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .snow-ball-container .snow-ball {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(even) {
+            width: 16px;
+            height: 16px;
+            animation: flake-motion 15s linear infinite;
+        }
+
+        .snow-ball-container .snow-ball:nth-child(1) { top: -50%; left: 5%; width: 20px; height: 20px; animation: snowball-animation 12s linear 2s infinite; }
+        .snow-ball-container .snow-ball:nth-child(2) { top: -20%; left: 10%; }
+        .snow-ball-container .snow-ball:nth-child(3) { top: -50%; left: 15%; animation: snowball-animation 12s linear infinite; }
+        .snow-ball-container .snow-ball:nth-child(4) { top: -10%; left: 20%; }
+        .snow-ball-container .snow-ball:nth-child(5) { top: -20%; left: 25%; width: 20px; height: 20px; animation: snowball-animation 12s linear 2s infinite; }
+        .snow-ball-container .snow-ball:nth-child(6) { top: -40%; left: 30%; }
+        .snow-ball-container .snow-ball:nth-child(7) { top: -30%; left: 35%; width: 5px; height: 5px; animation: snowball-animation 12s linear infinite; }
+        .snow-ball-container .snow-ball:nth-child(8) { top: -20%; left: 40%; }
+        .snow-ball-container .snow-ball:nth-child(9) { top: -50%; left: 45%; width: 5px; height: 5px; animation: snowball-animation 12s linear 2s infinite; }
+        .snow-ball-container .snow-ball:nth-child(10) { top: -5%; left: 50%; }
+        .snow-ball-container .snow-ball:nth-child(11) { top: -20%; left: 60%; animation: snowball-animation 12s linear infinite; }
+        .snow-ball-container .snow-ball:nth-child(12) { top: -10%; left: 70%; }
+        .snow-ball-container .snow-ball:nth-child(13) { top: -50%; left: 80%; width: 5px; height: 5px; animation: snowball-animation 12s linear 2s infinite; }
+        .snow-ball-container .snow-ball:nth-child(14) { top: -20%; left: 90%; }
+        .snow-ball-container .snow-ball:nth-child(15) { top: -50%; left: 95%; width: 30px; height: 30px; animation: snowball-animation 12s linear infinite; }
+
+        @keyframes snowball-animation {
+            0% { transform: translate(0); opacity: 1; }
+            20% { transform: translate(4px, 100px); opacity: 0.8; }
+            40% { transform: translate(-7px, 200px); opacity: 0.7; }
+            60% { transform: translate(10px, 400px); opacity: 0.5; }
+            80% { transform: translate(-14px, 700px); opacity: 0.2; }
+            100% { transform: translate(16px, 900px); opacity: 0; }
+        }
+
+        @keyframes flake-motion {
+            0% { transform: translate(-2px, 0); opacity: 1; }
+            20% { transform: translate(-9px, 200px); opacity: 0.9; }
+            40% { transform: translate(14px, 300px); opacity: 0.7; }
+            60% { transform: translate(-22px, 400px); opacity: 0.6; }
+            80% { transform: translate(30px, 600px); opacity: 0.5; }
+            90% { transform: translate(-40px, 800px); opacity: 0.3; }
+            100% { transform: translate(52px, 1000px); opacity: 0; }
+        }
+ 
+        div { text-align: center; }
+        body {
+            background-color: brown; 
+            background: linear-gradient(135deg, #000000, #434343); 
+            margin: 0; 
+            border: 20px solid brown; 
+            box-shadow: 0 0 10px brown; 
+            min-height: 100vh;
+        }
+        .name {
+            color: orange; 
+            font-size: 2em; 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin-top: 20px; 
+        }
+
+        .video-gallery {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 15px;
+          padding: 20px;
+          clear: both;
+        }
+        .video-container {
+          position: relative;
+          width: 100%;
+          padding-top: 100%;
+          overflow: hidden;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .video-container iframe {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          border: 0;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 15px; 
+        }
+
+        .menu-item {
+            border: 2px solid black; 
+            border-radius: 50px; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            color: black; 
+            background-color: #f0f0f0; 
+            transition: background-color 0.3s, color 0.3s; 
+            font-size: 16px; 
+        }
+
+        .menu-item:hover {
+            background-color: black; 
+            color: white; 
+        }
+
+        @media (max-width: 768px) {
+            .menu { flex-wrap: wrap; gap: 10px; }
+            .menu-item { padding: 8px 15px; font-size: 14px; }
+            .about-title { font-size: 3rem; margin-bottom: -20px; }
+            .card { width: 200px; height: 280px; }
+            .card.left-2 { transform: translateX(-240px) scale(0.8) translateZ(-300px); }
+            .card.left-1 { transform: translateX(-120px) scale(0.9) translateZ(-100px); }
+            .card.right-1 { transform: translateX(120px) scale(0.9) translateZ(-100px); }
+            .card.right-2 { transform: translateX(240px) scale(0.8) translateZ(-300px); }
+            .member-name { font-size: 1.8rem; }
+            .member-role { font-size: 1.1rem; }
+            .member-name::before, .member-name::after { width: 40px; }
+            .member-name::before { left: -55px; }
+            .member-name::after { right: -55px; }
+            .auto-carousel-wrapper { height: 260px; }
+            .item { width: 220px; height: 150px; margin-left: -110px; margin-top: -75px; }
+        }
+    </style>
+</head>
+
+<body>
+<div id="stars"></div>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative; z-index: 100;">
+    <div style="flex: 1; text-align: left;">
+        <a href="Deepak.apk" download>
+             <img src="diws.jpg" alt="Deepak IT Official App Icon" width="60" style="border-radius: 5px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        </a>
+    </div>
+
+    <div class="name" style="flex: 2; text-align: center; margin: 0;">
+        Deepak IT & Web Services
+    </div>
+
+    <div style="flex: 1; text-align: right;">
+        <img src="Deepak.jpg" alt="Deepak - Owner" width="60" height="80" style="border-radius: 4px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+    </div>
+</div>
+
+<div class="container">
+  <div style="display: inline-flex; align-items: center; background: #e8f6ed; border: 1px solid #27ae60; padding: 5px 15px; border-radius: 50px; font-family: 'Segoe UI', Arial, sans-serif; margin: 10px 0;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#27ae60" style="margin-right: 8px;">
+        <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm-2 14.5l-3.5-3.5 1.41-1.41L10 13.67l6.09-6.09 1.41 1.41L10 16.5z"/>
+    </svg>
+    <span style="color: #1e5631; font-size: 0.85rem; font-weight: bold; letter-spacing: 0.5px;">
+        GOVT. REGISTERED MSME | UDYAM-KR-03-0674838 | GSTIN No : 29BISPD3613D1ZD
+    </span>
+  </div>
+  
+  <div class="menu">
+    <a href="about.html" class="menu-item" target="_blank">About Us</a>
+    <a href="contact.html" class="menu-item" target="_blank">Contact Us</a>
+    <a href="privacy-policy.html" class="menu-item" target="_blank">Privacy Policy</a>
+    <a href="terms.html" class="menu-item" target="_blank">Terms & Conditions</a>
+    <a href="checkout.html" class="menu-item" target="_blank">Pay & Download Invoice </a>
+    <a href="refund-policy.html" class="menu-item" target="_blank">Refund & Cancellation policy</a>
+    <a href="shipping-return.html" class="menu-item" target="_blank">Shipping & Return Policy</a>
+    <a href="quote.html" class="menu-item" target="_blank">Services</a>
+    <a href="store.html" class="menu-item" target="_blank">Digital Store</a>
+    <a href="portfolio.html" class="menu-item" target="_blank">Portfolio</a>
+    <a href="flow.html" class="menu-item" target="_blank">Project & Payment Flow</a>        
+  </div>
+</div>
+
+<!-- MUSIC CONTROLS CONTAINER -->
+<div class="center-top" style="margin: 30px auto; text-align: center;">
+    <audio id="audioPlayer" autoplay hidden>
+      <source src="song1.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+    <h2 style="color: white; font-family: system-ui, sans-serif; font-size: 1.5rem; margin-bottom: 15px;">Play Songs</h2>
+    <button class="music-btn" onclick="prevSong()">Prev</button>
+    <button class="music-btn" onclick="nextSong()">Next</button>
+</div>
+
+<!-- 1st CAROUSEL: TEAM CARDS SLIDER SECTION -->
+<h1 class="about-title">OUR TEAM</h1>
+
+<div class="carousel-container">
+    <button class="nav-arrow left">‹</button>
+    <div class="carousel-track">
+      <div class="card" data-index="0">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=3687&auto=format&fit=crop" alt="Emily Kim">
+      </div>
+      <div class="card" data-index="1">
+        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=3870&auto=format&fit=crop" alt="Michael Steward">
+      </div>
+      <div class="card" data-index="2">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&auto=format&fit=crop&q=60" alt="Emma Rodriguez">
+      </div>
+      <div class="card" data-index="3">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&auto=format&fit=crop&q=60" alt="Julia Gimmel">
+      </div>
+      <div class="card" data-index="4">
+        <img src="https://images.unsplash.com/photo-1655249481446-25d575f1c054?w=900&auto=format&fit=crop&q=60" alt="Lisa Anderson">
+      </div>
+      <div class="card" data-index="5">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=3687&auto=format&fit=crop" alt="James Wilson">
+      </div>
+    </div>
+    <button class="nav-arrow right">›</button>
+</div>
+
+<div class="member-info">
+    <h2 class="member-name"></h2>
+    <p class="member-role"></p>
+</div>
+
+<div class="dots">
+    <div class="dot active" data-index="0"></div>
+    <div class="dot" data-index="1"></div>
+    <div class="dot" data-index="2"></div>
+    <div class="dot" data-index="3"></div>
+    <div class="dot" data-index="4"></div>
+    <div class="dot" data-index="5"></div>
+</div>
+
+
+<!-- NEW 3D AUTOMATIC CAROUSEL SLIDER SECTION -->
+<div class="carousel-container" id="carouselWrapper">
+  <div class="carousel-3d" id="imageCarousel">
+    
+    <!-- Slide 1 -->
+    <div class="item">
+      <img src="https://yt3.ggpht.com/MxA2sjTQc_PQCPboRRlwmGttcu2EOcriv1kugN_bo4itcnrUYQpubIbfaz1pQEzcLQ0-7Z70HXjqG_4=s640-rw-nd-v1" alt="Slide 1">
+      <div class="text">Caption Text 1</div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="item">
+      <img src="https://yt3.ggpht.com/42Sk-mYndLAxnoG2D9_NhiUqvLDqM03c9Sy-ubW5ABYzIbjVFP1KSS7FXMsuwj-h9Yy9Nkwi_TFgTw=s640-rw-nd-v1" alt="Slide 2">
+      <div class="text">Caption Text 2</div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="item">
+      <img src="https://yt3.ggpht.com/xlza2gg8iafBZdpQhNRUUFYzijdfuB04tYQdwrerJ9EA63wr5n_H-u3SVMiUn__XsAGsuduOQDU1eQ=s640-rw-nd-v1" alt="Slide 3">
+      <div class="text">Caption Text 3</div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="item">
+      <img src="https://yt3.ggpht.com/493I_ZSZUsDJjEEnDQ8M2oyktEq9abJB3KA9AdDMcHxsARp9-ZMh-jcHKFYVv1XnzI0an1jY9bBChrk=s640-rw-nd-v1" alt="Slide 4">
+      <div class="text">Caption Text 4</div>
+    </div>
+
+  </div>
+  
+  <div class="carousel-controls">
+    <button id="carouselPrevBtn">Prev</button>
+    <button id="carouselNextBtn">Next</button>
+  </div>
+</div>
+
+<!-- ZOOM VIEW OVERLAY (Add this right below your slider code) -->
+<div id="carouselLightbox" class="lightbox-overlay">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightboxImg" src="" alt="Zoomed View">
+</div>
+
+
+
+
+
+
+<!-- Video Gallery -->
+<div class="video-gallery">
+    <div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/_QQ3yDk1v6U" title="time" frameborder="0" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe width="315" height="576" src="https://www.youtube.com/embed/HNBxrDOa7Dc" title="short video" frameborder="0" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe width="780" height="480" src="https://www.youtube.com/embed/KcdFTWcFR3A" title="avp" frameborder="0" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe width="720" height="480" src="https://www.youtube.com/embed/wpq5VkjVH5E" title="park compressed" frameborder="0" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe width="854" height="476" src="https://www.youtube.com/embed/7GXb5lk404s" title="apple compressed" frameborder="0" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe width="865" height="476" src="https://www.youtube.com/embed/6NUBRVCM97g" title="wwe" frameborder="0" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/nhTansHScNM" title="D Stage" frameborder="0" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/ENPf7VNaIHA" title="print" frameborder="0" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/lmtrHOdrVDw" title="Deepak Adv Video" frameborder="0" allowfullscreen></iframe></div>
+</div>
+
+ 
+<div id="chatToggle" onclick="toggleChat()">💬 Chat</div>
+
+<div class="chatbot" id="chatbot">
+  <div class="chat-header">
+    Vizion AI Support
+    <span style="float:right; cursor:pointer;" onclick="toggleChat()">✖</span>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-footer">
+    <input type="text" id="userInput" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendMessage()">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+
+
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
+      const songs = ["song1.mp3", "song2.mp3", "song3.mp3", "song4.mp3", "song5.mp3", "song6.mp3", "song7.mp3", "song8.mp3", "song9.mp3", "song10.mp3", "song11.mp3", "song12.mp3", "song13.mp3", "song14.mp3", "song15.mp3", "song16.mp3", "song17.mp3", "song18.mp3", "song19.mp3", "song20.mp3", "song21.mp3", "song22.mp3", "song23.mp3", "song24.mp3", "song25.mp3", "song26.mp3", "song27.mp3", "song28.mp3", "song29.mp3", "song30.mp3", "song31.mp3", "song32.mp3", "song33.mp3", "song34.mp3", "song35.mp3", "song36.mp3", "song37.mp3", "song38.mp3", "song39.mp3", "song40.mp3", "song41.mp3", "song42.mp3", "song43.mp3", "song44.mp3", "song45.mp3", "song46.mp3", "song47.mp3", "song48.mp3", "song49.mp3", "song50.mp3", "song51.mp3", "song52.mp3", "song53.mp3", "song54.mp3", "song55.mp3", "song56.mp3", "song57.mp3", "song58.mp3", "song59.mp3", "song60.mp3", "song61.mp3", "song62.mp3", "song63.mp3", "song64.mp3", "song65.mp3", "song66.mp3", "song67.mp3", "song68.mp3", "song69.mp3", "song70.mp3", "song71.mp3", "song72.mp3", "song73.mp3", "song74.mp3", "song75.mp3", "song76.mp3", "song77.mp3", "song78.mp3", "song79.mp3", "song80.mp3", "song81.mp3", "song82.mp3", "song83.mp3", "song84.mp3", "song85.mp3", "song86.mp3", "song87.mp3", "song88.mp3", "song89.mp3", "song90.mp3", "song91.mp3", "song92.mp3", "song93.mp3", "song94.mp3", "song95.mp3", "song96.mp3", "song97.mp3", "song98.mp3", "song99.mp3", "song100.mp3", "song101.mp3", "song102.mp3", "song103.mp3", "song104.mp3", "song105.mp3", "song106.mp3", "song107.mp3", "song108.mp3", "song109.mp3", "song110.mp3", "song111.mp3", "song112.mp3", "song113.mp3", "song114.mp3", "song115.mp3", "song116.mp3", "song117.mp3", "song118.mp3", "song119.mp3", "song120.mp3", "song121.mp3", "song122.mp3", "song123.mp3", "song124.mp3", "song125.mp3", "song126.mp3", "song127.mp3", "song128.mp3", "song129.mp3", "song130.mp3", "song131.mp3", "song132.mp3", "song133.mp3", "song134.mp3", "song135.mp3", "song136.mp3", "song137.mp3", "song138.mp3", "song139.mp3", "song140.mp3", "song141.mp3", "song142.mp3", "song143.mp3", "song144.mp3", "song145.mp3", "song146.mp3", "song147.mp3", "song148.mp3", "song149.mp3", "song150.mp3", "song151.mp3", "song152.mp3", "song153.mp3", "song154.mp3", "song155.mp3", "song156.mp3", "song157.mp3", "song158.mp3"];
+    let currentSongIndex = 0;
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    function loadSong(index) {
+        audioPlayer.src = songs[index];
+        audioPlayer.play().catch(err => console.log("Autoplay context initialization block dynamic fallback handled."));
+    }
+    function nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        loadSong(currentSongIndex);
+    }
+    function prevSong() {
+        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+        loadSong(currentSongIndex);
+    }
+
+    // 1st Carousel Logic: Team Cards
+    const teamMembers = [
+      { name: "Emily Kim", role: "Founder" },
+      { name: "Michael Steward", role: "Creative Director" },
+      { name: "Emma Rodriguez", role: "Lead Developer" },
+      { name: "Julia Gimmel", role: "UX Designer" },
+      { name: "Lisa Anderson", role: "Marketing Manager" },
+      { name: "James Wilson", role: "Product Manager" }
+    ];
+
+    const cards = document.querySelectorAll(".card");
+    const dots = document.querySelectorAll(".dot");
+    const memberName = document.querySelector(".member-name");
+    const memberRole = document.querySelector(".member-role");
+    const leftArrow = document.querySelector(".nav-arrow.left");
+    const rightArrow = document.querySelector(".nav-arrow.right");
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    function updateCarousel(newIndex) {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      currentIndex = (newIndex + cards.length) % cards.length;
+
+      cards.forEach((card, i) => {
+        const offset = (i - currentIndex + cards.length) % cards.length;
+        card.classList.remove("center", "left-1", "left-2", "right-1", "right-2", "hidden");
+
+        if (offset === 0) {
+          card.classList.add("center");
+        } else if (offset === 1) {
+          card.classList.add("right-1");
+        } else if (offset === 2) {
+          card.classList.add("right-2");
+        } else if (offset === cards.length - 1) {
+          card.classList.add("left-1");
+        } else if (offset === cards.length - 2) {
+          card.classList.add("left-2");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+
+      if(memberName && memberRole) {
+        memberName.style.opacity = "0";
+        memberRole.style.opacity = "0";
+        setTimeout(() => {
+          memberName.textContent = teamMembers[currentIndex].name;
+          memberRole.textContent = teamMembers[currentIndex].role;
+          memberName.style.opacity = "1";
+          memberRole.style.opacity = "1";
+        }, 300);
+      }
+
+      setTimeout(() => { isAnimating = false; }, 800);
+    }
+
+    leftArrow.addEventListener("click", () => updateCarousel(currentIndex - 1));
+    rightArrow.addEventListener("click", () => updateCarousel(currentIndex + 1));
+    dots.forEach((dot, i) => dot.addEventListener("click", () => updateCarousel(i)));
+    cards.forEach((card, i) => card.addEventListener("click", () => updateCarousel(i)));
+
+    // Auto Rotation for Team Cards Carousel
+    let cardRotateTimer = null;
+    function startCardRotation() {
+        if (cardRotateTimer === null) {
+            cardRotateTimer = setInterval(() => { updateCarousel(currentIndex + 1); }, 3500);
+        }
+    }
+    function stopCardRotation() {
+        if (cardRotateTimer !== null) {
+            clearInterval(cardRotateTimer);
+            cardRotateTimer = null;
+        }
+    }
+    const containerWrapper = document.querySelector(".carousel-container");
+    containerWrapper.addEventListener("mouseenter", stopCardRotation);
+    containerWrapper.addEventListener("mouseleave", startCardRotation);
+
+
+    // ==========================================
+    // FIXED 2nd Carousel Logic: Automatic Image 3D Rotation
+    // ==========================================
+    const autoTrack = document.getElementById('imageCarousel');
+    const autoItems = document.querySelectorAll('#imageCarousel .item');
+    const autoPrevBtn = document.getElementById('carouselPrevBtn');
+    const autoNextBtn = document.getElementById('carouselNextBtn');
+    const autoWrapper = document.getElementById('carouselWrapper');
+    
+    let autoIndex = 0;
+    const totalAutoItems = autoItems.length;
+    // Calculate theta angle depending dynamically on absolute layout number of child elements
+    const theta = 360 / totalAutoItems; 
+    // Computed safe spatial radius to spread slides out smoothly in 3D depth perspective
+    const radius = Math.round((160) / Math.tan(Math.PI / totalAutoItems)); 
+
+    function layoutAutoCarousel() {
+      autoItems.forEach((item, i) => {
+        // Distribute items uniformly in circular space geometry
+        const itemAngle = theta * i;
+        item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px)`;
+      });
+      rotateAutoCarousel();
+    }
+
+    function rotateAutoCarousel() {
+      // Counter-rotate parent track wrapper to display target index in front layer facing perspective viewport
+      autoTrack.style.transform = `rotateY(${-theta * autoIndex}deg)`;
+    }
+
+    autoPrevBtn.addEventListener('click', () => {
+      autoIndex--;
+      rotateAutoCarousel();
+    });
+
+    autoNextBtn.addEventListener('click', () => {
+      autoIndex++;
+      rotateAutoCarousel();
+    });
+
+    // Automatic Rotation loop handler logic
+    let autoCarouselTimer = null;
+    function startImageCarouselRotation() {
+      if (autoCarouselTimer === null) {
+        autoCarouselTimer = setInterval(() => {
+          autoIndex++;
+          rotateAutoCarousel();
+        }, 3000); // Rotates automatically every 3 seconds
+      }
+    }
+
+    function stopImageCarouselRotation() {
+      if (autoCarouselTimer !== null) {
+        clearInterval(autoCarouselTimer);
+        autoCarouselTimer = null;
+      }
+    }
+
+    // Interactivity hooks to freeze rotation timeline loop whenever visitor hovers over elements
+    autoWrapper.addEventListener('mouseenter', stopImageCarouselRotation);
+    autoWrapper.addEventListener('mouseleave', startImageCarouselRotation);
+
+
+
+
   (function(){
     emailjs.init("1YiLFdNefY_myVwqA");
   })();
@@ -773,14 +938,24 @@ function showSlides() {
   let customerEmail = "";
   let customerPhone = "";
 
-  window.onload = function() {
-    setTimeout(() => {
-      if (document.getElementById('chatbot').style.display !== 'flex') {
-        toggleChat();
-        appendMessage("👋 Welcome to Vizion AI! How can we help you today?", 'bot');
-      }
-    }, 2000); 
-  };
+    // Window initialization loader callback
+    window.onload = function() {
+        loadSong(currentSongIndex);
+        updateCarousel(0);
+        startCardRotation();
+        
+        // Execute layout calculations and start 2nd Carousel rotation sequence loop
+        layoutAutoCarousel();
+        startImageCarouselRotation();
+        
+        setTimeout(() => {
+          if (document.getElementById('chatbot').style.display !== 'flex') {
+            toggleChat();
+            appendMessage("👋 Welcome to Vizion AI! How can we help you today?", 'bot');
+          }
+        }, 2000); 
+    };
+
 
   function toggleChat() {
     const chat = document.getElementById('chatbot');
@@ -849,6 +1024,48 @@ function showSlides() {
   }
 </script>
 
+<!-- ZOOM JAVASCRIPT LOGIC (Place inside your script tag or near your footer) -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('.image-carousel .item img, #imageCarousel .item img');
+    const lightbox = document.getElementById('carouselLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    // Open lightbox zoom view when an image is clicked
+    images.forEach(img => {
+        img.addEventListener('click', function() {
+            lightboxImg.src = this.src;
+            lightboxImg.alt = this.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop page behind it from scrolling while zooming
+        });
+    });
+
+    // Close function
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Give scrolling back to page
+    }
+
+    // Close when clicking the "X" button
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Close when clicking anywhere on the dark backdrop
+    lightbox.addEventListener('click', function(e) {
+        if (e.target !== lightboxImg && e.target !== closeBtn) {
+            closeLightbox();
+        }
+    });
+
+    // Close if user hits the ESC physical keyboard button
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+});
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B6Z1M7MFNR"></script>
 <script>
@@ -928,13 +1145,13 @@ function showSlides() {
 
 
 </div>
-
  <a href="https://wa.me/918867740113?text=Hi%20Deepak,%20I%20am%20interested%20in%20your%20IT%20training%20and%20services." 
    class="whatsapp-float" 
    target="_blank">
     <span class="tooltiptext">Chat with Deepak</span>
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:35px; margin-top:12px;">
 </a>
+
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 <script>
   kofiWidgetOverlay.draw('deepakwebservices', {
