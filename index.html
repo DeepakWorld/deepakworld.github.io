@@ -119,219 +119,270 @@
         .whatsapp-float .tooltiptext { display: none; } /* Hide tooltip on mobile to save space */
     }
 </style>
+<!-- 1st Carousel (Team Slider) Styling -->
+<style>
+    /* Safety Wrapper against horizontal bleeding */
+    body, html {
+      overflow-x: hidden;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- 1st Carousel (Team Slider) Styling -->
-    <style>
-        .about-title {
-          font-size: 4.5rem;
-          font-weight: 900;
-          text-transform: uppercase;
-          letter-spacing: -0.02em;
-          text-align: center;
-          margin-top: 40px;
-          margin-bottom: -40px;
-          pointer-events: none;
-          white-space: nowrap;
-          font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
-          background: linear-gradient(
-            to bottom,
-            rgba(4, 170, 109, 0.6) 30%,
-            rgba(255, 255, 255, 0) 90%
-          );
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-        }
+    .about-title {
+      font-size: 4.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: -40px;
+      pointer-events: none;
+      white-space: nowrap;
+      font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+      background: linear-gradient(
+        to bottom,
+        rgba(4, 170, 109, 0.6) 30%,
+        rgba(255, 255, 255, 0) 90%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-        .carousel-container {
-          width: 100%;
-          max-width: 1200px;
-          height: 450px;
-          position: relative;
-          perspective: 1000px;
-          margin: 40px auto 10px auto;
-          z-index: 10;
-        }
+    .carousel-container {
+      width: 100%;
+      max-width: 1200px;
+      height: 450px;
+      position: relative;
+      perspective: 1000px;
+      margin: 40px auto 10px auto;
+      z-index: 10;
+      overflow: hidden; /* Keeps flanking elements from forcing a scrollbar */
+    }
 
-        .carousel-track {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: relative;
-          transform-style: preserve-3d;
-          transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+    .carousel-track {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
 
-        .card {
-          position: absolute;
-          width: 280px;
-          height: 380px;
-          background: white;
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          cursor: pointer;
-          border: 4px solid #fff;
-        }
+    .card {
+      position: absolute;
+      width: 280px;
+      height: 380px;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
+      border: 4px solid #fff;
+    }
 
-        .card img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
 
-        .card.center {
-          z-index: 10;
-          transform: scale(1.1) translateZ(0);
-          border-color: #04AA6D;
-        }
+    .card.center {
+      z-index: 10;
+      transform: scale(1.1) translateZ(0);
+      border-color: #04AA6D;
+    }
 
-        .card.center img {
-          filter: none;
-        }
+    .card.center img {
+      filter: none;
+    }
 
-        .card.left-2 {
-          z-index: 1;
-          transform: translateX(-400px) scale(0.8) translateZ(-300px);
-          opacity: 0.5;
-        }
+    /* Desktop View translations (safe for wide displays) */
+    .card.left-2 {
+      z-index: 1;
+      transform: translateX(-400px) scale(0.8) translateZ(-300px);
+      opacity: 0.5;
+    }
+    .card.left-2 img { filter: grayscale(100%); }
 
-        .card.left-2 img {
-          filter: grayscale(100%);
-        }
+    .card.left-1 {
+      z-index: 5;
+      transform: translateX(-200px) scale(0.9) translateZ(-100px);
+      opacity: 0.8;
+    }
+    .card.left-1 img { filter: grayscale(100%); }
 
-        .card.left-1 {
-          z-index: 5;
-          transform: translateX(-200px) scale(0.9) translateZ(-100px);
-          opacity: 0.8;
-        }
+    .card.right-1 {
+      z-index: 5;
+      transform: translateX(200px) scale(0.9) translateZ(-100px);
+      opacity: 0.8;
+    }
+    .card.right-1 img { filter: grayscale(100%); }
 
-        .card.left-1 img {
-          filter: grayscale(100%);
-        }
+    .card.right-2 {
+      z-index: 1;
+      transform: translateX(400px) scale(0.8) translateZ(-300px);
+      opacity: 0.5;
+    }
+    .card.right-2 img { filter: grayscale(100%); }
 
-        .card.right-1 {
-          z-index: 5;
-          transform: translateX(200px) scale(0.9) translateZ(-100px);
-          opacity: 0.8;
-        }
+    .card.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
 
-        .card.right-1 img {
-          filter: grayscale(100%);
-        }
+    .member-info {
+      text-align: center;
+      margin-top: 10px;
+      min-height: auto; /* REMOVED 110px GAP: Collapses unused space */
+      padding: 0 15px;
+    }
 
-        .card.right-2 {
-          z-index: 1;
-          transform: translateX(400px) scale(0.8) translateZ(-300px);
-          opacity: 0.5;
-        }
+    .member-name {
+      color: #04AA6D;
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      position: relative;
+      display: inline-block;
+      transition: opacity 0.3s ease;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
 
-        .card.right-2 img {
-          filter: grayscale(100%);
-        }
+    .member-name::before,
+    .member-name::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      width: 80px;
+      height: 2px;
+      background: #04AA6D;
+    }
+    .member-name::before { left: -100px; }
+    .member-name::after { right: -100px; }
 
-        .card.hidden {
-          opacity: 0;
-          pointer-events: none;
-        }
+    .member-role {
+      color: #bdbdbd;
+      font-size: 1.3rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 8px 0;
+      margin-top: 5px;
+      transition: opacity 0.3s ease;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
 
-        .member-info {
-          text-align: center;
-          margin-top: 10px;
-          min-height: 110px;
-        }
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0 15px 0; /* REMOVED 60px GAP: Closed up empty space below navigation dots */
+    }
 
-        .member-name {
-          color: #04AA6D;
-          font-size: 2.3rem;
-          font-weight: 700;
-          margin-bottom: 5px;
-          position: relative;
-          display: inline-block;
-          transition: opacity 0.3s ease;
-          font-family: system-ui, -apple-system, sans-serif;
-        }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(4, 170, 109, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-        .member-name::before,
-        .member-name::after {
-          content: "";
-          position: absolute;
-          top: 100%;
-          width: 80px;
-          height: 2px;
-          background: #04AA6D;
-        }
+    .dot.active {
+      background: #04AA6D;
+      transform: scale(1.3);
+    }
 
-        .member-name::before { left: -100px; }
-        .member-name::after { right: -100px; }
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(17, 24, 39, 0.8);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: all 0.3s ease;
+      font-size: 1.8rem;
+      border: 2px solid #04AA6D;
+      outline: none;
+      padding-bottom: 4px;
+    }
+    .nav-arrow:hover {
+      background: #04AA6D;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .nav-arrow.left { left: 20px; padding-right: 3px; }
+    .nav-arrow.right { right: 20px; padding-left: 3px; }
 
-        .member-role {
-          color: #bdbdbd;
-          font-size: 1.3rem;
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          padding: 8px 0;
-          margin-top: 5px;
-          transition: opacity 0.3s ease;
-          font-family: system-ui, -apple-system, sans-serif;
-        }
+    /* Clean slate layout configuration for the 2nd automatic slider below */
+    .slider-section {
+      margin: 0 auto;
+      padding: 0;
+      width: 100%;
+display: block;
+    }
 
-        .dots {
-          display: flex;
-          justify-content: center;
-          gap: 10px;
-          margin: 20px 0 60px 0;
-        }
+    /* ==========================================================================
+       MOBILE RESPONSIVENESS AND EDGE BREAK CORRECTIONS
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .about-title {
+        font-size: 2.2rem;
+        white-space: normal;
+        margin-bottom: -10px;
+      }
+      
+      .carousel-container {
+        height: 360px;
+      }
 
-        .dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: rgba(4, 170, 109, 0.3);
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
+      .card {
+        width: 200px;
+        height: 280px;
+      }
 
-        .dot.active {
-          background: #04AA6D;
-          transform: scale(1.3);
-        }
+      .card.left-2 { transform: translateX(-160px) scale(0.6) translateZ(-200px); opacity: 0.2; }
+      .card.left-1 { transform: translateX(-90px) scale(0.8) translateZ(-100px); opacity: 0.6; }
+      .card.right-1 { transform: translateX(90px) scale(0.8) translateZ(-100px); opacity: 0.6; }
+      .card.right-2 { transform: translateX(160px) scale(0.6) translateZ(-200px); opacity: 0.2; }
+      
+      .card.center {
+        transform: scale(1.05) translateZ(0);
+      }
 
-        .nav-arrow {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background: rgba(17, 24, 39, 0.8);
-          color: white;
-          width: 45px;
-          height: 45px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          z-index: 20;
-          transition: all 0.3s ease;
-          font-size: 1.8rem;
-          border: 2px solid #04AA6D;
-          outline: none;
-          padding-bottom: 4px;
-        }
+      .member-name {
+        font-size: 1.6rem;
+      }
+      .member-name::before, .member-name::after { display: none; }
 
-        .nav-arrow:hover {
-          background: #04AA6D;
-          transform: translateY(-50%) scale(1.1);
-        }
+      .member-role {
+        font-size: 1rem;
+      }
 
-        .nav-arrow.left { left: 20px; padding-right: 3px; }
-        .nav-arrow.right { right: 20px; padding-left: 3px; }
-
-        .music-btn {
+      .nav-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.4rem;
+      }
+      .nav-arrow.left { left: 5px; }
+      .nav-arrow.right { right: 5px; }
+    }
+</style>
+<style>
+.music-btn {
           padding: 10px 25px;
           background: #111827;
           color: #fff;
@@ -347,7 +398,11 @@
           transform: scale(1.05);
           background: #04AA6D;
         }
-    </style>
+
+</style>
+
+
+
 <style>
   #chatToggle {
     position: fixed; bottom: 20px; right: 20px;
@@ -378,144 +433,80 @@
 </style>
  <!-- ZOOM FUNCTION STYLING (Add this into your existing <style> tag) -->
 <style>
-    .item img {
-      cursor: zoom-in; /* Changes mouse pointer to a magnifying glass over images */
+    .slider {
+      position: relative;
+      width: 90vw;          /* responsive width */
+      max-width: 350px;     /* cap for larger screens */
+      margin: 10px auto;    /* REDUCED from 50px to 10px to close the vertical gap */
+      perspective: 1000px;
+      padding-top: 30px;    /* REDUCED from 120px to prevent massive empty spacing */
+      height: 250px;        /* ADDED height to give the absolute items a safe physical boundary */
     }
-
-    /* Fullscreen dark background backdrop */
-    .lightbox-overlay {
-      display: none;
-      position: fixed;
-      z-index: 9999; /* Higher than everything else on your page */
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
-
-    /* Active state to fade the zoom view in smoothly */
-    .lightbox-overlay.active {
-      display: flex;
-      opacity: 1;
-    }
-
-    /* The actual big zoomed image */
-    .lightbox-overlay img {
-      max-width: 85%;
-      max-height: 85%;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      transform: scale(0.95);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .lightbox-overlay.active img {
-      transform: scale(1);
-    }
-
-    /* Close 'X' Button top right */
-    .lightbox-close {
+    .rotator {
       position: absolute;
-      top: 20px;
-      right: 35px;
-      color: #fff;
-      font-size: 40px;
-      font-weight: 300;
-      cursor: pointer;
-      transition: color 0.2s;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 100%;
+      height: 200px;
+      transform-style: preserve-3d;
+      animation: roter 25s linear infinite;
+    }
+    .rotator:hover {
+      animation-play-state: paused;
+    }
+    @keyframes roter {
+      from { transform: rotateY(0deg); }
+      to   { transform: rotateY(360deg); }
+    }
+    .item {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      border: 2px solid white;
+      border-radius: 10px;
+      background: #000;
+    }
+    .item img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .item:hover img {
+      transform: scale(1.1);
+    }
+    .text {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: gold;
+      font-weight: bold;
+      background: rgba(0,0,0,0.5);
+      padding: 5px;
+      font-size: 0.9rem;
     }
 
-    .lightbox-close:hover {
-      color: #04AA6D; /* Matches your Green slider button accents */
+    /* Positioning each slide around the Y-axis */
+    .item:nth-child(1) { transform: rotateY(0deg) translateZ(220px); }
+    .item:nth-child(2) { transform: rotateY(90deg) translateZ(220px); }
+    .item:nth-child(3) { transform: rotateY(180deg) translateZ(220px); }
+    .item:nth-child(4) { transform: rotateY(270deg) translateZ(220px); }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .slider { 
+        max-width: 280px; 
+        padding-top: 15px;  /* Even tighter spacing on mobile screens */
+        height: 190px;
+      }
+      .rotator { height: 160px; }
+      .item:nth-child(n) { transform: rotateY(calc(90deg * (n - 1))) translateZ(180px); }
     }
 </style>
-
-
-<!-- New 3D Carousel Slider Styling -->
- <!-- New 3D Carousel Slider Styling -->
-    <style>
-        .carousel-container {
-          font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-          margin: 40px auto 140px auto; /* Increased bottom margin to make space for control buttons */
-          width: 300px;
-          height: 200px;
-          position: relative;
-          perspective: 1000px;
-          z-index: 10;
-        }
-        .carousel-3d {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          transform-style: preserve-3d;
-          transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .item {
-          position: absolute;
-          width: 280px;
-          height: 180px;
-          left: 10px;
-          top: 10px;
-          background: #fff;
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 4px solid #fff;
-          opacity: 0.95;
-          transition: opacity 0.3s;
-        }
-        .item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .item .text {
-          position: absolute;
-          bottom: 10px;
-          left: 5%;
-          width: 90%;
-          background: rgba(0, 0, 0, 0.7);
-          color: #fff;
-          padding: 6px 8px;
-          border-radius: 6px;
-          font-size: 0.8rem;
-          font-weight: 500;
-          text-align: center;
-        }
-        .carousel-controls {
-          position: absolute;
-          bottom: -80px;
-          left: 0;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          gap: 20px;
-        }
-        .carousel-controls button {
-          padding: 10px 25px;
-          background: #111827;
-          color: #fff;
-          border: 2px solid #04AA6D;
-          border-radius: 50px;
-          cursor: pointer;
-          font-weight: 600;
-          transition: transform 0.2s, background 0.2s;
-          font-size: 0.9rem;
-        }
-        .carousel-controls button:hover {
-          transform: scale(1.05);
-          background: #04AA6D;
-        }
-    </style>
-
     <style>
         /* General Style Layout Framework */
         * {
@@ -710,30 +701,18 @@
 </div>
 <div class="center-top" style="margin: 30px auto; text-align: center;">
 
-<h2 style="color: white; font-family: system-ui, sans-serif; font-size: 1.5rem; margin-bottom: 15px;">Play Songs</h2>
+
 </div>
 
 <div class="carousel-container">
     <button class="nav-arrow left">‹</button>
     <div class="carousel-track">
-      <div class="card" data-index="0">
-        <img src="https://deepakworld.github.io/lut/a.png" alt="Worldwide">
-      </div>
-      <div class="card" data-index="1">
-        <img src="https://deepakworld.github.io/lut/b.png" alt="Canada">
-      </div>
-      <div class="card" data-index="2">
-        <img src="https://deepakworld.github.io/lut/c.png" alt="UAE">
-      </div>
-      <div class="card" data-index="3">
-        <img src="https://deepakworld.github.io/lut/f.png" alt="USA">
-      </div>
-      <div class="card" data-index="4">
-        <img src="https://deepakworld.github.io/lut/d.png" alt="UK">
-      </div>
-      <div class="card" data-index="5">
-        <img src="https://deepakworld.github.io/lut/j.png" alt="British">
-      </div>
+      <div class="card" data-index="0"><img src="https://deepakworld.github.io/lut/a.png" alt="Worldwide"></div>
+      <div class="card" data-index="1"><img src="https://deepakworld.github.io/lut/b.png" alt="Canada"></div>
+      <div class="card" data-index="2"><img src="https://deepakworld.github.io/lut/c.png" alt="UAE"></div>
+      <div class="card" data-index="3"><img src="https://deepakworld.github.io/lut/f.png" alt="USA"></div>
+      <div class="card" data-index="4"><img src="https://deepakworld.github.io/lut/d.png" alt="UK"></div>
+      <div class="card" data-index="5"><img src="https://deepakworld.github.io/lut/j.png" alt="British"></div>
     </div>
     <button class="nav-arrow right">›</button>
 </div>
@@ -752,97 +731,103 @@
     <div class="dot" data-index="5"></div>
 </div>
 
+
 <!-- NEW 3D AUTOMATIC CAROUSEL SLIDER SECTION -->
+
 <div class="carousel-container" id="carouselWrapper">
   <div class="carousel-3d" id="imageCarousel">
-    
-    <!-- Slide 1 -->
-    <div class="item">
-      <img src="https://deepakworld.github.io/pose/1ab.png" alt="Slide 1">
-      <div class="text">Caption Text 1</div>
-    </div>
+<section class="slider-section">
+  <div class="slider">
+    <div class="rotator">
+      <div class="item">
+        <img src="https://deepakworld.github.io/pose/1ab.png" alt="Slide 1">
+        
+      </div>
+      <div class="item">
+        <img src="https://deepakworld.github.io/pose/2ab.png" alt="Slide 2">
+        
+      </div>
+      <div class="item">
+        <img src="https://deepakworld.github.io/pose/3ab.png" alt="Slide 3">
 
-    <!-- Slide 2 -->
-    <div class="item">
-      <img src="https://deepakworld.github.io/pose/2ab.png" alt="Slide 2">
-      <div class="text">Caption Text 2</div>
+      </div>
+      <div class="item">
+        <img src="https://deepakworld.github.io/pose/4ab.png" alt="Slide 4">
+     
+      </div>
     </div>
+  </div>
 
-    <!-- Slide 3 -->
-    <div class="item">
-      <img src="https://deepakworld.github.io/pose/3ab.png" alt="Slide 3">
-      <div class="text">Caption Text 3</div>
-    </div>
-
-    <!-- Slide 4 -->
-    <div class="item">
-      <img src="https://deepakworld.github.io/pose/4ab.png" alt="Slide 4">
-      <div class="text">Caption Text 4</div>
-    </div>
+</section>
 
   </div>
-  
-  <div class="carousel-controls">
-    <button id="carouselPrevBtn">Prev</button>
-    <button id="carouselNextBtn">Next</button>
-  </div>
-</div>
 
-<!-- ZOOM VIEW OVERLAY -->
-<div id="carouselLightbox" class="lightbox-overlay">
-  <span class="lightbox-close">&times;</span>
-  <img id="lightboxImg" src="" alt="Zoomed View">
-</div>
+  </div>
 
 <!-- Place this section below your slider -->
+<!-- CUPS SECTION -->
 <section class="cups-section">
   <h2>Royal Trophy Showcase</h2>
   <div class="cups-container">
     <img src="gold_cup.png" alt="Gold Cup" class="cup gold">
-
-    <img src="joy.png" alt="DIWS" class="Diws">
-
+    <img src="logo.png" alt="DIWS Logo" class="logo">
     <img src="diamond_cup.png" alt="Diamond Cup" class="cup diamond">
   </div>
 </section>
 
 <style>
+/* Cups Section */
 .cups-section {
   text-align: center;
-  padding: 40px;
-  background: #000; /* dark backdrop for shine */
+  padding: 30px 15px;
+  background: #000;
   color: gold;
-  font-family: 'Segoe UI', sans-serif;
 }
-
 .cups-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 80px;
+  gap: 40px;
   align-items: center;
 }
-
 .cup {
-  width: 180px;
+  width: 25vw;
+  max-width: 150px;
   height: auto;
   animation: rotateCup 10s linear infinite;
-  transform-style: preserve-3d;
 }
-
+.logo {
+  width: 20vw;
+  max-width: 120px;
+  height: auto;
+}
 @keyframes rotateCup {
   from { transform: rotateY(0deg); }
-  to   { transform: rotateY(360deg); }
+  to { transform: rotateY(360deg); }
 }
+.cup.gold { filter: drop-shadow(0 0 15px gold); }
+.cup.diamond { filter: drop-shadow(0 0 15px #00ffff); }
 
-/* Optional glow effect */
-.cup.gold {
-  filter: drop-shadow(0 0 15px gold);
-}
-.cup.diamond {
-  filter: drop-shadow(0 0 15px #00ffff);
+/* Mobile adjustments */
+@media (max-width:600px) {
+  .cups-container {
+    gap: 20px;
+    flex-direction: column;   /* Stack vertically on very small screens */
+  }
+  .cup {
+    width: 35vw;
+    max-width: 120px;
+  }
+  .logo {
+    width: 30vw;
+    max-width: 100px;
+  }
+  .text {
+    font-size: 0.7rem;
+    padding: 4px 6px;
+  }
 }
 </style>
-
 
 
 
@@ -897,7 +882,7 @@
         loadSong(currentSongIndex);
     }
 
-    // 1st Carousel Logic: Team Cards
+      // 1st Carousel Logic: Team Cards
     const teamMembers = [
       { name: "Deepak", role: "Founder" },
       { name: "Deepak", role: "Creative Director" },
@@ -915,6 +900,12 @@
     const rightArrow = document.querySelector(".nav-arrow.right");
     let currentIndex = 0;
     let isAnimating = false;
+
+    // Initialize labels on load
+    if(memberName && memberRole && teamMembers[0]) {
+      memberName.textContent = teamMembers[0].name;
+      memberRole.textContent = teamMembers[0].role;
+    }
 
     function updateCarousel(newIndex) {
       if (isAnimating) return;
@@ -980,71 +971,9 @@
     const containerWrapper = document.querySelector(".carousel-container");
     containerWrapper.addEventListener("mouseenter", stopCardRotation);
     containerWrapper.addEventListener("mouseleave", startCardRotation);
-
-
-    // ==========================================
-    // FIXED 2nd Carousel Logic: Automatic Image 3D Rotation
-    // ==========================================
-    const autoTrack = document.getElementById('imageCarousel');
-    const autoItems = document.querySelectorAll('#imageCarousel .item');
-    const autoPrevBtn = document.getElementById('carouselPrevBtn');
-    const autoNextBtn = document.getElementById('carouselNextBtn');
-    const autoWrapper = document.getElementById('carouselWrapper');
     
-    let autoIndex = 0;
-    const totalAutoItems = autoItems.length;
-    // Calculate theta angle depending dynamically on absolute layout number of child elements
-    const theta = 360 / totalAutoItems; 
-    // Computed safe spatial radius to spread slides out smoothly in 3D depth perspective
-    const radius = Math.round((160) / Math.tan(Math.PI / totalAutoItems)); 
-
-    function layoutAutoCarousel() {
-      autoItems.forEach((item, i) => {
-        // Distribute items uniformly in circular space geometry
-        const itemAngle = theta * i;
-        item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px)`;
-      });
-      rotateAutoCarousel();
-    }
-
-    function rotateAutoCarousel() {
-      // Counter-rotate parent track wrapper to display target index in front layer facing perspective viewport
-      autoTrack.style.transform = `rotateY(${-theta * autoIndex}deg)`;
-    }
-
-    autoPrevBtn.addEventListener('click', () => {
-      autoIndex--;
-      rotateAutoCarousel();
-    });
-
-    autoNextBtn.addEventListener('click', () => {
-      autoIndex++;
-      rotateAutoCarousel();
-    });
-
-    // Automatic Rotation loop handler logic
-    let autoCarouselTimer = null;
-    function startImageCarouselRotation() {
-      if (autoCarouselTimer === null) {
-        autoCarouselTimer = setInterval(() => {
-          autoIndex++;
-          rotateAutoCarousel();
-        }, 3000); // Rotates automatically every 3 seconds
-      }
-    }
-
-    function stopImageCarouselRotation() {
-      if (autoCarouselTimer !== null) {
-        clearInterval(autoCarouselTimer);
-        autoCarouselTimer = null;
-      }
-    }
-
-    // Interactivity hooks to freeze rotation timeline loop whenever visitor hovers over elements
-    autoWrapper.addEventListener('mouseenter', stopImageCarouselRotation);
-    autoWrapper.addEventListener('mouseleave', startImageCarouselRotation);
-
-
+    // Fallback initialize
+    startCardRotation();
 
 
   (function(){
