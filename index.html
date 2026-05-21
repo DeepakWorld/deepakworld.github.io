@@ -240,7 +240,7 @@
     .member-info {
       text-align: center;
       margin-top: 10px;
-      min-height: auto; /* REMOVED 110px GAP: Collapses unused space */
+      min-height: 110px;
       padding: 0 15px;
     }
 
@@ -283,7 +283,7 @@
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin: 15px 0 15px 0; /* REMOVED 60px GAP: Closed up empty space below navigation dots */
+      margin: 20px 0 60px 0;
     }
 
     .dot {
@@ -327,45 +327,39 @@
     .nav-arrow.left { left: 20px; padding-right: 3px; }
     .nav-arrow.right { right: 20px; padding-left: 3px; }
 
-    /* Clean slate layout configuration for the 2nd automatic slider below */
-    .slider-section {
-      margin: 0 auto;
-      padding: 0;
-      width: 100%;
-display: block;
-    }
-
     /* ==========================================================================
        MOBILE RESPONSIVENESS AND EDGE BREAK CORRECTIONS
        ========================================================================== */
     @media (max-width: 768px) {
       .about-title {
-        font-size: 2.2rem;
+        font-size: 2.2rem; /* Drop title size so it doesn't leak off screen */
         white-space: normal;
         margin-bottom: -10px;
       }
       
       .carousel-container {
-        height: 360px;
+        height: 360px; /* Scale down container slightly to match downsized cards */
       }
 
       .card {
-        width: 200px;
+        width: 200px;  /* Shrink cards proportionally */
         height: 280px;
       }
 
+      /* Reduce translation spacing to keep flanking cards strictly inside mobile viewport */
       .card.left-2 { transform: translateX(-160px) scale(0.6) translateZ(-200px); opacity: 0.2; }
       .card.left-1 { transform: translateX(-90px) scale(0.8) translateZ(-100px); opacity: 0.6; }
       .card.right-1 { transform: translateX(90px) scale(0.8) translateZ(-100px); opacity: 0.6; }
       .card.right-2 { transform: translateX(160px) scale(0.6) translateZ(-200px); opacity: 0.2; }
       
       .card.center {
-        transform: scale(1.05) translateZ(0);
+        transform: scale(1.05) translateZ(0); /* Less intense scale to optimize screen real estate */
       }
 
       .member-name {
         font-size: 1.6rem;
       }
+      /* Hide side lines on mobile if screen space is critically narrow */
       .member-name::before, .member-name::after { display: none; }
 
       .member-role {
@@ -381,27 +375,26 @@ display: block;
       .nav-arrow.right { right: 5px; }
     }
 </style>
+  <!-- Music Component Styling -->
 <style>
-.music-btn {
-          padding: 10px 25px;
-          background: #111827;
-          color: #fff;
-          border: 2px solid #04AA6D;
-          border-radius: 50px;
-          cursor: pointer;
-          font-weight: 600;
-          transition: transform 0.2s, background 0.2s;
-          font-size: 0.9rem;
-          margin: 4px 5px;
-        }
-        .music-btn:hover {
-          transform: scale(1.05);
-          background: #04AA6D;
-        }
-
+    .music-btn {
+      padding: 10px 25px;
+      background: #111827;
+      color: #fff;
+      border: 2px solid #04AA6D;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s, background 0.2s;
+      font-size: 0.9rem;
+      margin: 4px 5px;
+    }
+    
+    .music-btn:hover {
+      transform: scale(1.05);
+      background: #04AA6D;
+    }
 </style>
-
-
 
 <style>
   #chatToggle {
@@ -432,15 +425,15 @@ display: block;
   .chat-footer button { border: none; background: transparent; color: #0078d7; font-weight: bold; margin-left: 8px; cursor: pointer; }
 </style>
  <!-- ZOOM FUNCTION STYLING (Add this into your existing <style> tag) -->
-<style>
+  <style>
+ 
     .slider {
       position: relative;
       width: 90vw;          /* responsive width */
       max-width: 350px;     /* cap for larger screens */
-      margin: 10px auto;    /* REDUCED from 50px to 10px to close the vertical gap */
+      margin: 50px auto;
       perspective: 1000px;
-      padding-top: 30px;    /* REDUCED from 120px to prevent massive empty spacing */
-      height: 250px;        /* ADDED height to give the absolute items a safe physical boundary */
+      padding-top: 120px;
     }
     .rotator {
       position: absolute;
@@ -498,15 +491,11 @@ display: block;
 
     /* Responsive adjustments */
     @media (max-width: 600px) {
-      .slider { 
-        max-width: 280px; 
-        padding-top: 15px;  /* Even tighter spacing on mobile screens */
-        height: 190px;
-      }
+      .slider { max-width: 280px; }
       .rotator { height: 160px; }
-      .item:nth-child(n) { transform: rotateY(calc(90deg * (n - 1))) translateZ(180px); }
+      .item:nth-child(n) { transform: rotateY(calc(90deg * (n-1))) translateZ(180px); }
     }
-</style>
+  </style>
     <style>
         /* General Style Layout Framework */
         * {
@@ -701,7 +690,7 @@ display: block;
 </div>
 <div class="center-top" style="margin: 30px auto; text-align: center;">
 
-
+<h2 style="color: white; font-family: system-ui, sans-serif; font-size: 1.5rem; margin-bottom: 15px;">Play Songs</h2>
 </div>
 
 <div class="carousel-container">
@@ -770,7 +759,7 @@ display: block;
   <h2>Royal Trophy Showcase</h2>
   <div class="cups-container">
     <img src="gold_cup.png" alt="Gold Cup" class="cup gold">
-    <img src="logo.png" alt="DIWS Logo" class="logo">
+    <img src="joy.png" alt="DIWS Logo" class="logo">
     <img src="diamond_cup.png" alt="Diamond Cup" class="cup diamond">
   </div>
 </section>
@@ -865,7 +854,164 @@ display: block;
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-      const songs = ["song1.mp3", "song2.mp3", "song3.mp3", "song4.mp3", "song5.mp3", "song6.mp3", "song7.mp3", "song8.mp3", "song9.mp3", "song10.mp3", "song11.mp3", "song12.mp3", "song13.mp3", "song14.mp3", "song15.mp3", "song16.mp3", "song17.mp3", "song18.mp3", "song19.mp3", "song20.mp3", "song21.mp3", "song22.mp3", "song23.mp3", "song24.mp3", "song25.mp3", "song26.mp3", "song27.mp3", "song28.mp3", "song29.mp3", "song30.mp3", "song31.mp3", "song32.mp3", "song33.mp3", "song34.mp3", "song35.mp3", "song36.mp3", "song37.mp3", "song38.mp3", "song39.mp3", "song40.mp3", "song41.mp3", "song42.mp3", "song43.mp3", "song44.mp3", "song45.mp3", "song46.mp3", "song47.mp3", "song48.mp3", "song49.mp3", "song50.mp3", "song51.mp3", "song52.mp3", "song53.mp3", "song54.mp3", "song55.mp3", "song56.mp3", "song57.mp3", "song58.mp3", "song59.mp3", "song60.mp3", "song61.mp3", "song62.mp3", "song63.mp3", "song64.mp3", "song65.mp3", "song66.mp3", "song67.mp3", "song68.mp3", "song69.mp3", "song70.mp3", "song71.mp3", "song72.mp3", "song73.mp3", "song74.mp3", "song75.mp3", "song76.mp3", "song77.mp3", "song78.mp3", "song79.mp3", "song80.mp3", "song81.mp3", "song82.mp3", "song83.mp3", "song84.mp3", "song85.mp3", "song86.mp3", "song87.mp3", "song88.mp3", "song89.mp3", "song90.mp3", "song91.mp3", "song92.mp3", "song93.mp3", "song94.mp3", "song95.mp3", "song96.mp3", "song97.mp3", "song98.mp3", "song99.mp3", "song100.mp3", "song101.mp3", "song102.mp3", "song103.mp3", "song104.mp3", "song105.mp3", "song106.mp3", "song107.mp3", "song108.mp3", "song109.mp3", "song110.mp3", "song111.mp3", "song112.mp3", "song113.mp3", "song114.mp3", "song115.mp3", "song116.mp3", "song117.mp3", "song118.mp3", "song119.mp3", "song120.mp3", "song121.mp3", "song122.mp3", "song123.mp3", "song124.mp3", "song125.mp3", "song126.mp3", "song127.mp3", "song128.mp3", "song129.mp3", "song130.mp3", "song131.mp3", "song132.mp3", "song133.mp3", "song134.mp3", "song135.mp3", "song136.mp3", "song137.mp3", "song138.mp3", "song139.mp3", "song140.mp3", "song141.mp3", "song142.mp3", "song143.mp3", "song144.mp3", "song145.mp3", "song146.mp3", "song147.mp3", "song148.mp3", "song149.mp3", "song150.mp3", "song151.mp3", "song152.mp3", "song153.mp3", "song154.mp3", "song155.mp3", "song156.mp3", "song157.mp3", "song158.mp3"];
+      const songs = ["https://deepakworld.github.io/song1.mp3",
+"https://deepakworld.github.io/song2.mp3",
+"https://deepakworld.github.io/song3.mp3",
+"https://deepakworld.github.io/song4.mp3",
+"https://deepakworld.github.io/song5.mp3",
+"https://deepakworld.github.io/song6.mp3",
+"https://deepakworld.github.io/song7.mp3",
+"https://deepakworld.github.io/song8.mp3",
+"https://deepakworld.github.io/song9.mp3",
+"https://deepakworld.github.io/song10.mp3",
+"https://deepakworld.github.io/song11.mp3",
+"https://deepakworld.github.io/song12.mp3",
+"https://deepakworld.github.io/song13.mp3",
+"https://deepakworld.github.io/song14.mp3",
+"https://deepakworld.github.io/song15.mp3",
+"https://deepakworld.github.io/song16.mp3",
+"https://deepakworld.github.io/song17.mp3",
+"https://deepakworld.github.io/song18.mp3",
+"https://deepakworld.github.io/song19.mp3",
+"https://deepakworld.github.io/song20.mp3",
+"https://deepakworld.github.io/song21.mp3",
+"https://deepakworld.github.io/song22.mp3",
+"https://deepakworld.github.io/song23.mp3",
+"https://deepakworld.github.io/song24.mp3",
+"https://deepakworld.github.io/song25.mp3",
+"https://deepakworld.github.io/song26.mp3",
+"https://deepakworld.github.io/song27.mp3",
+"https://deepakworld.github.io/song28.mp3",
+"https://deepakworld.github.io/song29.mp3",
+"https://deepakworld.github.io/song30.mp3",
+"https://deepakworld.github.io/song31.mp3",
+"https://deepakworld.github.io/song32.mp3",
+"https://deepakworld.github.io/song33.mp3",
+"https://deepakworld.github.io/song34.mp3",
+"https://deepakworld.github.io/song35.mp3",
+"https://deepakworld.github.io/song36.mp3",
+"https://deepakworld.github.io/song37.mp3",
+"https://deepakworld.github.io/song38.mp3",
+"https://deepakworld.github.io/song39.mp3",
+"https://deepakworld.github.io/song40.mp3",
+"https://deepakworld.github.io/song41.mp3",
+"https://deepakworld.github.io/song42.mp3",
+"https://deepakworld.github.io/song43.mp3",
+"https://deepakworld.github.io/song44.mp3",
+"https://deepakworld.github.io/song45.mp3",
+"https://deepakworld.github.io/song46.mp3",
+"https://deepakworld.github.io/song47.mp3",
+"https://deepakworld.github.io/song48.mp3",
+"https://deepakworld.github.io/song49.mp3",
+"https://deepakworld.github.io/song50.mp3",
+"https://deepakworld.github.io/song51.mp3",
+"https://deepakworld.github.io/song52.mp3",
+"https://deepakworld.github.io/song53.mp3",
+"https://deepakworld.github.io/song54.mp3",
+"https://deepakworld.github.io/song55.mp3",
+"https://deepakworld.github.io/song56.mp3",
+"https://deepakworld.github.io/song57.mp3",
+"https://deepakworld.github.io/song58.mp3",
+"https://deepakworld.github.io/song59.mp3",
+"https://deepakworld.github.io/song60.mp3",
+"https://deepakworld.github.io/song61.mp3",
+"https://deepakworld.github.io/song62.mp3",
+"https://deepakworld.github.io/song63.mp3",
+"https://deepakworld.github.io/song64.mp3",
+"https://deepakworld.github.io/song65.mp3",
+"https://deepakworld.github.io/song66.mp3",
+"https://deepakworld.github.io/song67.mp3",
+"https://deepakworld.github.io/song68.mp3",
+"https://deepakworld.github.io/song69.mp3",
+"https://deepakworld.github.io/song70.mp3",
+"https://deepakworld.github.io/song71.mp3",
+"https://deepakworld.github.io/song72.mp3",
+"https://deepakworld.github.io/song73.mp3",
+"https://deepakworld.github.io/song74.mp3",
+"https://deepakworld.github.io/song75.mp3",
+"https://deepakworld.github.io/song76.mp3",
+"https://deepakworld.github.io/song77.mp3",
+"https://deepakworld.github.io/song78.mp3",
+"https://deepakworld.github.io/song79.mp3",
+"https://deepakworld.github.io/song80.mp3",
+"https://deepakworld.github.io/song81.mp3",
+"https://deepakworld.github.io/song82.mp3",
+"https://deepakworld.github.io/song83.mp3",
+"https://deepakworld.github.io/song84.mp3",
+"https://deepakworld.github.io/song85.mp3",
+"https://deepakworld.github.io/song86.mp3",
+"https://deepakworld.github.io/song87.mp3",
+"https://deepakworld.github.io/song88.mp3",
+"https://deepakworld.github.io/song89.mp3",
+"https://deepakworld.github.io/song90.mp3",
+"https://deepakworld.github.io/song91.mp3",
+"https://deepakworld.github.io/song92.mp3",
+"https://deepakworld.github.io/song93.mp3",
+"https://deepakworld.github.io/song94.mp3",
+"https://deepakworld.github.io/song95.mp3",
+"https://deepakworld.github.io/song96.mp3",
+"https://deepakworld.github.io/song97.mp3",
+"https://deepakworld.github.io/song98.mp3",
+"https://deepakworld.github.io/song99.mp3",
+"https://deepakworld.github.io/song100.mp3",
+"https://deepakworld.github.io/song101.mp3",
+"https://deepakworld.github.io/song102.mp3",
+"https://deepakworld.github.io/song103.mp3",
+"https://deepakworld.github.io/song104.mp3",
+"https://deepakworld.github.io/song105.mp3",
+"https://deepakworld.github.io/song106.mp3",
+"https://deepakworld.github.io/song107.mp3",
+"https://deepakworld.github.io/song108.mp3",
+"https://deepakworld.github.io/song109.mp3",
+"https://deepakworld.github.io/song110.mp3",
+"https://deepakworld.github.io/song111.mp3",
+"https://deepakworld.github.io/song112.mp3",
+"https://deepakworld.github.io/song113.mp3",
+"https://deepakworld.github.io/song114.mp3",
+"https://deepakworld.github.io/song115.mp3",
+"https://deepakworld.github.io/song116.mp3",
+"https://deepakworld.github.io/song117.mp3",
+"https://deepakworld.github.io/song118.mp3",
+"https://deepakworld.github.io/song119.mp3",
+"https://deepakworld.github.io/song120.mp3",
+"https://deepakworld.github.io/song121.mp3",
+"https://deepakworld.github.io/song122.mp3",
+"https://deepakworld.github.io/song123.mp3",
+"https://deepakworld.github.io/song124.mp3",
+"https://deepakworld.github.io/song125.mp3",
+"https://deepakworld.github.io/song126.mp3",
+"https://deepakworld.github.io/song127.mp3",
+"https://deepakworld.github.io/song128.mp3",
+"https://deepakworld.github.io/song129.mp3",
+"https://deepakworld.github.io/song130.mp3",
+"https://deepakworld.github.io/song131.mp3",
+"https://deepakworld.github.io/song132.mp3",
+"https://deepakworld.github.io/song133.mp3",
+"https://deepakworld.github.io/song134.mp3",
+"https://deepakworld.github.io/song135.mp3",
+"https://deepakworld.github.io/song136.mp3",
+"https://deepakworld.github.io/song137.mp3",
+"https://deepakworld.github.io/song138.mp3",
+"https://deepakworld.github.io/song139.mp3",
+"https://deepakworld.github.io/song140.mp3",
+"https://deepakworld.github.io/song141.mp3",
+"https://deepakworld.github.io/song142.mp3",
+"https://deepakworld.github.io/song143.mp3",
+"https://deepakworld.github.io/song144.mp3",
+"https://deepakworld.github.io/song145.mp3",
+"https://deepakworld.github.io/song146.mp3",
+"https://deepakworld.github.io/song147.mp3",
+"https://deepakworld.github.io/song148.mp3",
+"https://deepakworld.github.io/song149.mp3",
+"https://deepakworld.github.io/song150.mp3",
+"https://deepakworld.github.io/song151.mp3",
+"https://deepakworld.github.io/song152.mp3",
+"https://deepakworld.github.io/song153.mp3",
+"https://deepakworld.github.io/song154.mp3",
+"https://deepakworld.github.io/song155.mp3",
+"https://deepakworld.github.io/song156.mp3",
+"https://deepakworld.github.io/song157.mp3",
+"https://deepakworld.github.io/song158.mp3"];
     let currentSongIndex = 0;
     const audioPlayer = document.getElementById('audioPlayer');
 
