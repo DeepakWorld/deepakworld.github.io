@@ -424,78 +424,66 @@
   .chat-footer input { flex: 1; border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; outline: none; }
   .chat-footer button { border: none; background: transparent; color: #0078d7; font-weight: bold; margin-left: 8px; cursor: pointer; }
 </style>
- <!-- ZOOM FUNCTION STYLING (Add this into your existing <style> tag) -->
-  <style>
- 
-    .slider {
-      position: relative;
-      width: 90vw;          /* responsive width */
-      max-width: 350px;     /* cap for larger screens */
-      margin: 50px auto;
-      perspective: 1000px;
-      padding-top: 120px;
-    }
-    .rotator {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: auto;
-      width: 100%;
-      height: 200px;
-      transform-style: preserve-3d;
-      animation: roter 25s linear infinite;
-    }
-    .rotator:hover {
-      animation-play-state: paused;
-    }
-    @keyframes roter {
-      from { transform: rotateY(0deg); }
-      to   { transform: rotateY(360deg); }
-    }
-    .item {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      border: 2px solid white;
-      border-radius: 10px;
-      background: #000;
-    }
-    .item img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .item:hover img {
-      transform: scale(1.1);
-    }
-    .text {
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      color: gold;
-      font-weight: bold;
-      background: rgba(0,0,0,0.5);
-      padding: 5px;
-      font-size: 0.9rem;
-    }
+<style>
+  .slider {
+    position: relative;
+    width: 350px;
+    margin: 0 auto;          /* remove big gaps */
+    perspective: 1000px;
+    padding: 0;              /* no extra padding */
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+  }
 
-    /* Positioning each slide around the Y-axis */
-    .item:nth-child(1) { transform: rotateY(0deg) translateZ(220px); }
-    .item:nth-child(2) { transform: rotateY(90deg) translateZ(220px); }
-    .item:nth-child(3) { transform: rotateY(180deg) translateZ(220px); }
-    .item:nth-child(4) { transform: rotateY(270deg) translateZ(220px); }
+  .rotator {
+    position: relative;
+    margin: auto;
+    width: 55%;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: roter 29s linear infinite;
+  }
+  .rotator:hover {
+    animation-play-state: paused;
+  }
 
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      .slider { max-width: 280px; }
-      .rotator { height: 160px; }
-      .item:nth-child(n) { transform: rotateY(calc(90deg * (n-1))) translateZ(180px); }
-    }
-  </style>
+  @keyframes roter {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+  }
+
+  .items {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid white;
+  }
+
+  .items img,
+  .items iframe {
+    height: 100%;
+    width: 100%;
+    border: none;
+    transition: all 3s ease;
+  }
+
+  .items img:hover {
+    transform: scale(1.1);
+  }
+
+  /* Positioning each item around the carousel */
+  .items:nth-child(1) { transform: rotateY(calc(40deg * 1)) translateZ(300px); }
+  .items:nth-child(2) { transform: rotateY(calc(40deg * 2)) translateZ(300px); }
+  .items:nth-child(3) { transform: rotateY(calc(40deg * 3)) translateZ(300px); }
+  .items:nth-child(4) { transform: rotateY(calc(40deg * 4)) translateZ(300px); }
+  .items:nth-child(5) { transform: rotateY(calc(40deg * 5)) translateZ(300px); }
+  .items:nth-child(6) { transform: rotateY(calc(40deg * 6)) translateZ(300px); }
+  .items:nth-child(7) { transform: rotateY(calc(40deg * 7)) translateZ(300px); }
+  .items:nth-child(8) { transform: rotateY(calc(40deg * 8)) translateZ(300px); }
+  .items:nth-child(9) { transform: rotateY(calc(40deg * 9)) translateZ(300px); }
+</style>
     <style>
         /* General Style Layout Framework */
         * {
@@ -726,31 +714,45 @@
   <div class="carousel-3d" id="imageCarousel">
 <section class="slider-section">
   <div class="slider">
+    <div class="slider">
     <div class="rotator">
-      <div class="item">
-        <img src="https://deepakworld.github.io/pose/1ab.png" alt="Slide 1">
-        
+      <!-- YouTube videos -->
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/_QQ3yDk1v6U" allowfullscreen></iframe>
       </div>
-      <div class="item">
-        <img src="https://deepakworld.github.io/pose/2ab.png" alt="Slide 2">
-        
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/HNBxrDOa7Dc" allowfullscreen></iframe>
       </div>
-      <div class="item">
-        <img src="https://deepakworld.github.io/pose/3ab.png" alt="Slide 3">
-
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/KcdFTWcFR3A" allowfullscreen></iframe>
       </div>
-      <div class="item">
-        <img src="https://deepakworld.github.io/pose/4ab.png" alt="Slide 4">
-     
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/7GXb5lk404s" allowfullscreen></iframe>
+      </div>
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/wpq5VkjVH5E" allowfullscreen></iframe>
+      </div>
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/6NUBRVCM97g" allowfullscreen></iframe>
+      </div>
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/nhTansHScNM" allowfullscreen></iframe>
+      </div>
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/ENPf7VNaIHA" allowfullscreen></iframe>
+      </div>
+      <div class="items">
+        <iframe src="https://www.youtube.com/embed/lmtrHOdrVDw" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 
 </section>
 
-  </div>
+</div>
 
   </div>
+
 
 <!-- Place this section below your slider -->
 <!-- CUPS SECTION -->
@@ -819,18 +821,6 @@
 
 
 
-<!-- Video Gallery -->
-<div class="video-gallery">
-    <div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/_QQ3yDk1v6U" title="time" frameborder="0" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe width="315" height="576" src="https://www.youtube.com/embed/HNBxrDOa7Dc" title="short video" frameborder="0" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe width="780" height="480" src="https://www.youtube.com/embed/KcdFTWcFR3A" title="avp" frameborder="0" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe width="720" height="480" src="https://www.youtube.com/embed/wpq5VkjVH5E" title="park compressed" frameborder="0" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe width="854" height="476" src="https://www.youtube.com/embed/7GXb5lk404s" title="apple compressed" frameborder="0" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe width="865" height="476" src="https://www.youtube.com/embed/6NUBRVCM97g" title="wwe" frameborder="0" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/nhTansHScNM" title="D Stage" frameborder="0" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/ENPf7VNaIHA" title="print" frameborder="0" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe width="853" height="480" src="https://www.youtube.com/embed/lmtrHOdrVDw" title="Deepak Adv Video" frameborder="0" allowfullscreen></iframe></div>
-</div>
 
  
 <div id="chatToggle" onclick="toggleChat()">💬 Chat</div>
