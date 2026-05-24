@@ -1,17 +1,93 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Divide: Poor vs Rich</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>The Divide Between Power and Poverty</h1>
-  </header>
 
-  <section id="contrast">
+  <style>
+    /* Global Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; background-color: #1A1A1A; color: #FFFFFF; line-height: 1.6; overflow-x: hidden; }
+
+    /* Header */
+    header { background: linear-gradient(to right, #1A1A1A, #FFD700); padding: 20px; text-align: center; }
+    header h1 { font-size: 2rem; color: #FFD700; }
+
+    /* Sections */
+    section { padding: 40px 20px; opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+    section.visible { opacity: 1; transform: translateY(0); }
+    section h2 { font-size: 1.5rem; color: #FFD700; margin-bottom: 20px; }
+
+    /* Comparison Slider */
+    .comparison-container { margin: 20px auto; width: 100%; max-width: 600px; text-align: center; }
+    .comparison { position: relative; width: 100%; aspect-ratio: 3 / 2; margin: 0 auto; overflow: hidden; cursor: ew-resize; }
+    .comparison img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    .rich-img { clip-path: inset(0 0 0 50%); }
+    .slider { position: absolute; top: 0; left: 50%; width: 3px; height: 100%; background: #FFD700; z-index: 10; }
+
+    /* Animations */
+    .coin { position: fixed; bottom: 0; font-size: 1.5rem; color: #FFD700; animation: rise 4s linear forwards; pointer-events: none; }
+    @keyframes rise { to { transform: translateY(-100vh); opacity: 0; } }
+    .chain-break { position: fixed; top: 50%; left: 50%; font-size: 3rem; transform: translate(-50%, -50%); animation: explode 2s ease forwards; pointer-events: none; }
+    @keyframes explode { 0% { opacity: 1; transform: scale(1) translate(-50%, -50%); } 100% { opacity: 0; transform: scale(2) translate(-50%, -50%); } }
+
+    /* Narration Overlay */
+    #narration-overlay { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(26, 26, 26, 0.8); color: #FFD700; padding: 10px 20px; border-radius: 8px; opacity: 0; transition: opacity 0.5s ease; font-size: 1rem; }
+    #narration-overlay.visible { opacity: 1; }
+
+    /* Buttons */
+    button, #cta-btn { background:#FFD700; border:none; padding:10px 16px; cursor:pointer; font-size: 1rem; }
+    button:hover, #cta-btn:hover { background:#B22222; color:#FFFFFF; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.5rem; }
+      section h2 { font-size: 1.2rem; }
+      #narration-overlay { font-size: 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.2rem; }
+      section h2 { font-size: 1rem; }
+      #narration-overlay { font-size: 0.8rem; padding: 6px 12px; }
+      button, #cta-btn { font-size: 0.9rem; padding: 8px 12px; }
+    }
+  </style>
+ <style>
+
+.menu {
+  text-align: center;       /* Centers inline elements like links */
+  margin: 20px 0;           /* Adds spacing above/below */
+}
+
+.menu-item {
+  display: inline-block;    /* Keeps items side by side */
+  padding: 10px 20px;
+  background: #FFD700;
+  color: #1A1A1A;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.menu-item:hover {
+  background: #B22222;
+  color: #FFFFFF;
+}
+ </style>
+
+</head>
+
+<body>
+
+  <header><h1>The Divide Between Power and Poverty</h1></header>
+    <div class="menu">
+    <a href="read.html" class="menu-item" target="_blank">About Us</a>
+</div>
+  <!-- Narration Overlay -->
+  <div id="narration-overlay"><p class="narration-text">Awareness is Freedom — Learn, Unite, Reclaim.</p></div>
+ <section id="contrast">
     <div class="poor">
       <h2>Poor Side</h2>
       <p>Hard work, low reward, endless struggle.</p>
@@ -22,6 +98,7 @@
     </div>
   </section>
 
+  <!-- Techniques Section -->
   <section id="techniques">
     <h2>Techniques of Control</h2>
     <ul>
@@ -29,12 +106,104 @@
       <li>Domain and digital monopolies centralize power.</li>
       <li>Tax structures favor the elite.</li>
     </ul>
+    <button id="cta-btn">Break the Chains</button>
   </section>
 
-  <footer>
-    <p>Awareness is Freedom — Learn, Unite, Reclaim.</p>
-  </footer>
+  <!-- Multi-Slider Gallery -->
+  <section id="multi-slider">
+    <h2>Comparison Gallery</h2>
 
-  <script src="script.js"></script>
+    <div class="comparison-container">
+  <h3>Housing Inequality</h3>
+  <div class="comparison">
+    <!-- Poor Housing -->
+    <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Poor Housing">
+    <!-- Luxury Mansion -->
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="rich-img" alt="Luxury Mansion">
+    <div class="slider"></div>
+  </div>
+</div>
+
+<div class="comparison-container">
+  <h3>Food Inequality</h3>
+  <div class="comparison">
+    <!-- Basic Meal -->
+    <img src="https://static.euronews.com/articles/stories/09/49/54/45/560x315_cmsv2_3d823981-8425-5b1b-bf82-6230767a4442-9495445.jpg" alt="Basic Meal">
+    <!-- Banquet Feast -->
+    <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="rich-img" alt="Banquet Feast">
+    <div class="slider"></div>
+  </div>
+</div>
+</div>
+
+
+
+  </section>
+
+  <script>
+    // Slider Functionality
+    document.querySelectorAll(".comparison").forEach(comparison => {
+      const slider = comparison.querySelector(".slider");
+      const richImg = comparison.querySelector(".rich-img");
+      let isDragging = false;
+
+      slider.addEventListener("mousedown", () => isDragging = true);
+      window.addEventListener("mouseup", () => isDragging = false);
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const rect = comparison.getBoundingClientRect();
+        let offsetX = e.clientX - rect.left;
+        offsetX = Math.max(0, Math.min(offsetX, rect.width));
+        slider.style.left = offsetX + "px";
+        richImg.style.clipPath = `inset(0 0 0 ${offsetX}px)`;
+      });
+    });
+
+    // Scroll Animations & Narration
+    const overlay = document.getElementById("narration-overlay");
+    const narrationText = overlay.querySelector(".narration-text");
+    const narrationMessages = {
+      "techniques": "Systems of control redirect wealth upward.",
+      "multi-slider": "Inequality revealed across housing and food."
+    };
+
+    window.addEventListener("scroll", () => {
+      document.querySelectorAll("section").forEach(sec => {
+        if (sec.getBoundingClientRect().top < window.innerHeight * 0.8) sec.classList.add("visible");
+      });
+      for (const [id, message] of Object.entries(narrationMessages)) {
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.6 && rect.bottom > 0) {
+            narrationText.textContent = message;
+            overlay.classList.add("visible");
+            return;
+          }
+        }
+      }
+      overlay.classList.remove("visible");
+    });
+
+    // Money Flow Effect
+    setInterval(() => {
+      if (document.querySelectorAll(".coin").length > 50) return;
+      const coin = document.createElement("span");
+      coin.className = "coin";
+      coin.innerText = "₹";
+      coin.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(coin);
+      setTimeout(() => coin.remove(), 4000);
+    }, 2000);
+
+    // Chain Break Trigger
+    document.getElementById("cta-btn").addEventListener("click", () => {
+      const chain = document.createElement("div");
+      chain.className = "chain-break";
+      chain.innerText = "⛓️💥";
+      document.body.appendChild(chain);
+      setTimeout(() => chain.remove(), 2000);
+    });
+  </script>
 </body>
 </html>
