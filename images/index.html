@@ -198,23 +198,28 @@
 <div class="container">
   <h2 style="text-align:center; margin-bottom:30px;">Our Specialized Solutions</h2>
 
-<div class="container">
-  <h2 style="text-align:center; margin-bottom:30px;">Deepak’s Gold Gallery</h2>
 
 <div class="gallery-grid">
 
-<div class="gallery">
-  
-  <script>
-    for (let i = 1; i <= 99; i++) {
-      document.write(`
-        <div class="gallery-item">
-          <img src="https://deepakworld.github.io/images/${i}.png" alt="Item ${i}" onclick="openModal(this.src)">
-          <div class="ad-caption">Item ${i}</div>
-        </div>
-      `);
-    }
-  </script>
+<h2 style="text-align:center; margin-bottom:30px;">Deepak’s Gold Gallery</h2>
+
+<div class="gallery-grid" id="gallery-container">
+  </div>
+
+<script>
+  const container = document.getElementById('gallery-container');
+  let htmlContent = '';
+
+  for (let i = 1; i <= 99; i++) {
+    htmlContent += `
+      <div class="gallery-item">
+        <img src="https://deepakworld.github.io/images/${i}.png" alt="Item ${i}" onclick="openModal(this.src)" onerror="this.style.display='none'">
+        <div class="ad-caption">Item ${i}</div>
+      </div>
+    `;
+  }
+  container.innerHTML = htmlContent;
+</script>
 
 </div>  
   
