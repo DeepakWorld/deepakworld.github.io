@@ -1,1 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Deepak IT & Web Services</title>
+  <style>
+    :root {
+      --primary-blue: #004085;
+      --accent-gold: #ffd700;
+      --dark-bg: #1a1a1a;
+      --text-light: #f8f9fa;
+    }
 
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7f6;
+      color: #333;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--primary-blue);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 5px solid var(--accent-gold);
+    }
+
+    .enterprise-info h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .enterprise-info p {
+      margin: 8px 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .verification-badges {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .contact-info {
+      margin-top: 15px;
+      font-size: 1rem;
+    }
+
+    .contact-info a {
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Gallery Grid */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ad-caption {
+      padding: 15px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--primary-blue);
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .close {
+      position: absolute;
+      top: 20px; right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Video Gallery */
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* Contact Section */
+    .contact-footer {
+      background: var(--dark-bg);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 50px;
+    }
+    .contact-footer a {
+      color: var(--accent-gold);
+      text-decoration: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="enterprise-info">
+    <h1>Deepak IT & Web Services</h1>
+    <p>Verified Enterprise | Ministry of MSME, Govt. of India</p>
+
+    <div class="verification-badges">
+      UDYAM: KR-03-0674838 | GSTIN: 29BISPD3613D1ZD | PAN: BISPD3613D <br>
+      LUT ARN: AD2904260184333 | LUT Validity: FY 2026-27 (Valid until 31/03/2027)
+    </div>
+
+    <div class="contact-info">
+      🌐 <a href="https://deepakworld.github.io" target="_blank">deepakworld.github.io</a> | 
+      <a href="https://deepakworld.web.app" target="_blank">deepakworld.web.app</a><br>
+      📧 <a href="mailto:diws2026@outlook.com">diws2026@outlook.com</a> | 
+      📱 <a href="tel:+918867740113">+91-8867740113</a>
+    </div>
+  </div>
+</header>
+
+<p style="text-align:center; margin-top:10px;">International clients are billed at 0% GST under LUT.</p>
+
+<div class="container">
+  <h2 style="text-align:center; margin-bottom:30px;">Our Specialized Solutions</h2>
+
+  <div class="gallery-grid">
+    <!-- Example gallery items -->
+    <div class="gallery-item">
+      <img src="lut/a.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/b.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/c.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/d.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/e.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/f.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/g.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/h.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/i.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/j.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/k.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/l.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/m.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/n.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+  <div class="gallery-item">
+      <img src="lut/o.png" alt="Global" onclick="openModal(this.src)">
+      <div class="ad-caption">Global</div>
+    </div>
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/038.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/039.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/040.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/042.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/043.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/044.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/045.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/046.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/047.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/048.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/050.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/055.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/056.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/057.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/058.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/059.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/060.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/076.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/077.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+
+ <div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/081.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/085.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/86.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/87.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/88.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/89.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/90.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/91.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/92.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/93.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/94.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/95.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/96.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/97.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/98.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/99.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/100.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/101.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/102.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/103.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/104.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/105.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/106.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/107.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/108.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/109.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/110.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+<div class="gallery-item">
+  <img src="https://deepakworld.github.io/gold/111.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+  <div class="ad-caption">Full-Stack Development</div>
+</div>
+
+
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/020.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/021.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/023.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/025.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/026.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/gold/028.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/91.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/92.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/93.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/94.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/95.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/96.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/97.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/98.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/99.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/100.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/101.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/102.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/103.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/104.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/1.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/2.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/3.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/4.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/5.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/6.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/7.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/7.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/8.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/9.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/10.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/11.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/12.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/13.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+  <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/14.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/15.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/16.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/17.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/73.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/74.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/75.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/76.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/portfolio/77.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+
+
+
+
+    
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/a.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/b.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/c.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/d.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/e.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/f.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/g.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/h.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/i.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/j.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/k.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/l.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/m.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/n.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/o.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/p.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/q.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/r.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/s.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/t.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/u.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/v.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/w.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/x.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/y.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/z.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/aa.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/bb.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/cc.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/dd.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/ee.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/ff.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/gg.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/hh.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/ii.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/jj.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/kk.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/ll.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/mm.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/nn.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/oo.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/pp.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/qq.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/rr.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+<div class="gallery-item">
+      <img src="https://deepakworld.github.io/pose/ss.png" alt="Full-Stack Development" onclick="openModal(this.src)">
+      <div class="ad-caption">Full-Stack Development</div>
+    </div>
+
+
+
+<script>
+  const container = document.getElementById('gallery-container');
+  let htmlContent = '';
+
+  for (let i = 1; i <= 129; i++) {
+    htmlContent += `
+      <div class="gallery-item">
+        <img src="https://deepakworld.github.io/post/${i}.png" alt="Item ${i}" onclick="openModal(this.src)" onerror="this.style.display='none'">
+        <div class="ad-caption">Item ${i}</div>
+      </div>
+    `;
+  }
+  container.innerHTML = htmlContent;
+
+  function openModal(src) {
+    document.getElementById("imgModal").style.display = "block";
+    document.getElementById("modalImage").src = src;
+  }
+  function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+  }
+</script>
+
+<!-- Modal for zoom -->
+<div id="imgModal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+function openModal(src) {
+  document.getElementById("imgModal").style.display = "block";
+  document.getElementById("modalImage").src = src;
+}
+function closeModal() {
+  document.getElementById("imgModal").style.display = "none";
+}
+</script>
+
+<!-- Video Gallery -->
+<div class="video-gallery">
+         <div class="video-container">
+<iframe width="315" height="576" src="https://www.youtube.com/embed/HNBxrDOa7Dc" title="short video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+            <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/lmtrHOdrVDw" title="Deepak Adv Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+
+    <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/pN9FvfWElLQ" title="Robo Adv" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/DPIaMWXRvyg" title="Lite" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="315" height="576" src="https://www.youtube.com/embed/AazmDpYK1QY" title="ghost" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+ <div class="video-container">
+<iframe width="315" height="576" src="https://www.youtube.com/embed/OLdHfteIDyQ" title="siva" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="865" height="476" src="https://www.youtube.com/embed/6NUBRVCM97g" title="wwe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+ <div class="video-container">
+
+<iframe width="853" height="480" src="https://www.youtube.com/embed/nhTansHScNM" title="D Stage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+<iframe width="780" height="480" src="https://www.youtube.com/embed/KcdFTWcFR3A" title="avp" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+ <div class="video-container">
+ <iframe width="853" height="480" src="https://www.youtube.com/embed/xbPl3u6Boeg" title="orange" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/lzM_SlCwLdA" title="rabit" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+  <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/fVRA877nb-M" title="newdone" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
+  </div>
+  <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/AcVXx3qCZgI" title="Apple" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/pMZyWqbbu_A" title="deepak4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+ <div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/3ss5N_u9e6I" title="deepak3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/qcaR9eK_2u8" title="deepak2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class="video-container">
+<iframe width="853" height="480" src="https://www.youtube.com/embed/yWZX6oi7Bhs" title="deepak" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+</div>
+
+<footer class="contact-footer">
+  <h3>Contact Us Today</h3>
+  <p>📱 Mobile: <a href="tel:+918867740113">8867740113</a></p>
+  <p>📧 Email: <a href="mailto:diws2026@outlook.com">diws2026@outlook.com</a></p>
+  <p style="margin-top:20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Deepak IT & Web Services. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
