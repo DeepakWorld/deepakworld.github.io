@@ -825,69 +825,31 @@
       <img src="https://deepakworld.github.io/pose/ss.png" alt="Full-Stack Development" onclick="openModal(this.src)">
       <div class="ad-caption">Full-Stack Development</div>
     </div>
-    <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.729367cc-37f5-41f5-a1d2-be16cee9cbd0.png" alt="Flutter App" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.7016b9e3-3aa5-4f9f-8506-661733330932.png" alt="IT Support" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.b0dea972-2a53-4b26-a9f6-9c2c30296e82.png" alt="Web Service" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.b38b6e6a-adeb-421f-8778-0a270475efc5.png" alt="Node JS" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.6f83c6c9-b6df-49df-80a5-ebafbb94c1cd.png" alt="Python Service" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-       <img src="https://copilot.microsoft.com/th/id/BCO.406c8852-aa42-40ae-8b6b-e2eaa62cc462.png" alt="React App" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.fba5801f-efd8-41f4-a12c-93c4d1ca3e85.png" alt="Server Management" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.1bf780fd-7296-437a-8c66-2832dabf1ec0.png" alt="Networking" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.fd7456cf-6300-40b4-bae6-f0b665e7ced2.png" alt="Payment Gateway" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.fefc2711-917e-46f4-8cdd-a4522aa17ce5.png" alt="AI Clones" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.fa5a8b28-6ed5-4fa4-b837-3f057123beac.png" alt="Game Engine" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.1b3c0ee8-9ad5-4f38-ba6d-ff86251c8ac4.png" alt="GST Services"" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-      <img src="https://copilot.microsoft.com/th/id/BCO.f4a8989a-867c-42df-8cc5-8d92abb98e92.png" alt="Documentation" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-<img src="https://copilot.microsoft.com/th/id/BCO.14f48cfa-9e11-4a07-986f-51d07b28c91f.png" alt="ID Cards" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-   <div class="gallery-item">
-<img src="https://copilot.microsoft.com/th/id/BCO.4a82013b-0328-4472-8d25-00971c39c358.png" alt="Bilingual Services" onclick="openModal(this.src)">
-      <div class="ad-caption">Company</div>
-    </div>
-    <!-- Repeat for all other items -->
-  </div>
-</div>
+
+
+
+<script>
+  const container = document.getElementById('gallery-container');
+  let htmlContent = '';
+
+  for (let i = 1; i <= 129; i++) {
+    htmlContent += `
+      <div class="gallery-item">
+        <img src="https://deepakworld.github.io/post/${i}.png" alt="Item ${i}" onclick="openModal(this.src)" onerror="this.style.display='none'">
+        <div class="ad-caption">Item ${i}</div>
+      </div>
+    `;
+  }
+  container.innerHTML = htmlContent;
+
+  function openModal(src) {
+    document.getElementById("imgModal").style.display = "block";
+    document.getElementById("modalImage").src = src;
+  }
+  function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+  }
+</script>
 
 <!-- Modal for zoom -->
 <div id="imgModal" class="modal" onclick="closeModal()">
