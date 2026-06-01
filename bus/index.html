@@ -1,1 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Deepak IT & Web Services</title>
+  <style>
+    :root {
+      --primary-blue: #004085;
+      --accent-gold: #ffd700;
+      --dark-bg: #1a1a1a;
+      --text-light: #f8f9fa;
+    }
 
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7f6;
+      color: #333;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--primary-blue);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 5px solid var(--accent-gold);
+    }
+
+    .enterprise-info h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .enterprise-info p {
+      margin: 8px 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .verification-badges {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .contact-info {
+      margin-top: 15px;
+      font-size: 1rem;
+    }
+
+    .contact-info a {
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Gallery Grid */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ad-caption {
+      padding: 15px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--primary-blue);
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .close {
+      position: absolute;
+      top: 20px; right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Video Gallery */
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* Contact Section */
+    .contact-footer {
+      background: var(--dark-bg);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 50px;
+    }
+    .contact-footer a {
+      color: var(--accent-gold);
+      text-decoration: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="enterprise-info">
+    <h1>Deepak IT & Web Services</h1>
+    <p>Verified Enterprise | Ministry of MSME, Govt. of India</p>
+
+    <div class="verification-badges">
+      UDYAM: KR-03-0674838 | GSTIN: 29BISPD3613D1ZD | PAN: BISPD3613D <br>
+      LUT ARN: AD2904260184333 | LUT Validity: FY 2026-27 (Valid until 31/03/2027)
+    </div>
+
+    <div class="contact-info">
+      🌐 <a href="https://deepakworld.github.io" target="_blank">deepakworld.github.io</a> | 
+      <a href="https://deepakworld.web.app" target="_blank">deepakworld.web.app</a><br>
+      📧 <a href="mailto:diws2026@outlook.com">diws2026@outlook.com</a> | 
+      📱 <a href="tel:+918867740113">+91-8867740113</a>
+    </div>
+  </div>
+</header>
+
+<p style="text-align:center; margin-top:10px;">International clients are billed at 0% GST under LUT.</p>
+
+<div class="container">
+  <h2 style="text-align:center; margin-bottom:30px;">Our Specialized Solutions</h2>
+
+  <h2 style="text-align:center; margin-bottom:30px;">Deepak’s Gold Gallery</h2>
+  <div class="gallery-grid" id="gallery-container"></div>
+</div>
+
+<script>
+  const container = document.getElementById('gallery-container');
+  let htmlContent = '';
+
+  for (let i = 1; i <= 22; i++) {
+    htmlContent += `
+      <div class="gallery-item">
+        <img src="https://deepakworld.github.io/bus/${i}.png" 
+             alt="Portfolio ${i}" 
+             loading="lazy"
+             onclick="openModal(this.src)">
+        <div class="ad-caption">Portfolio ${i}</div>
+      </div>
+      `;
+  }
+  
+  // This will now execute correctly
+  container.innerHTML = htmlContent;
+
+  function openModal(src) {
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = src;
+  }
+  
+  function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+  }
+</script>
+
+<!-- Modal for zoom -->
+<div id="imgModal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<footer class="contact-footer">
+  <h3>Contact Us Today</h3>
+  <p>📱 Mobile: <a href="tel:+918867740113">8867740113</a></p>
+  <p>📧 Email: <a href="mailto:diws2026@outlook.com">diws2026@outlook.com</a></p>
+  <p style="margin-top:20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Deepak IT & Web Services. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
