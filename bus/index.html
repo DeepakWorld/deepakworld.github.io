@@ -204,17 +204,18 @@
   const container = document.getElementById('gallery-container');
   let htmlContent = '';
 
-  for (let i = 1; i <= 56; i++) {
-    htmlContent += `
-      <div class="gallery-item">
-        <img src="https://deepakworld.github.io/bus/${i}.png" 
-             alt="Portfolio ${i}" 
-             loading="lazy"
-             onclick="openModal(this.src)">
-        <div class="ad-caption">Portfolio ${i}</div>
-      </div>
-      `;
-  }
+ for (let i = 1; i <= 56; i++) {
+  htmlContent += `
+    <div class="gallery-item">
+      <img src="https://deepakworld.github.io/bus/${i}.png" 
+           alt="Portfolio ${i}" 
+           loading="lazy"
+           onerror="this.parentElement.style.display='none'"
+           onclick="openModal(this.src)">
+      <div class="ad-caption">Portfolio ${i}</div>
+    </div>
+  `;
+}
   
   // This will now execute correctly
   container.innerHTML = htmlContent;
