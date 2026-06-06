@@ -846,23 +846,30 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-      const songs = ["https://deepakworld.github.io/song1.mp3",
-"https://deepakworld.github.io/song2.mp3"];
-    let currentSongIndex = 0;
+document.addEventListener('DOMContentLoaded', () => {
     const audioPlayer = document.getElementById('audioPlayer');
+    const songs = ["https://deepakworld.github.io/song1.mp3", "https://deepakworld.github.io/song2.mp3"];
+    let currentSongIndex = 0;
 
-    function loadSong(index) {
-        audioPlayer.src = songs[index];
-        audioPlayer.play().catch(err => console.log("Autoplay context initialization block dynamic fallback handled."));
+    // Ensure audioPlayer exists before adding functions
+    if (audioPlayer) {
+        window.loadSong = function(index) {
+            audioPlayer.src = songs[index];
+            audioPlayer.play().catch(err => console.log("User must click to play."));
+        };
+
+        window.nextSong = function() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+        };
+
+        window.prevSong = function() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+        };
     }
-    function nextSong() {
-        currentSongIndex = (currentSongIndex + 1) % songs.length;
-        loadSong(currentSongIndex);
-    }
-    function prevSong() {
-        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-        loadSong(currentSongIndex);
-    }
+});
+
 
       // 1st Carousel Logic: Team Cards
     const teamMembers = [
