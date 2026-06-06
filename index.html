@@ -853,21 +853,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ensure audioPlayer exists before adding functions
     if (audioPlayer) {
-        window.loadSong = function(index) {
-            audioPlayer.src = songs[index];
-            audioPlayer.play().catch(err => console.log("User must click to play."));
-        };
-
-        window.nextSong = function() {
-            currentSongIndex = (currentSongIndex + 1) % songs.length;
-            loadSong(currentSongIndex);
-        };
-
-        window.prevSong = function() {
-            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-            loadSong(currentSongIndex);
-        };
-    }
+      // Change your loadSong function to this
+window.loadSong = function(index) {
+    audioPlayer.src = songs[index];
+    
+    // Try to play, but if it fails (because of browser policy), 
+    // it will log to console without breaking the page.
+    audioPlayer.play().catch(err => {
+        console.warn("Autoplay blocked. User interaction required.");
+        // Optional: Show a "Click to Play" button to the user
+    });
+};
 });
 
 
