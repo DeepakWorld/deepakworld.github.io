@@ -680,7 +680,7 @@
 </div>
 <div class="center-top" style="margin: 30px auto; text-align: center;">
 
-
+<h2 style="color: white; font-family: system-ui, sans-serif; font-size: 1.5rem; margin-bottom: 15px;"></h2>
 </div>
 
 <div class="carousel-container">
@@ -840,8 +840,6 @@
     <button onclick="sendMessage()">Send</button>
   </div>
 </div>
-
-
 
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -1021,9 +1019,8 @@
         loadSong(currentSongIndex);
     }
 
-
-      // 1st Carousel Logic: Team Cards
-    const teamMembers = [
+    // 1st Carousel Logic: Team Cards
+      const teamMembers = [
       { name: "Deepak", role: "Founder" },
       { name: "Deepak", role: "Creative Director" },
       { name: "Deepak", role: "Lead Developer" },
@@ -1040,12 +1037,6 @@
     const rightArrow = document.querySelector(".nav-arrow.right");
     let currentIndex = 0;
     let isAnimating = false;
-
-    // Initialize labels on load
-    if(memberName && memberRole && teamMembers[0]) {
-      memberName.textContent = teamMembers[0].name;
-      memberRole.textContent = teamMembers[0].role;
-    }
 
     function updateCarousel(newIndex) {
       if (isAnimating) return;
@@ -1111,9 +1102,71 @@
     const containerWrapper = document.querySelector(".carousel-container");
     containerWrapper.addEventListener("mouseenter", stopCardRotation);
     containerWrapper.addEventListener("mouseleave", startCardRotation);
+
+
+    // ==========================================
+    // FIXED 2nd Carousel Logic: Automatic Image 3D Rotation
+    // ==========================================
+    const autoTrack = document.getElementById('imageCarousel');
+    const autoItems = document.querySelectorAll('#imageCarousel .item');
+    const autoPrevBtn = document.getElementById('carouselPrevBtn');
+    const autoNextBtn = document.getElementById('carouselNextBtn');
+    const autoWrapper = document.getElementById('carouselWrapper');
     
-    // Fallback initialize
-    startCardRotation();
+    let autoIndex = 0;
+    const totalAutoItems = autoItems.length;
+    // Calculate theta angle depending dynamically on absolute layout number of child elements
+    const theta = 360 / totalAutoItems; 
+    // Computed safe spatial radius to spread slides out smoothly in 3D depth perspective
+    const radius = Math.round((160) / Math.tan(Math.PI / totalAutoItems)); 
+
+    function layoutAutoCarousel() {
+      autoItems.forEach((item, i) => {
+        // Distribute items uniformly in circular space geometry
+        const itemAngle = theta * i;
+        item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px)`;
+      });
+      rotateAutoCarousel();
+    }
+
+    function rotateAutoCarousel() {
+      // Counter-rotate parent track wrapper to display target index in front layer facing perspective viewport
+      autoTrack.style.transform = `rotateY(${-theta * autoIndex}deg)`;
+    }
+
+    autoPrevBtn.addEventListener('click', () => {
+      autoIndex--;
+      rotateAutoCarousel();
+    });
+
+    autoNextBtn.addEventListener('click', () => {
+      autoIndex++;
+      rotateAutoCarousel();
+    });
+
+    // Automatic Rotation loop handler logic
+    let autoCarouselTimer = null;
+    function startImageCarouselRotation() {
+      if (autoCarouselTimer === null) {
+        autoCarouselTimer = setInterval(() => {
+          autoIndex++;
+          rotateAutoCarousel();
+        }, 3000); // Rotates automatically every 3 seconds
+      }
+    }
+
+    function stopImageCarouselRotation() {
+      if (autoCarouselTimer !== null) {
+        clearInterval(autoCarouselTimer);
+        autoCarouselTimer = null;
+      }
+    }
+
+    // Interactivity hooks to freeze rotation timeline loop whenever visitor hovers over elements
+    autoWrapper.addEventListener('mouseenter', stopImageCarouselRotation);
+    autoWrapper.addEventListener('mouseleave', startImageCarouselRotation);
+
+
 
 
   (function(){
