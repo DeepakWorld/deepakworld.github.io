@@ -853,27 +853,23 @@
 
 <script>
         const songs = ["song1.mp3", "song2.mp3"];
-        let currentSongIndex = 0;
-        const audioPlayer = document.getElementById('audioPlayer');
+         let currentSongIndex = 0;
+    const audioPlayer = document.getElementById('audioPlayer');
 
-        function loadSong(index) {
-            audioPlayer.src = songs[index];
-            audioPlayer.play();
-        }
-
-        function nextSong() {
-            currentSongIndex = (currentSongIndex + 1) % songs.length;
-            loadSong(currentSongIndex);
-        }
-
-        function prevSong() {
-            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-            loadSong(currentSongIndex);
-        }
-
-window.onload = () => {
+    function loadSong(index) {
+        audioPlayer.src = songs[index];
+        audioPlayer.play().catch(err => console.log("Autoplay context initialization block dynamic fallback handled."));
+    }
+    function nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
         loadSong(currentSongIndex);
-}
+    }
+    function prevSong() {
+        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+        loadSong(currentSongIndex);
+    }
+
+
     
 
 
