@@ -675,15 +675,15 @@
 <!-- MUSIC CONTROLS CONTAINER -->
 <div class="center-top" style="margin: 30px auto; text-align: center;">
 
-    <audio id="audioPlayer" autoplay hidden>
-      <source src="song1.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
+    <!-- Audio player with src attribute instead of <source> -->
+    <audio id="audioPlayer" autoplay hidden></audio>
+
     <h2 style="color: white; font-family: system-ui, sans-serif; font-size: 1.5rem; margin-bottom: 15px;">Play Songs</h2>
 
     <button class="music-btn" onclick="prevSong()">Prev</button>
     <button class="music-btn" onclick="nextSong()">Next</button>
 </div>
+
 <div class="center-top" style="margin: 30px auto; text-align: center;">
 
 <h2 style="color: white; font-family: system-ui, sans-serif; font-size: 1.5rem; margin-bottom: 15px;"></h2>
@@ -851,175 +851,28 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-      const songs = ["https://deepakworld.github.io/song1.mp3",
-"https://deepakworld.github.io/song2.mp3",
-"https://deepakworld.github.io/song3.mp3",
-"https://deepakworld.github.io/song4.mp3",
-"https://deepakworld.github.io/song5.mp3",
-"https://deepakworld.github.io/song6.mp3",
-"https://deepakworld.github.io/song7.mp3",
-"https://deepakworld.github.io/song8.mp3",
-"https://deepakworld.github.io/song9.mp3",
-"https://deepakworld.github.io/song10.mp3",
-"https://deepakworld.github.io/song11.mp3",
-"https://deepakworld.github.io/song12.mp3",
-"https://deepakworld.github.io/song13.mp3",
-"https://deepakworld.github.io/song14.mp3",
-"https://deepakworld.github.io/song15.mp3",
-"https://deepakworld.github.io/song16.mp3",
-"https://deepakworld.github.io/song17.mp3",
-"https://deepakworld.github.io/song18.mp3",
-"https://deepakworld.github.io/song19.mp3",
-"https://deepakworld.github.io/song20.mp3",
-"https://deepakworld.github.io/song21.mp3",
-"https://deepakworld.github.io/song22.mp3",
-"https://deepakworld.github.io/song23.mp3",
-"https://deepakworld.github.io/song24.mp3",
-"https://deepakworld.github.io/song25.mp3",
-"https://deepakworld.github.io/song26.mp3",
-"https://deepakworld.github.io/song27.mp3",
-"https://deepakworld.github.io/song28.mp3",
-"https://deepakworld.github.io/song29.mp3",
-"https://deepakworld.github.io/song30.mp3",
-"https://deepakworld.github.io/song31.mp3",
-"https://deepakworld.github.io/song32.mp3",
-"https://deepakworld.github.io/song33.mp3",
-"https://deepakworld.github.io/song34.mp3",
-"https://deepakworld.github.io/song35.mp3",
-"https://deepakworld.github.io/song36.mp3",
-"https://deepakworld.github.io/song37.mp3",
-"https://deepakworld.github.io/song38.mp3",
-"https://deepakworld.github.io/song39.mp3",
-"https://deepakworld.github.io/song40.mp3",
-"https://deepakworld.github.io/song41.mp3",
-"https://deepakworld.github.io/song42.mp3",
-"https://deepakworld.github.io/song43.mp3",
-"https://deepakworld.github.io/song44.mp3",
-"https://deepakworld.github.io/song45.mp3",
-"https://deepakworld.github.io/song46.mp3",
-"https://deepakworld.github.io/song47.mp3",
-"https://deepakworld.github.io/song48.mp3",
-"https://deepakworld.github.io/song49.mp3",
-"https://deepakworld.github.io/song50.mp3",
-"https://deepakworld.github.io/song51.mp3",
-"https://deepakworld.github.io/song52.mp3",
-"https://deepakworld.github.io/song53.mp3",
-"https://deepakworld.github.io/song54.mp3",
-"https://deepakworld.github.io/song55.mp3",
-"https://deepakworld.github.io/song56.mp3",
-"https://deepakworld.github.io/song57.mp3",
-"https://deepakworld.github.io/song58.mp3",
-"https://deepakworld.github.io/song59.mp3",
-"https://deepakworld.github.io/song60.mp3",
-"https://deepakworld.github.io/song61.mp3",
-"https://deepakworld.github.io/song62.mp3",
-"https://deepakworld.github.io/song63.mp3",
-"https://deepakworld.github.io/song64.mp3",
-"https://deepakworld.github.io/song65.mp3",
-"https://deepakworld.github.io/song66.mp3",
-"https://deepakworld.github.io/song67.mp3",
-"https://deepakworld.github.io/song68.mp3",
-"https://deepakworld.github.io/song69.mp3",
-"https://deepakworld.github.io/song70.mp3",
-"https://deepakworld.github.io/song71.mp3",
-"https://deepakworld.github.io/song72.mp3",
-"https://deepakworld.github.io/song73.mp3",
-"https://deepakworld.github.io/song74.mp3",
-"https://deepakworld.github.io/song75.mp3",
-"https://deepakworld.github.io/song76.mp3",
-"https://deepakworld.github.io/song77.mp3",
-"https://deepakworld.github.io/song78.mp3",
-"https://deepakworld.github.io/song79.mp3",
-"https://deepakworld.github.io/song80.mp3",
-"https://deepakworld.github.io/song81.mp3",
-"https://deepakworld.github.io/song82.mp3",
-"https://deepakworld.github.io/song83.mp3",
-"https://deepakworld.github.io/song84.mp3",
-"https://deepakworld.github.io/song85.mp3",
-"https://deepakworld.github.io/song86.mp3",
-"https://deepakworld.github.io/song87.mp3",
-"https://deepakworld.github.io/song88.mp3",
-"https://deepakworld.github.io/song89.mp3",
-"https://deepakworld.github.io/song90.mp3",
-"https://deepakworld.github.io/song91.mp3",
-"https://deepakworld.github.io/song92.mp3",
-"https://deepakworld.github.io/song93.mp3",
-"https://deepakworld.github.io/song94.mp3",
-"https://deepakworld.github.io/song95.mp3",
-"https://deepakworld.github.io/song96.mp3",
-"https://deepakworld.github.io/song97.mp3",
-"https://deepakworld.github.io/song98.mp3",
-"https://deepakworld.github.io/song99.mp3",
-"https://deepakworld.github.io/song100.mp3",
-"https://deepakworld.github.io/song101.mp3",
-"https://deepakworld.github.io/song102.mp3",
-"https://deepakworld.github.io/song103.mp3",
-"https://deepakworld.github.io/song104.mp3",
-"https://deepakworld.github.io/song105.mp3",
-"https://deepakworld.github.io/song106.mp3",
-"https://deepakworld.github.io/song107.mp3",
-"https://deepakworld.github.io/song108.mp3",
-"https://deepakworld.github.io/song109.mp3",
-"https://deepakworld.github.io/song110.mp3",
-"https://deepakworld.github.io/song111.mp3",
-"https://deepakworld.github.io/song112.mp3",
-"https://deepakworld.github.io/song113.mp3",
-"https://deepakworld.github.io/song114.mp3",
-"https://deepakworld.github.io/song115.mp3",
-"https://deepakworld.github.io/song116.mp3",
-"https://deepakworld.github.io/song117.mp3",
-"https://deepakworld.github.io/song118.mp3",
-"https://deepakworld.github.io/song119.mp3",
-"https://deepakworld.github.io/song120.mp3",
-"https://deepakworld.github.io/song121.mp3",
-"https://deepakworld.github.io/song122.mp3",
-"https://deepakworld.github.io/song123.mp3",
-"https://deepakworld.github.io/song124.mp3",
-"https://deepakworld.github.io/song125.mp3",
-"https://deepakworld.github.io/song126.mp3",
-"https://deepakworld.github.io/song127.mp3",
-"https://deepakworld.github.io/song128.mp3",
-"https://deepakworld.github.io/song129.mp3",
-"https://deepakworld.github.io/song130.mp3",
-"https://deepakworld.github.io/song131.mp3",
-"https://deepakworld.github.io/song132.mp3",
-"https://deepakworld.github.io/song133.mp3",
-"https://deepakworld.github.io/song134.mp3",
-"https://deepakworld.github.io/song135.mp3",
-"https://deepakworld.github.io/song136.mp3",
-"https://deepakworld.github.io/song137.mp3",
-"https://deepakworld.github.io/song138.mp3",
-"https://deepakworld.github.io/song139.mp3",
-"https://deepakworld.github.io/song140.mp3",
-"https://deepakworld.github.io/song141.mp3",
-"https://deepakworld.github.io/song142.mp3",
-"https://deepakworld.github.io/song143.mp3",
-"https://deepakworld.github.io/song144.mp3",
-"https://deepakworld.github.io/song145.mp3",
-"https://deepakworld.github.io/song146.mp3",
-"https://deepakworld.github.io/song147.mp3",
-"https://deepakworld.github.io/song148.mp3",
-"https://deepakworld.github.io/song149.mp3",
-"https://deepakworld.github.io/song150.mp3",
-"https://deepakworld.github.io/song151.mp3",
-"https://deepakworld.github.io/song152.mp3",
-"https://deepakworld.github.io/song153.mp3",
-"https://deepakworld.github.io/song154.mp3",
-"https://deepakworld.github.io/song155.mp3",
-"https://deepakworld.github.io/song156.mp3",
-"https://deepakworld.github.io/song157.mp3",
-"https://deepakworld.github.io/song158.mp3"];
+    const songs = [
+        "https://deepakworld.github.io/song1.mp3",
+        "https://deepakworld.github.io/song2.mp3"
+    ];
     let currentSongIndex = 0;
     const audioPlayer = document.getElementById('audioPlayer');
 
+    // Load the first song when the page starts
+    window.onload = function() {
+        loadSong(currentSongIndex);
+    };
+
     function loadSong(index) {
         audioPlayer.src = songs[index];
-        audioPlayer.play().catch(err => console.log("Autoplay context initialization block dynamic fallback handled."));
+        audioPlayer.play().catch(err => console.log("Playback blocked until user interaction."));
     }
+
     function nextSong() {
         currentSongIndex = (currentSongIndex + 1) % songs.length;
         loadSong(currentSongIndex);
     }
+
     function prevSong() {
         currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
         loadSong(currentSongIndex);
