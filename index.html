@@ -851,32 +851,30 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-    const songs = [
-        "https://deepakworld.github.io/song1.mp3",
-        "https://deepakworld.github.io/song2.mp3"
-    ];
-    let currentSongIndex = 0;
-    const audioPlayer = document.getElementById('audioPlayer');
+        const songs = ["song1.mp3", "song2.mp3"];
+        let currentSongIndex = 0;
+        const audioPlayer = document.getElementById('audioPlayer');
 
-    // Load the first song when the page starts
-    window.onload = function() {
+        function loadSong(index) {
+            audioPlayer.src = songs[index];
+            audioPlayer.play();
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+        }
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+        }
+
+window.onload = () => {
         loadSong(currentSongIndex);
-    };
+}
+    
 
-    function loadSong(index) {
-        audioPlayer.src = songs[index];
-        audioPlayer.play().catch(err => console.log("Playback blocked until user interaction."));
-    }
-
-    function nextSong() {
-        currentSongIndex = (currentSongIndex + 1) % songs.length;
-        loadSong(currentSongIndex);
-    }
-
-    function prevSong() {
-        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-        loadSong(currentSongIndex);
-    }
 
     // 1st Carousel Logic: Team Cards
       const teamMembers = [
