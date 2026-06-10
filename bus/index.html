@@ -216,7 +216,18 @@
     </div>
   `;
 }
-  
+  for (let i = 1; i <= 7; i++) {
+    htmlContent += `
+      <div class="gallery-item">
+        <img src="https://deepakworld.github.io/gif/${i}.png" 
+             alt="LUT ${i}" 
+             loading="lazy"
+             onclick="openModal(this.src)">
+        <div class="ad-caption">LUT Document ${i}</div>
+      </div>
+    `;
+  }
+
   // This will now execute correctly
   container.innerHTML = htmlContent;
 
