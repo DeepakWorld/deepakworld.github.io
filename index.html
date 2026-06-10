@@ -620,6 +620,56 @@
             .item { width: 220px; height: 150px; margin-left: -110px; margin-top: -75px; }
         }
     </style>
+  <style>
+
+
+  .video-globe-container {
+    width: 100%;
+    height: 550px;             /* Dedicated high container for the sphere */
+    margin: 40px auto 80px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    perspective: 1200px;       /* Keeps globe items deep in 3D scene */
+}
+
+.video-globe-container:active {
+    cursor: grabbing;
+}
+
+.globe-3d-root {
+    position: relative;
+    width: 220px; 
+    height: 150px; 
+    transform-style: preserve-3d;
+    transition: transform 0.1s linear;
+}
+
+.globe-item {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    backface-visibility: visible;
+    transform-style: preserve-3d;
+}
+
+.globe-item iframe {
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    background: #000;
+}
+
+/* Stops iframes from blocking drags when user actively rotates the globe */
+.video-globe-container:active .globe-item iframe {
+    pointer-events: none; 
+}
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363845648031578"
+crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -627,7 +677,7 @@
 <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative; z-index: 100;">
     <div style="flex: 1; text-align: left;">
         <a href="Deepak.apk" download>
-             <img src="diws.jpg" alt="Deepak IT Official App Icon" width="60" style="border-radius: 5px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+             <img src="diws.jpg" alt="Deepak" width="60" style="border-radius: 5px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
         </a>
     </div>
 
@@ -636,7 +686,7 @@
     </div>
 
     <div style="flex: 1; text-align: right;">
-        <img src="Deepak.jpg" alt="Deepak - Owner" width="60" height="80" style="border-radius: 4px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+        <img src="Deepak.jpg" alt="Deepak" width="60" height="80" style="border-radius: 4px; border: 1px solid #27ae60; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
     </div>
 </div>
 
@@ -660,8 +710,8 @@
     <a href="shipping-return.html" class="menu-item" target="_blank">Shipping & Return Policy</a>
     <a href="quote.html" class="menu-item" target="_blank">Services</a>
     <a href="store.html" class="menu-item" target="_blank">Digital Store</a>
-      <a href="blog.html" class="menu-item">Tech Tips</a>
     <a href="portfolio.html" class="menu-item" target="_blank">Portfolio</a>
+<a href="blog.html" class="menu-item">Tech Tips</a>
     <a href="flow.html" class="menu-item" target="_blank">Project & Payment Flow</a>        
   </div>
 </div>
@@ -729,7 +779,7 @@
         <iframe src="https://www.youtube.com/embed/KcdFTWcFR3A" allowfullscreen></iframe>
       </div>
       <div class="items">
-        <iframe src="https://www.youtube.com/embed/eP-aIwJaOdE" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/7GXb5lk404s" allowfullscreen></iframe>
       </div>
       <div class="items">
         <iframe src="https://www.youtube.com/embed/wpq5VkjVH5E" allowfullscreen></iframe>
@@ -755,7 +805,29 @@
 
   </div>
 
-
+<div class="video-globe-container" id="globeWrapper">
+  <div class="globe-3d-root" id="globeVector">
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/_QQ3yDk1v6U?autoplay=1&mute=1&playlist=_QQ3yDk1v6U&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/HNBxrDOa7Dc?autoplay=1&mute=1&playlist/HNBxrDOa7Dc&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/KcdFTWcFR3A?autoplay=1&mute=1&playlist=KcdFTWcFR3A&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/7GXb5lk404s?autoplay=1&mute=1&playlist=7GXb5lk404s&loop=1" allowfullscreen></iframe></div>
+ <div class="globe-item"><iframe src="https://www.youtube.com/embed/eP-aIwJaOdE?autoplay=1&mute=1&playlist=7GXb5lk404s&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/wpq5VkjVH5E?autoplay=1&mute=1&playlist=wpq5VkjVH5E&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/6NUBRVCM97g?autoplay=1&mute=1&playlist=6NUBRVCM97g&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/nhTansHScNM?autoplay=1&mute=1&playlist=nhTansHScNM&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/ENPf7VNaIHA?autoplay=1&mute=1&playlist=ENPf7VNaIHA&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/lmtrHOdrVDw?autoplay=1&mute=1&playlist=lmtrHOdrVDw&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/nWN5lCYSRaE?autoplay=1&mute=1&playlist=nWN5lCYSRaE&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/7GXb5lk404s?autoplay=1&mute=1&playlist=7GXb5lk404s&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/5vHilIOMhPE?autoplay=1&mute=1&playlist=5vHilIOMhPE&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/lLPxm49tnGs?autoplay=1&mute=1&playlist=lLPxm49tnGs&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/QvhRse9M8Fc?autoplay=1&mute=1&playlist=QvhRse9M8Fc&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/OLdHfteIDyQ?autoplay=1&mute=1&playlist=OLdHfteIDyQ&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/9GBT8pCSIa8?autoplay=1&mute=1&playlist=9GBT8pCSIa8&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/z3Qp8JGp-a8?autoplay=1&mute=1&playlist=z3Qp8JGp-a8&loop=1" allowfullscreen></iframe></div>
+    <div class="globe-item"><iframe src="https://www.youtube.com/embed/ZS1xReGay6Y?autoplay=1&mute=1&playlist=ZS1xReGay6Y&loop=1" allowfullscreen></iframe></div>
+  </div>
+</div>
 <!-- Place this section below your slider -->
 <!-- CUPS SECTION -->
 <section class="cups-section">
@@ -1124,11 +1196,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div style="text-align: center; margin-top: 20px;">
     <p>Total Visitors</p>
-    <img src="https://count.getloli.com/get/@deepakworld.github.io?theme=asoul" alt="deepakworld counter" />
+    <img src="https://count.getloli.com/get/@deepakworld.web.app?theme=asoul" alt="deepakworld counter" />
 </div>
- <!-- Map Location -->
-<div class="map-container" style="text-align:center; margin:20px 0;">
-  <h2 style="color:white;">Find Us Here</h2>
+
 <!-- Map Location -->
 <div style="text-align:center; margin:20px 0;">
   <h2 style="color:white;">Our Location - Bommanahalli, Bengaluru</h2>
@@ -1199,7 +1269,94 @@ document.addEventListener("DOMContentLoaded", function() {
     'floating-chat.donateButton.text-color': '#fff'
   });
 </script>
+<script>
+  const container = document.getElementById('globeWrapper');
+  const globe = document.getElementById('globeVector');
+  const items = document.querySelectorAll('.globe-item');
+  const totalItems = items.length;
+  
+  const radius = 320; 
 
+  // --- 1. SPHERICAL GEOMETRY ENGINE ---
+  items.forEach((item, i) => {
+    // Distribute via a balanced 3D mathematical lattice
+    const phi = Math.acos(-1 + (2 * i) / totalItems);
+    const theta = Math.sqrt(totalItems * Math.PI) * phi;
+
+    const rotateX = (phi * 180 / Math.PI) - 90; 
+    const rotateY = (theta * 180 / Math.PI);    
+
+    item.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateZ(${radius}px)`;
+  });
+
+  // --- 2. CONTROL ARCHITECTURE ---
+  let isDragging = false;
+  let startX, startY;
+  let currentX = 0, currentY = 0; 
+  let targetX = 0, targetY = 0;
+
+  const autoRotateSpeedX = 0.05;
+  const autoRotateSpeedY = 0.1;
+
+  function updateGlobe() {
+    if (!isDragging) {
+      targetY += autoRotateSpeedY;
+      targetX += autoRotateSpeedX;
+    }
+
+    // High performance linear interpolation easing
+    currentX += (targetX - currentX) * 0.1;
+    currentY += (targetY - currentY) * 0.1;
+
+    if(globe) {
+      globe.style.transform = `rotateX(${-currentX}deg) rotateY(${currentY}deg)`;
+    }
+    requestAnimationFrame(updateGlobe);
+  }
+
+  // Event Handlers
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    targetY += dx * 0.25; 
+    targetX += dy * 0.25;
+
+    startX = e.clientX;
+    startY = e.clientY;
+  });
+
+  window.addEventListener('mouseup', () => isDragging = false);
+
+  container.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+
+    targetY += dx * 0.25;
+    targetX += dy * 0.25;
+
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
+
+  window.addEventListener('touchend', () => isDragging = false);
+
+  updateGlobe();
+</script>
 <footer style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center; font-size: 0.85rem; border-top: 4px solid #5f259f; font-family: 'Verdana', sans-serif;">
     <div style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
         <p style="font-weight: bold; font-size: 1rem; color: orange; margin-bottom: 5px;">Deepak IT & WebServices | Proprietorship Firm</p>
