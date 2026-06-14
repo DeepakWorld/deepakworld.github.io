@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BatchPixel - Documentation | Premium Media Conversion Suite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #5649d6;
+            --accent-color: #00cec9;
+            --dark-color: #2d3436;
+            --light-color: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            --gradient-accent: linear-gradient(135deg, #00cec9 0%, #81ecec 100%);
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .documentation-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 2rem 0;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 2rem 1.5rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-header h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-nav {
+            padding: 0 1.5rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #666;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-link {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #555;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link a:hover, .nav-link a.active {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary-color);
+        }
+
+        .nav-link a i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 3rem;
+            max-width: 1200px;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 20px;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            font-size: 1.2rem;
+        }
+
+        /* Feature Highlights */
+        .feature-highlight {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            background: var(--gradient-primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .feature-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: attr(data-language);
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #1e1e1e;
+            color: #ccc;
+            padding: 0.2rem 0.8rem;
+            border-bottom-left-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        /* Tables */
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .docs-table th {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .docs-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .docs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .alert i {
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .alert-info {
+            background: rgba(0, 206, 201, 0.1);
+            border-left: 4px solid var(--accent-color);
+            color: #006d6b;
+        }
+
+        .alert-warning {
+            background: rgba(253, 203, 110, 0.1);
+            border-left: 4px solid #fdcb6e;
+            color: #8a6d3b;
+        }
+
+        .alert-danger {
+            background: rgba(255, 118, 117, 0.1);
+            border-left: 4px solid #ff7675;
+            color: #a94442;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 2rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                background: var(--primary-color);
+                color: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1001;
+                box-shadow: 0 3px 10px rgba(108, 92, 231, 0.3);
+                cursor: pointer;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .feature-highlight {
+                flex-direction: column;
+            }
+        }
+
+        /* Syntax highlighting */
+        pre {
+            margin: 1.5rem 0;
+            background: #2d2d2d;
+            border-radius: 6px;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        /* Image styling */
+        .docs-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 1.5rem 0;
+            border: 1px solid #eee;
+        }
+
+        /* Step-by-step guide */
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            counter-increment: step-counter;
+        }
+
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .step-number::before {
+            content: counter(step-counter);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Version history */
+        .version-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .version-number {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .version-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .version-features {
+            list-style-type: none;
+        }
+
+        .version-features li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: #555;
+        }
+
+        .version-features li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(90deg);
+        }
+
+        .faq-answer {
+            color: #666;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            color: #666;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--primary-color);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge-primary {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary-color);
+        }
+
+        .badge-success {
+            background: rgba(0, 184, 148, 0.1);
+            color: #00b894;
+        }
+
+        .badge-warning {
+            background: rgba(253, 203, 110, 0.1);
+            color: #fdcb6e;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="documentation-container">
+        <!-- Mobile Menu Toggle (hidden on desktop) -->
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- Sidebar Navigation -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-file-alt"></i> BatchPixel Docs</h2>
+                <p>v1.1.0 - Latest June 2025</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Getting Started</h3>
+                    <ul class="nav-links">
+                        <li class="nav-link"><a href="#introduction" class="active"><i class="fas fa-home"></i> Introduction</a></li>
+                        <li class="nav-link"><a href="#features"><i class="fas fa-star"></i> Key Features</a></li>
+                        <li class="nav-link"><a href="#installation"><i class="fas fa-download"></i> Installation</a></li>
+                        <li class="nav-link"><a href="#quickstart"><i class="fas fa-rocket"></i> Quick Start</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">User Guide</h3>
+                    <ul class="nav-links">
+                        <li class="nav-link"><a href="#interface"><i class="fas fa-desktop"></i> Interface Overview</a></li>
+                        <li class="nav-link"><a href="#converting"><i class="fas fa-exchange-alt"></i> Converting Images</a></li>
+                        <li class="nav-link"><a href="#batch-processing"><i class="fas fa-th-large"></i> Batch Processing</a></li>
+                        <li class="nav-link"><a href="#advanced"><i class="fas fa-cog"></i> Advanced Features</a></li>
+                        <li class="nav-link"><a href="#watermarking"><i class="fas fa-stamp"></i> Watermarking</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Technical</h3>
+                    <ul class="nav-links">
+                        <li class="nav-link"><a href="#customization"><i class="fas fa-paint-brush"></i> Customization</a></li>
+                        <li class="nav-link"><a href="#troubleshooting"><i class="fas fa-bug"></i> Troubleshooting</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Resources</h3>
+                    <ul class="nav-links">
+                        <li class="nav-link"><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li class="nav-link"><a href="#changelog"><i class="fas fa-history"></i> Changelog</a></li>
+                        <li class="nav-link"><a href="#support"><i class="fas fa-life-ring"></i> Support</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Introduction Section -->
+            <section class="section" id="introduction">
+                <div class="section-header">
+                    <h1 class="section-title">BatchPixel Documentation</h1>
+                    <p class="section-subtitle">All-in-One Media Conversion Suite with Batch Processing</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-info-circle"></i> Introduction</h2>
+                    <p>BatchPixel is a powerful, client-side media conversion tool that allows users to convert, optimize, and enhance multiple images simultaneously. With support for 10+ image formats, advanced batch processing capabilities, and a privacy-focused approach (all processing happens in the browser), BatchPixel is the perfect solution for photographers, designers, and content creators.</p>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Privacy First:</strong> All image processing happens directly in your browser - we do not upload any images to our servers. Your files never leave your computer.
+                        </div>
+                    </div>
+
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Why Choose BatchPixel?</h3>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Lightning Fast Processing</h3>
+                            <p>Our optimized conversion engine can process hundreds of images in seconds with AI acceleration and Web Workers for parallel processing.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Advanced Controls</h3>
+                            <p>Fine-tune every aspect of your images with our comprehensive adjustment options including quality, dimensions, filters, and more.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-image"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Wide Format Support</h3>
+                            <p>Convert between all popular image formats including JPG, PNG, WEBP, GIF, SVG, HEIC, and even RAW formats.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="section" id="features">
+                <div class="section-header">
+                    <h2 class="section-title">Key Features</h2>
+                    <p class="section-subtitle">Explore the powerful capabilities of BatchPixel</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-star"></i> Core Features</h2>
+                    
+                    <div class="tabs">
+                        <div class="tab active" data-tab="conversion">Conversion</div>
+                        <div class="tab" data-tab="optimization">Optimization</div>
+                        <div class="tab" data-tab="enhancement">Enhancement</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="conversion">
+                        <h3 style="margin-bottom: 1rem;">Batch Conversion</h3>
+                        <p>BatchPixel supports conversion between all these formats:</p>
+                        
+                        <table class="docs-table">
+                            <thead>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Description</th>
+                                    <th>Features</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>JPEG (JPG)</td>
+                                    <td>Lossy compression format</td>
+                                    <td>Adjustable quality, progressive loading</td>
+                                </tr>
+                                <tr>
+                                    <td>PNG</td>
+                                    <td>Lossless format with transparency</td>
+                                    <td>Alpha channel, lossless compression</td>
+                                </tr>
+                                <tr>
+                                    <td>WEBP</td>
+                                    <td>Modern format by Google</td>
+                                    <td>Lossy/lossless, smaller file sizes</td>
+                                </tr>
+                                <tr>
+                                    <td>GIF</td>
+                                    <td>Animated images</td>
+                                    <td>Animation support, transparency</td>
+                                </tr>
+                                <tr>
+                                    <td>SVG</td>
+                                    <td>Vector graphics</td>
+                                    <td>Scalable, small file size</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="tab-content" id="optimization">
+                        <h3 style="margin-bottom: 1rem;">Image Optimization</h3>
+                        <p>BatchPixel includes advanced optimization features to reduce file sizes while maintaining quality:</p>
+                        
+                        <div class="feature-highlight">
+                            <div class="feature-icon">
+                                <i class="fas fa-compress-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Intelligent Compression</h3>
+                                <p>Our algorithm analyzes each image to apply the optimal compression settings, reducing file sizes by up to 80% without visible quality loss.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-highlight">
+                            <div class="feature-icon">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Auto Enhancement</h3>
+                                <p>The built-in AI enhancement automatically improves brightness, contrast, and sharpness for professional-looking results.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="enhancement">
+                        <h3 style="margin-bottom: 1rem;">Image Enhancement</h3>
+                        <p>Transform your images with powerful enhancement tools:</p>
+                        
+                        <ul style="list-style-type: none; margin: 1rem 0;">
+                            <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                                <i class="fas fa-check-circle" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                                <strong>Filters:</strong> Apply grayscale, sepia, vintage, invert, blur, and sharpen effects
+                            </li>
+                            <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                                <i class="fas fa-check-circle" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                                <strong>Resizing:</strong> Scale by percentage or exact dimensions with aspect ratio locking
+                            </li>
+                            <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                                <i class="fas fa-check-circle" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                                <strong>Rotation:</strong> Rotate images by 90°, 180°, or 270° with high quality
+                            </li>
+                            <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                                <i class="fas fa-check-circle" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                                <strong>Color Space:</strong> Convert between RGB, CMYK, and grayscale color spaces
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation Section -->
+            <section class="section" id="installation">
+                <div class="section-header">
+                    <h2 class="section-title">Installation</h2>
+                    <p class="section-subtitle">Get BatchPixel up and running in minutes</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-download"></i> Installation Guide</h2>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Download the Package</h4>
+                            <p>After purchasing from CodeCanyon, download the ZIP package from your downloads section. The package contains all necessary files including HTML, CSS, JavaScript, and demo images.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Extract Files</h4>
+                            <p>Unzip the downloaded package to a directory on your computer. The main structure includes:</p>
+                            <pre>
+batchpixel/
+├── index.html          # Main application file
+├── assets/
+│   ├── css/            # Stylesheets
+│   └── js/             # JavaScript files
+├── images/             # Sample images
+└── documentation.html  # This documentation</pre>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Deploy to Server</h4>
+                            <p>Upload the entire directory to your web server. BatchPixel works on any standard web hosting that supports HTML5 and modern JavaScript.</p>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i>
+                                <div>
+                                    <strong>No Server-Side Requirements:</strong> Since all processing happens in the browser, you don't need any special server configuration or PHP/Node.js.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Test the Application</h4>
+                            <p>Open <code>index.html</code> in your browser to verify everything works correctly. Try uploading and converting some test images.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Browser Compatibility:</strong> BatchPixel requires a modern browser (Chrome, Firefox, Edge, Safari 12+). For HEIC/RAW support, Chrome or Edge is recommended.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Start Section -->
+            <section class="section" id="quickstart">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Start</h2>
+                    <p class="section-subtitle">Get started with BatchPixel in 5 minutes</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-rocket"></i> Quick Start Guide</h2>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Basic Conversion Workflow</h3>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Upload Images</h4>
+                            <p>Click "Select Images" or drag & drop files into the upload area. You can select multiple files at once (up to 10 files in the free version).</p>
+                            <img src="https://via.placeholder.com/800x400?text=Upload+Interface+Screenshot" alt="Upload Interface" class="docs-image">
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Choose Output Format</h4>
+                            <p>Select your desired output format from the dropdown menu. Options include JPG, PNG, WEBP, GIF, and more.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Adjust Settings (Optional)</h4>
+                            <p>Customize quality, dimensions, filters, or other options as needed. Use the preview to see changes in real-time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Process Images</h4>
+                            <p>Click the "Process Images" button to start conversion. The progress will be shown for each file.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number"></div>
+                        <div class="step-content">
+                            <h4>Download Results</h4>
+                            <p>After processing, download individual files or get all images in a ZIP archive with one click.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Pro Tip:</strong> Use the batch rename feature to automatically organize your converted files with consistent naming.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interface Overview Section -->
+            <section class="section" id="interface">
+                <div class="section-header">
+                    <h2 class="section-title">Interface Overview</h2>
+                    <p class="section-subtitle">Learn about BatchPixel's user interface components</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-desktop"></i> UI Components</h2>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Main Interface Elements</h3>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Upload Area</h3>
+                            <p>The drag-and-drop upload zone supports multiple file selection and shows supported formats. Files can be added by clicking or dragging.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Conversion Options</h3>
+                            <p>This panel contains all conversion settings organized into logical sections: format selection, resizing, filters, and quality adjustment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>File Table</h3>
+                            <p>Displays all uploaded files with thumbnails, original info, and processing status. Files can be previewed, removed, or downloaded individually.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Preview Panel</h3>
+                            <p>Shows side-by-side comparison of original and processed versions with detailed statistics about the conversion results.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Advanced Options</h3>
+                    
+                    <p>The "Advanced Options" section (accessible by clicking the gear icon) provides additional professional tools:</p>
+                    
+                    <ul style="list-style-type: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-cog" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Color Space Conversion:</strong> Convert between RGB, CMYK, and grayscale color spaces
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-tachometer-alt" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>DPI Resolution:</strong> Set the DPI (dots per inch) for print-ready images
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-stamp" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Watermarking:</strong> Add text watermarks with customizable position, size, and colors
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-database" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>EXIF Data:</strong> Choose to preserve or remove EXIF metadata from images
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Converting Images Section -->
+            <section class="section" id="converting">
+                <div class="section-header">
+                    <h2 class="section-title">Converting Images</h2>
+                    <p class="section-subtitle">Detailed guide to image conversion options</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-exchange-alt"></i> Conversion Settings</h2>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Output Format Options</h3>
+                    
+                    <p>BatchPixel supports conversion between these formats with these specific options:</p>
+                    
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>Options</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>JPEG (JPG)</td>
+                                <td>Quality (50-100%), Progressive loading, Baseline optimization</td>
+                                <td>Photographs, web images</td>
+                            </tr>
+                            <tr>
+                                <td>PNG</td>
+                                <td>Compression level (0-9), Transparency, Interlacing</td>
+                                <td>Graphics with transparency, lossless quality</td>
+                            </tr>
+                            <tr>
+                                <td>WEBP</td>
+                                <td>Lossy/lossless mode, Quality, Alpha channel</td>
+                                <td>Modern web use, smallest file sizes</td>
+                            </tr>
+                            <tr>
+                                <td>GIF</td>
+                                <td>Color reduction (32-256 colors), Dithering</td>
+                                <td>Simple animations, small graphics</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Quality Settings</h3>
+                    
+                    <p>The quality slider controls the balance between file size and image quality:</p>
+                    
+                    <ul style="list-style-type: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-sliders-h" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>90-100%:</strong> Best quality, larger files (recommended for print)
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-sliders-h" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>70-90%:</strong> Good balance (recommended for web)
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-sliders-h" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>50-70%:</strong> Smaller files, noticeable quality loss
+                        </li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Pro Tip:</strong> Use the "Optimize for Web" option in Advanced Settings to automatically apply the best compression settings for web use.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Batch Processing Section -->
+            <section class="section" id="batch-processing">
+                <div class="section-header">
+                    <h2 class="section-title">Batch Processing</h2>
+                    <p class="section-subtitle">Efficiently process multiple images at once</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-th-large"></i> Batch Operations</h2>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Batch Renaming</h3>
+                    
+                    <p>BatchPixel includes powerful batch renaming capabilities using pattern templates:</p>
+                    
+                    <div class="code-block" data-language="Pattern Examples">
+                        photo_{num}.jpg       → photo_01.jpg, photo_02.jpg, etc.
+                        product-{date}.png    → product-2023-06-14.png
+                        image_{time}.webp      → image_14-30-22.webp
+                        {original}_converted   → landscape_converted.jpg
+                    </div>
+                    
+                    <p>Available placeholders:</p>
+                    
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Placeholder</th>
+                                <th>Description</th>
+                                <th>Example Output</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{num}</td>
+                                <td>Sequence number (01, 02, etc.)</td>
+                                <td>01, 02, ..., 10</td>
+                            </tr>
+                            <tr>
+                                <td>{date}</td>
+                                <td>Current date in YYYY-MM-DD format</td>
+                                <td>2023-06-14</td>
+                            </tr>
+                            <tr>
+                                <td>{time}</td>
+                                <td>Current time in HH-MM-SS format</td>
+                                <td>14-30-22</td>
+                            </tr>
+                            <tr>
+                                <td>{original}</td>
+                                <td>Original filename without extension</td>
+                                <td>landscape (from landscape.jpg)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Batch Download</h3>
+                    
+                    <p>After processing multiple images, you can:</p>
+                    
+                    <ul style="list-style-type: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-download" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Download individually:</strong> Click the download icon next to each file
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-file-archive" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Download as ZIP:</strong> Get all files in a single compressed archive
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-share-alt" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Share directly:</strong> Use the Share button to send via email or social media (browser-dependent)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Advanced Features Section -->
+            <section class="section" id="advanced">
+                <div class="section-header">
+                    <h2 class="section-title">Advanced Features</h2>
+                    <p class="section-subtitle">Professional tools for power users</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-cog"></i> Advanced Tools</h2>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Resizing Options</h3>
+                    
+                    <p>BatchPixel offers three resizing methods:</p>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-expand-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Percentage Scaling</h3>
+                            <p>Scale images by a percentage (e.g., reduce to 50% of original size). Aspect ratio is maintained automatically.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Exact Dimensions</h3>
+                            <p>Set specific width and height in pixels. Choose whether to maintain aspect ratio or stretch to exact dimensions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Preset Sizes</h3>
+                            <p>Quickly resize to common dimensions like Social Media (1200x630), Thumbnail (150x150), or Mobile (640x960).</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Image Filters</h3>
+                    
+                    <p>Apply professional-grade filters to all images in your batch:</p>
+                    
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Filter</th>
+                                <th>Description</th>
+                                <th>Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Grayscale</td>
+                                <td>Convert to black and white</td>
+                                <td>Classic photography, artistic effects</td>
+                            </tr>
+                            <tr>
+                                <td>Sepia</td>
+                                <td>Vintage brown tone</td>
+                                <td>Antique/old photo effect</td>
+                            </tr>
+                            <tr>
+                                <td>Vintage</td>
+                                <td>Combination of sepia and vignette</td>
+                                <td>Retro styling</td>
+                            </tr>
+                            <tr>
+                                <td>Invert</td>
+                                <td>Reverse all colors</td>
+                                <td>Creative effects, negative images</td>
+                            </tr>
+                            <tr>
+                                <td>Blur</td>
+                                <td>Soft focus effect</td>
+                                <td>Backgrounds, artistic effects</td>
+                            </tr>
+                            <tr>
+                                <td>Sharpen</td>
+                                <td>Enhance edge contrast</td>
+                                <td>Improve slightly blurry images</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Watermarking Section -->
+            <section class="section" id="watermarking">
+                <div class="section-header">
+                    <h2 class="section-title">Watermarking</h2>
+                    <p class="section-subtitle">Protect your images with customizable watermarks</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-stamp"></i> Watermark Features</h2>
+                    
+                    <p>BatchPixel's watermarking tool allows you to add text watermarks to all images in your batch with consistent positioning and styling.</p>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Watermark Options</h3>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Text & Appearance</h3>
+                            <p>Customize the watermark text, font size (10-50px), text color, and background color with transparency support.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Positioning</h3>
+                            <p>Choose from 5 preset positions: Top Left, Top Right, Bottom Left, Bottom Right, and Center.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Live Preview</h3>
+                            <p>The watermark preview updates in real-time as you adjust settings, showing exactly how it will appear on your images.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Watermark Best Practices</h3>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Visibility vs. Intrusiveness:</strong> Find the right balance - your watermark should be visible enough to deter unauthorized use but not so prominent that it ruins the image.
+                        </div>
+                    </div>
+                    
+                    <ul style="list-style-type: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            Use semi-transparent backgrounds (e.g., rgba(0,0,0,0.5)) for better readability on varied images
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            Position in corners where it's less likely to be cropped out
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            Include your website URL or copyright symbol (©) for maximum protection
+                        </li>
+                    </ul>
+                </div>
+            </section>
+			
+            <!-- Customization Section -->
+            <section class="section" id="customization">
+                <div class="section-header">
+                    <h2 class="section-title">Customization</h2>
+                    <p class="section-subtitle">Tailor BatchPixel to match your brand</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-paint-brush"></i> Customization Guide</h2>
+                    
+                    <p>BatchPixel is designed to be easily customizable to match your website's branding and style.</p>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">CSS Variables</h3>
+                    
+                    <p>The main color scheme can be customized by modifying these CSS variables in the <code>style.css</code> file:</p>
+                    
+                    <pre class="code-block" data-language="CSS">
+:root {
+    --primary-color: #6c5ce7;      /* Main brand color */
+    --secondary-color: #5649d6;    /* Darker shade for hover states */
+    --accent-color: #00cec9;       /* Accent color for buttons */
+    --dark-color: #2d3436;         /* Default text color */
+    --light-color: #f8f9fa;        /* Light background color */
+    
+    /* Gradient variations */
+    --gradient-primary: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    --gradient-accent: linear-gradient(135deg, #00cec9 0%, #81ecec 100%);
+}</pre>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Theme Options</h3>
+                    
+                    <p>BatchPixel includes built-in support for light/dark mode. You can:</p>
+                    
+                    <ul style="list-style-type: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-moon" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Force dark mode:</strong> Add <code>class="dark-mode"</code> to the body tag
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-sun" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Auto-detect system preference:</strong> Use JavaScript to check <code>prefers-color-scheme</code>
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-toggle-on" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Add custom theme switcher:</strong> The toggle in the UI can be moved or restyled
+                        </li>
+                    </ul>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Localization</h3>
+                    
+                    <p>To translate BatchPixel to other languages:</p>
+                    
+                    <ol style="margin: 1rem 0 1rem 2rem;">
+                        <li style="margin-bottom: 0.8rem;">Locate all text strings in the JavaScript files</li>
+                        <li style="margin-bottom: 0.8rem;">Create a translation object with your language strings</li>
+                        <li style="margin-bottom: 0.8rem;">Initialize BatchPixel with your language option</li>
+                    </ol>
+                    
+                    <pre class="code-block" data-language="JavaScript">
+// Example Spanish translation
+const translations = {
+    en: {
+        uploadText: "Drag & drop your images here or",
+        selectFiles: "Select Images",
+        processing: "Processing...",
+        // ... all other strings
+    },
+    es: {
+        uploadText: "Arrastra y suelta tus imágenes aquí o",
+        selectFiles: "Seleccionar Imágenes",
+        processing: "Procesando...",
+        // ... all other strings
+    }
+};
+
+// Initialize with language
+BatchPixel.init({
+    language: 'es'
+});</pre>
+                </div>
+            </section>
+
+            <!-- Troubleshooting Section -->
+            <section class="section" id="troubleshooting">
+                <div class="section-header">
+                    <h2 class="section-title">Troubleshooting</h2>
+                    <p class="section-subtitle">Solve common issues and errors</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-bug"></i> Common Issues</h2>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">General Problems</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Images aren't uploading properly</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>Possible causes:</strong></p>
+                            <ul style="margin: 0.5rem 0 1rem 2rem;">
+                                <li style="margin-bottom: 0.5rem;">JavaScript errors on the page</li>
+                                <li style="margin-bottom: 0.5rem;">Files are too large (browser memory limits)</li>
+                            </ul>
+                            <p><strong>Solutions:</strong></p>
+                            <ul style="margin: 0.5rem 0 0 2rem;">
+                                <li style="margin-bottom: 0.5rem;">Update your browser to the latest version</li>
+                                <li style="margin-bottom: 0.5rem;">Check browser console for errors (F12)</li>
+                                <li style="margin-bottom: 0.5rem;">Try with smaller files first</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Conversion is very slow</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Image processing is CPU-intensive, especially for large images or batches. For better performance:</p>
+                            <ul style="margin: 0.5rem 0 0 2rem;">
+                                <li style="margin-bottom: 0.5rem;">Process fewer images at once (5-10 instead of 50+)</li>
+                                <li style="margin-bottom: 0.5rem;">Reduce output dimensions for very large images</li>
+                                <li style="margin-bottom: 0.5rem;">Use Chrome or Edge for better performance</li>
+                                <li style="margin-bottom: 0.5rem;">Close other CPU-intensive applications</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Format-Specific Issues</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>HEIC/RAW files not working</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>HEIC and RAW formats require browser support and may not work in all browsers:</p>
+                            <ul style="margin: 0.5rem 0 0 2rem;">
+                                <li style="margin-bottom: 0.5rem;"><strong>Chrome/Edge:</strong> Full support with proper EXIF data</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>Firefox:</strong> Partial support (may lose metadata)</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>Safari:</strong> HEIC works but RAW formats may fail</li>
+                            </ul>
+                            <p>For best results, use Chrome or Edge when working with HEIC/RAW files.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Animated GIFs lose animation</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>When converting animated GIFs to other formats (except WEBP), the animation will be lost as most formats don't support animation. Options:</p>
+                            <ul style="margin: 0.5rem 0 0 2rem;">
+                                <li style="margin-bottom: 0.5rem;">Convert to WEBP (supports animation)</li>
+                                <li style="margin-bottom: 0.5rem;">Extract individual frames first</li>
+                                <li style="margin-bottom: 0.5rem;">Keep original format if animation is needed</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Getting Support</h3>
+                    
+                    <p>If you encounter issues not covered here:</p>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-life-ring"></i>
+                        <div>
+                            <strong>Support Channels:</strong> Contact our support team via CodeCanyon messages or email support@newrize.com. Please include:
+                            <ul style="margin: 0.5rem 0 0 1.5rem;">
+                                <li style="margin-bottom: 0.3rem;">Browser name and version</li>
+                                <li style="margin-bottom: 0.3rem;">Detailed description of the issue</li>
+                                <li style="margin-bottom: 0.3rem;">Steps to reproduce the problem</li>
+                                <li style="margin-bottom: 0.3rem;">Screenshots if applicable</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="section" id="faq">
+                <div class="section-header">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Quick answers to common questions</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-question-circle"></i> FAQ</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Is there a file size limit for images?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>BatchPixel can handle large images, but browser memory limitations apply. As a guideline:</p>
+                            <ul style="margin: 0.5rem 0 0 2rem;">
+                                <li style="margin-bottom: 0.5rem;"><strong>Recommended max:</strong> 10MP (e.g., 3000x3000px)</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>Absolute max:</strong> 20MP (may cause browser crashes)</li>
+                                <li style="margin-bottom: 0.5rem;"><strong>Batch limit:</strong> 10 files at once (free version)</li>
+                            </ul>
+                            <p>For very large images, resize them first before processing.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Does BatchPixel work offline?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! BatchPixel is a client-side application that works completely in your browser. Once loaded, it doesn't require an internet connection to process images. The only internet requirement is for the initial page load and any external libraries (which can be downloaded for full offline use).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Can I increase the batch limit beyond 10 files?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The free version is limited to 10 files at once for performance reasons. To increase this limit:</p>
+                            <ol style="margin: 0.5rem 0 0 2rem;">
+                                <li style="margin-bottom: 0.5rem;">Purchase the PRO version (contact for details)</li>
+                                <li style="margin-bottom: 0.5rem;">Edit the MAX_FILES constant in script.js (not recommended for production)</li>
+                            </ol>
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div>
+                                    <strong>Warning:</strong> Processing many large files may crash the browser tab due to memory limitations.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>How do I update to the latest version?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Updates are available through your CodeCanyon downloads. To update:</p>
+                            <ol style="margin: 0.5rem 0 0 2rem;">
+                                <li style="margin-bottom: 0.5rem;">Download the latest version from CodeCanyon</li>
+                                <li style="margin-bottom: 0.5rem;">Back up your current installation</li>
+                                <li style="margin-bottom: 0.5rem;">Replace all files with the new version</li>
+                                <li style="margin-bottom: 0.5rem;">Test thoroughly before deploying to production</li>
+                            </ol>
+                            <p>Check the changelog (below) for update notes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Can I use BatchPixel on my commercial website?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Your CodeCanyon license allows you to use BatchPixel on:</p>
+                            <ul style="margin: 0.5rem 0 0 2rem;">
+                                <li style="margin-bottom: 0.5rem;">Unlimited personal projects</li>
+                                <li style="margin-bottom: 0.5rem;">One commercial website (per license)</li>
+                                <li style="margin-bottom: 0.5rem;">Client projects (if you're a developer)</li>
+                            </ul>
+                            <p>For SaaS or multi-site use, please purchase additional licenses or contact us for extended licensing options.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Changelog Section -->
+            <section class="section" id="changelog">
+                <div class="section-header">
+                    <h2 class="section-title">Changelog</h2>
+                    <p class="section-subtitle">Version history and updates</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-history"></i> Version History</h2>
+                    
+                    <div class="version-card">
+                        <div class="version-header">
+                            <span class="version-number">v1.1.0</span>
+                            <span class="version-date">June 2025</span>
+                        </div>
+                        <ul class="version-features">
+                            <li>Changelog Will appear here</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support Section -->
+            <section class="section" id="support">
+                <div class="section-header">
+                    <h2 class="section-title">Support</h2>
+                    <p class="section-subtitle">Get help and resources</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title"><i class="fas fa-life-ring"></i> Support Options</h2>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Documentation Resources</h3>
+                    
+                    <p>Before contacting support, please check these resources:</p>
+                    
+                    <ul style="list-style-type: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-book" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>This documentation:</strong> Covers all major features and common issues
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-video" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Video tutorials:</strong> Available on our YouTube channel
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-comments" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Community forum:</strong> Discuss with other users on CodeCanyon comments
+                        </li>
+                    </ul>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Contacting Support</h3>
+                    
+                    <p>For direct assistance, please contact us through:</p>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Email Support</h3>
+                            <p><a href="mailto:support@newrize.com">support@newrize.com</a> (response within 7-12 hours)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>CodeCanyon Messages</h3>
+                            <p>Use the messaging system on your CodeCanyon download page</p>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>For faster support:</strong> Include your purchase code, browser/OS details, and clear steps to reproduce any issues.
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--primary-color);">Custom Development</h3>
+                    
+                    <p>Need custom features or integration help? Our team offers:</p>
+                    
+                    <ul style="list-style-type: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-code" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>Custom modifications:</strong> Tailor BatchPixel to your specific needs
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-plug" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                        </li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-paint-brush" style="color: var(--primary-color); position: absolute; left: 0;"></i>
+                            <strong>White-label solutions:</strong> Rebrand BatchPixel as your own product
+                        </li>
+                    </ul>
+                    
+                    <p>Contact <a href="mailto:support@newrize.com">support@newrize.com.com</a> for custom development inquiries.</p>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer style="margin-top: 3rem; padding: 2rem 0; text-align: center; color: #666; font-size: 0.9rem;">
+                <p>© 2025 BatchPixel  - All in One Image Conversion & Optimizer Tool. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">Documentation version 1.1.0</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const sidebar = document.getElementById('sidebar');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Tab functionality
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // FAQ accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentNode;
+                    faqItem.classList.toggle('active');
+                });
+            });
+            
+            // Highlight active nav link based on scroll position
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link a');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BatchPixel  - All in One Image Conversion & Optimizer Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="assets/js/script.js"></script>
+</head>
+<body>
+   <div class="container">
+        <div class="header">
+            <h2><a href="https://nullphpscript.com" target="_blank">NULLPHPSCRIPT.COM</a></h2>
+            <h1>BatchPixel  - AIO Image Conversion & Optimizer</h1>
+            <p>Advanced batch image processing with advanced optimization, enhancement, and conversion tools</p>
+        </div>
+        <div class="option-item">
+                        <label for="darkModeToggle">Dark Mode</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="darkModeToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+        <div class="tool-container">
+            <div class="upload-section" id="dropArea">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <p class="drag-text">Drag & drop your images here or</p>
+                <div style="position: relative; display: inline-block;">
+                    <button class="upload-btn" id="selectFilesBtn">
+                        <i class="fas fa-folder-open"></i> Select Images
+                        <span class="file-counter" id="fileCounter" style="display: none;">0</span>
+                    </button>
+                </div>
+				
+                <input type="file" id="fileInput" class="file-input" multiple accept="image/*">
+                <p class="supported-formats">
+                    <span class="format-tag">JPG</span>
+                    <span class="format-tag">PNG</span>
+                    <span class="format-tag">WEBP</span>
+                    <span class="format-tag">GIF</span>
+                    <span class="format-tag">BMP</span>
+                    <span class="format-tag">TIFF</span>
+                    <span class="format-tag">SVG</span>
+                    <span class="format-tag">ICO</span>
+                    <span class="format-tag">HEIC</span>
+                    <span class="format-tag">RAW</span>
+                </p>
+            </div>
+                    <label for="stats" class="select-label">Realtime Stats:</label>
+                <div class="real-time-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-images"></i>
+                        <span id="totalFilesStat">0</span> files
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-database"></i>
+                        <span id="totalSizeStat">0 MB</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="estimatedTimeStat">0s</span>
+                    </div>
+                </div>
+                
+            <div class="options-section">
+                <div class="option-card">
+                    <label for="outputFormat" class="select-label">Output Format:</label>
+                    <select id="outputFormat" class="format-select">
+                        <option value="jpg">JPEG (JPG)</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WEBP</option>
+                        <option value="gif">GIF</option>
+                        <option value="bmp">BMP</option>
+                        <option value="tiff">TIFF</option>
+                        <option value="svg">SVG</option>
+                        <option value="ico">ICO</option>
+                        <option value="heic">HEIC</option>
+                        <option value="raw">RAW</option>
+                    </select>
+                </div>  
+                <div class="option-card">
+                    <label for="rotation" class="select-label">Rotation:</label>
+                    <select id="rotation" class="format-select">
+                        <option value="0">No rotation</option>
+                        <option value="90">90° clockwise</option>
+                        <option value="180">180°</option>
+                        <option value="270">90° counter-clockwise</option>
+                    </select>
+                </div>
+
+                <div class="option-card">
+                    <label for="batchRename" class="select-label">Batch Rename:</label>
+                    <input type="text" id="batchRename" class="rename-input" placeholder="New Pattern (e.g. photo_{num})">
+                </div>
+                <div class="option-card">
+                    <label for="imageFilter" class="select-label">Image Filter:</label>
+                    <select id="imageFilter" class="format-select">
+                        <option value="none">None</option>
+                        <option value="grayscale">Grayscale</option>
+                        <option value="sepia">Sepia</option>
+                        <option value="vintage">Vintage</option>
+                        <option value="invert">Invert Colors</option>
+                        <option value="blur">Blur</option>
+                        <option value="sharpen">Sharpen</option>
+                    </select>
+                </div>
+                
+                <div class="option-card">
+                    <label for="quality" class="select-label">Quality:</label>
+                    <input type="range" id="quality" min="50" max="100" value="90" step="5">
+                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                        <span style="font-size: 0.8rem;">50%</span>
+                        <span id="qualityValue" style="font-weight: 600;">90%</span>
+                        <span style="font-size: 0.8rem;">100%</span>
+                    </div>
+                </div>
+                
+                <div class="option-card">
+                    <label for="resizeMode" class="select-label">Resize:</label>
+                    <div class="resize-container">
+                        <select id="resizeMode">
+                            <option value="none">None</option>
+                            <option value="percentage">Percentage</option>
+                            <option value="dimensions">Dimensions</option>
+                        </select>
+                        <input type="number" id="resizeValue" placeholder="Value" disabled>
+                    </div>
+                    <div class="resize-dimensions" id="dimensionsContainer">
+                        <div class="dimension-input">
+                            <label>Width (px)</label>
+                            <input  class="imgsize-setting"type="number" id="resizeWidth" placeholder="Width" min="1" disabled>
+                        </div>
+                        <div class="dimension-input">
+                            <label>Height (px)</label>
+                            <input class="imgsize-setting" type="number" id="resizeHeight" placeholder="Height" min="1" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="advanced-options" id="advancedOptions">
+                <div class="advanced-title">
+                    <h3><i class="fas fa-cog"></i> Advanced Options</h3>
+                    <button class="toggle-advanced" id="toggleAdvanced">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                </div>
+                
+                <div class="option-grid">
+                    <div class="option-item">
+                        <label for="compression">Compression Level</label>
+                        <input type="range" id="compression" min="0" max="100" value="50">
+                        <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                            <span style="font-size: 0.8rem;">Min</span>
+                            <span id="compressionValue" style="font-weight: 600;">50%</span>
+                            <span style="font-size: 0.8rem;">Max</span>
+                        </div>
+                    </div>
+                    
+                    <div class="option-item">
+                        <label for="colorSpace">Color Space</label>
+                        <select id="colorSpace">
+                            <option value="rgb">RGB</option>
+                            <option value="cmyk">CMYK</option>
+                            <option value="grayscale">Grayscale</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-item">
+                        <label for="dpi">DPI Resolution</label>
+                        <input type="number" id="dpi" value="300" min="72" max="1200">
+                    </div>
+                    
+                    <div class="option-item">
+                        <label for="optimize">Optimize for Web</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="optimize" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="option-item">
+                        <label for="preserveExif">Preserve EXIF Data</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="preserveExif">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="option-item">
+                        <label for="watermark">Add Watermark</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="watermark">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="option-item" id="watermarkOptions" style="display: none;">
+                        <label for="watermarkText">Watermark Text</label>
+                        <input type="text" id="watermarkText" placeholder="Your watermark text" value="SAMPLE">
+                        
+                        <label for="watermarkPosition" style="margin-top: 10px;">Position</label>
+                        <select id="watermarkPosition">
+                            <option value="top-left">Top Left</option>
+                            <option value="top-right">Top Right</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="bottom-right">Bottom Right</option>
+                            <option value="center">Center</option>
+                        </select>
+                        
+                        <label for="watermarkColor" style="margin-top: 10px;">Text Color</label>
+                        <input type="color" id="watermarkColor" value="#ffffff">
+                        
+                        <label for="watermarkBgColor" style="margin-top: 10px;">Background Color</label>
+                        <input type="color" id="watermarkBgColor" value="#00000080">
+                        
+                        <label for="watermarkSize" style="margin-top: 10px;">Text Size</label>
+                        <input type="range" id="watermarkSize" min="10" max="50" value="24">
+                        
+                        <div class="watermark-preview" id="watermarkPreview">
+                            <p>Watermark Preview:</p>
+                            <canvas id="watermarkPreviewCanvas" class="watermark-preview-image" width="300" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="process-btn" id="processBtn" disabled>
+                <i class="fas fa-magic"></i> Process Images
+            </button>
+            <div class="table-container">
+			<div class="search-container" id="searchContainer" style="display: none;">
+			<label for="searchInput" class="select-label">Search Images:</label>
+			<div style="position: relative;">
+				<input type="text" id="searchInput" class="search-input" placeholder="Search by filename...">
+			</div>
+                <table class="images-table" id="imagesTable">
+                    <thead>
+                        <tr>
+                            <th>Preview</th>
+                            <th>File Name</th>
+                            <th>Original</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr class="no-files">
+                            <td colspan="5">No images selected yet</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="batch-actions" id="batchActions">
+                    <button class="batch-btn clear-all-btn" id="clearAllBtn">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                    <div class="batch-right-actions">
+                        <button class="batch-btn download-all-btn" id="downloadAllBtn">
+                            <i class="fas fa-download"></i> Download All (ZIP)
+                        </button>
+                        <button class="batch-btn download-all-btn" id="shareAllBtn">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-container" id="previewContainer">
+                <h3 class="preview-title"><i class="fas fa-image"></i> Enhanced Preview</h3>
+                <div class="preview-comparison">
+                    <div class="preview-box">
+                        <img id="originalPreview" src="" alt="Original">
+                        <div class="preview-label">Original</div>
+                    </div>
+                    <div class="preview-box">
+                        <img id="enhancedPreview" src="" alt="Enhanced">
+                        <div class="preview-label">Enhanced</div>
+                    </div>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-value" id="sizeReduction">0%</div>
+                        <div class="stat-label">Size Reduction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="qualityDiff">+0%</div>
+                        <div class="stat-label">Quality Improvement</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="timeSaved">0s</div>
+                        <div class="stat-label">Time Saved</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+       <div class="features-section">
+    <div class="features-container">
+        <div class="section-title">
+            <h2>Why Choose BatchPixel  Media Conversion Suite?</h2>
+            <p>Discover the powerful features that make our image converter stand out from the rest</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Process hundreds of images in seconds with our optimized conversion engine and AI acceleration.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3>Privacy Focused</h3>
+                <p>All processing happens in your browser - your images never leave your device.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sliders"></i>
+                </div>
+                <h3>Advanced Controls</h3>
+                <p>Fine-tune every aspect of your images with our comprehensive adjustment options.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-th-large"></i>
+                </div>
+                <h3>Batch Processing</h3>
+                <p>Convert, resize, and enhance multiple images at once with just a few clicks.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Advanceed</h3>
+                <p>Our advance media conversion tool automatically enhance your images for best results.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-image"></i>
+                </div>
+                <h3>Multiple Formats</h3>
+                <p>Convert between all popular image formats while preserving quality.</p>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <div class="testimonials-container">
+                <div class="section-title">
+                    <h2>What Our Users Say</h2>
+                    <p>Don't just take our word for it - hear from our satisfied users</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            This is hands down the best image converter I've ever used. The batch processing saves me hours every week!
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah J." class="author-avatar">
+                            <div class="author-info">
+                                <h4>Sarah J.</h4>
+                                <p>Photographer</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            The AI enhancement features are incredible. My product photos look professional with zero effort.
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar">
+                            <div class="author-info">
+                                <h4>Michael T.</h4>
+                                <p>E-commerce Store Owner</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            As a blogger, I need to optimize hundreds of images. This tool has cut my workflow time in half!
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Lisa M." class="author-avatar">
+                            <div class="author-info">
+                                <h4>Lisa M.</h4>
+                                <p>Content Creator</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" id="usersCount">1093</div>
+                    <div class="stat-label">Happy Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="imagesCount">98902</div>
+                    <div class="stat-label">Images Processed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="timeSavedCount">50K+</div>
+                    <div class="stat-label">Hours Saved</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="formatsCount">10+</div>
+                    <div class="stat-label">Supported Formats</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Privacy Notice Popup -->
+    <div class="privacy-notice" id="privacyNotice">
+        <div class="privacy-notice-content">
+            <button class="close-privacy-notice" id="closePrivacyNotice">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3><i class="fas fa-shield-alt"></i> Privacy Notice</h3>
+            <p><strong>Your privacy is important to us.</strong> All image processing happens directly in your browser - we do not upload any images to our servers.</p>
+            <p>Your files never leave your computer and are processed locally for maximum security.</p>
+            <div class="privacy-notice-actions">
+                <button class="privacy-btn privacy-accept" id="acceptPrivacyBtn">I Understand</button>
+                <button class="privacy-btn privacy-learn-more" id="learnMoreBtn">Learn More</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="limit-notice" id="limitNotice">
+        <button class="close-notice" id="closeNotice"><i class="fas fa-times"></i></button>
+        <strong>Limit Reached!</strong>
+        <p>You can only convert 10 images at a time. Please process these first or contact us for premium options.</p>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Operation completed successfully</span>
+    </div>
+    <!-- Include JSZip library for ZIP functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>   
+</body>
+</html>
