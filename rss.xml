@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Deepak IT & Web Services</title>
+    <link>https://deepakworld.github.io/</link>
+    <description>Latest updates, projects, and services from Deepak IT & Web Services</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 12 Sep 2026 21:29:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Welcome to Deepak IT & Web Services</title>
+      <link>https://deepakworld.github.io/index.html</link>
+      <description>Explore our portfolio of web, mobile, and cloud solutions designed for SMEs and students.</description>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 GMT</pubDate>
+      <author>diws2026@outlook.com (Deepak IT Team)</author>
+      <category>Technology</category>
+      <enclosure url="https://deepakworld.github.io/images/banner.jpg" type="image/jpeg" length="12345"/>
+    </item>
+
+    <item>
+      <title>Creative Design Showcase</title>
+      <link>https://deepakworld.github.io/projects.html</link>
+      <description>Posters, billboards, and student projects merging enterprise-grade tech with creative excellence.</description>
+      <pubDate>Sat, 12 Sep 2026 19:30:00 GMT</pubDate>
+      <author>diws2026@outlook.com (Creative Team)</author>
+      <category>Design</category>
+      <enclosure url="https://deepakworld.github.io/images/design-showcase.jpg" type="image/jpeg" length="12345"/>
+    </item>
+  </channel>
+</rss>
