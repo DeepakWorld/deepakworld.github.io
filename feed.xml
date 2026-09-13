@@ -7,6 +7,8 @@
     <language>en</language>
     <lastBuildDate>Sun, 13 Sep 2026 15:54:00 +0530</lastBuildDate>
 
+    <snf:logo>https://deepakworld.github.io/indian-news-aggregator/images/logo.jpg</snf:logo>
+
     <!-- Politics -->
     <item>
       <title>Government Launches New Digital Policy</title>
@@ -18,6 +20,7 @@
       <snf:image>https://deepakworld.github.io/indian-news-aggregator/images/politics-policy.jpg</snf:image>
       <snf:category>Politics</snf:category>
       <snf:author>Deepak</snf:author>
+      <snf:analytics>https://deepakworld.github.io/analytics/politics-policy</snf:analytics>
     </item>
 
     <!-- Sports -->
@@ -31,6 +34,7 @@
       <snf:image>https://deepakworld.github.io/indian-news-aggregator/images/cricket-win.jpg</snf:image>
       <snf:category>Sports</snf:category>
       <snf:author>Sports Desk</snf:author>
+      <snf:analytics>https://deepakworld.github.io/analytics/cricket-series</snf:analytics>
     </item>
 
     <!-- Technology -->
@@ -40,10 +44,11 @@
       <guid isPermaLink="true">https://deepakworld.github.io/indian-news-aggregator/tech/ai-startup/</guid>
       <pubDate>Thu, 10 Sep 2026 15:30:00 +0530</pubDate>
 
-      <snf:body>A Bangalore‑based startup introduces cutting‑edge AI solutions for SMEs. The company aims to revolutionize automation and data analysis for small businesses.</snf:body>
+      <snf:body>A Bangalore-based startup introduces cutting-edge AI solutions for SMEs. The company aims to revolutionize automation and data analysis for small businesses.</snf:body>
       <snf:image>https://deepakworld.github.io/indian-news-aggregator/images/ai-startup.jpg</snf:image>
       <snf:category>Technology</snf:category>
       <snf:author>Tech Reporter</snf:author>
+      <snf:analytics>https://deepakworld.github.io/analytics/ai-startup</snf:analytics>
     </item>
 
     <!-- Entertainment -->
@@ -57,6 +62,7 @@
       <snf:image>https://deepakworld.github.io/indian-news-aggregator/images/film-festival.jpg</snf:image>
       <snf:category>Entertainment</snf:category>
       <snf:author>Entertainment Desk</snf:author>
+      <snf:analytics>https://deepakworld.github.io/analytics/film-festival</snf:analytics>
     </item>
 
   </channel>
