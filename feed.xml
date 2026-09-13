@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:snf="http://smartnews.be/snf" version="2.0">
+  <channel>
+    <title>Deepak News Hub</title>
+    <link>https://deepakworld.github.io/indian-news-aggregator</link>
+    <description>Indian news aggregator featuring original articles on politics, sports, technology, and entertainment.</description>
+    <language>en</language>
+    <lastBuildDate>Sun, 13 Sep 2026 15:54:00 +0530</lastBuildDate>
+
+    <!-- Politics -->
+    <item>
+      <title>Government Launches New Digital Policy</title>
+      <link>https://deepakworld.github.io/indian-news-aggregator/politics/digital-policy/</link>
+      <guid isPermaLink="true">https://deepakworld.github.io/indian-news-aggregator/politics/digital-policy/</guid>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0530</pubDate>
+
+      <snf:body>India announces a new digital transformation policy to empower SMEs. The initiative aims to boost innovation, improve access to technology, and strengthen the digital economy across the country.</snf:body>
+      <snf:image>https://deepakworld.github.io/indian-news-aggregator/images/politics-policy.jpg</snf:image>
+      <snf:category>Politics</snf:category>
+      <snf:author>Deepak</snf:author>
+    </item>
+
+    <!-- Sports -->
+    <item>
+      <title>India Wins Cricket Series Against Australia</title>
+      <link>https://deepakworld.github.io/indian-news-aggregator/sports/cricket-series/</link>
+      <guid isPermaLink="true">https://deepakworld.github.io/indian-news-aggregator/sports/cricket-series/</guid>
+      <pubDate>Fri, 11 Sep 2026 18:00:00 +0530</pubDate>
+
+      <snf:body>India secures a thrilling victory in the 2026 ODI series against Australia. Fans celebrated across the country as the team showcased resilience and skill.</snf:body>
+      <snf:image>https://deepakworld.github.io/indian-news-aggregator/images/cricket-win.jpg</snf:image>
+      <snf:category>Sports</snf:category>
+      <snf:author>Sports Desk</snf:author>
+    </item>
+
+    <!-- Technology -->
+    <item>
+      <title>New AI Startup Emerges in Bangalore</title>
+      <link>https://deepakworld.github.io/indian-news-aggregator/tech/ai-startup/</link>
+      <guid isPermaLink="true">https://deepakworld.github.io/indian-news-aggregator/tech/ai-startup/</guid>
+      <pubDate>Thu, 10 Sep 2026 15:30:00 +0530</pubDate>
+
+      <snf:body>A Bangalore‑based startup introduces cutting‑edge AI solutions for SMEs. The company aims to revolutionize automation and data analysis for small businesses.</snf:body>
+      <snf:image>https://deepakworld.github.io/indian-news-aggregator/images/ai-startup.jpg</snf:image>
+      <snf:category>Technology</snf:category>
+      <snf:author>Tech Reporter</snf:author>
+    </item>
+
+    <!-- Entertainment -->
+    <item>
+      <title>Bollywood Film Festival Opens in Mumbai</title>
+      <link>https://deepakworld.github.io/indian-news-aggregator/entertainment/film-festival/</link>
+      <guid isPermaLink="true">https://deepakworld.github.io/indian-news-aggregator/entertainment/film-festival/</guid>
+      <pubDate>Wed, 09 Sep 2026 19:00:00 +0530</pubDate>
+
+      <snf:body>The annual Bollywood Film Festival kicks off in Mumbai with international guests and a lineup of exciting premieres.</snf:body>
+      <snf:image>https://deepakworld.github.io/indian-news-aggregator/images/film-festival.jpg</snf:image>
+      <snf:category>Entertainment</snf:category>
+      <snf:author>Entertainment Desk</snf:author>
+    </item>
+
+  </channel>
+</rss>
